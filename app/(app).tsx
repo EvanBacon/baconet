@@ -23,6 +23,13 @@ export default function AppLayout() {
           tabBarIcon: () => null,
         }}
       />
+      <Tabs.Screen
+        name="market"
+        options={{
+          title: "Market",
+          tabBarIcon: () => null,
+        }}
+      />
     </Tabs>
   );
 }
