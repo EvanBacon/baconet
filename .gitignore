@@ -62,3 +62,6 @@ buck-out/
 # Expo
 .expo/*
 web-build/
+
+# Local Netlify folder
+.netlify
