@@ -10,12 +10,24 @@
       "backgroundColor": "#38434D",
       "resizeMode": "cover"
     },
+    "plugins": [
+      ["./config-plugins/withTunnel", "bacon-baconnet"],
+      ["./config-plugins/withLinks", "https://baconet.netlify.app/"]
+    ],
     "ios": {
-      "bundleIdentifier": "app.baconet",
+      "bundleIdentifier": "app.baconet"
     },
     "android": {
       "package": "app.baconet"
     },
-    "web": { "bundler": "metro" }
+    "web": {
+      "bundler": "metro"
+    },
+    "extra": {
+      "url": "https://baconet.netlify.app/",
+      "eas": {
+        "projectId": "64b8e4a4-baf5-4160-90fe-ecfa7a32e6b8"
+      }
+    }
   }
 }
