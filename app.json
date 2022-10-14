@@ -1,6 +1,21 @@
 {
   "expo": {
-    "scheme": "acme",
+    "name": "Baconet",
+    "slug": "bacon",
+    "scheme": "bacon",
+    "icon": "https://icogen.vercel.app/api/icon?color_hex=fff&icon=1f953",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "https://icogen.vercel.app/api/icon?color_hex=38434D&icon=1f953",
+      "backgroundColor": "#38434D",
+      "resizeMode": "cover"
+    },
+    "ios": {
+      "bundleIdentifier": "app.baconet",
+    },
+    "android": {
+      "package": "app.baconet"
+    },
     "web": { "bundler": "metro" }
   }
 }
