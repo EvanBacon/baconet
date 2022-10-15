@@ -99,62 +99,17 @@ export default function Page() {
       }
     >
       <View style={styles.main}>
-        {error && (
-          <View
-            style={{
-              padding: 16,
-              borderColor: "firebrick",
-              borderWidth: 1,
-            }}
-          >
-            <Text
-              style={{
-                color: "white",
-              }}
-            >
-              {">"} Error: {error.message}
-            </Text>
-          </View>
-        )}
+        {error && <ErrorView error={error} retry={checkForUpdates} />}
 
-        <Pressable
+        <RefreshButton update={update} />
+
+        <View
           style={{
-            marginVertical: 12,
+            borderWidth: 0.5,
+            borderColor: "white",
+            marginBottom: 12,
           }}
-          onPress={() => {
-            reloadAsync();
-          }}
-        >
-          {({ pressed }) => (
-            <View
-              style={[
-                {
-                  borderColor: update?.isAvailable ? "white" : "#38434D",
-                  borderWidth: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: 16,
-                  backgroundColor: update?.isAvailable
-                    ? "white"
-                    : "transparent",
-                },
-                pressed && {
-                  backgroundColor: update?.isAvailable ? "white" : "#38434D",
-                },
-              ]}
-            >
-              <Text
-                style={[
-                  styles.subtitle,
-                  { color: update?.isAvailable ? "black" : "#38434D" },
-                  pressed && { color: update?.isAvailable ? "black" : "white" },
-                ]}
-              >
-                {update?.isAvailable ? "Update" : "Reload"}
-              </Text>
-            </View>
-          )}
-        </Pressable>
+        />
 
         <KVPair
           k="Created"
@@ -168,7 +123,7 @@ export default function Page() {
         />
         <KVPair k="Emergency Launched" value={Updates.isEmergencyLaunch} />
         <KVPair k="ID" value={Updates.updateId} />
-        <KVPair k="Runtime Version" value={Updates.runtimeVersion} />
+        <KVPair k="Runtime Version" value={Updates.runtimeVersion || "N/A"} />
 
         <KVPair k="Release Channel" value={Updates.releaseChannel} />
         <KVPair k="Channel" value={Updates.channel} />
@@ -193,6 +148,203 @@ export default function Page() {
         )}
       </View>
     </ScrollView>
+  );
+}
+
+type ButtonState = {
+  update: null | Updates.UpdateFetchResult;
+  loading: boolean;
+  error: Error | null;
+};
+
+function fetchUpdateAsync(): Promise<Updates.UpdateFetchResult> {
+  if (process.env.NODE_ENV === "development") {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // reject(new Error("Not supported in dev mode"));
+        resolve({
+          isNew: true,
+          manifest: {
+            id: Date.now().toString(),
+            createdAt: new Date().toISOString(),
+            bundleUrl: "https://acme.com",
+            extra: {
+              bacon: "🥓",
+            },
+          },
+        });
+      }, 3000);
+    });
+  }
+
+  return Updates.fetchUpdateAsync();
+}
+
+function ErrorView({
+  error,
+  retry,
+  style,
+}: {
+  error: Error;
+  retry: () => void;
+  style?: any;
+}) {
+  return (
+    <View
+      style={[
+        {
+          padding: 16,
+          borderColor: "firebrick",
+          borderWidth: 1,
+        },
+        style,
+      ]}
+    >
+      <Text
+        style={{
+          color: "white",
+        }}
+      >
+        {">"} Error: {error.message}
+      </Text>
+      <Pressable onPress={retry}>
+        <Text
+          style={{
+            color: "white",
+            marginTop: 8,
+          }}
+        >
+          Retry
+        </Text>
+      </Pressable>
+    </View>
+  );
+}
+
+const BUTTON_STYLES = {
+  launch: {
+    backgroundColor: "#454758",
+    color: "white",
+    borderColor: "transparent",
+    selected: {
+      backgroundColor: "#6e718c",
+    },
+  },
+  download: {
+    backgroundColor: "transparent",
+    color: "white",
+    borderColor: "white",
+    selected: {
+      backgroundColor: "#6e718c",
+      borderColor: "#6e718c",
+    },
+  },
+  reload: {
+    backgroundColor: "transparent",
+    color: "#38434D",
+    borderColor: "#38434D",
+    selected: {
+      backgroundColor: "#38434D",
+      color: "white",
+    },
+  },
+  downloading: {
+    backgroundColor: "#21222B",
+    color: "white",
+    borderColor: "transparent",
+    selected: {},
+  },
+};
+function RefreshButton({}) {
+  const update = { isAvailable: true };
+  const [{ loading, error, ...state }, setState] = React.useReducer<
+    React.Reducer<ButtonState, Partial<ButtonState>>
+  >((state, newState) => ({ ...state, ...newState }), {
+    error: null,
+
+    update: null,
+    loading: false,
+  });
+
+  const isLaunchNew = !!state.update?.isNew;
+
+  const canDownload = !loading && update && !state.update;
+
+  const style = loading
+    ? BUTTON_STYLES.downloading
+    : isLaunchNew
+    ? BUTTON_STYLES.launch
+    : canDownload
+    ? BUTTON_STYLES.download
+    : BUTTON_STYLES.reload;
+
+  const selectedStyle = { ...style, ...style.selected };
+
+  function download() {
+    setState({ loading: true, error: null });
+
+    fetchUpdateAsync()
+      .then((update) => {
+        setState({ update, loading: false, error: null });
+      })
+      .catch((e) => {
+        setState({ update: null, loading: false, error: e });
+      });
+  }
+
+  return (
+    <>
+      <Pressable
+        style={{
+          marginVertical: 12,
+        }}
+        disabled={loading}
+        onPress={() => {
+          if (canDownload) {
+            download();
+          } else {
+            if (process.env.NODE_ENV === "development") {
+              setState({ update: null, loading: false, error: null });
+            } else {
+              reloadAsync();
+            }
+          }
+        }}
+      >
+        {({ pressed }) => {
+          const _style = pressed ? selectedStyle : style;
+          return (
+            <View
+              style={{
+                borderColor: _style.borderColor,
+                borderWidth: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                padding: 16,
+                backgroundColor: _style.backgroundColor,
+              }}
+            >
+              <Text style={[styles.subtitle, { color: _style.color }]}>
+                {loading
+                  ? "Downloading..."
+                  : isLaunchNew
+                  ? "Launch"
+                  : update?.isAvailable
+                  ? "Update"
+                  : "Reload"}
+              </Text>
+            </View>
+          );
+        }}
+      </Pressable>
+      {error && (
+        <ErrorView
+          error={error}
+          retry={download}
+          style={{ marginBottom: 12 }}
+        />
+      )}
+    </>
   );
 }
 
