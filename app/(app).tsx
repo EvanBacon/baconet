@@ -1,4 +1,10 @@
-import { Tabs } from "expo-router";
+import { Redirect, Tabs } from "expo-router";
+import { Platform } from "react-native";
+
+import Constants from "expo-constants";
+
+const isAuthorizedPerson = true;
+//   !Constants.isDevice || /^dev\s/i.test(Constants.deviceName.toLowerCase());
 
 export default function AppLayout() {
   return (
@@ -27,6 +33,18 @@ export default function AppLayout() {
         name="market"
         options={{
           title: "Market",
+          tabBarIcon: () => null,
+        }}
+      />
+      <Tabs.Screen
+        name="tools"
+        options={{
+          title: "Tools",
+          href: Platform.select({
+            web: null,
+            // Only show if the device name starts with `dev `
+            default: isAuthorizedPerson ? "/_expo" : null,
+          }),
           tabBarIcon: () => null,
         }}
       />

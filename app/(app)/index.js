@@ -6,8 +6,8 @@ export default function Page() {
       <View style={styles.main}>
         <Text style={styles.title}>Hello World</Text>
         <Text style={styles.subtitle}>
-          ← <Text style={{ fontWeight: "bold" }}>TODO:</Text> Make this house
-          into a home →
+          ← <Text style={{ fontWeight: "bold" }}>TODO:</Text> Make this house a
+          home →
         </Text>
       </View>
     </View>
