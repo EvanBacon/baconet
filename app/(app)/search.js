@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import * as Updates from "expo-updates";
+
 export default function Page() {
   return (
     <View style={styles.container}>
