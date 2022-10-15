@@ -17,6 +17,8 @@ async function reloadAsync() {
   }
 }
 
+import { getDevServer } from "expo-router/build/getDevServer";
+
 // expo-updates doesn't work in dev mode cuz why would
 // anyone want to test anything... so here we just create
 // a fake date based on when the bundle was loaded.
@@ -52,6 +54,7 @@ export default function Page() {
     setState({ loading: true });
     try {
       const update = await Updates.checkForUpdateAsync();
+
       setState({
         error: null,
         loading: false,
@@ -85,6 +88,7 @@ export default function Page() {
       style={styles.container}
       contentContainerStyle={{
         alignItems: "stretch",
+        paddingBottom: 48,
       }}
       refreshControl={
         <RefreshControl
@@ -154,11 +158,13 @@ export default function Page() {
 
         <KVPair
           k="Created"
-          value={(Updates.createdAt ?? FAKE_CREATED_AT).toDateString()}
+          value={dateToString(Updates.createdAt ?? FAKE_CREATED_AT)}
         />
         <KVPair
-          k="Manifest"
-          value={"\n" + JSON.stringify(Updates.manifest, null, 2)}
+          k="URL"
+          value={
+            Updates.manifest?.bundleUrl ?? getDevServer()?.url ?? "unknown"
+          }
         />
         <KVPair k="Emergency Launched" value={Updates.isEmergencyLaunch} />
         <KVPair k="ID" value={Updates.updateId} />
@@ -166,7 +172,10 @@ export default function Page() {
 
         <KVPair k="Release Channel" value={Updates.releaseChannel} />
         <KVPair k="Channel" value={Updates.channel} />
-
+        <KVPair
+          k="Manifest"
+          value={"\n" + JSON.stringify(Updates.manifest, null, 2)}
+        />
         {Updates.isUsingEmbeddedAssets && (
           <>
             <View
@@ -185,6 +194,16 @@ export default function Page() {
       </View>
     </ScrollView>
   );
+}
+
+// Show day and time hours and minutes
+function dateToString(date: Date) {
+  return date.toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
 }
 
 function KVPair({ k, value }) {
