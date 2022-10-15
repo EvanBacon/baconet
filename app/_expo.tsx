@@ -1,5 +1,6 @@
 import { Tabs, Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { makeIcon } from "../components/TabBarIcon";
 
 export default function RootLayout() {
   return (
@@ -32,11 +33,20 @@ export default function RootLayout() {
       >
         <Tabs.Screen
           name="update"
-          options={{ title: "Update", headerTitle: "EAS Update" }}
+          options={{
+            title: "Update",
+            tabBarIcon: makeIcon("cloud-download"),
+            // tabBarIcon: makeIcon("code-download"),
+            headerTitle: "EAS Update",
+          }}
         />
         <Tabs.Screen
           name="build"
-          options={{ title: "Build", headerTitle: "EAS Build" }}
+          options={{
+            title: "Build",
+            tabBarIcon: makeIcon("cube"),
+            headerTitle: "EAS Build",
+          }}
         />
       </Tabs>
     </>

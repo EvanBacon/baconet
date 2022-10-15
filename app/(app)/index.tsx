@@ -1,13 +1,22 @@
+import { Head } from "@bacons/head";
 import { StyleSheet, Text, View } from "react-native";
 
-import { Head } from "@bacons/head";
+import { ShortcutBanner } from "../../components/shortcuts";
 
 export default function Page() {
   return (
     <>
       <Head>
-        {/* <title>Welcome | Baconet</title> */}
+        <title>Welcome | Baconet</title>
         <meta name="description" content="Welcome to Baconet" />
+        <meta
+          property="og:image"
+          content="https://icogen.vercel.app/api/icon?icon=1f195"
+        />
+        <meta
+          name="keywords"
+          content="look,market,search,find,bacon,discover"
+        />
       </Head>
       <View style={styles.container}>
         <View style={styles.main}>
@@ -16,6 +25,7 @@ export default function Page() {
             ← <Text style={{ fontWeight: "bold" }}>TODO:</Text> Make this house
             a home →
           </Text>
+          <ShortcutBanner />
         </View>
       </View>
     </>

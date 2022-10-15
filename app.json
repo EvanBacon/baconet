@@ -19,11 +19,18 @@
         "./config-plugins/withLinks",
         "https://baconet.netlify.app/"
       ],
-      "@bacons/head"
+      "@bacons/head",
+      "./config-plugins/withVideoShare"
     ],
     "ios": {
       "bundleIdentifier": "app.baconet",
-      "runtimeVersion": "1.0.0"
+      "runtimeVersion": "1.0.0",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSUserActivityTypes": [
+          "com.baconet.expo.index_route"
+        ]
+      }
     },
     "android": {
       "package": "app.baconet",

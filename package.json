@@ -3,6 +3,7 @@
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
+    "postinstall": "npx patch-package",
     "web": "expo start --web",
     "predeploy:web": "expo export --platform web",
     "deploy:web": "netlify deploy --prod --dir dist"

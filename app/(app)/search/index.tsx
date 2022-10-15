@@ -1,8 +1,10 @@
 import { Head } from "@bacons/head";
 import * as Linking from "expo-linking";
-import { Stack, Tabs, useHref } from "expo-router";
-import { useMemo } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Stack, Tabs, useHref, useNavigation } from "expo-router";
+import React, { useMemo } from "react";
+import { Platform, StyleSheet, Text, View } from "react-native";
+import SearchBar from "../../../components/SearchBar";
+import { MetaShortcut } from "../../../components/shortcuts";
 
 export default function Page() {
   const route = useHref();
@@ -11,19 +13,56 @@ export default function Page() {
     [route.query?.q]
   );
 
+  const nav = useNavigation();
+  const [value, setValue] = React.useState(def);
+
+  React.useEffect(() => {
+    if (def) {
+      setValue(def);
+    }
+  }, [def]);
+
   return (
     <>
       <Head>
-        {/* <title>Search | Baconet</title> */}
+        <title>Search | Baconet</title>
         <meta name="description" content="Look around the bacoverse" />
-        <meta name="keywords" content="look,search,find,bacon,discover" />
+        <meta
+          name="keywords"
+          content="look,market,search,find,bacon,discover"
+        />
+        <meta
+          property="og:image"
+          content="https://icogen.vercel.app/api/icon?icon=%F0%9F%94%8D"
+        />
         <SearchIn />
       </Head>
+      <MetaShortcut
+        title="Quick Search"
+        icon="search"
+        subtitle="Look for bacon"
+      />
       <Tabs.Screen name="../../" options={{ headerShown: false }} />
       <Stack.Screen
         options={{
           title: "Search",
           headerLargeTitle: true,
+          headerRight(props) {
+            if (Platform.OS === "web") {
+              return (
+                <SearchBar
+                  onSubmit={() => {
+                    nav.setParams({ q: value });
+                  }}
+                  onChangeQuery={(val) => {
+                    setValue(val);
+                  }}
+                  value={value}
+                />
+              );
+            }
+            return null;
+          },
           headerSearchBarOptions: {
             placeholder: "Search",
             autoFocus: true,
