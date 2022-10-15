@@ -3226,10 +3226,10 @@ expo-modules-core@0.11.8:
     compare-versions "^3.4.0"
     invariant "^2.2.4"
 
-expo-router@~0.0.28:
-  version "0.0.28"
-  resolved "https://registry.yarnpkg.com/expo-router/-/expo-router-0.0.28.tgz#f5862adc8284241817980950a884ca941cd58a31"
-  integrity sha512-G+YPqdMz6et7cDUatOHNyym5WxEcFxJetLmDKXC0dq2R+xQ0dScExBRo+p+cclVPJwfUjFDx1qNmtPDcmiWNaQ==
+expo-router@~0.0.29:
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/expo-router/-/expo-router-0.0.29.tgz#51b4902bbe7eed3796f90333194ef16a129f917b"
+  integrity sha512-qDqOAOPcVBJQA/TpIlAqikacBsQ1b+DOlS16jRAoxPUeE+6XMbNB96fxirrfs+Jvq4D4fnBTT/FVfo+08dpa1g==
   dependencies:
     "@bacons/expo-metro-runtime" "^2.0.1"
     "@bacons/react-views" "^1.1.3"

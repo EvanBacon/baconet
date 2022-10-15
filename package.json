@@ -12,7 +12,7 @@
     "@types/react": "~18.0.0",
     "@types/react-native": "~0.69.1",
     "expo": "~46.0.16",
-    "expo-router": "~0.0.28",
+    "expo-router": "~0.0.29",
     "expo-splash-screen": "~0.16.2",
     "expo-status-bar": "~1.4.0",
     "expo-updates": "~0.14.6",

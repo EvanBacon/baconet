@@ -6,7 +6,8 @@ export default function Page() {
   return (
     <>
       <Head>
-        <title>Index | Baconet</title>
+        {/* <title>Welcome | Baconet</title> */}
+        <meta name="description" content="Welcome to Baconet" />
       </Head>
       <View style={styles.container}>
         <View style={styles.main}>

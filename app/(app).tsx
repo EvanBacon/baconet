@@ -1,16 +1,37 @@
-import { Redirect, Tabs } from "expo-router";
-import { Platform } from "react-native";
+import { Redirect, Link, RootContainer, Tabs } from "expo-router";
+import { Platform, useColorScheme } from "react-native";
 
+import Ionicons from "@expo/vector-icons/Ionicons";
 import Constants from "expo-constants";
 import { StatusBar } from "expo-status-bar";
 
 const isAuthorizedPerson = true;
 //   !Constants.isDevice || /^dev\s/i.test(Constants.deviceName.toLowerCase());
 
+import { DefaultTheme, DarkTheme } from "@react-navigation/native";
 export default function AppLayout() {
+  const theme = useColorScheme() === "dark" ? DarkTheme : DefaultTheme;
   return (
     <>
-      <Tabs>
+      <RootContainer theme={theme} />
+      <Tabs
+        screenOptions={{
+          headerRight(props) {
+            return (
+              <Link
+                style={{ color: "white", fontSize: 16, paddingHorizontal: 16 }}
+                href="/_expo"
+              >
+                <Ionicons
+                  name="code-outline"
+                  size={24}
+                  color={theme.colors.text}
+                />
+              </Link>
+            );
+          },
+        }}
+      >
         <Tabs.Screen
           name="home"
           options={{
@@ -35,18 +56,6 @@ export default function AppLayout() {
           name="market"
           options={{
             title: "Market",
-            tabBarIcon: () => null,
-          }}
-        />
-        <Tabs.Screen
-          name="tools"
-          options={{
-            title: "Tools",
-            href: Platform.select({
-              web: null,
-              // Only show if the device name starts with `dev `
-              default: isAuthorizedPerson ? "/_expo" : null,
-            }),
             tabBarIcon: () => null,
           }}
         />
