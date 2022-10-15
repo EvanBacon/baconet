@@ -18,7 +18,8 @@
       [
         "./config-plugins/withLinks",
         "https://baconet.netlify.app/"
-      ]
+      ],
+      "@bacons/head"
     ],
     "ios": {
       "bundleIdentifier": "app.baconet",

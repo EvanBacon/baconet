@@ -8,6 +8,7 @@
     "deploy:web": "netlify deploy --prod --dir dist"
   },
   "dependencies": {
+    "@bacons/head": "^0.0.3",
     "@types/react": "~18.0.0",
     "@types/react-native": "~0.69.1",
     "expo": "~46.0.16",

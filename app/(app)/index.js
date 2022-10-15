@@ -1,16 +1,23 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import { Head } from "@bacons/head";
+
 export default function Page() {
   return (
-    <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Hello World</Text>
-        <Text style={styles.subtitle}>
-          ← <Text style={{ fontWeight: "bold" }}>TODO:</Text> Make this house a
-          home →
-        </Text>
+    <>
+      <Head>
+        <title>Index | Baconet</title>
+      </Head>
+      <View style={styles.container}>
+        <View style={styles.main}>
+          <Text style={styles.title}>Hello World</Text>
+          <Text style={styles.subtitle}>
+            ← <Text style={{ fontWeight: "bold" }}>TODO:</Text> Make this house
+            a home →
+          </Text>
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
