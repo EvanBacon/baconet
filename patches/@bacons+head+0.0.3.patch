@@ -1,5 +1,5 @@
 diff --git a/node_modules/@bacons/head/build/ExpoHead.ios.js b/node_modules/@bacons/head/build/ExpoHead.ios.js
-index 1004475..16d02ae 100644
+index 1004475..0619ee2 100644
 --- a/node_modules/@bacons/head/build/ExpoHead.ios.js
 +++ b/node_modules/@bacons/head/build/ExpoHead.ios.js
 @@ -40,7 +40,7 @@ export function setWebUrl(url) {
@@ -11,7 +11,7 @@ index 1004475..16d02ae 100644
  }
  function getWebUrl() {
      if (!webUrl) {
-@@ -54,7 +54,7 @@ function urlToId(url) {
+@@ -54,22 +54,40 @@ function urlToId(url) {
  function getLastSegment(path) {
      // Remove the extension
      const lastSegment = path.split("/").pop() ?? "";
@@ -20,7 +20,44 @@ index 1004475..16d02ae 100644
  }
  // Maybe use geo from structured data -- https://developers.google.com/search/docs/appearance/structured-data/local-business
  // import { useContextKey } from "expo-router/build/Route";
-@@ -91,14 +91,14 @@ export function Head({ children }) {
+ // import { AppState, Linking } from "react-native";
+ export function Head({ children }) {
+     const link = useHref();
++    const { renderableChildren, metaChildren } = React.useMemo(() => {
++        const renderableChildren = [];
++        const metaChildren = [];
++
++        React.Children.forEach(children, (child) => {
++            if (!React.isValidElement(child)) {
++                return;
++            }
++            if (typeof child.type === "string") {
++                metaChildren.push(child);
++            } else {
++                renderableChildren.push(child);
++            }
++        });
++
++        return { renderableChildren, metaChildren };
++    }, [children]);
++
++    console.log('children:', renderableChildren, metaChildren);
++
+     const activity = React.useMemo(() => {
+         const userActivity = {
+             title: getLastSegment(link.href),
+             activityType: ExpoHead.activities.INDEXED_ROUTE,
+         };
+-        React.Children.forEach(children, (child) => {
+-            if (!React.isValidElement(child)) {
+-                return;
+-            }
++
++        metaChildren.forEach((child) => {
+             if (child.type === "title") {
+                 userActivity.title = child.props.children;
+             }
+@@ -91,14 +109,14 @@ export function Head({ children }) {
                      userActivity.webpageURL = content;
                  }
                  if (property === "og:image") {
@@ -41,6 +78,24 @@ index 1004475..16d02ae 100644
                  }
                  // <meta name="keywords" content="foo,bar,baz" />
                  if (["keywords"].includes(name)) {
+@@ -125,7 +143,7 @@ export function Head({ children }) {
+             resolved.id = urlToId(resolved.webpageURL);
+         }
+         return resolved;
+-    }, [children, link.href]);
++    }, [metaChildren, link.href]);
+     React.useEffect(() => {
+         if (activity) {
+             ExpoHead.createActivity(activity);
+@@ -140,6 +158,6 @@ export function Head({ children }) {
+     //     ExpoHead.suspendActivity("[TODO-SOME-PAGE-ID]");
+     //   };
+     // }, []);
+-    return null;
++    return renderableChildren;
+ }
+ //# sourceMappingURL=ExpoHead.ios.js.map
+\ No newline at end of file
 diff --git a/node_modules/@bacons/head/ios/ExpoHeadAppDelegateSubscriber.swift b/node_modules/@bacons/head/ios/ExpoHeadAppDelegateSubscriber.swift
 index 15dfb2e..21f7823 100644
 --- a/node_modules/@bacons/head/ios/ExpoHeadAppDelegateSubscriber.swift
@@ -118,7 +173,7 @@ index 15dfb2e..21f7823 100644
          // https://github.com/search?q=
          NotificationCenter.default.post(
 diff --git a/node_modules/@bacons/head/ios/ExpoHeadModule.swift b/node_modules/@bacons/head/ios/ExpoHeadModule.swift
-index ef95609..be1f33b 100644
+index ef95609..9b10dc3 100644
 --- a/node_modules/@bacons/head/ios/ExpoHeadModule.swift
 +++ b/node_modules/@bacons/head/ios/ExpoHeadModule.swift
 @@ -4,6 +4,21 @@ import MobileCoreServices
@@ -272,7 +327,7 @@ index ef95609..be1f33b 100644
 +      activity.isEligibleForSearch = value.eligibleForSearch
 +      activity.isEligibleForPrediction = true;
 +      activity.title = value.title
- 
+       
        if let keywords = value.keywords {
          activity.keywords = Set(keywords)
        }

@@ -13,20 +13,7 @@ export default function AppLayout() {
       <RootContainer theme={theme} />
       <Tabs
         screenOptions={{
-          headerRight(props) {
-            return (
-              <Link
-                style={{ color: "white", fontSize: 16, paddingHorizontal: 16 }}
-                href="/_expo"
-              >
-                <Ionicons
-                  name="code-slash"
-                  size={24}
-                  color={theme.colors.text}
-                />
-              </Link>
-            );
-          },
+          headerShown: false,
         }}
       >
         <Tabs.Screen
@@ -36,13 +23,14 @@ export default function AppLayout() {
           }}
         />
         <Tabs.Screen
-          name="index"
+          name="(stack)"
           options={{
+            href: "/",
             title: "Home",
             tabBarIcon: makeIcon("planet"),
           }}
         />
-        <Tabs.Screen
+        {/* <Tabs.Screen
           name="search"
           options={{
             title: "Search",
@@ -55,7 +43,7 @@ export default function AppLayout() {
             title: "Market",
             tabBarIcon: makeIcon("card"),
           }}
-        />
+        /> */}
       </Tabs>
       <StatusBar style="dark" />
     </>

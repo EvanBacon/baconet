@@ -1,11 +1,7 @@
 import { requireNativeModule } from "expo-modules-core";
 import { useHref } from "expo-router";
 import { useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
-
-// It loads the native module object from the JSI or falls back to
-// the bridge module (from NativeModulesProxy) if the remote debugger is on.
-const ExpoHead = requireNativeModule("ExpoHead");
+import { View, Text, StyleSheet, Platform } from "react-native";
 
 export type Shortcut = {
   id?: string;
@@ -51,6 +47,12 @@ function urlToId(url) {
 }
 
 export function defineShortcuts(shortcuts: Shortcut[]) {
+  // It loads the native module object from the JSI or falls back to
+  // the bridge module (from NativeModulesProxy) if the remote debugger is on.
+  const ExpoHead = requireNativeModule("ExpoHead");
+  if (!ExpoHead.defineShortcuts) {
+    return;
+  }
   ExpoHead.defineShortcuts(
     shortcuts.map((value) => ({
       id: String(Date.now() + Math.random()),
@@ -62,6 +64,9 @@ export function defineShortcuts(shortcuts: Shortcut[]) {
 let shortcuts: Shortcut[] = [];
 
 export function MetaShortcut(props: Omit<Shortcut, "info">) {
+  if (Platform.OS !== "ios") {
+    return null;
+  }
   const { href } = useHref();
 
   useEffect(() => {

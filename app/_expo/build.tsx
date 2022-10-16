@@ -1,13 +1,9 @@
 import { StyleSheet, Text, View } from "@bacons/react-views";
-
+import Constants from "expo-constants";
+import { createURL } from "expo-linking";
 import * as Updates from "expo-updates";
 import React from "react";
-import {
-  DevSettings,
-  Pressable,
-  RefreshControl,
-  ScrollView,
-} from "react-native";
+import { DevSettings, ScrollView } from "react-native";
 
 async function reloadAsync() {
   try {
@@ -36,8 +32,6 @@ type State = {
   loading: boolean;
 };
 
-import Constants from "expo-constants";
-import { createURL } from "expo-linking";
 export default function Page() {
   return (
     <ScrollView

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "@bacons/react-views";
-
+import { getDevServer } from "expo-router/build/getDevServer";
 import * as Updates from "expo-updates";
 import React, { useEffect } from "react";
 import {
@@ -16,8 +16,6 @@ async function reloadAsync() {
     await DevSettings.reload();
   }
 }
-
-import { getDevServer } from "expo-router/build/getDevServer";
 
 // expo-updates doesn't work in dev mode cuz why would
 // anyone want to test anything... so here we just create
