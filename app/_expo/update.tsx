@@ -99,6 +99,7 @@ export default function Page() {
       <View style={styles.main}>
         {error && <ErrorView error={error} retry={checkForUpdates} />}
 
+        {/* @ts-expect-error */}
         <RefreshButton update={update} />
 
         <View
@@ -116,6 +117,7 @@ export default function Page() {
         <KVPair
           k="URL"
           value={
+            // @ts-expect-error
             Updates.manifest?.bundleUrl ?? getDevServer()?.url ?? "unknown"
           }
         />
@@ -162,6 +164,7 @@ function fetchUpdateAsync(): Promise<Updates.UpdateFetchResult> {
         // reject(new Error("Not supported in dev mode"));
         resolve({
           isNew: true,
+          // @ts-expect-error
           manifest: {
             id: Date.now().toString(),
             createdAt: new Date().toISOString(),

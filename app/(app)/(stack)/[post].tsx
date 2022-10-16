@@ -50,6 +50,7 @@ export default function Page({ route }) {
           ]}
         >
           <H1 style={{}}>Post: {post.fields.title}</H1>
+          {/* @ts-expect-error */}
           <Markdown>{post.fields.body}</Markdown>
         </ScrollView>
       </View>

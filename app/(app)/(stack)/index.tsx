@@ -74,6 +74,7 @@ function PostsList() {
         const { author, created } = item.fields;
         return (
           <Link
+            // @ts-expect-error
             href={{
               pathname: "/[post]",
               query: {
@@ -192,10 +193,11 @@ export function CupertinoItemSeparatorComponent() {
   );
 }
 
-function ProfileImage({ style, ...props }: ImageProps) {
+function ProfileImage({ style, ...props }: Partial<ImageProps>) {
   return (
     <Image
       {...props}
+      // @ts-expect-error
       alt="Evan Bacon"
       source={{
         uri: "https://avatars.githubusercontent.com/u/9664363?v=4",

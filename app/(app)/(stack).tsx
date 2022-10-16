@@ -40,6 +40,7 @@ export default function StackLayout() {
       >
         <Stack.Screen
           name="index"
+          // @ts-expect-error
           options={(nav) => ({
             title: "Bacon Blog",
             headerLargeTitle: true,
