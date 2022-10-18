@@ -70,7 +70,7 @@ function PostsList() {
       contentInsetAdjustmentBehavior="automatic"
       data={posts}
       renderItem={({ item }) => {
-        console.log("item", item);
+        // console.log("item", item);
         const { author, created } = item.fields;
         return (
           <Link

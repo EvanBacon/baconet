@@ -1,7 +1,7 @@
 import { Head } from "@bacons/head";
 import { StyleSheet, View } from "@bacons/react-views";
 import { H1 } from "@expo/html-elements";
-import { Stack } from "expo-router";
+import { Stack, useHref } from "expo-router";
 import React from "react";
 import { ScrollView, useWindowDimensions } from "react-native";
 import Markdown from "react-native-markdown-renderer";
@@ -10,11 +10,14 @@ import { usePosts } from "../../../components/api";
 import { useOutletContext } from "../../../components/OutletContext";
 
 export default function Page({ route }) {
-  // const route = useHref();
+  const href = useHref();
+  console.log("!!route!!", href, route);
+  const { width } = useWindowDimensions();
+
   const postId = route.params?.post;
 
   const posts = useOutletContext<ReturnType<typeof usePosts>>();
-  console.log("route", route, posts);
+  // console.log("route", route, posts);
 
   if (!posts?.length || !postId) {
     return null;
@@ -26,17 +29,18 @@ export default function Page({ route }) {
     throw new Error("Post not found: " + postId);
   }
 
-  const { width } = useWindowDimensions();
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>{post.fields.title} | Bacon Blog</title>
-      </Head>
-      <Stack.Screen options={{ title: post.fields.title }} />
+      </Head> */}
+      <Stack.Screen
+        options={{ headerLargeTitle: true, title: post.fields.title }}
+      />
       <View
         style={{
           alignItems: "center",
-
+          flex: 1,
           maxWidth: 960,
           marginHorizontal: "auto",
         }}
@@ -48,8 +52,8 @@ export default function Page({ route }) {
               width: Math.min(width, 960),
             },
           ]}
+          contentInsetAdjustmentBehavior="automatic"
         >
-          <H1 style={{}}>Post: {post.fields.title}</H1>
           {/* @ts-expect-error */}
           <Markdown>{post.fields.body}</Markdown>
         </ScrollView>
