@@ -16,8 +16,8 @@ import { useOutletContext } from "../../../components/OutletContext";
 export default function Page() {
   const route = useHref();
   const def = useMemo(
-    () => (route.query?.q ? decodeURIComponent(route.query?.q) : ""),
-    [route.query?.q]
+    () => (route.params?.q ? decodeURIComponent(route.params?.q) : ""),
+    [route.params?.q]
   );
 
   const [value, setValue] = React.useState(def);
@@ -77,7 +77,7 @@ function PostsList() {
             // @ts-expect-error
             href={{
               pathname: "/[post]",
-              query: {
+              params: {
                 post: item.fields.slug,
               },
             }}

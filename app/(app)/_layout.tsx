@@ -4,7 +4,7 @@ import { Link, RootContainer, Tabs } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "react-native";
 
-import { makeIcon } from "../components/TabBarIcon";
+import { makeIcon } from "../../components/TabBarIcon";
 
 export default function AppLayout() {
   const theme = useColorScheme() === "dark" ? DarkTheme : DefaultTheme;

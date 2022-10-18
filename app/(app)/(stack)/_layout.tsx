@@ -2,9 +2,9 @@ import { Link, Stack } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 import { Platform, Text, useColorScheme } from "react-native";
-import SearchBar from "../../components/SearchBar";
-import { OutletContext } from "../../components/OutletContext";
-import { usePosts } from "../../components/api";
+import SearchBar from "../../../components/SearchBar";
+import { OutletContext } from "../../../components/OutletContext";
+import { usePosts } from "../../../components/api";
 
 function EASButton() {
   const theme = useColorScheme() === "dark" ? DarkTheme : DefaultTheme;

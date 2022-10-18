@@ -1,6 +1,4 @@
-import { Head } from "@bacons/head";
 import { StyleSheet, View } from "@bacons/react-views";
-import { H1 } from "@expo/html-elements";
 import { Stack, useHref } from "expo-router";
 import React from "react";
 import { ScrollView, useWindowDimensions } from "react-native";

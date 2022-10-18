@@ -1,6 +1,6 @@
 import { Tabs, Link } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { makeIcon } from "../components/TabBarIcon";
+import { makeIcon } from "../../components/TabBarIcon";
 
 export default function RootLayout() {
   return (
