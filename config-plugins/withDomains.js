@@ -17,8 +17,8 @@ module.exports = function withDomains(exp, { domains, mode }) {
             value,
             sanitizeUrl(domain),
             suffix,
-            // Seems like dev-mode is only supported for `applinks`.
-            // value === "applinks:" ? suffix : "",
+            // Dev mode does not appear to support `webcredentials`.
+            value !== "webcredentials:" ? suffix : "",
           ].join("")
       );
     })
