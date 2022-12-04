@@ -76,7 +76,7 @@ function PostsList() {
           <Link
             // @ts-expect-error
             href={{
-              pathname: "/[post]",
+              pathname: "/blog/[post]",
               params: {
                 post: item.fields.slug,
               },

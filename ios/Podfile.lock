@@ -19,13 +19,15 @@ PODS:
     - EXJSONUtils
   - Expo (46.0.16):
     - ExpoModulesCore
-  - ExpoHead (0.0.1):
+  - ExpoHead (0.0.3):
     - ExpoModulesCore
   - ExpoKeepAwake (10.2.0):
     - ExpoModulesCore
   - ExpoModulesCore (0.11.8):
     - React-Core
     - ReactCommon/turbomodule/core
+  - ExpoSystemUI (1.3.0):
+    - ExpoModulesCore
   - EXSplashScreen (0.16.2):
     - ExpoModulesCore
     - React-Core
@@ -379,6 +381,7 @@ DEPENDENCIES:
   - "ExpoHead (from `../node_modules/@bacons/head/ios`)"
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core/ios`)
+  - ExpoSystemUI (from `../node_modules/expo-system-ui/ios`)
   - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - EXStructuredHeaders (from `../node_modules/expo-structured-headers/ios`)
   - EXUpdates (from `../node_modules/expo-updates/ios`)
@@ -453,6 +456,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-keep-awake/ios"
   ExpoModulesCore:
     :path: "../node_modules/expo-modules-core/ios"
+  ExpoSystemUI:
+    :path: "../node_modules/expo-system-ui/ios"
   EXSplashScreen:
     :path: "../node_modules/expo-splash-screen/ios"
   EXStructuredHeaders:
@@ -543,9 +548,10 @@ SPEC CHECKSUMS:
   EXJSONUtils: 2a74b8f40f1523cc3f92af99c91aa78201737a77
   EXManifests: b38dc61303f5eede990b4c8ecbfac32f82160e65
   Expo: 7ac824960a6059d6c68e73f432c8e6bf6d92a0ef
-  ExpoHead: 36eaef1a412eddd46c96b540b5f86bd24165a810
+  ExpoHead: c3ea770b3dddc21e4ce7845e65d59d43d8ffe42f
   ExpoKeepAwake: 0e8f18142e71bbf2c7f6aa66ebed249ba1420320
   ExpoModulesCore: 39ec590ce622289c060183aba57f77b1e73b4e11
+  ExpoSystemUI: 9f550a8055e315f7b0c4da208de27e45fe7da0fb
   EXSplashScreen: 799bece80089219b2c989c1082d70f3b00995cda
   EXStructuredHeaders: 5d86829469399370a9fc7cb1e4391b09de87681d
   EXUpdates: 8afd5cff44d3936e08be0e1688f0ed118134433f

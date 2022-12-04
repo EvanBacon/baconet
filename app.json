@@ -30,7 +30,15 @@
         "NSUserActivityTypes": [
           "com.baconet.expo.index_route"
         ]
-      }
+      },
+      "associatedDomains": [
+        "applinks:bacon-baconnet.ngrok.io?mode=developer",
+        "webcredentials:bacon-baconnet.ngrok.io?mode=developer",
+        "activitycontinuation:bacon-baconnet.ngrok.io?mode=developer",
+        "applinks:baconet.netlify.app",
+        "webcredentials:baconet.netlify.app",
+        "activitycontinuation:baconet.netlify.app"
+      ]
     },
     "android": {
       "package": "app.baconet",
@@ -46,6 +54,9 @@
       "eas": {
         "projectId": "64b8e4a4-baf5-4160-90fe-ecfa7a32e6b8"
       }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/64b8e4a4-baf5-4160-90fe-ecfa7a32e6b8"
     }
   }
 }

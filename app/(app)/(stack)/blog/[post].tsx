@@ -1,15 +1,17 @@
 import { StyleSheet, View } from "@bacons/react-views";
 import { Stack, useHref } from "expo-router";
 import React from "react";
+import { useRoute } from "@react-navigation/native";
 import { ScrollView, useWindowDimensions } from "react-native";
 import Markdown from "react-native-markdown-renderer";
 
-import { usePosts } from "../../../components/api";
-import { useOutletContext } from "../../../components/OutletContext";
+import { usePosts } from "../../../../components/api";
+import { useOutletContext } from "../../../../components/OutletContext";
 
 export default function Page({ route }) {
+  const route2 = useRoute();
   const href = useHref();
-  console.log("!!route!!", href, route);
+  console.log("!!route!!", href, route2, route);
   const { width } = useWindowDimensions();
 
   const postId = route.params?.post;

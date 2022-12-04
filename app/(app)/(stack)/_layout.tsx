@@ -5,6 +5,7 @@ import { Platform, Text, useColorScheme } from "react-native";
 import SearchBar from "../../../components/SearchBar";
 import { OutletContext } from "../../../components/OutletContext";
 import { usePosts } from "../../../components/api";
+import { useRoute } from "@react-navigation/native";
 
 function EASButton() {
   const theme = useColorScheme() === "dark" ? DarkTheme : DefaultTheme;
@@ -21,6 +22,10 @@ function EASButton() {
 
 export default function StackLayout() {
   const posts = usePosts();
+
+  const route = useRoute();
+
+  console.log("layout route", route);
 
   return (
     <OutletContext.Provider value={posts}>
@@ -66,7 +71,7 @@ export default function StackLayout() {
             },
           })}
         />
-        <Stack.Screen name="[post]" />
+        <Stack.Screen name="blog/[post]" />
       </Stack>
     </OutletContext.Provider>
   );
