@@ -31,13 +31,13 @@ export default function StackLayout() {
     <OutletContext.Provider value={posts}>
       <Stack
         screenOptions={{
-          headerLeft() {
-            return Platform.OS === "web" ? (
-              <Link href="/">
-                <Text style={{ backgroundColor: "white" }}>Bacon</Text>
-              </Link>
-            ) : null;
-          },
+          // headerLeft() {
+          //   return Platform.OS === "web" ? (
+          //     <Link href="/">
+          //       <Text style={{ backgroundColor: "white" }}>Bacon</Text>
+          //     </Link>
+          //   ) : null;
+          // },
           headerRight(props) {
             return <EASButton />;
           },
@@ -47,7 +47,7 @@ export default function StackLayout() {
           name="index"
           // @ts-expect-error
           options={(nav) => ({
-            title: "Bacon Blog",
+            title: "Home",
             headerLargeTitle: true,
             headerRight(props) {
               // if (Platform.OS === "web") {
