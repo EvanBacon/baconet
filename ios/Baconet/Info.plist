@@ -1447,6 +1447,8 @@
     <string>1</string>
     <key>CoreSpotlightContinuation</key>
     <true/>
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>NSAppTransportSecurity</key>

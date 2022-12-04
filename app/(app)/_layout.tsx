@@ -30,6 +30,14 @@ export default function AppLayout() {
             tabBarIcon: makeIcon("planet"),
           }}
         />
+        <Tabs.Screen
+          name="sign-in"
+          options={{
+            href: null,
+            title: "Sign In",
+            tabBarIcon: makeIcon("person"),
+          }}
+        />
         {/* <Tabs.Screen
           name="search"
           options={{
