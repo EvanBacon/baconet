@@ -69,6 +69,9 @@ function SideBar() {
           alignItems: "flex-end",
           minWidth: 60,
         },
+        isLarge && {
+          minWidth: 275,
+        },
         !isLarge && {
           width: "16%",
         },
@@ -77,6 +80,7 @@ function SideBar() {
       <View
         style={[
           {
+            position: "fixed",
             height: "100%",
             paddingHorizontal: 4,
             borderRightWidth: 1,
@@ -85,7 +89,6 @@ function SideBar() {
 
           isLarge && {
             alignItems: "flex-end",
-            minWidth: 275,
           },
           !isLarge && {
             paddingHorizontal: 16,
