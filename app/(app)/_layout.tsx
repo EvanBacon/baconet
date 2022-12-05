@@ -1,15 +1,10 @@
 import { Footer, H1, A, Header, Nav } from "@expo/html-elements";
 import React from "react";
-import {
-  Image,
-  Platform,
-  SafeAreaView,
-  useWindowDimensions,
-} from "react-native";
+import { Platform, SafeAreaView, useWindowDimensions } from "react-native";
 
 // import { A } from "../Anchor";
 import * as Icons from "../../components/medium";
-import { View } from "@bacons/react-views";
+import { Image, Text, View } from "@bacons/react-views";
 
 import {
   SafeAreaProvider,
@@ -17,21 +12,27 @@ import {
 } from "react-native-safe-area-context";
 import { Children, Link, Stack, Tabs } from "expo-router";
 function HeaderLogo() {
+  const isLarge = useWidth(1265);
+
   return (
-    <A style={{ paddingVertical: 40 }}>
+    <Link style={{ paddingVertical: 40 }} href="/">
       <H1
-        style={{
-          margin: 0,
-          display: "flex",
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          maxHeight: 23,
-        }}
+        style={[
+          {
+            margin: 0,
+            display: "flex",
+            flex: 1,
+            alignItems: "center",
+            maxHeight: 23,
+          },
+          !isLarge && {
+            justifyContent: "center",
+          },
+        ]}
       >
         <Icons.Logo fill={DARK} style={{ height: 30 }} />
       </H1>
-    </A>
+    </Link>
   );
 }
 
@@ -40,7 +41,7 @@ function useWidth(size) {
   return width >= size;
 }
 
-function VerticalTabBar({ children }) {
+function VerticalTabBar({ children, style }) {
   const childrenArray = React.Children.toArray(children);
 
   const newChildren = childrenArray.map((child, index) => {
@@ -48,7 +49,6 @@ function VerticalTabBar({ children }) {
       <View
         key={String(index)}
         asChild
-        center
         style={{ display: "flex", paddingBottom: 35 }}
       >
         {child}
@@ -56,7 +56,7 @@ function VerticalTabBar({ children }) {
     );
   });
 
-  return <Nav>{newChildren}</Nav>;
+  return <Nav style={style}>{newChildren}</Nav>;
 }
 
 function SideBar() {
@@ -65,103 +65,153 @@ function SideBar() {
   return (
     <View
       style={[
-        { alignItems: "flex-end", minWidth: 60 },
-
+        {
+          alignItems: "flex-end",
+          minWidth: 60,
+        },
         !isLarge && {
           width: "16%",
         },
-        !isMedSideBar && {
-          width: 60,
-        },
-        isMedSideBar && {
-          minWidth: 88,
-        },
       ]}
     >
-      <Header
-        zIndex={3}
+      <View
         style={[
           {
-            //   position: "fixed",
-            //   left: 0,
-            //   top: 0,
-            //   bottom: 0,
-
-            //   height: "100%",
-            //   justifyContent: "space-between",
-            alignItems: "stretch",
-            //   width: 80,
+            height: "100%",
+            paddingHorizontal: 4,
             borderRightWidth: 1,
             borderRightColor: "rgb(230, 230, 230)",
           },
 
-          {
-            width: 60,
-            paddingHorizontal: 4,
-
-            height: "100%",
-            justifyContent: "space-between",
-          },
-          isMedSideBar && {
-            width: 88,
-            paddingHorizontal: 12,
+          isLarge && {
+            alignItems: "flex-end",
+            minWidth: 275,
           },
           !isLarge && {
-            alignItems: "center",
-          },
-          isLarge && {
-            width: 275,
+            paddingHorizontal: 16,
           },
         ]}
       >
-        <HeaderLogo />
+        <Header
+          zIndex={3}
+          style={[
+            {
+              alignItems: "stretch",
+              height: "100%",
+              justifyContent: "space-between",
+            },
 
-        <VerticalTabBar>
-          <Link href="/">
-            <Icons.Home />
-          </Link>
-          <Link href="/lego">
-            <Icons.Lego />
-          </Link>
-          <Link href="/games">
-            <Icons.Game />
-          </Link>
-          <Link href="/media">
-            <Icons.Listen />
-          </Link>
-          <View>
-            <View
-              style={{
-                width: "33%",
-                backgroundColor: "rgba(230, 230, 230, 1)",
-                maxHeight: 1,
-                height: 1,
-              }}
-            />
-          </View>
-          <Link href="#">
-            <Icons.Link />
-          </Link>
-        </VerticalTabBar>
-
-        <Footer
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            marginVertical: 16,
-          }}
+            !isLarge && {
+              alignItems: "center",
+            },
+            isLarge && {
+              width: 180,
+            },
+          ]}
         >
-          <A
-            style={{ width: 32, marginVertical: 8, height: 32 }}
-            href="https://github.com/evanbacon/portfolio"
-            hrefAttrs={{ target: "_blank" }}
-            target="_blank"
+          <HeaderLogo />
+
+          <VerticalTabBar style={{}}>
+            <SideBarTabItem href="/" icon={<Icons.Home />}>
+              Home
+            </SideBarTabItem>
+            <SideBarTabItem href="/lego" icon={<Icons.Lego />}>
+              Lego
+            </SideBarTabItem>
+            <SideBarTabItem href="/games" icon={<Icons.Game />}>
+              Games
+            </SideBarTabItem>
+            <SideBarTabItem href="/media" icon={<Icons.Listen />}>
+              Media
+            </SideBarTabItem>
+            <View>
+              <View
+                style={{
+                  marginHorizontal: isLarge ? 0 : "auto",
+                  width: isLarge ? "80%" : "33%",
+                  backgroundColor: "rgba(230, 230, 230, 1)",
+                  maxHeight: 1,
+                  height: 1,
+                }}
+              />
+            </View>
+            <SideBarTabItem href="#" icon={<Icons.Link />}>
+              Link
+            </SideBarTabItem>
+          </VerticalTabBar>
+
+          <Footer
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              marginVertical: 16,
+            }}
           >
-            <Icons.Code />
-          </A>
-        </Footer>
-      </Header>
+            <A
+              style={{ width: 32, marginVertical: 8, height: 32 }}
+              href="https://github.com/evanbacon/portfolio"
+              hrefAttrs={{ target: "_blank" }}
+              target="_blank"
+            >
+              <Icons.Code />
+            </A>
+          </Footer>
+        </Header>
+      </View>
     </View>
+  );
+}
+
+function SideBarTabItem({ children, href, icon, selected }) {
+  const isLarge = useWidth(1265);
+  return (
+    <Link
+      href={href}
+      accessibilityHasPopup="menu"
+      style={{
+        paddingVertical: 4,
+        display: "flex",
+        width: "100%",
+        borderRadius: 999,
+        transitionProperty: ["background-color", "box-shadow"],
+        transitionDuration: "200ms",
+      }}
+      hoverStyle={{
+        backgroundColor: "rgba(0, 0, 0, 0.1)",
+        //   backgroundColor: "rgba(231, 233, 234, 0.1)",
+      }}
+    >
+      <View
+        style={{
+          padding: 12,
+
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
+        {icon}
+
+        {isLarge && (
+          <Text
+            style={[
+              {
+                color: "#000",
+                // color: "#e7e9ea",
+                fontSize: 20,
+                marginLeft: 20,
+                marginRight: 16,
+                lineHeight: 24,
+              },
+              selected && {
+                fontWeight: "bold",
+              },
+            ]}
+          >
+            {children}
+          </Text>
+        )}
+      </View>
+    </Link>
   );
 }
 
