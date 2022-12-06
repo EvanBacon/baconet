@@ -24,8 +24,9 @@ const styles = StyleSheet.create({
     // alignItems: "stretch",
     // alignItems: "center",
     maxWidth: 960,
-    marginHorizontal: 24,
-    // padding: 24,
+
+    // marginHorizontal: 24,
+    padding: 24,
   },
   main: {
     flex: 1,

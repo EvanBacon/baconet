@@ -6,16 +6,17 @@ import SearchBar from "../../../components/SearchBar";
 import { OutletContext } from "../../../components/OutletContext";
 import { usePosts } from "../../../components/api";
 import { useRoute } from "@react-navigation/native";
+import { Services } from "../../../components/medium";
 
 function EASButton() {
   const theme = useColorScheme() === "dark" ? DarkTheme : DefaultTheme;
 
   return (
     <Link
-      style={{ color: "white", fontSize: 16, paddingHorizontal: 16 }}
+      style={{ color: "black", fontSize: 16, paddingHorizontal: 16 }}
       href="/_expo"
     >
-      <Ionicons name="code-slash" size={24} color={theme.colors.text} />
+      <Services />
     </Link>
   );
 }

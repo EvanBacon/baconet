@@ -6,18 +6,18 @@ const SvgComponent = forwardRef((props, ref) => (
     ref={ref}
     width={24}
     height={24}
-    viewBox="0 0 48 48"
+    viewBox="0 0 512 512"
     fill="none"
     aria-label="home"
     {...props}
   >
     <Path
-      d="M16.9212 34.8802L4.28125 25.0402L16.9613 15.2402L18.4412 17.1202L8.00125 25.0002L18.4412 32.9602L16.9212 34.8802Z"
-      fill="black"
-    />
-    <Path
-      d="M31.0656 15.2402L43.7056 25.0802L31.0256 34.8802L29.5456 33.0002L39.9856 25.1202L29.5456 17.1602L31.0656 15.2402Z"
-      fill="black"
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="square"
+      stroke-miterlimit="10"
+      stroke-width="42"
+      d="M160 368L32 256l128-112M352 368l128-112-128-112M192 288.1l64 63.9 64-63.9M256 160v176.03"
     />
   </Svg>
 ));

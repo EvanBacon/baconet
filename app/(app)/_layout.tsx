@@ -10,12 +10,20 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
-import { Children, Link, Stack, Tabs } from "expo-router";
+import {
+  Children,
+  Layout,
+  Link,
+  Stack,
+  Tabs,
+  useNavigation,
+} from "expo-router";
+
 function HeaderLogo() {
   const isLarge = useWidth(1265);
 
   return (
-    <Link style={{ paddingVertical: 40 }} href="/">
+    <Link style={{ paddingVertical: 40 }} href="/" replace>
       <H1
         style={[
           {
@@ -115,10 +123,10 @@ function SideBar() {
           <HeaderLogo />
 
           <VerticalTabBar style={{}}>
-            <SideBarTabItem href="/" icon={<Icons.Home />}>
+            <SideBarTabItem name="index" href="/" icon={<Icons.Home />}>
               Home
             </SideBarTabItem>
-            <SideBarTabItem href="/lego" icon={<Icons.Lego />}>
+            {/* <SideBarTabItem href="/lego" icon={<Icons.Lego />}>
               Lego
             </SideBarTabItem>
             <SideBarTabItem href="/games" icon={<Icons.Game />}>
@@ -126,7 +134,7 @@ function SideBar() {
             </SideBarTabItem>
             <SideBarTabItem href="/media" icon={<Icons.Listen />}>
               Media
-            </SideBarTabItem>
+            </SideBarTabItem> */}
             <View>
               <View
                 style={{
@@ -138,9 +146,9 @@ function SideBar() {
                 }}
               />
             </View>
-            <SideBarTabItem href="#" icon={<Icons.Link />}>
+            {/* <SideBarTabItem href="#" icon={<Icons.Link />}>
               Link
-            </SideBarTabItem>
+            </SideBarTabItem> */}
           </VerticalTabBar>
 
           <Footer
@@ -165,11 +173,55 @@ function SideBar() {
   );
 }
 
-function SideBarTabItem({ children, href, icon, selected }) {
+function TabLink({ focused, name, ...props }) {
+  const { state, navigation } = Layout.useContext();
+  const route = state.routes.find((route, i) => {
+    return route.name === name;
+  });
+
+  if (!route) {
+    throw new Error(`Could not find route with name: ${name}`);
+  }
+
+  // const navigation = useNavigation();
+
+  const onPress = () => {
+    const event = navigation.emit({
+      type: "tabPress",
+      target: route.key,
+      canPreventDefault: true,
+    });
+
+    if (!focused && !event.defaultPrevented) {
+      navigation.dispatch({
+        ...CommonActions.navigate({ name: route.name, merge: true }),
+        target: state.key,
+      });
+    }
+  };
+
+  const onLongPress = () => {
+    navigation.emit({
+      type: "tabLongPress",
+      target: route.key,
+    });
+  };
+
+  return <Link onPress={onPress} onLongPress={onLongPress} {...props} />;
+}
+
+import { CommonActions, useLinkBuilder } from "@react-navigation/native";
+
+function SideBarTabItem({ children, href, icon, selected, name }) {
   const isLarge = useWidth(1265);
+  const buildLink = useLinkBuilder();
+
+  console.log("side bar:", buildLink("media"));
   return (
-    <Link
+    <TabLink
+      name={name}
       href={href}
+      replace
       accessibilityHasPopup="menu"
       style={{
         paddingVertical: 4,
@@ -214,7 +266,7 @@ function SideBarTabItem({ children, href, icon, selected }) {
           </Text>
         )}
       </View>
-    </Link>
+    </TabLink>
   );
 }
 
@@ -243,9 +295,10 @@ function ProfileImage({ style, ...props }) {
 
 // import { createContext } from '@radix-ui/react-context';
 
-function App({ children }) {
+import { TabRouter } from "@react-navigation/routers";
+
+export default function App({ children }) {
   const isRowLayout = useWidth(600);
-  const { top, bottom } = useSafeAreaInsets();
 
   if (!isRowLayout) {
     return <Tabs />;
@@ -256,19 +309,13 @@ function App({ children }) {
       style={[{ flex: 1 }, isRowLayout && { flexDirection: "row-reverse" }]}
     >
       {!isRowLayout && <CustomHeader />}
-      <View style={{ flex: 1 }}>{children}</View>
+      <View style={{ flex: 1 }}>
+        <Layout router={TabRouter}>
+          <Children />
+        </Layout>
+      </View>
       {isRowLayout ? <SideBar /> : <CustomTabBar />}
     </View>
-  );
-}
-
-export default function VirtualApp() {
-  return (
-    <SafeAreaProvider>
-      <App>
-        <Children />
-      </App>
-    </SafeAreaProvider>
   );
 }
 

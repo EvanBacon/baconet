@@ -4,7 +4,6 @@ import { BlurView } from "expo-blur";
 import React from "react";
 import {
   Image,
-  ImageBackground,
   Platform,
   StyleSheet,
   View,
@@ -29,7 +28,7 @@ function isMobileSafari() {
 
 function MediaBackground({ resizeMode, isHovered, ...props }) {
   const baseStyle = {
-    flex: 1,
+    // flex: 1,
     minHeight: 360,
     maxHeight: 360,
   };
@@ -75,13 +74,22 @@ function MediaBackground({ resizeMode, isHovered, ...props }) {
       </View>
     );
   }
+  console.log("props.image", props.image);
 
   return (
-    <ImageBackground
-      source={props.image}
-      style={baseStyle}
-      resizeMode={resizeMode}
-    >
+    <View style={baseStyle}>
+      <Image
+        source={props.image}
+        style={[
+          StyleSheet.absoluteFill,
+          {
+            width: "100%",
+            height: "100%",
+          },
+        ]}
+        resizeMode={resizeMode}
+      />
+
       <View
         style={{
           flex: 1,
@@ -92,7 +100,7 @@ function MediaBackground({ resizeMode, isHovered, ...props }) {
       >
         {props.children}
       </View>
-    </ImageBackground>
+    </View>
   );
 }
 
@@ -220,11 +228,10 @@ const styles = StyleSheet.create({
   },
   container: {
     maxWidth: 720,
-    flex: 1,
     borderRadius: 12,
     marginBottom: 20,
-    marginHorizontal: "auto",
-    overflow: "hidden",
+    // marginHorizontal: "auto",
+    // overflow: "hidden",
     shadowColor: "black",
     shadowRadius: 8,
     shadowOpacity: 0.5,

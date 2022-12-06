@@ -12,20 +12,19 @@ const SvgComponent = forwardRef((props, ref) => (
     {...props}
   >
     <Path
-      d="M80 212v236a16 16 0 0016 16h96V328a24 24 0 0124-24h80a24 24 0 0124 24v136h96a16 16 0 0016-16V212"
+      d="M400 240c-8.89-89.54-71-144-144-144-69 0-113.44 48.2-128 96-60 6-112 43.59-112 112 0 66 54 112 120 112h260c55 0 100-27.44 100-88 0-59.82-53-85.76-96-88z"
       fill="none"
       stroke="currentColor"
-      stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="32"
     />
-    <path
-      d="M480 256L266.89 52c-5-5.28-16.69-5.34-21.78 0L32 256M400 179V64h-48v69"
+    <Path
       fill="none"
       stroke="currentColor"
       stroke-linecap="round"
       stroke-linejoin="round"
       stroke-width="32"
+      d="M317 208L209.2 336 163 284.8"
     />
   </Svg>
 ));
