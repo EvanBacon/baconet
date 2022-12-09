@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 20,
     // marginHorizontal: "auto",
-    // overflow: "hidden",
+    overflow: "hidden",
     shadowColor: "black",
     shadowRadius: 8,
     shadowOpacity: 0.5,

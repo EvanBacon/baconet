@@ -21,12 +21,13 @@ function EASButton() {
   );
 }
 
-export default function StackLayout() {
+export default function StackLayout({ segment }) {
   const posts = usePosts();
 
   const route = useRoute();
 
-  console.log("layout route", route);
+  const initRouteName = segment.replace(/^\(/, "").replace(/\)$/, "");
+  console.log("layout route", route, initRouteName);
 
   return (
     <OutletContext.Provider value={posts}>
@@ -45,33 +46,38 @@ export default function StackLayout() {
         }}
       >
         <Stack.Screen
-          name="index"
-          // @ts-expect-error
-          options={(nav) => ({
-            title: "Home",
-            headerLargeTitle: true,
-            headerRight(props) {
-              // if (Platform.OS === "web") {
-              //   return (
-              //     <SearchBar
-              //       onSubmit={() => {
-              //         nav.setParams({ q: value });
-              //       }}
-              //       onChangeQuery={(val) => {
-              //         setValue(val);
-              //       }}
-              //       value={value}
-              //     />
-              //   );
-              // }
-              return <EASButton />;
-            },
-            headerSearchBarOptions: {
-              placeholder: "Search",
-              autoFocus: true,
-            },
-          })}
+          name={initRouteName}
+          // @ts-ignore
+          options={
+            initRouteName === "index"
+              ? (nav) => ({
+                  title: "Home",
+                  headerLargeTitle: true,
+                  headerRight(props) {
+                    // if (Platform.OS === "web") {
+                    //   return (
+                    //     <SearchBar
+                    //       onSubmit={() => {
+                    //         nav.setParams({ q: value });
+                    //       }}
+                    //       onChangeQuery={(val) => {
+                    //         setValue(val);
+                    //       }}
+                    //       value={value}
+                    //     />
+                    //   );
+                    // }
+                    return <EASButton />;
+                  },
+                  headerSearchBarOptions: {
+                    placeholder: "Search",
+                    autoFocus: true,
+                  },
+                })
+              : undefined
+          }
         />
+
         <Stack.Screen name="blog/[post]" />
       </Stack>
     </OutletContext.Provider>

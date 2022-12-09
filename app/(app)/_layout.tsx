@@ -220,12 +220,12 @@ function SideBarTabItem({ children, href, icon, selected, name }) {
   const isLarge = useWidth(1265);
   const buildLink = useLinkBuilder();
 
+  return null;
   console.log("side bar:", buildLink("media"));
   return (
     <TabLink
       name={name}
       href={href}
-      replace
       accessibilityHasPopup="menu"
       style={{
         paddingVertical: 4,
@@ -305,7 +305,14 @@ export default function App({ children }) {
   const isRowLayout = useWidth(600);
 
   if (!isRowLayout) {
-    return <Tabs />;
+    return (
+      <Tabs screenOptions={{ headerShown: false }}>
+        <Tabs.Screen name="(index)" />
+        <Tabs.Screen name="(lego)" />
+        <Tabs.Screen name="(games)" />
+        <Tabs.Screen name="(media)" />
+      </Tabs>
+    );
   }
 
   return (

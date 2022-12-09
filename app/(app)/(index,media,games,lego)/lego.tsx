@@ -1,17 +1,23 @@
 import { StyleSheet, View } from "@bacons/react-views";
+import { Stack } from "expo-router";
 import React, { useMemo } from "react";
-import { Text } from "react-native";
+import { ScrollView, Text } from "react-native";
 import ProjectCard from "../../../components/Card";
 
-import { Projects } from "../../../components/data";
+import { Lego } from "../../../components/data";
 export default function Page() {
   return (
     <>
-      <View style={styles.container}>
-        {Projects.map((project: any) => (
+      <Stack.Screen
+        options={{
+          title: "Lego",
+        }}
+      />
+      <ScrollView style={styles.container}>
+        {Lego.map((project: any) => (
           <ProjectCard key={project.title} {...project} />
         ))}
-      </View>
+      </ScrollView>
     </>
   );
 }
@@ -24,9 +30,8 @@ const styles = StyleSheet.create({
     // alignItems: "stretch",
     // alignItems: "center",
     maxWidth: 960,
-
-    // marginHorizontal: 24,
-    padding: 24,
+    marginHorizontal: 24,
+    // padding: 24,
   },
   main: {
     flex: 1,
