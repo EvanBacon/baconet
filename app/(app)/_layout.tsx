@@ -16,6 +16,7 @@ import {
   Link,
   Stack,
   Tabs,
+  useHref,
   useNavigation,
 } from "expo-router";
 
@@ -67,9 +68,20 @@ function VerticalTabBar({ children, style }) {
   return <Nav style={style}>{newChildren}</Nav>;
 }
 
+import { NavigationHelpersContext } from "@react-navigation/native";
+
 function SideBar() {
   const isLarge = useWidth(1265);
-  const isMedSideBar = useWidth(600);
+  // const isMedSideBar = useWidth(600);
+
+  const navigation = React.useContext(NavigationHelpersContext)!;
+
+  const state = navigation.getState();
+  const current = state.routes.find((route, i) => {
+    return state.index === i;
+  });
+
+  console.log("current", current);
   return (
     <View
       style={[
@@ -123,16 +135,33 @@ function SideBar() {
           <HeaderLogo />
 
           <VerticalTabBar style={{}}>
-            <SideBarTabItem name="index" href="/" icon={<Icons.Home />}>
+            <SideBarTabItem
+              name="index"
+              selected={current.name === "(index)"}
+              href="/"
+              icon={makeIcon("home")}
+            >
               Home
             </SideBarTabItem>
-            <SideBarTabItem href="/lego" icon={<Icons.Lego />}>
+            <SideBarTabItem
+              href="/lego"
+              selected={current.name === "(lego)"}
+              icon={makeIcon("build")}
+            >
               Lego
             </SideBarTabItem>
-            <SideBarTabItem href="/games" icon={<Icons.Game />}>
+            <SideBarTabItem
+              href="/games"
+              selected={current.name === "(games)"}
+              icon={makeIcon("game-controller")}
+            >
               Games
             </SideBarTabItem>
-            <SideBarTabItem href="/media" icon={<Icons.Listen />}>
+            <SideBarTabItem
+              href="/media"
+              selected={current.name === "(media)"}
+              icon={makeIcon("mic")}
+            >
               Media
             </SideBarTabItem>
             <View>
@@ -218,7 +247,7 @@ import { CommonActions, useLinkBuilder } from "@react-navigation/native";
 
 function SideBarTabItem({ children, href, icon, selected, name }) {
   const isLarge = useWidth(1265);
-  const buildLink = useLinkBuilder();
+  // const buildLink = useLinkBuilder();
 
   // return null;
   // console.log("side bar:", buildLink("media"));
@@ -248,7 +277,7 @@ function SideBarTabItem({ children, href, icon, selected, name }) {
           alignItems: "center",
         }}
       >
-        {icon}
+        {icon({ focused: selected, color: "#000" })}
 
         {isLarge && (
           <Text
@@ -347,12 +376,12 @@ export default function App({ children }) {
       style={[{ flex: 1 }, isRowLayout && { flexDirection: "row-reverse" }]}
     >
       {!isRowLayout && <CustomHeader />}
-      <View style={{ flex: 1 }}>
-        <Layout router={TabRouter}>
+      <Layout router={TabRouter}>
+        <View style={{ flex: 1 }}>
           <Children />
-        </Layout>
-      </View>
-      {isRowLayout ? <SideBar /> : <CustomTabBar />}
+        </View>
+        {isRowLayout ? <SideBar /> : <CustomTabBar />}
+      </Layout>
     </View>
   );
 }
