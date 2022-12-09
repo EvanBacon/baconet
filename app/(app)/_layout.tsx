@@ -126,7 +126,7 @@ function SideBar() {
             <SideBarTabItem name="index" href="/" icon={<Icons.Home />}>
               Home
             </SideBarTabItem>
-            {/* <SideBarTabItem href="/lego" icon={<Icons.Lego />}>
+            <SideBarTabItem href="/lego" icon={<Icons.Lego />}>
               Lego
             </SideBarTabItem>
             <SideBarTabItem href="/games" icon={<Icons.Game />}>
@@ -134,7 +134,7 @@ function SideBar() {
             </SideBarTabItem>
             <SideBarTabItem href="/media" icon={<Icons.Listen />}>
               Media
-            </SideBarTabItem> */}
+            </SideBarTabItem>
             <View>
               <View
                 style={{
@@ -220,10 +220,10 @@ function SideBarTabItem({ children, href, icon, selected, name }) {
   const isLarge = useWidth(1265);
   const buildLink = useLinkBuilder();
 
-  return null;
-  console.log("side bar:", buildLink("media"));
+  // return null;
+  // console.log("side bar:", buildLink("media"));
   return (
-    <TabLink
+    <Link
       name={name}
       href={href}
       accessibilityHasPopup="menu"
@@ -270,7 +270,7 @@ function SideBarTabItem({ children, href, icon, selected, name }) {
           </Text>
         )}
       </View>
-    </TabLink>
+    </Link>
   );
 }
 
@@ -307,7 +307,9 @@ export default function App({ children }) {
 
   if (!isRowLayout) {
     return (
-      <Tabs screenOptions={{ headerShown: false }}>
+      <Tabs
+        screenOptions={{ headerShown: false, tabBarActiveTintColor: "black" }}
+      >
         <Tabs.Screen
           name="(index)"
           options={{
