@@ -1,5 +1,5 @@
 import { Redirect } from "expo-router";
 
 export default function Page() {
-  return <Redirect href={"/__index"} />;
+  return <Redirect href={"/_sitemap"} />;
 }
