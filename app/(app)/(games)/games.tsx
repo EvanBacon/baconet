@@ -5,6 +5,7 @@ import { ScrollView, Text } from "react-native";
 import ProjectCard from "../../../components/Card";
 
 import { Projects } from "../../../components/data";
+import { ScreenScroller } from "../../../components/ScreenScroller";
 export default function Page() {
   return (
     <>
@@ -13,11 +14,11 @@ export default function Page() {
           title: "Games",
         }}
       />
-      <ScrollView style={styles.container}>
+      <ScreenScroller>
         {Projects.map((project: any) => (
           <ProjectCard key={project.title} {...project} />
         ))}
-      </ScrollView>
+      </ScreenScroller>
     </>
   );
 }

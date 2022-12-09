@@ -5,6 +5,7 @@ import { A } from "@expo/html-elements";
 import ProjectCard from "../../../components/Card";
 import { Podcasts } from "../../../components/data";
 import { Stack } from "expo-router";
+import { ScreenScroller } from "../../../components/ScreenScroller";
 
 const IA = A as any;
 export default function Media({ navigation }) {
@@ -15,7 +16,7 @@ export default function Media({ navigation }) {
           title: "Media",
         }}
       />
-      <ScrollView style={{ flex: 1 }}>
+      <ScreenScroller>
         {Podcasts.map(({ authors, ...project }) => (
           <ProjectCard
             key={project.title}
@@ -35,7 +36,7 @@ export default function Media({ navigation }) {
             )}
           />
         ))}
-      </ScrollView>
+      </ScreenScroller>
     </>
   );
 }

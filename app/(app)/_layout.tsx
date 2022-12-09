@@ -300,6 +300,7 @@ function ProfileImage({ style, ...props }) {
 // import { createContext } from '@radix-ui/react-context';
 
 import { TabRouter } from "@react-navigation/routers";
+import { makeIcon } from "../../components/TabBarIcon";
 
 export default function App({ children }) {
   const isRowLayout = useWidth(600);
@@ -307,10 +308,34 @@ export default function App({ children }) {
   if (!isRowLayout) {
     return (
       <Tabs screenOptions={{ headerShown: false }}>
-        <Tabs.Screen name="(index)" />
-        <Tabs.Screen name="(lego)" />
-        <Tabs.Screen name="(games)" />
-        <Tabs.Screen name="(media)" />
+        <Tabs.Screen
+          name="(index)"
+          options={{
+            title: "Feed",
+            tabBarIcon: makeIcon("home"),
+          }}
+        />
+        <Tabs.Screen
+          name="(lego)"
+          options={{
+            title: "Lego",
+            tabBarIcon: makeIcon("build"),
+          }}
+        />
+        <Tabs.Screen
+          name="(games)"
+          options={{
+            title: "Games",
+            tabBarIcon: makeIcon("game-controller"),
+          }}
+        />
+        <Tabs.Screen
+          name="(media)"
+          options={{
+            title: "Media",
+            tabBarIcon: makeIcon("mic-circle"),
+          }}
+        />
       </Tabs>
     );
   }
