@@ -180,7 +180,11 @@ function TabLink({ focused, name, ...props }) {
   });
 
   if (!route) {
-    throw new Error(`Could not find route with name: ${name}`);
+    throw new Error(
+      `Could not find route with name: ${name}. Options: ${state.routes
+        .map((r) => r.name)
+        .join(", ")}`
+    );
   }
 
   // const navigation = useNavigation();
