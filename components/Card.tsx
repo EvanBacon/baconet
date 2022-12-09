@@ -247,7 +247,10 @@ const styles = StyleSheet.create({
   title: {
     color: "white",
     marginVertical: 0,
-    fontSize: "1.51572rem",
+    fontSize: Platform.select({
+      web: "1.51572rem",
+      default: 24,
+    }),
   },
   description: {
     color: "white",

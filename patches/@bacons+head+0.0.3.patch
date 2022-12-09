@@ -96,6 +96,19 @@ index 1004475..0619ee2 100644
  }
  //# sourceMappingURL=ExpoHead.ios.js.map
 \ No newline at end of file
+diff --git a/node_modules/@bacons/head/ios/ExpoHead.podspec b/node_modules/@bacons/head/ios/ExpoHead.podspec
+index 3b2ef92..7e8587e 100644
+--- a/node_modules/@bacons/head/ios/ExpoHead.podspec
++++ b/node_modules/@bacons/head/ios/ExpoHead.podspec
+@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
+   s.license        = package['license']
+   s.author         = package['author']
+   s.homepage       = package['homepage']
+-  s.platform       = :ios, '12.0'
++  s.platform       = :ios, '13.0'
+   s.swift_version  = '5.4'
+   s.source         = { git: 'https://github.com/EvanBacon/@bacons/head' }
+   s.static_framework = true
 diff --git a/node_modules/@bacons/head/ios/ExpoHeadAppDelegateSubscriber.swift b/node_modules/@bacons/head/ios/ExpoHeadAppDelegateSubscriber.swift
 index 15dfb2e..21f7823 100644
 --- a/node_modules/@bacons/head/ios/ExpoHeadAppDelegateSubscriber.swift

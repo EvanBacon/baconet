@@ -13,7 +13,11 @@ function EASButton() {
 
   return (
     <Link
-      style={{ color: "black", fontSize: 16, paddingHorizontal: 16 }}
+      style={{
+        color: "black",
+        fontSize: 16,
+        paddingHorizontal: Platform.select({ web: 16, default: 0 }),
+      }}
       href="/_expo"
     >
       <Services />
