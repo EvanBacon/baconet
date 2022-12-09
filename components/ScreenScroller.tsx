@@ -3,7 +3,16 @@ import React from "react";
 import { Platform, ScrollView } from "react-native";
 
 export function ScreenScroller({ children }) {
-  return <ScrollView style={styles.container}>{children}</ScrollView>;
+  return (
+    <ScrollView
+      contentContainerStyle={{
+        paddingTop: 24,
+      }}
+      style={styles.container}
+    >
+      {children}
+    </ScrollView>
+  );
 }
 
 export { ErrorBoundary } from "expo-router";
