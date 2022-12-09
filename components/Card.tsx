@@ -66,7 +66,7 @@ function MediaBackground({ resizeMode, isHovered, ...props }) {
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
-            paddingHorizontal: 8,
+            // paddingHorizontal: 8,
           }}
         >
           {props.children}
@@ -95,7 +95,7 @@ function MediaBackground({ resizeMode, isHovered, ...props }) {
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
-          paddingHorizontal: 8,
+          // paddingHorizontal: 8,
         }}
       >
         {props.children}
@@ -149,9 +149,7 @@ export default function ProjectCard({
 
           <BlurView intensity={100} style={styles.blur} />
 
-          <View
-            style={{ flexDirection: "row", flexShrink: 1, paddingRight: 8 }}
-          >
+          <View style={{ flexDirection: "row", flexShrink: 1 }}>
             {icon && (
               <Image source={icon} style={styles.icon} resizeMode="cover" />
             )}
@@ -179,11 +177,7 @@ export default function ProjectCard({
                   focusStyle={{ transform: [{ scale: 1.1 }] }}
                   hrefAttrs={{ target: "_blank" }}
                 >
-                  <SocialIcon
-                    name={social.icon}
-                    color="white"
-                    size={16 * 2.2}
-                  />
+                  <SocialIcon name={social.icon} color="white" size={24} />
                 </Link>
               </View>
             ))}
