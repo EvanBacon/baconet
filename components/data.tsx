@@ -137,7 +137,6 @@ export const Podcasts: Project[] = [
     color: "#F8E71C",
     authors: ["lydiahallie", "baconbrix"],
     actions: [
-      internalLink("media-0"),
       {
         url: "https://podcasts.apple.com/us/podcast/evans-world/id1502259756",
         icon: "microphone",
@@ -196,7 +195,10 @@ export const Podcasts: Project[] = [
       },
     ],
   },
-];
+].map((value, index) => ({
+  ...value,
+  actions: [internalLink("media-" + index), ...value.actions],
+}));
 
 export const News = [
   {
@@ -426,7 +428,10 @@ export const Projects: Project[] = [
       },
     ],
   },
-];
+].map((value, index) => ({
+  ...value,
+  actions: [internalLink("game-" + index), ...value.actions],
+}));
 
 export const Social = [
   {
@@ -633,7 +638,10 @@ export const Lego: LegoProject[] = [
     image: require("../assets/lego/minion.jpg"),
     year: "2013",
   },
-];
+].map((value, index) => ({
+  ...value,
+  actions: [internalLink("lego-" + index), ...value.actions],
+}));
 
 function ytvid(id: string): {
   title: "Video";

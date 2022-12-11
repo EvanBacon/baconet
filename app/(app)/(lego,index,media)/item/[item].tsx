@@ -3,13 +3,15 @@ import React from "react";
 import { Text } from "react-native";
 
 import ProjectCard from "../../../../components/Card";
-import { Lego, News, Podcasts } from "../../../../components/data";
+import { Lego, News, Podcasts, Projects } from "../../../../components/data";
 import { ScreenScroller } from "../../../../components/ScreenScroller";
 
 function getItem(id: string) {
   const [type, index] = id.split("-");
 
   switch (type) {
+    case "game":
+      return Projects[parseInt(index)];
     case "lego":
       return Lego[parseInt(index)];
     case "media":
