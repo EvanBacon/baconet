@@ -26,7 +26,7 @@ function isMobileSafari() {
   return !!(userAgent.match(/iPad/i) || userAgent.match(/iPhone/i));
 }
 
-function MediaBackground({ resizeMode, isHovered, ...props }) {
+export function MediaBackground({ resizeMode, isHovered, ...props }) {
   const baseStyle = {
     // flex: 1,
     minHeight: 360,

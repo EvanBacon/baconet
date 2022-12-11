@@ -20,7 +20,7 @@ export type Project = {
 
 export type LegoProject = Project & {
   event?: string;
-  awards?: string[];
+  awards?: { title: string; year: number; result: "won" | "nominated" }[];
   bricks?: string;
   height?: string;
   weight?: string;
@@ -509,9 +509,9 @@ export const Lego: LegoProject[] = [
     ],
     event: "Brick Fiesta 2011",
     awards: [
-      "Best Youth Creation",
-      "Best Artistic Creation",
-      `People's choice award`,
+      { title: "Best Youth Creation", year: 2011, result: "won" },
+      { title: "Best Artistic Creation", year: 2011, result: "won" },
+      { title: `People's choice award`, year: 2011, result: "won" },
     ],
     year: "2011",
     bricks: "15,000 - 20,000",
@@ -541,6 +541,15 @@ export const Lego: LegoProject[] = [
         icon: "photo",
         url: "https://photos.app.goo.gl/TyfRHGfWMhCz4uRq5",
       },
+    ],
+    event: "Brick Fiesta 2012",
+    awards: [
+      {
+        title: `People's Choice Award for Best Exhibition`,
+        year: 2012,
+        result: "won",
+      },
+      { title: `Best Artistic Exhibition`, year: 2012, result: "nominated" },
     ],
     year: "2012",
   },
