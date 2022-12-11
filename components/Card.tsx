@@ -175,7 +175,9 @@ export default function ProjectCard({
                   href={social.url}
                   style={{ marginLeft: index === 0 ? 0 : 24 }}
                   focusStyle={{ transform: [{ scale: 1.1 }] }}
-                  hrefAttrs={{ target: "_blank" }}
+                  // hrefAttrs={{
+                  //   target: social.blank !== false ? "_blank" : "_self",
+                  // }}
                 >
                   <SocialIcon name={social.icon} color="white" size={24} />
                 </Link>

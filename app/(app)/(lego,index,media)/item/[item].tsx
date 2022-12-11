@@ -28,7 +28,7 @@ export default function Page({ route }) {
     <>
       <Stack.Screen
         options={{
-          title: "Item: " + item.title,
+          title: item.title,
         }}
       />
       <ScreenScroller>

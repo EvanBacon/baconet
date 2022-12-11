@@ -121,6 +121,14 @@ export const Images = [
   // { url: 'https://avatars.io/gravatar/baconbrix@gmail.com', title: 'Gravatar' },
 ];
 
+function internalLink(url) {
+  return {
+    url: "./item/" + url,
+    icon: "info",
+    blank: false,
+  };
+}
+
 export const Podcasts: Project[] = [
   {
     title: "Evan's World",
@@ -129,6 +137,7 @@ export const Podcasts: Project[] = [
     color: "#F8E71C",
     authors: ["lydiahallie", "baconbrix"],
     actions: [
+      internalLink("media-0"),
       {
         url: "https://podcasts.apple.com/us/podcast/evans-world/id1502259756",
         icon: "microphone",
