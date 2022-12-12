@@ -1,6 +1,6 @@
 import { Link, Stack } from "expo-router";
 import React from "react";
-import { Image, ScrollView, Text, View } from "react-native";
+import { Image, Platform, ScrollView, Text, View } from "react-native";
 
 import {
   Lego,
@@ -56,10 +56,12 @@ export default function Page({ route }) {
 
         {/* <Text>{JSON.stringify({ item }, null, 2)}</Text> */}
 
-        <RecommendedSection items={related} />
+        <View style={{ paddingHorizontal: 12 }}>
+          <RecommendedSection items={related} />
 
-        <InfoSection item={item} />
-        <AwardsSection item={item} />
+          <InfoSection item={item} />
+          <AwardsSection item={item} />
+        </View>
       </ScreenScroller>
     </>
   );
@@ -128,7 +130,10 @@ function InfoListItem({
           marginHorizontal: 12,
           flex: 1,
           borderTopWidth: 1,
-          borderStyle: "dotted",
+          borderStyle: Platform.select({
+            web: "dotted",
+            default: "solid",
+          }),
           borderColor: "#6e707255",
         }}
       />
