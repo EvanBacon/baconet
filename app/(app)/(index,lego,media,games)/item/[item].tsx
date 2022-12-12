@@ -2,7 +2,6 @@ import { Link, Stack } from "expo-router";
 import React from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 
-import ProjectCard from "../../../../components/Card";
 import {
   Lego,
   LegoProject,
@@ -11,7 +10,6 @@ import {
   Projects,
 } from "../../../../components/data";
 import { ScreenScroller } from "../../../../components/ScreenScroller";
-import SocialIcon from "../../../../components/SocialIcon";
 
 function getItem(id: string): Project | null {
   const [type, index] = id.split("-");
