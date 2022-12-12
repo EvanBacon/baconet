@@ -1,27 +1,34 @@
-import { Link, Stack } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { DarkTheme, DefaultTheme } from "@react-navigation/native";
-import { Platform, Text, useColorScheme } from "react-native";
-import SearchBar from "../../../components/SearchBar";
-import { OutletContext } from "../../../components/OutletContext";
+import { DarkTheme, DefaultTheme, useRoute } from "@react-navigation/native";
+import { Stack, useHref } from "expo-router";
+import {
+  Platform,
+  Share,
+  TouchableOpacity,
+  useColorScheme,
+} from "react-native";
+
 import { usePosts } from "../../../components/api";
-import { useRoute } from "@react-navigation/native";
-import { Services } from "../../../components/medium";
+import { OutletContext } from "../../../components/OutletContext";
 
-function EASButton() {
+function ShareButton() {
   const theme = useColorScheme() === "dark" ? DarkTheme : DefaultTheme;
-
+  const { href } = useHref();
+  const link = new URL(href, "https://evanbacon.dev").toString();
   return (
-    <Link
+    <TouchableOpacity
       style={{
-        color: "black",
-        fontSize: 16,
         paddingHorizontal: Platform.select({ web: 16, default: 0 }),
       }}
-      href="/_expo"
+      onPress={() => {
+        Share.share({
+          url: link,
+          message: "Evan's cooking",
+        });
+      }}
     >
-      <Services />
-    </Link>
+      <Ionicons size={24} color={theme.colors.text} name={"share-outline"} />
+    </TouchableOpacity>
   );
 }
 
@@ -37,15 +44,8 @@ export default function StackLayout({ segment }) {
     <OutletContext.Provider value={posts}>
       <Stack
         screenOptions={{
-          // headerLeft() {
-          //   return Platform.OS === "web" ? (
-          //     <Link href="/">
-          //       <Text style={{ backgroundColor: "white" }}>Bacon</Text>
-          //     </Link>
-          //   ) : null;
-          // },
           headerRight(props) {
-            return <EASButton />;
+            return <ShareButton />;
           },
         }}
       >
@@ -71,7 +71,7 @@ export default function StackLayout({ segment }) {
                     //     />
                     //   );
                     // }
-                    return <EASButton />;
+                    return <ShareButton />;
                   },
                   headerSearchBarOptions: {
                     placeholder: "Search",
