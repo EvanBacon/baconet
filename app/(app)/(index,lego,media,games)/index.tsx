@@ -1,5 +1,5 @@
 import { Head } from "@bacons/head";
-import { Link, Tabs, useHref, useNavigation } from "expo-router";
+import { Link, Tabs, useHref, useLink, useNavigation } from "expo-router";
 import React, { useMemo } from "react";
 import {
   FlatList,
@@ -19,6 +19,19 @@ export default function Page() {
     () => (route.params?.q ? decodeURIComponent(route.params?.q) : ""),
     [route.params?.q]
   );
+
+  const navigation = useNavigation("../../");
+  const link = useLink();
+  React.useEffect(() => {
+    console.log("setup");
+    const unsubscribe = navigation.addListener("tabLongPress", (e) => {
+      console.log("long");
+      // Do something
+      link.replace("/_expo");
+    });
+
+    return unsubscribe;
+  }, [navigation, link]);
 
   const [value, setValue] = React.useState(def);
 

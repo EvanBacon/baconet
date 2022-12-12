@@ -122,14 +122,6 @@ export const Images = [
   // { url: 'https://avatars.io/gravatar/baconbrix@gmail.com', title: 'Gravatar' },
 ];
 
-function internalLink(url) {
-  return {
-    url: "./item/" + url,
-    icon: "info",
-    blank: false,
-  };
-}
-
 export const Podcasts: Project[] = [
   {
     slug: "",
@@ -204,7 +196,6 @@ export const Podcasts: Project[] = [
 ].map((value, index) => ({
   ...value,
   slug: "media-" + index,
-  actions: [internalLink("media-" + index), ...value.actions],
 }));
 
 export const News = [
@@ -450,7 +441,6 @@ export const Projects: Project[] = [
   },
 ].map((value, index) => ({
   ...value,
-  // actions: [internalLink("game-" + index), ...value.actions],
   slug: "game-" + index,
 }));
 
@@ -681,7 +671,6 @@ export const Lego: LegoProject[] = [
 ].map((value, index) => ({
   ...value,
   slug: "lego-" + index,
-  // actions: [internalLink("lego-" + index), ...value.actions],
 }));
 
 function ytvid(id: string): {

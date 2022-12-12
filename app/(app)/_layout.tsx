@@ -17,6 +17,7 @@ import {
   Stack,
   Tabs,
   useHref,
+  useLink,
   useNavigation,
 } from "expo-router";
 
@@ -337,7 +338,11 @@ export default function App({ children }) {
   if (!isRowLayout) {
     return (
       <Tabs
-        screenOptions={{ headerShown: false, tabBarActiveTintColor: "black" }}
+        screenOptions={{
+          tabBarShowLabel: false,
+          headerShown: false,
+          tabBarActiveTintColor: "black",
+        }}
       >
         <Tabs.Screen
           name="(index)"
@@ -346,13 +351,7 @@ export default function App({ children }) {
             tabBarIcon: makeIcon("home"),
           }}
         />
-        <Tabs.Screen
-          name="(lego)"
-          options={{
-            title: "Lego",
-            tabBarIcon: makeIcon("build"),
-          }}
-        />
+
         <Tabs.Screen
           name="(games)"
           options={{
@@ -364,7 +363,14 @@ export default function App({ children }) {
           name="(media)"
           options={{
             title: "Media",
-            tabBarIcon: makeIcon("mic-circle"),
+            tabBarIcon: makeIcon("mic"),
+          }}
+        />
+        <Tabs.Screen
+          name="(lego)"
+          options={{
+            title: "Lego",
+            tabBarIcon: makeIcon("build"),
           }}
         />
       </Tabs>
