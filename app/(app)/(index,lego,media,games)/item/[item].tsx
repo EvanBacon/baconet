@@ -38,7 +38,20 @@ function getRelated(index: number) {
 export default function Page({ route }) {
   const item = getItem(route.params?.item);
   if (!item) {
-    return <Text>Nothing here: {route.params?.id}</Text>;
+    return (
+      <>
+        <Stack.Screen
+          options={{
+            title: "Not Found",
+          }}
+        />
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <Text>Nothing here: {route.params?.id}</Text>
+        </View>
+      </>
+    );
   }
   const index = parseInt(route.params?.item.split("-")[1]);
   const related = getRelated(index + 1).concat(getRelated(index + 2));
@@ -166,12 +179,11 @@ function RecommendedSection({ items }: { items: Project[] }) {
 }
 
 function ProjectPreview(project: Project) {
-  const url = project.actions[0].url;
   return (
     <Link
       href={{
         pathname: "./[item]",
-        params: { item: url.split("/").pop() },
+        params: { item: project.slug },
       }}
     >
       <View style={{ paddingRight: 12 }}>

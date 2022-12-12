@@ -8,6 +8,7 @@ import {
   StyleSheet,
   View,
   useWindowDimensions,
+  Pressable,
 } from "react-native";
 // import { useHover } from "react-native-web-hooks";
 
@@ -114,6 +115,7 @@ export default function ProjectCard({
   description,
   video,
   renderDescription,
+  slug,
 }: Project & { renderDescription?: () => any }) {
   const { width } = useWindowDimensions();
 
@@ -129,64 +131,68 @@ export default function ProjectCard({
   //   const isHovered = useHover(ref);
 
   return (
-    <Article
-      ref={ref}
-      style={[
-        styles.container,
-        {
-          marginHorizontal: isMobile ? 16 : 0,
-        },
-      ]}
-    >
-      <MediaBackground
-        isHovered={isHovered}
-        image={image}
-        video={video}
-        resizeMode="cover"
-      >
-        <Footer style={styles.footer}>
-          <Underlay color={themeColor} />
-
-          <BlurView intensity={100} style={styles.blur} />
-
-          <View style={{ flexDirection: "row", flexShrink: 1 }}>
-            {icon && (
-              <Image source={icon} style={styles.icon} resizeMode="cover" />
-            )}
-            <View style={{ flex: 1 }}>
-              {title && <H2 style={styles.title}>{title}</H2>}
-              {description && !renderDescription && (
-                <H3 style={styles.description}>{description}</H3>
-              )}
-              {renderDescription && renderDescription()}
-              {year && <P style={styles.year}>{year}</P>}
-            </View>
-          </View>
-
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-around",
-            }}
+    <Link href={"./item/" + slug} asChild>
+      <Pressable>
+        <Article
+          ref={ref}
+          style={[
+            styles.container,
+            {
+              marginHorizontal: isMobile ? 16 : 0,
+            },
+          ]}
+        >
+          <MediaBackground
+            isHovered={isHovered}
+            image={image}
+            video={video}
+            resizeMode="cover"
           >
-            {actions.map((social, index) => (
-              <View key={social.icon}>
-                <Link
-                  href={social.url}
-                  style={{ marginLeft: index === 0 ? 0 : 24 }}
-                  focusStyle={{ transform: [{ scale: 1.1 }] }}
-                  // hrefAttrs={{
-                  //   target: social.blank !== false ? "_blank" : "_self",
-                  // }}
-                >
-                  <SocialIcon name={social.icon} color="white" size={24} />
-                </Link>
+            <Footer style={styles.footer}>
+              <Underlay color={themeColor} />
+
+              <BlurView intensity={100} style={styles.blur} />
+
+              <View style={{ flexDirection: "row", flexShrink: 1 }}>
+                {icon && (
+                  <Image source={icon} style={styles.icon} resizeMode="cover" />
+                )}
+                <View style={{ flex: 1 }}>
+                  {title && <H2 style={styles.title}>{title}</H2>}
+                  {description && !renderDescription && (
+                    <H3 style={styles.description}>{description}</H3>
+                  )}
+                  {renderDescription && renderDescription()}
+                  {year && <P style={styles.year}>{year}</P>}
+                </View>
               </View>
-            ))}
-          </View>
-        </Footer>
-      </MediaBackground>
-    </Article>
+
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-around",
+                }}
+              >
+                {actions.map((social, index) => (
+                  <View key={social.icon}>
+                    <Link
+                      href={social.url}
+                      style={{ marginLeft: index === 0 ? 0 : 24 }}
+                      focusStyle={{ transform: [{ scale: 1.1 }] }}
+                      hrefAttrs={{
+                        target: "_blank",
+                      }}
+                    >
+                      <SocialIcon name={social.icon} color="white" size={24} />
+                    </Link>
+                  </View>
+                ))}
+              </View>
+            </Footer>
+          </MediaBackground>
+        </Article>
+      </Pressable>
+    </Link>
   );
 }
 

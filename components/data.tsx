@@ -16,6 +16,7 @@ export type Project = {
   color?: string;
   authors?: string[];
   actions: ProjectAction[];
+  slug: string;
 };
 
 export type LegoProject = Project & {
@@ -131,6 +132,7 @@ function internalLink(url) {
 
 export const Podcasts: Project[] = [
   {
+    slug: "",
     title: "Evan's World",
     image: require("../assets/podcast/evans-world.jpg"),
     year: "2020",
@@ -144,6 +146,7 @@ export const Podcasts: Project[] = [
     ],
   },
   {
+    slug: "",
     title: "React Podcast",
     image: require("../assets/podcast/react-podcast.jpg"),
     year: "2020",
@@ -157,6 +160,7 @@ export const Podcasts: Project[] = [
     ],
   },
   {
+    slug: "",
     title: "Undefined Podcast",
     image: require("../assets/podcast/undefined-podcast.jpg"),
     year: "2019",
@@ -170,6 +174,7 @@ export const Podcasts: Project[] = [
     ],
   },
   {
+    slug: "",
     title: "React Native Radio",
     image: require("../assets/podcast/react-native-radio-podcast.jpg"),
     year: "2018",
@@ -183,6 +188,7 @@ export const Podcasts: Project[] = [
     ],
   },
   {
+    slug: "",
     title: "Beyond the brick with Evan Bacon",
     image: require("../assets/podcast/behind-the-brick.jpg"),
     year: "2012",
@@ -197,6 +203,7 @@ export const Podcasts: Project[] = [
   },
 ].map((value, index) => ({
   ...value,
+  slug: "media-" + index,
   actions: [internalLink("media-" + index), ...value.actions],
 }));
 
@@ -249,6 +256,7 @@ export const Videos = [
 
 export const Work = [
   {
+    slug: "",
     title: "Sirius XM 360L",
     company: "Frog Design",
     website: "https://www.siriusxm.com/",
@@ -262,21 +270,25 @@ export const Work = [
     ],
   },
   {
+    slug: "",
     title: "Vixxo App",
     website: "https://www.vixxo.com/",
     stack: ["Xamarin"],
   },
   {
+    slug: "",
     title: "FIS Global Dashboard",
     website: "https://www.fisglobal.com/",
     stack: ["Angular"],
   },
   {
+    slug: "",
     title: "Howard Stern Video App",
     website:
       "https://www.siriusxm.com/streaming?hpid=HP_NEW_ListenOnlineOntheApp",
   },
   {
+    slug: "",
     title: "New Matter MOD-t 3D Printer Studio",
     website: "http://www.newmatter.co/",
   },
@@ -284,6 +296,7 @@ export const Work = [
 
 export const Projects: Project[] = [
   {
+    slug: "",
     image: require("../assets/projects/crossy-road/preview.jpg"),
     icon: require("../assets/projects/crossy-road/app-icon.png"),
     video: require("../assets/projects/crossy-road/demo.mp4"),
@@ -303,6 +316,7 @@ export const Projects: Project[] = [
     ],
   },
   {
+    slug: "",
     image: require("../assets/projects/pillar-valley/preview.png"),
     icon: require("../assets/projects/pillar-valley/app-icon.png"),
     video: require("../assets/projects/pillar-valley/demo.mp4"),
@@ -322,6 +336,7 @@ export const Projects: Project[] = [
     ],
   },
   {
+    slug: "",
     image: require("../assets/projects/snake/preview.jpeg"),
     icon: require("../assets/projects/snake/app-icon.jpg"),
     video: require("../assets/projects/snake/demo.mp4"),
@@ -341,6 +356,7 @@ export const Projects: Project[] = [
     ],
   },
   {
+    slug: "",
     image: require("../assets/projects/sunset-cyberspace/preview.png"),
     icon: require("../assets/projects/sunset-cyberspace/app-icon.png"),
     video: require("../assets/projects/sunset-cyberspace/demo.mp4"),
@@ -360,6 +376,7 @@ export const Projects: Project[] = [
     ],
   },
   {
+    slug: "",
     image: require("../assets/projects/doodle-jump/preview.jpeg"),
     icon: require("../assets/projects/doodle-jump/app-icon.png"),
     video: require("../assets/projects/doodle-jump/demo.mp4"),
@@ -380,6 +397,7 @@ export const Projects: Project[] = [
     ],
   },
   {
+    slug: "",
     image: require("../assets/projects/flappy-bird/preview.jpeg"),
     icon: require("../assets/projects/flappy-bird/app-icon.png"),
     video: require("../assets/projects/flappy-bird/demo.mp4"),
@@ -400,6 +418,7 @@ export const Projects: Project[] = [
     ],
   },
   {
+    slug: "",
     image: require("../assets/projects/super-mario/preview.jpeg"),
     icon: require("../assets/projects/super-mario/app-icon.png"),
     title: "Super Mario",
@@ -414,6 +433,7 @@ export const Projects: Project[] = [
     ],
   },
   {
+    slug: "",
     image: require("../assets/projects/nitro-roll/preview.png"),
     icon: require("../assets/projects/nitro-roll/app-icon.png"),
     title: "Nitro Roll",
@@ -430,7 +450,8 @@ export const Projects: Project[] = [
   },
 ].map((value, index) => ({
   ...value,
-  actions: [internalLink("game-" + index), ...value.actions],
+  // actions: [internalLink("game-" + index), ...value.actions],
+  slug: "game-" + index,
 }));
 
 export const Social = [
@@ -497,6 +518,7 @@ export const Workshops = [
 
 export const Lego: LegoProject[] = [
   {
+    slug: "",
     title: "Batman",
     description: "DC Comics",
     image: require("../assets/lego/batman.jpg"),
@@ -519,6 +541,7 @@ export const Lego: LegoProject[] = [
     weight: "60lb",
   },
   {
+    slug: "",
     title: "Thor",
     description: "Marvel",
     image: require("../assets/lego/thor.jpg"),
@@ -532,6 +555,7 @@ export const Lego: LegoProject[] = [
     year: "2016",
   },
   {
+    slug: "",
     title: "Iron Man",
     description: "Marvel",
     image: require("../assets/lego/ironman.jpg"),
@@ -555,6 +579,7 @@ export const Lego: LegoProject[] = [
   },
 
   {
+    slug: "",
     title: "Superman",
     bricks: "18,000",
     description: "DC Comics",
@@ -569,6 +594,7 @@ export const Lego: LegoProject[] = [
     year: "2012",
   },
   {
+    slug: "",
     title: "Captain Kirk",
     description: "Star Trek",
     color: "#DCC743",
@@ -582,6 +608,7 @@ export const Lego: LegoProject[] = [
     year: "2013",
   },
   {
+    slug: "",
     title: "Darth Vader",
     description: "Star Wars",
     color: "#E43C39",
@@ -595,6 +622,7 @@ export const Lego: LegoProject[] = [
     year: "2016",
   },
   {
+    slug: "",
     title: "Sarge",
     description: "Red Vs. Blue",
     color: "#C65728",
@@ -608,6 +636,7 @@ export const Lego: LegoProject[] = [
     year: "2016",
   },
   {
+    slug: "",
     title: "Wonder Woman",
     description: "DC Comics",
     color: "#316FDF",
@@ -622,6 +651,7 @@ export const Lego: LegoProject[] = [
   },
 
   {
+    slug: "",
     title: "Captain America",
     description: "Marvel",
     color: "#70ACEC",
@@ -635,6 +665,7 @@ export const Lego: LegoProject[] = [
     year: "2016",
   },
   {
+    slug: "",
     title: "Minion",
     description: "Despicable Me",
     color: "#F5F858",
@@ -649,7 +680,8 @@ export const Lego: LegoProject[] = [
   },
 ].map((value, index) => ({
   ...value,
-  actions: [internalLink("lego-" + index), ...value.actions],
+  slug: "lego-" + index,
+  // actions: [internalLink("lego-" + index), ...value.actions],
 }));
 
 function ytvid(id: string): {
