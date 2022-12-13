@@ -1,6 +1,13 @@
-import { Link, Stack } from "expo-router";
+import { Link, Stack, useHref } from "expo-router";
 import React from "react";
-import { Image, Platform, ScrollView, Text, View } from "react-native";
+import {
+  Image,
+  Animated,
+  Platform,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 
 import {
   Lego,
@@ -8,24 +15,10 @@ import {
   Podcasts,
   Project,
   Projects,
-} from "../../../../components/data";
-import { ScreenScroller } from "../../../../components/ScreenScroller";
-
-function getItem(id: string): Project | null {
-  const [type, index] = id.split("-");
-
-  switch (type) {
-    case "game":
-      return Projects[parseInt(index)];
-    case "lego":
-      return Lego[parseInt(index)];
-    case "media":
-      return Podcasts[parseInt(index)];
-    // case "news":
-    //   return News[parseInt(index)];
-  }
-  return null;
-}
+} from "../../../../../components/data";
+import { getItem } from "../../../../../components/fetchItem";
+import { ScreenScroller } from "../../../../../components/ScreenScroller";
+import { useScrollProps } from "@bacons/expo-router-top-tabs";
 
 function getRelated(index: number) {
   return [
@@ -36,47 +29,30 @@ function getRelated(index: number) {
 }
 
 export default function Page({ route }) {
+  const href = useHref();
+  console.log("route.index:", href);
+
+  return null;
   const item = getItem(route.params?.item);
-  if (!item) {
-    return (
-      <>
-        <Stack.Screen
-          options={{
-            title: "Not Found",
-          }}
-        />
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
-          <Text>Nothing here: {route.params?.id}</Text>
-        </View>
-      </>
-    );
-  }
+  const props = useScrollProps();
+
   const index = parseInt(route.params?.item.split("-")[1]);
   const related = getRelated(index + 1).concat(getRelated(index + 2));
   return (
-    <>
-      <Stack.Screen
-        options={{
-          title: item.title,
-        }}
-      />
-      <ScreenScroller>
-        <Image source={item.image} style={{ width: "100%", maxHeight: 300 }} />
+    <ScreenScroller {...props}>
+      <Image source={item.image} style={{ width: "100%", maxHeight: 300 }} />
 
-        {/* <ProjectCard key={item.title} {...item} /> */}
+      {/* <ProjectCard key={item.title} {...item} /> */}
 
-        {/* <Text>{JSON.stringify({ item }, null, 2)}</Text> */}
+      {/* <Text>{JSON.stringify({ item }, null, 2)}</Text> */}
 
-        <View style={{ paddingHorizontal: 12 }}>
-          <RecommendedSection items={related} />
+      <View style={{ paddingHorizontal: 12 }}>
+        <RecommendedSection items={related} />
 
-          <InfoSection item={item} />
-          <AwardsSection item={item} />
-        </View>
-      </ScreenScroller>
-    </>
+        <InfoSection item={item} />
+        <AwardsSection item={item} />
+      </View>
+    </ScreenScroller>
   );
 }
 

@@ -1,17 +1,18 @@
 import { StyleSheet } from "@bacons/react-views";
 import React from "react";
-import { Platform, ScrollView } from "react-native";
+import { Platform, Animated, ScrollView } from "react-native";
 
-export function ScreenScroller({ children }) {
+export function ScreenScroller({ children, ...props }) {
   return (
-    <ScrollView
+    <Animated.ScrollView
+      {...props}
       contentContainerStyle={{
         paddingTop: 24,
       }}
       style={styles.container}
     >
       {children}
-    </ScrollView>
+    </Animated.ScrollView>
   );
 }
 
