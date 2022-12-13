@@ -4,13 +4,7 @@ import { Platform, Animated, ScrollView } from "react-native";
 
 export function ScreenScroller({ children, ...props }) {
   return (
-    <Animated.ScrollView
-      {...props}
-      contentContainerStyle={{
-        paddingTop: 24,
-      }}
-      style={styles.container}
-    >
+    <Animated.ScrollView {...props} style={styles.container}>
       {children}
     </Animated.ScrollView>
   );

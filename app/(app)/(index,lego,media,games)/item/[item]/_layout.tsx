@@ -30,7 +30,10 @@ export default function CustomLayout({ route }) {
 
       <TopTabs>
         <TopTabs.Header>
-          <View pointerEvents="none" style={{ height: 300 }}>
+          <View
+            pointerEvents="none"
+            style={{ overflow: "hidden", height: 300 }}
+          >
             <Image
               source={item.image}
               style={{ width: "100%", maxHeight: 300 }}
@@ -39,7 +42,7 @@ export default function CustomLayout({ route }) {
         </TopTabs.Header>
 
         <TopTabs.Screen name="index" options={{ title: "Details" }} />
-        <TopTabs.Screen name="related" options={{ title: "Related" }} />
+        <TopTabs.Screen name="media" options={{ title: "Media" }} />
       </TopTabs>
     </>
   );

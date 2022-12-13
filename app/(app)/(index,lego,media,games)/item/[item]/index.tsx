@@ -28,11 +28,8 @@ function getRelated(index: number) {
   ];
 }
 
-export default function Page({ route }) {
-  const href = useHref();
-  console.log("route.index:", href);
-
-  return null;
+export default function Page() {
+  const route = useHref();
   const item = getItem(route.params?.item);
   const props = useScrollProps();
 
@@ -40,17 +37,14 @@ export default function Page({ route }) {
   const related = getRelated(index + 1).concat(getRelated(index + 2));
   return (
     <ScreenScroller {...props}>
-      <Image source={item.image} style={{ width: "100%", maxHeight: 300 }} />
-
       {/* <ProjectCard key={item.title} {...item} /> */}
 
       {/* <Text>{JSON.stringify({ item }, null, 2)}</Text> */}
 
       <View style={{ paddingHorizontal: 12 }}>
-        <RecommendedSection items={related} />
-
         <InfoSection item={item} />
         <AwardsSection item={item} />
+        <RecommendedSection items={related} />
       </View>
     </ScreenScroller>
   );
