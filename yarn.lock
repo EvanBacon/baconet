@@ -3539,6 +3539,18 @@ expo-application@~5.0.1:
   resolved "https://registry.yarnpkg.com/expo-application/-/expo-application-5.0.1.tgz#628aeee74697d7aa39d0c0173dbf9383e06e53e9"
   integrity sha512-bThxK5zH/Lc2tkCvEXGjfM7ayvOVmPWYcWzXsMIU1RtG73TyXo4cq+73FvfDNIWn6gKS0WyMcmoPB3WXEV/jsw==
 
+expo-asset@/Users/evanbacon/Documents/GitHub/personal/baconet/expo-asset-8.6.2.tgz:
+  version "8.6.2"
+  resolved "/Users/evanbacon/Documents/GitHub/personal/baconet/expo-asset-8.6.2.tgz#859413d90f41106163353567d42e0b91514b401e"
+  dependencies:
+    blueimp-md5 "^2.10.0"
+    expo-constants "~14.0.0"
+    expo-file-system "~15.1.0"
+    invariant "^2.2.4"
+    md5-file "^3.2.3"
+    path-browserify "^1.0.0"
+    url-parse "^1.5.9"
+
 expo-asset@~8.6.2:
   version "8.6.2"
   resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-8.6.2.tgz#607dbbed988f7fc54a6f37cd33f86a2388264b4b"
