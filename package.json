@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@bacons/expo-background-color": "^1.0.2",
+    "@bacons/expo-router-top-tabs": "^0.0.1",
     "@bacons/head": "^0.0.3",
     "@expo/html-elements": "^0.2.0",
     "@tamagui/core": "^1.0.1-beta.226",
@@ -31,10 +32,12 @@
     "react-native": "0.70.5",
     "react-native-gesture-handler": "~2.8.0",
     "react-native-markdown-renderer": "^3.2.8",
-    "react-native-reanimated": "~2.12.0",
+    "react-native-pager-view": "6.0.1",
+    "react-native-reanimated": "^2.13.0",
     "react-native-safe-area-context": "4.4.1",
     "react-native-screens": "~3.18.0",
     "react-native-svg": "13.4.0",
+    "react-native-tab-view": "^3.3.4",
     "react-native-web": "~0.18.7",
     "typescript": "^4.6.3"
   },
