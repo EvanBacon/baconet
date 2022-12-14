@@ -1,18 +1,18 @@
 # Hit Testing in ARKit
 
-import { Snack, TwitterProfile } from "../../../components/embeds";
+import { Embed } from "../../../components/embeds";
 
 ## A React Native Tutorial
 
-One of the coolest parts of ARKit is its ability to spot and stick to surfaces. Today we’re going to talk about how to do this with React Native.
+One of the coolest parts of ARKit is its ability to spot and stick to surfaces. Today we're going to talk about how to do this with React Native.
 
 ![Tapping to add a block](./images/1M4xJ7sm2me61xszk9gQj4g.gif)_Tapping to add a block_
 
-<Snack url="https://snack.expo.io/embedded/@bacon/ar-hit-test" />
+<Embed url="https://snack.expo.io/embedded/@bacon/ar-hit-test" />
 
 ## Getting Started
 
-This tutorial assumes you’re familiar with:
+This tutorial assumes you're familiar with:
 
 - React Native
 
@@ -20,11 +20,11 @@ This tutorial assumes you’re familiar with:
 
 - Sparrow migration patterns
 
-Go ahead and open the [starter project](https://snack.expo.io/@bacon/ar-hit-test-starter) as we quickly cover what’s provided in the starter:
+Go ahead and open the [starter project](https://snack.expo.io/@bacon/ar-hit-test-starter) as we quickly cover what's provided in the starter:
 
 ### Touchable View
 
-This view will wrap the ReactNative.PanResponder and allow us to just pass in a `onTouchesBegan` prop (holla at a iOS native dev). If you’re curious about how the PanResponder works, check out [the docs](https://facebook.github.io/react-native/docs/panresponder.html).
+This view will wrap the ReactNative.PanResponder and allow us to just pass in a `onTouchesBegan` prop (holla at a iOS native dev). If you're curious about how the PanResponder works, check out [the docs](https://facebook.github.io/react-native/docs/panresponder.html).
 
 Or forget that noise and just use the much better [GestureHandler](https://docs.expo.io/versions/latest/sdk/gesture-handler).
 
@@ -34,7 +34,7 @@ This is a generic three.js scene (learn more about this in my [past AR tutorials
 
 ## Coding Stuff
 
-We’ll just be working in the `onTouchesBegan` function in the `App.js`. This function will be invoked when `onPanResponderGrant` is called in the `TouchableView` .
+We'll just be working in the `onTouchesBegan` function in the `App.js`. This function will be invoked when `onPanResponderGrant` is called in the `TouchableView` .
 
 ```js
 onTouchesBegan = async ({ locationX: x, locationY: y }) => {
@@ -58,11 +58,11 @@ onTouchesBegan = async ({ locationX: x, locationY: y }) => {
 };
 ```
 
-1. Prevent doing anything if the scene hasn’t been built yet.
+1. Prevent doing anything if the scene hasn't been built yet.
 
 1. To use the AR hit test function to invoke the [native function](https://developer.apple.com/documentation/arkit/arframe/2875718-hittest?language=objc), we also need to pass in a normalized point. Ex: { x: 0.5, y: 0.5} is the center of the screen; {x: 0, y: 0} is the top left of the screen.
 
-1. We need to pass in the `HitTestResultTypes` that we want to get. For this we’ll use [HorizontalPlane](https://developer.apple.com/documentation/arkit/arhittestresulttype/arhittestresulttypeestimatedhorizontalplane?language=objc).
+1. We need to pass in the `HitTestResultTypes` that we want to get. For this we'll use [HorizontalPlane](https://developer.apple.com/documentation/arkit/arhittestresulttype/arhittestresulttypeestimatedhorizontalplane?language=objc).
 
 ```js
 // 1.
@@ -106,14 +106,14 @@ for (let hit of hitTest) {
 
 A quick note on the Matrix4: a matrix represents the position, scale, and orientation — so basically just everything. :]
 
-Anyways that’s all I’ve got for hit testing. I hope you learned something special! ❤ 🦄
+Anyways that's all I've got for hit testing. I hope you learned something special! ❤ 🦄
 
 ## Links
 
-Hey there, hope you jumped to the bottom. Here’s what we covered: [https://snack.expo.io/@bacon/ar-hit-test](https://snack.expo.io/@bacon/ar-hit-test)
+Hey there, hope you jumped to the bottom. Here's what we covered: [https://snack.expo.io/@bacon/ar-hit-test](https://snack.expo.io/@bacon/ar-hit-test)
 
 Block or report me on Twitter 🚫:
 
-<TwitterProfile url="https://twitter.com/baconbrix" />
+<Embed url="https://twitter.com/baconbrix" />
 
 And show people the stuff you made on [our forums](http://forums.expo.io) (!) ⭐️💙 so I can throw you some stars 😉

@@ -1,10 +1,10 @@
 # ARKit Shadows in React Native
 
-import { Snack, TwitterProfile } from "../../../components/embeds";
+import { Embed } from "../../../components/embeds";
 
 ## How to cast shadows on make-believe surfaces.
 
-Today I’ll show you how to make 3D objects cast shadows on the real-world ground!
+Today I'll show you how to make 3D objects cast shadows on the real-world ground!
 
 ![[No Shadow Floor | Shadow Floor — from expo-three/example/AR/Model](https://github.com/expo/expo-three/tree/master/example)](./images/12x0MmETAOlsoSSrA5qC9Gw.png)_[No Shadow Floor | Shadow Floor — from expo-three/example/AR/Model](https://github.com/expo/expo-three/tree/master/example)_
 
@@ -12,7 +12,7 @@ In expo-three, I included a mesh called `[ShadowFloor`](https://github.com/expo/
 
 We can stick this mesh on any surface and use it to make our AR Scene come to life!
 
-<Snack url="https://snack.expo.io/embedded/@bacon/ar-shadows" />
+<Embed url="https://snack.expo.io/embedded/@bacon/ar-shadows" />
 
 ![Floating shadows break my brain](./images/1KzttinC4DiBBCMV3whg7aQ.jpeg)_Floating shadows break my brain_
 
@@ -20,9 +20,9 @@ We can stick this mesh on any surface and use it to make our AR Scene come to li
 
 This tutorial assumes that you know how AR works in Expo; if you need to refresh, I have some basic tutorials on it:
 [**ARKit in React Native Tutorial: The Basics**
-*By now you’ve probably seen some of the crazy things people have been making with ARKit. If you want to make AR stuff…*blog.expo.io](https://blog.expo.io/arkit-in-react-native-tutorial-the-basics-9f839539f0b9)
+*By now you've probably seen some of the crazy things people have been making with ARKit. If you want to make AR stuff…*blog.expo.io](https://blog.expo.io/arkit-in-react-native-tutorial-the-basics-9f839539f0b9)
 
-Now after our context loads, we’ll enable shadows in our renderer:
+Now after our context loads, we'll enable shadows in our renderer:
 
 ```js
 // renderer = new ExpoTHREE.Renderer(...)
@@ -67,9 +67,9 @@ scene.add(this.shadowLight);
 scene.add(this.shadowLight.target);
 ```
 
-Rendering shadows is pretty expensive; we want to create only just enough of a map to cover our scene, and then we’ll move the light around to keep our scene lit. **Notice** that if you don’t add the `shadowLight.target` to the scene, then you cannot move the starting point of the light.
+Rendering shadows is pretty expensive; we want to create only just enough of a map to cover our scene, and then we'll move the light around to keep our scene lit. **Notice** that if you don't add the `shadowLight.target` to the scene, then you cannot move the starting point of the light.
 
-Let’s add a cube that casts a shadow. Any node will work; just remember to add `cube.castShadow = true;`.
+Let's add a cube that casts a shadow. Any node will work; just remember to add `cube.castShadow = true;`.
 
 ```js
 // Make a cube - notice that each unit is 1 meter in real life, we will make our box 0.1 meters
@@ -84,7 +84,7 @@ this.cube = new THREE.Mesh(geometry, material);
 this.cube.castShadow = true;
 ```
 
-Finally, we need something to receive the shadow. Let’s create that special `ShadowFloor` node and add it to the scene:
+Finally, we need something to receive the shadow. Let's create that special `ShadowFloor` node and add it to the scene:
 
 ```js
 const shadowFloor = new ExpoTHREE.AR.ShadowFloor({
@@ -95,17 +95,21 @@ const shadowFloor = new ExpoTHREE.AR.ShadowFloor({
 scene.add(shadowFloor);
 ```
 
-That’s all it takes to add shadows to your AR scene!
+That's all it takes to add shadows to your AR scene!
 
-FYI the ARKit API [isn’t quite as efficient](https://stackoverflow.com/questions/48090797/how-to-add-a-shadow-plane-and-the-difference-between-the-scn-file-apple-provide).
+FYI the ARKit API [isn't quite as efficient](https://stackoverflow.com/questions/48090797/how-to-add-a-shadow-plane-and-the-difference-between-the-scn-file-apple-provide).
 
 ## Thanks for reading
 
 Hope this helps! Let me know in the comments below if something deprecates!
 
-<TwitterProfile url="https://twitter.com/baconbrix" />
+<Embed url="https://twitter.com/baconbrix" />
+<Embed url="https://github.com/expo/expo-three" />
+<Embed url="https://docs.expo.io/versions/latest/sdk/AR" />
 
+<!--
 [**expo/expo-three**
 *expo-three - Utilities for using THREE.js on Expo*github.com](https://github.com/expo/expo-three)
 [**AR - Expo Documentation**
 *SDK API Reference Introduction AR Accelerometer Admob Amplitude AppLoading ART Asset Audio AuthSession AV…*docs.expo.io](https://docs.expo.io/versions/latest/sdk/AR)
+-->

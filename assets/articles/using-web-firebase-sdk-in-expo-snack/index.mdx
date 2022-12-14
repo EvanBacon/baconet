@@ -1,6 +1,6 @@
 # Using Web Firebase SDK in Expo Snack
 
-import { Snack, TwitterProfile } from "../../../components/embeds";
+import { Embed } from "../../../components/embeds";
 
 ## TL;DR: if (!firebase.apps.length) firebase.initializeApp({ … }); instead of firebase.initializeApp({ … });
 
@@ -17,7 +17,7 @@ Device: (78:20) Firebase: Firebase App named '[DEFAULT]' already exists (app/dup
 
 ![](./images/1lQ_a3ZF9IkXtsZIB0znqfg.jpeg)
 
-Fixing this is very simple. Just check to make sure the app hasn’t been initialized before calling `firebase.initializeApp({ ... });`
+Fixing this is very simple. Just check to make sure the app hasn't been initialized before calling `firebase.initializeApp({ ... });`
 
 ### You can do that like this:
 
@@ -25,12 +25,12 @@ Fixing this is very simple. Just check to make sure the app hasn’t been initia
 if (!firebase.apps.length) firebase.initializeApp({ ... });
 ```
 
-It’s kinda upsetting that firebase doesn’t just throw a warning and tell you what to do. 🙃
+It's kinda upsetting that firebase doesn't just throw a warning and tell you what to do. 🙃
 
-<Snack url="https://snack.expo.io/embedded/@bacon/firebase-initialize-app" />
+<Embed url="https://snack.expo.io/embedded/@bacon/firebase-initialize-app" />
 
 ## Thanks for reading
 
 Hope this helps — Tweet at me any questions, Medium comments are hard to reply to 😕
 
-<TwitterProfile url="https://twitter.com/baconbrix" />
+<Embed url="https://twitter.com/baconbrix" />

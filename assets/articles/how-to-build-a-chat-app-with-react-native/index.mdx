@@ -1,16 +1,16 @@
 # How To Build A Chat App With React Native
 
-import { Snack, TwitterProfile } from "../../../components/embeds";
+import { Embed } from "../../../components/embeds";
 
 ## Expo + Firebase + React Native + Gifted Chat
 
-Let’s create a basic chat application that works on every iOS and Android device. To do this we will use a framework called Expo!
+Let's create a basic chat application that works on every iOS and Android device. To do this we will use a framework called Expo!
 
 Expo extends React Native and gives us all the tools we need to get moving quickly without having to use anything but javascript!
 
 ![Here it is!!](./images/1UzG__5fIBC6a5HwFLD0RXQ.png)_Here it is!!_
 
-<Snack url="https://snack.expo.io/embedded/@bacon/firebase-basic-chat" />
+<Embed url="https://snack.expo.io/embedded/@bacon/firebase-basic-chat" />
 
 ## Requirements
 
@@ -30,11 +30,11 @@ To make a chat app we will need a few things:
 
 - Screen to send and receive messages
 
-Let’s go at these 1-by-1 with Gifs to keep your attention.
+Let's go at these 1-by-1 with Gifs to keep your attention.
 
 ### Setting up a Server
 
-is a scary task, especially if you are pretty. We will use a service called Firebase, it’s free, it’s scalable, it’s easy, and it’s made by Google.
+is a scary task, especially if you are pretty. We will use a service called Firebase, it's free, it's scalable, it's easy, and it's made by Google.
 
 Go to the Firebase console and setup a new app: [https://console.firebase.google.com](https://console.firebase.google.com/u/0/)
 
@@ -58,7 +58,7 @@ This will have the files for our two screens and our data provider.
 
 ![](./images/1yJacTbw9AhbPBdskKSrkJw.png)
 
-To get this connected let’s add react-navigation and connect the screens. We want to build a Stack Navigator that will allow us to push the Chat screen on top of the Main screen. Then we will export the navigator as the root component.
+To get this connected let's add react-navigation and connect the screens. We want to build a Stack Navigator that will allow us to push the Chat screen on top of the Main screen. Then we will export the navigator as the root component.
 
 **App.js**
 
@@ -79,7 +79,7 @@ const navigator = createStackNavigator({
 export default navigator;
 ```
 
-If we run this we will see a blank screen with a header bar. This is pretty cool but not really, let’s add a text field for our user’s name and then a button to go to the Chat screen.
+If we run this we will see a blank screen with a header bar. This is pretty cool but not really, let's add a text field for our user's name and then a button to go to the Chat screen.
 
 **components/Main.js**
 
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({});
 export default Main;
 ```
 
-When we open the `Main.js` we should see a basic component and the styles setup. First let’s add the Text Input.
+When we open the `Main.js` we should see a basic component and the styles setup. First let's add the Text Input.
 
 **components/Main.js**
 
@@ -165,7 +165,7 @@ onChangeText = (name) => this.setState({ name }); // 1.
 
 1. Here we update the component state with a new string value.
 
-If we run the app we should see our nifty `TextInput` let’s add a title and a button to go to the next screen
+If we run the app we should see our nifty `TextInput` let's add a title and a button to go to the next screen
 
 ```js
 // 1.
@@ -217,15 +217,15 @@ const styles = StyleSheet.create({
 
 1. Add the new imports.
 
-1. Create a `Text` element that tell’s our user what to do.
+1. Create a `Text` element that tell's our user what to do.
 
-1. Build a Button by adding a Text and wrapping it in a TouchableOpacity. Then assign the onPress to this.onPress, we’ll create that in a second.
+1. Build a Button by adding a Text and wrapping it in a TouchableOpacity. Then assign the onPress to this.onPress, we'll create that in a second.
 
 1. Make the title stile, add some margin and give it a nice large font
 
 1. Create a style for the button text
 
-Now let’s add the onPress that takes us to the Chat screen. In the Main component right before the `onChangeText` method, add this.
+Now let's add the onPress that takes us to the Chat screen. In the Main component right before the `onChangeText` method, add this.
 
 ```js
 onPress = () => {
@@ -240,7 +240,7 @@ onPress = () => {
 
 ## Chat Screen
 
-That’s all we need to do in our Main.js, you can open the **Chat.js** and start adding some chat stuff!
+That's all we need to do in our Main.js, you can open the **Chat.js** and start adding some chat stuff!
 
 **components/Chat.js**
 
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({});
 export default Chat;
 ```
 
-To get started make sure your Chat.js looks like this. Let’s setup the chat component.
+To get started make sure your Chat.js looks like this. Let's setup the chat component.
 
 ```js
 import React from "react";
@@ -287,7 +287,7 @@ class Chat extends React.Component {
 export default Chat;
 ```
 
-1. Import GiftedChat from `‘react-native-gifted-chat’` This is the component that we will use to do most of the heavy lifting.
+1. Import GiftedChat from `‘react-native-gifted-chat'` This is the component that we will use to do most of the heavy lifting.
 
 1. `navigationOptions` is used to configure how the navigation components (Header) look and act. We are passing an object with a `title` property that will set the title to either the state.params.name or a default value of `Chat!`
 
@@ -299,7 +299,7 @@ export default Chat;
 
 This is a pretty good start, we need a way to get messages and determine which ones came from us. Now we will add a listener that gets called whenever a message is sent or received.
 
-Let’s go to Fire.js to set this up!
+Let's go to Fire.js to set this up!
 
 **/Fire.js**
 
@@ -310,7 +310,7 @@ Fire.shared = new Fire();
 export default Fire;
 ```
 
-We should just have a basic class with a shared instance setup, let’s setup a Firebase app.
+We should just have a basic class with a shared instance setup, let's setup a Firebase app.
 
 ```js
 // 1.
@@ -340,7 +340,7 @@ class Fire {
 
 ![Here is an example of the creds](./images/1ETOHJEojfRBOUV9gMdH44Q.png)_Here is an example of the creds_
 
-In order to write and read from our database we need to be logged in, to do this we will get our current authentication, if it doesn’t exist then we want to sign in anonymously.
+In order to write and read from our database we need to be logged in, to do this we will get our current authentication, if it doesn't exist then we want to sign in anonymously.
 
 ```js
 class Fire {
@@ -371,11 +371,11 @@ class Fire {
 
 1. After initializing, call our `observeAuth` function
 
-1. we want to get our auth, if we were signed in before then this will return a user, if we weren’t then this will be null.
+1. we want to get our auth, if we were signed in before then this will return a user, if we weren't then this will be null.
 
 1. onAuthStateChanged gets called as soon as firebase finds our auth.
 
-1. if we weren’t signed in then sign in anonymously, if this fails then we will pop an alert with an error message.
+1. if we weren't signed in then sign in anonymously, if this fails then we will pop an alert with an error message.
 
 Now we need a way to subscribe to messages, after `onAuthStateChanged`
 
@@ -401,9 +401,9 @@ off() {
 }
 ```
 
-1. Create a reference to a location in our database where the messages will be saved, in our case it’s `/messages`
+1. Create a reference to a location in our database where the messages will be saved, in our case it's `/messages`
 
-1. Make a method with a callback prop that calls our messages ref and get’s the last 20 messages, then whenever a new message comes in we will get that as well. When we get a message we want to send it a function to parse.
+1. Make a method with a callback prop that calls our messages ref and get's the last 20 messages, then whenever a new message comes in we will get that as well. When we get a message we want to send it a function to parse.
 
 1. Create the parse method, we will add more here later
 
@@ -433,7 +433,7 @@ parse = (snapshot) => {
 
 1. Deconstruct the snapshot.val(), calling snapshot.val() will return the value or object associated with the snapshot
 
-1. Let’s convert the timestamp that was saved, to a js Date.
+1. Let's convert the timestamp that was saved, to a js Date.
 
 1. Finally we will create an object that GiftedChat is familiar with, then return it, \_id is the unique key for the message, text, user, and timestamp are exactly what you might think.
 
@@ -469,7 +469,7 @@ send = messages => {
 append = message => this.ref.push(message);
 ```
 
-1. Create a helper for getting the user’s uid
+1. Create a helper for getting the user's uid
 
 1. Get the accurate timestamp for saving messages
 
@@ -479,7 +479,7 @@ append = message => this.ref.push(message);
 
 1. The append function will save the message object with a unique ID
 
-That’s it for the backend, now we can go back to the Chat.js screen and connect everything!
+That's it for the backend, now we can go back to the Chat.js screen and connect everything!
 
 At the bottom of the component add subscribers and unsubscribers:
 
@@ -532,11 +532,11 @@ render() {
   }
 ```
 
-And that’s it! Now when you run the build you should be able to join your group and start saving messages to the database!!!
+And that's it! Now when you run the build you should be able to join your group and start saving messages to the database!!!
 
 ![](./images/1OBT1wi1RfySRyMcO8snjNg.png)
 
-Also your header should have text, my phone is on the bed behind me and I don’t want to get up and grab it, so enjoy these screenshots instead 💙😜
+Also your header should have text, my phone is on the bed behind me and I don't want to get up and grab it, so enjoy these screenshots instead 💙😜
 
 ## Links
 
@@ -544,6 +544,6 @@ The full project: [https://snack.expo.io/@bacon/firebase-basic-chat](https://sna
 
 Actively avoid my twitter:
 
-<TwitterProfile url="https://twitter.com/baconbrix" />
+<Embed url="https://twitter.com/baconbrix" />
 
 And show people the stuff you made on [our forums](http://forums.expo.io)! ⭐️💙

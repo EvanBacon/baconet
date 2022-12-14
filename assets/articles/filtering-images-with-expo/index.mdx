@@ -2,7 +2,7 @@
 
 ## Without any OpenGL knowledge required(!)
 
-TLDR: Using the module [\*\*‘expo-pixi’](https://github.com/expo/expo-pixi)**, you can filter images really easily! [**‘ExpoPixi.FilterImage’](https://github.com/expo/expo-pixi/blob/943f82bb2ca8ed2e2fe62c5a2b854054fb475980/examples/filter-image/App.js#L125-L130)** is a drop-in replacement for the \***`Image`\*\*\* component.
+TLDR: Using the module [\*\*‘expo-pixi'](https://github.com/expo/expo-pixi)**, you can filter images really easily! [**‘ExpoPixi.FilterImage'](https://github.com/expo/expo-pixi/blob/943f82bb2ca8ed2e2fe62c5a2b854054fb475980/examples/filter-image/App.js#L125-L130)** is a drop-in replacement for the \***`Image`\*\*\* component.
 
 ![Queen Kylie](./images/1y_ld-s00aqvwuOSndcngAg.png)_Queen Kylie_
 
@@ -22,13 +22,13 @@ For this component we will be using a fantastic 2D library called Pixi[.js](http
 
 ### **Implementation**
 
-Basically, we’ll be using a ‘Expo.GLView’ to create a ‘WebGLRenderingContext’. We then initialize a ‘PIXI.Application’ and pass it this context, and force it to use WebGL instead of Canvas. From there, we create a ‘PIXI.Texture’ from an ‘Expo.Asset’ using ‘expo-asset-utils’ and assigning this texture to a ‘PIXI.Sprite’.
+Basically, we'll be using a ‘Expo.GLView' to create a ‘WebGLRenderingContext'. We then initialize a ‘PIXI.Application' and pass it this context, and force it to use WebGL instead of Canvas. From there, we create a ‘PIXI.Texture' from an ‘Expo.Asset' using ‘expo-asset-utils' and assigning this texture to a ‘PIXI.Sprite'.
 
-Finally, we’ll center our sprite in our component, resizing it according to a ‘resizeMode’ prop, and apply some Pixi.js filters to the sprite!
+Finally, we'll center our sprite in our component, resizing it according to a ‘resizeMode' prop, and apply some Pixi.js filters to the sprite!
 
 ### Component
 
-Because all of the aforementioned actions are very common, we’re able to bundle everything in one component, and match the shape of the native Image component. By doing this we can avoid having to use GL all together!
+Because all of the aforementioned actions are very common, we're able to bundle everything in one component, and match the shape of the native Image component. By doing this we can avoid having to use GL all together!
 
 ```js
 <ExpoPixi.FilterImage
@@ -38,7 +38,7 @@ Because all of the aforementioned actions are very common, we’re able to bundl
 />
 ```
 
-And just like that we have the article’s showcase image! We can also stack multiple shaders on top of each other!
+And just like that we have the article's showcase image! We can also stack multiple shaders on top of each other!
 
 ```js
 const filters = [
@@ -64,11 +64,11 @@ filter.brightness(0.5);
 
 ## Finally
 
-As you can see, the options are pretty unlimited and nothing’s holding you back from creating a full-featured image editor with Expo!
+As you can see, the options are pretty unlimited and nothing's holding you back from creating a full-featured image editor with Expo!
 
 ### Links
 
-For all my kindred spirits who scrolled to the very bottom of the article, I’ve got what you were looking for! 😎 ⭐️ ❤️ 👏 😄
+For all my kindred spirits who scrolled to the very bottom of the article, I've got what you were looking for! 😎 ⭐️ ❤️ 👏 😄
 [**NPM: expo-pixi**
 *Tools for using pixi in Expo*www.npmjs.com](https://www.npmjs.com/package/expo-pixi)
 [**Live demo on Expo**

@@ -1,16 +1,16 @@
 # Firebase & Github Authentication with React Native
 
-import { Snack, TwitterProfile } from "../../../components/embeds";
+import { Embed } from "../../../components/embeds";
 
 ## TL;DR https://snack.expo.io/@bacon/github
 
-![What we’ll be building](./images/1vs2GWbG66aRzZi8DYA6bgg.png)_What we’ll be building_
+![What we'll be building](./images/1vs2GWbG66aRzZi8DYA6bgg.png)_What we'll be building_
 
-Today we’ll be looking at how to setup and use Github Authentication in your Expo app! We’ll also be using that Github Auth to create a Firebase user.
+Today we'll be looking at how to setup and use Github Authentication in your Expo app! We'll also be using that Github Auth to create a Firebase user.
 
 This is a hard thing to search because the “Github” part usually returns any “firebase auth” on `github.com`. But hopefully this is what you were looking for. 😅
 
-<Snack url="https://snack.expo.io/embedded/@bacon/github" />
+<Embed url="https://snack.expo.io/embedded/@bacon/github" />
 
 ### The Process
 
@@ -36,13 +36,13 @@ Now we just need to add the URL callback. This can be achieved by using the foll
 
 ## Time to code stuff
 
-This code is basically just drag and drop, it’ll work under most conditions and it’s easy to edit. But I’ll explain some of the more confusing parts here.
+This code is basically just drag and drop, it'll work under most conditions and it's easy to edit. But I'll explain some of the more confusing parts here.
 
 ![Another one of my signature “quick” tutorials… 🙃](./images/1reOODJnge_ty7zbvsKgHLw.gif)_Another one of my signature “quick” tutorials… 🙃_
 
 The only key thing you should know about is `Expo.AuthSession` [https://docs.expo.io/versions/latest/sdk/auth-session](https://docs.expo.io/versions/latest/sdk/auth-session)
 
-AuthSession manages all the weirdness around web authentication flows in a native app. This means you don’t have to do any awkward or unreliable things like adding a listener to ReactNative.Linking. You can use AuthSession for things like Github, Twitter, Instagram, ect…
+AuthSession manages all the weirdness around web authentication flows in a native app. This means you don't have to do any awkward or unreliable things like adding a listener to ReactNative.Linking. You can use AuthSession for things like Github, Twitter, Instagram, ect…
 
 To get started, import AuthSession, and define the auth related constants.
 
@@ -126,7 +126,7 @@ const user = await firebase
   .signInAndRetrieveDataWithCredential(credential);
 ```
 
-And just like that you have created a user! You can now access that user’s Github name and photo like so:
+And just like that you have created a user! You can now access that user's Github name and photo like so:
 
 ```js
 const { displayName, photoURL } = firebase.auth().currentUser;
@@ -166,13 +166,13 @@ await firebase.auth().signOut();
 
 If you want to keep your Github client info secure, you will need to perform these calls in a server. This can be easily achieved using the exact same code in a firebase cloud function.
 
-## That’s it! 👏
+## That's it! 👏
 
-I hope you enjoyed this tutorial that no one asked for, I was able to just drop this Auth method into one of my apps and I’m pretty pleased with how well it works. If someone wants to figure out instagram and twitter for me that’d be lit 🔥🔥🔥
+I hope you enjoyed this tutorial that no one asked for, I was able to just drop this Auth method into one of my apps and I'm pretty pleased with how well it works. If someone wants to figure out instagram and twitter for me that'd be lit 🔥🔥🔥
 
 ![Tackling obstacles together ❤](./images/1nG5llMvRpgaaPTxWElWB5g.gif)_Tackling obstacles together ❤_
 
-<TwitterProfile url="https://twitter.com/baconbrix" />
+<Embed url="https://twitter.com/baconbrix" />
 
 [**EvanBacon (Evan Bacon)**
 *Bad at programming. Native Dev, from Austin. I make tutorials and open source for funsies. 💙 Professionally I get to…*github.com](https://github.com/evanbacon)

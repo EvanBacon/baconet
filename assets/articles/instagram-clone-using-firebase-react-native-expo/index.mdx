@@ -1,22 +1,22 @@
 # Instagram Clone (!) using Firebase, React Native & Expo.
 
-import { Snack, TwitterProfile } from "../../../components/embeds";
+import { Embed } from "../../../components/embeds";
 
-## Because there just aren’t enough yet… 😂
+## Because there just aren't enough yet… 😂
 
-**TL;DR: [Here’s the code](https://github.com/EvanBacon/firebase-instagram)**
+**TL;DR: [Here's the code](https://github.com/EvanBacon/firebase-instagram)**
 
-Have you ever noticed how on the internet there are just no pictures, all plain text, or how you don’t run a successful photo sharing company? Well, today we can change that because I’ve got some dope code for you to clone and mess with 😄😙
+Have you ever noticed how on the internet there are just no pictures, all plain text, or how you don't run a successful photo sharing company? Well, today we can change that because I've got some dope code for you to clone and mess with 😄😙
 
-This app will allow you to scroll through everyone’s photos, read descriptions, choose or take photos, and upload them for the world to see! :)
+This app will allow you to scroll through everyone's photos, read descriptions, choose or take photos, and upload them for the world to see! :)
 
-**NOTE:** Because this is a pretty big demo project, I’m mostly just going to show and explain commented code, so it’s not actually a line-by-line tutorial: you should know a _little_ about React Native views, and Javascript. You won’t actually “_learn_” anything here 🤓.
+**NOTE:** Because this is a pretty big demo project, I'm mostly just going to show and explain commented code, so it's not actually a line-by-line tutorial: you should know a _little_ about React Native views, and Javascript. You won't actually “_learn_” anything here 🤓.
 
 ![](./images/1VA648isgIrFameDyACrgug.gif)
 
 ![](./images/1HtR9_F4Uu0gZ-Wf9rhu5_Q.gif)
 
-<Snack url="https://snack.expo.io/embedded/@bacon/github.com-evanbacon-firebase-instagram@@evanbacon-tutorial" />
+<Embed url="https://snack.expo.io/embedded/@bacon/github.com-evanbacon-firebase-instagram@@evanbacon-tutorial" />
 
 ## Tech Stack
 
@@ -30,13 +30,13 @@ In this project I use a combination of all the best stuff the internet has to of
 
 - React Navigation — Super easy way to push screens in React Native
 
-I use VSCode to make RN apps, but you could also use vim if you’re crazy.
+I use VSCode to make RN apps, but you could also use vim if you're crazy.
 
 ### Set up Firebase
 
-Firebase is a dead-easy solution for creating a database. It’s super cheap (you prolly won’t hit the limit, so free). It’s fast, and there are lots of tutorials about it (excluding this one 😜).
+Firebase is a dead-easy solution for creating a database. It's super cheap (you prolly won't hit the limit, so free). It's fast, and there are lots of tutorials about it (excluding this one 😜).
 
-We’ll use lots of pictures, as it;s much harder to misspell pictures.
+We'll use lots of pictures, as it;s much harder to misspell pictures.
 
 Go to [the console](https://console.firebase.google.com/u/0/) and make a new app — or just use my keys (I left them in the repo):
 
@@ -44,9 +44,9 @@ Go to [the console](https://console.firebase.google.com/u/0/) and make a new app
 
 ### Database
 
-We’ll use the Cloud Firestore to save our posts. The Firestore is similar to a relational database in that you can use compound queries to get data. Firestore is more scalable than the traditional Firebase database: it’s more expensive in the long run, but you pay for the peace of mind that you won’t need to do some massive data migration in the future.
+We'll use the Cloud Firestore to save our posts. The Firestore is similar to a relational database in that you can use compound queries to get data. Firestore is more scalable than the traditional Firebase database: it's more expensive in the long run, but you pay for the peace of mind that you won't need to do some massive data migration in the future.
 
-Compound queries are usually overkill but eh..why not 😏 Navigate over to the “Database” tab and click “Create Database”. We want to start in test mode so we can actually add data. This isn’t a permanent solution as this means anyone can edit everyone’s data.
+Compound queries are usually overkill but eh..why not 😏 Navigate over to the “Database” tab and click “Create Database”. We want to start in test mode so we can actually add data. This isn't a permanent solution as this means anyone can edit everyone's data.
 
 ![](./images/1nAJ4SoFD_PQd1N6kB-CtlQ.png)
 
@@ -54,11 +54,11 @@ Compound queries are usually overkill but eh..why not 😏 Navigate over to the 
 
 ### Storage
 
-Next go to the storage tab and setup the storage bucket. It’s pretty straightforward.
+Next go to the storage tab and setup the storage bucket. It's pretty straightforward.
 
 ![](./images/1t8H5D9E2smKjkFp3BJ5UUg.png)
 
-As you probably didn’t notice, the rules above state that you must be authenticated to read/write to the storage bucket. The most basic form of authentication is Anonymous authentication. Some of my feelings on why it’s the best [here](https://forums.expo.io/t/firebase-passwordless-signup/11033).
+As you probably didn't notice, the rules above state that you must be authenticated to read/write to the storage bucket. The most basic form of authentication is Anonymous authentication. Some of my feelings on why it's the best [here](https://forums.expo.io/t/firebase-passwordless-signup/11033).
 
 Click the Authentication tab and press “Set up sign-in method”. Now scroll down and tap the “Anonymous” cell, flip that switch, ignore the description, and press “Save”. 😁
 
@@ -68,9 +68,9 @@ Click the Authentication tab and press “Set up sign-in method”. Now scroll d
 
 ### Configuration
 
-Finally go back to the main project page and click the “&lt;/&gt;” button. Copy the config somewhere cuz we’ll need it later.
+Finally go back to the main project page and click the “&lt;/&gt;” button. Copy the config somewhere cuz we'll need it later.
 
-The config allows us to access the database. People can pretty easily get your credentials so they aren’t really secret. That’s why we add rules, but not today! 🙃
+The config allows us to access the database. People can pretty easily get your credentials so they aren't really secret. That's why we add rules, but not today! 🙃
 
 ![](./images/1bnY3KUIYg4xfIrVk0ObxXQ.png)
 
@@ -78,19 +78,19 @@ The config allows us to access the database. People can pretty easily get your c
 
 ## Building the Clone
 
-[I’ve gotten in cyber-trouble for cloning things in the past](https://youtu.be/oHBGhHlVOI0?t=346), so for the sake of this blog post let’s call our photo sharing, social networking application…🤔… Instagram 😈
+[I've gotten in cyber-trouble for cloning things in the past](https://youtu.be/oHBGhHlVOI0?t=346), so for the sake of this blog post let's call our photo sharing, social networking application…🤔… Instagram 😈
 
-Here is a carefully calculated diagram of what I’ve constructed today…
+Here is a carefully calculated diagram of what I've constructed today…
 
 ![](./images/1h0rD0cnrzrZBIfUZDFMDNw.png)
 
 ### Playing with the source
 
-You should build this app locally with `exp` as Firebase doesn’t work well with snack.expo.io.
+You should build this app locally with `exp` as Firebase doesn't work well with snack.expo.io.
 
 ### **Navigation**
 
-The structure of our app is pretty simple: we’ll have a TabNavigator that switches us between the Feed Screen and the Upload Screen. Then we’ll wrap that in a StackNavigator that allows us to push a NewPost screen.
+The structure of our app is pretty simple: we'll have a TabNavigator that switches us between the Feed Screen and the Upload Screen. Then we'll wrap that in a StackNavigator that allows us to push a NewPost screen.
 
 The reason the StackNavigator is at the top most level is because as you can see from the middle image, there is no tab bar. This means that the TabNavigator must be a child of the StackNavigator.
 
@@ -163,9 +163,9 @@ export default stackNavigator;
 
 ### **Firebase data module**
 
-We’ll handle all the Firebase stuff in one concise location called `Fire.js`.
+We'll handle all the Firebase stuff in one concise location called `Fire.js`.
 
-First, we have to initialize the Firebase app, then check the authentication of the user. If the user isn’t authenticated, then we need to sign them in anonymously.
+First, we have to initialize the Firebase app, then check the authentication of the user. If the user isn't authenticated, then we need to sign them in anonymously.
 
 ```js
 // ./Fire.js
@@ -286,7 +286,7 @@ export default Fire;
 Let me explain this all really quick…
 
 **Downloading Data
-**There’s a function called `getPaged` which will retrieve data using a pagination method, then return a cursor for future paging, and the data payload in a reduced format. More on this later…
+**There's a function called `getPaged` which will retrieve data using a pagination method, then return a cursor for future paging, and the data payload in a reduced format. More on this later…
 
 **Uploading Data
 **We will pass a local image URI and a text description to the `post` method. We will then shrink the image to a nice (affordable) size 😇
@@ -307,7 +307,7 @@ Finally we will make some getters that help us get the UID, timestamp, and posts
 
 ### A closer look at getting paged data
 
-First we need a reference to the collection (complex parent nodes) we want to read from. Then we’ll attach a query to it that returns docs (child nodes) sorted by the child key `timestamp` . Also notice that we limit the payload to a page size.
+First we need a reference to the collection (complex parent nodes) we want to read from. Then we'll attach a query to it that returns docs (child nodes) sorted by the child key `timestamp` . Also notice that we limit the payload to a page size.
 
 ```js
 let ref = firebase.firestore().collection(collectionName);
@@ -338,7 +338,7 @@ and finally to get the next page cursor:
 const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
 ```
 
-And that’s all it takes! (Kinda complex, actually 😅.)
+And that's all it takes! (Kinda complex, actually 😅.)
 
 ![But hopefully I made it a little simpler for you :}](./images/1HpRCfDzG0n60f53NYcmmpg.gif)_But hopefully I made it a little simpler for you :}_
 
@@ -348,16 +348,16 @@ Here we will create a FlatList that loads data with actions at the top and botto
 
 **Initial data**
 
-When the component loads, we check to see if the user is signed in; if they aren’t then we will wait until `Fire.js` has signed us in. Once we have resolved our auth status, we want to call `makeRemoteRequest` which will call our database and request a paginated set of data. The page is determined by `PAGE_SIZE` and `this.lastKnownKey`. On the first load we won’t have a cursor and the database will pull from the most recent five images.
+When the component loads, we check to see if the user is signed in; if they aren't then we will wait until `Fire.js` has signed us in. Once we have resolved our auth status, we want to call `makeRemoteRequest` which will call our database and request a paginated set of data. The page is determined by `PAGE_SIZE` and `this.lastKnownKey`. On the first load we won't have a cursor and the database will pull from the most recent five images.
 
 **Load More
-**We have a clever little footer that will request more data when pressed. The reason we do this is because it’s the simplest way to avoid multiple calls when there isn’t enough data or when debugging.
+**We have a clever little footer that will request more data when pressed. The reason we do this is because it's the simplest way to avoid multiple calls when there isn't enough data or when debugging.
 
 **Pull-to-Refresh
 **The user may want to see the latest and greatest content, to do so we must request data without the last known key. This will make our database get the most recent data.
 
 **One other cool thing
-**Sometimes loading in data can be a really janky process and it won’t look very good. To avoid this, use the `LayoutAnimation` API which automatically animates layout changes — life is gooood.
+**Sometimes loading in data can be a really janky process and it won't look very good. To avoid this, use the `LayoutAnimation` API which automatically animates layout changes — life is gooood.
 
 ```js
 // screens/FeedScreen.js
@@ -465,9 +465,9 @@ export default class FeedScreen extends Component {
 
 ### **Picking Media**
 
-Users will want to add data: to do this we will need access to the camera and gallery. `**SelectPhotoScreen.js` \*\*will implement buttons that can ask for permission to use `CAMERA` or `CAMERA_ROLL` permission using the `Expo.Permissions` API. Then it’ll open the corresponding selection screen using the `Expo.ImagePicker` API.
+Users will want to add data: to do this we will need access to the camera and gallery. `**SelectPhotoScreen.js` \*\*will implement buttons that can ask for permission to use `CAMERA` or `CAMERA_ROLL` permission using the `Expo.Permissions` API. Then it'll open the corresponding selection screen using the `Expo.ImagePicker` API.
 
-You could build the exact Instagram API using `Expo.Camera` & `Expo.MediaLibrary` for the gallery… I just didn’t have time :]
+You could build the exact Instagram API using `Expo.Camera` & `Expo.MediaLibrary` for the gallery… I just didn't have time :]
 
 (Read more in the [docs for our Expo APIs](https://docs.expo.io/versions/v28.0.0/sdk/).)
 
@@ -541,7 +541,7 @@ const styles = StyleSheet.create({
 All we need now is a photo description. Provide a TextInput for … text input, using the `onChangeText` callback we can update the navigation state. The navigation state needs to know the description so it can post it to Firebase when the right header button is pressed.
 
 **Header Buttons
-**To make these as simple as possibly we will use the cool `react-navigation-header-buttons` library. Inside the button’s `onPress` method we will send data to the shared instance of `Fire` and pop the navigation stack to go back to the beginning.
+**To make these as simple as possibly we will use the cool `react-navigation-header-buttons` library. Inside the button's `onPress` method we will send data to the shared instance of `Fire` and pop the navigation stack to go back to the beginning.
 
 ```js
 // screens/NewPostScreen.js
@@ -606,9 +606,9 @@ This post has a disappointing ending. 😜😘
 
 I really just wanted to share some of these database paradigms that typically get overlooked. Stuff like pagination, shrinking images, and uploading images with Blob API.
 
-We didn’t cover any of the components as they’re all purely aesthetic 😅: [https://github.com/EvanBacon/firebase-instagram/blob/%40evanbacon/tutorial/components](https://github.com/EvanBacon/firebase-instagram/blob/%40evanbacon/tutorial/components/Item.js)
+We didn't cover any of the components as they're all purely aesthetic 😅: [https://github.com/EvanBacon/firebase-instagram/blob/%40evanbacon/tutorial/components](https://github.com/EvanBacon/firebase-instagram/blob/%40evanbacon/tutorial/components/Item.js)
 
-<TwitterProfile url="https://twitter.com/baconbrix" />
+<Embed url="https://twitter.com/baconbrix" />
 
 [**EvanBacon/firebase-instagram**
 *firebase-instagram - Instagram clone with Firebase Cloud Firestore, Expo, and React Native*github.com](https://github.com/EvanBacon/firebase-instagram/tree/%40evanbacon/tutorial)

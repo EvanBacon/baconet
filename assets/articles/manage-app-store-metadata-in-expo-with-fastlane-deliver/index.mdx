@@ -16,19 +16,19 @@ fastlane deliver --skip_binary_upload
 
 ## I made a lot of apps irresponsibly before I was old enough to take care of them.
 
-I would make more but I hate having to change gears and do creative writing + filling out form data that I’ve done a bunch of times before…
+I would make more but I hate having to change gears and do creative writing + filling out form data that I've done a bunch of times before…
 
 ![](./images/1elJTE0CW_DrbVfby6XxXlA.png)
 
 ## It takes longer to write metadata than it takes to build an Expo app.
 
-But luckily Fastlane provides an awesome tool (or “action”) for us to make this exponentially easier, it’s called [deliver](https://docs.fastlane.tools/actions/deliver/). I avoided it in the past because I thought you needed an .xcproject to make it work, but using the right flags will allow us to make this completely Expo-compatible! (_expatible_?? 🤔)
+But luckily Fastlane provides an awesome tool (or “action”) for us to make this exponentially easier, it's called [deliver](https://docs.fastlane.tools/actions/deliver/). I avoided it in the past because I thought you needed an .xcproject to make it work, but using the right flags will allow us to make this completely Expo-compatible! (_expatible_?? 🤔)
 
 ![](./images/1rfi9DPJ_iJlbO4_otCuuEQ.png)
 
-![Match works with existing apps; it’ll just download the current data.](./images/1ZJq9sYCvzoMBqMOlzcwvlg.png)_Match works with existing apps; it’ll just download the current data._
+![Match works with existing apps; it'll just download the current data.](./images/1ZJq9sYCvzoMBqMOlzcwvlg.png)_Match works with existing apps; it'll just download the current data._
 
-Start by [downloading Fastlane](https://docs.fastlane.tools/#getting-started) if you don’t already have it.
+Start by [downloading Fastlane](https://docs.fastlane.tools/#getting-started) if you don't already have it.
 
 Then, in an Expo project, run `fastlane deliver init`.
 
@@ -48,23 +48,23 @@ Then, in an Expo project, run `fastlane deliver init`.
 
 ![](./images/1tmHELWKkIgcqu6463AyVNQ.png)
 
-![Yeah, I’m never going back.](./images/1crWPzrrWrxKJHGs9LO4E9Q.png)_Yeah, I’m never going back._
+![Yeah, I'm never going back.](./images/1crWPzrrWrxKJHGs9LO4E9Q.png)_Yeah, I'm never going back._
 
-## Now you’re free to edit and bulk refactor.
+## Now you're free to edit and bulk refactor.
 
-This is especially great for screenshots, as manually uploading them takes forever. Until someone can think of a good way to get Fastlane’s screenshot feature working, I recommend using [appure](https://screenshots.appure.io/): it’s pretty fast and easy to use.
+This is especially great for screenshots, as manually uploading them takes forever. Until someone can think of a good way to get Fastlane's screenshot feature working, I recommend using [appure](https://screenshots.appure.io/): it's pretty fast and easy to use.
 
 ![](./images/1HV4vrurdl5GHRBLQ4spVlA.jpeg)
 
 ![Just screenshot your app in ~3 places then appure takes care of the rest](./images/1uGcFoNXiWAN7nL6uYxW6GA.jpeg)_Just screenshot your app in ~3 places then appure takes care of the rest_
 
-## **Sync your changes… it’ll take a few minutes/**seconds**.**
+## **Sync your changes… it'll take a few minutes/**seconds**.**
 
 ```sh
 fastlane deliver --skip_binary_upload
 ```
 
-## Also you’ll get some really **advantageous** warnings.
+## Also you'll get some really **advantageous** warnings.
 
 ```sh
 +-----------+----------------+
@@ -82,7 +82,7 @@ fastlane deliver --skip_binary_upload
 +-----------+----------------+
 ```
 
-And that’s all there is to it! Hopefully this cuts your usage of iTunes Connect ~50% while you continue to build your full suite of My Little Pony workout apps! 🦄
+And that's all there is to it! Hopefully this cuts your usage of iTunes Connect ~50% while you continue to build your full suite of My Little Pony workout apps! 🦄
 
 ## Links
 

@@ -10,19 +10,19 @@ _Note: Expo for web is currently still in beta_.
 
 - Open an existing Expo project, or create a new one with `expo init`.
 
-- Run `expo start --web` to ensure everything is set up correctly. If Expo web is still in beta, you’ll probably be prompted to run `yarn add react-native-web react-dom` and add the `"web"` field to the `platforms` array in the `app.json`.
+- Run `expo start --web` to ensure everything is set up correctly. If Expo web is still in beta, you'll probably be prompted to run `yarn add react-native-web react-dom` and add the `"web"` field to the `platforms` array in the `app.json`.
 
 - After this, you can commit your changes to the branch you want to deploy from.
 
-- Now create a git repo and link it on [Amplify’s web dashboard](http://aws.amazon.com/amplify). For this example (and everything else), I’ll be using Github.
+- Now create a git repo and link it on [Amplify's web dashboard](http://aws.amazon.com/amplify). For this example (and everything else), I'll be using Github.
 
 ![](./images/1ATn_KEgCOXJiCXnh_EdV9A.png)
 
 ![[Create the repo,](https://github.com/new) then link it to your [Amplify account.](http://aws.amazon.com/amplify)](./images/1sCY4LOHnLXhsHZausOrK1w.png)_[Create the repo,](https://github.com/new) then link it to your [Amplify account.](http://aws.amazon.com/amplify)_
 
-After you’ve linked the repo, you can specify which branch you want to deploy from. Then, every time you commit to this branch, it’ll trigger a rebuild and Amplify will automatically republish your changes.
+After you've linked the repo, you can specify which branch you want to deploy from. Then, every time you commit to this branch, it'll trigger a rebuild and Amplify will automatically republish your changes.
 
-![I’m pretty edgy so I deploy from master, but maybe use a “production” branch 😅](./images/1SeYgRQ5EyEGLLTqn_BMMyw.png)_I’m pretty edgy so I deploy from master, but maybe use a “production” branch 😅_
+![I'm pretty edgy so I deploy from master, but maybe use a “production” branch 😅](./images/1SeYgRQ5EyEGLLTqn_BMMyw.png)_I'm pretty edgy so I deploy from master, but maybe use a “production” branch 😅_
 
 Just in case you hit a wall, this is what my project overview page looks like:
 
@@ -40,11 +40,11 @@ At this point Amplify will publish your first build by cloning the repo into a d
 
 [Here is the live version](https://master.d33alyqvzb76gi.amplifyapp.com/)
 
-![I didn’t add anything special to it btw. You can just publish right away.](./images/11sYHIGSa_9qQtl3vT92EZA.png)_I didn’t add anything special to it btw. You can just publish right away._
+![I didn't add anything special to it btw. You can just publish right away.](./images/11sYHIGSa_9qQtl3vT92EZA.png)_I didn't add anything special to it btw. You can just publish right away._
 
-That’s the basics of deploying your app with Amplify! Now you can start adding awesome services that work in both web and native —like [authentication with \*\*Cognito](https://github.com/dabit3/expo-user-authentication)**!
+That's the basics of deploying your app with Amplify! Now you can start adding awesome services that work in both web and native —like [authentication with \*\*Cognito](https://github.com/dabit3/expo-user-authentication)**!
 [**expo/amplify-demo\*\*
 *Deploying an Expo web project to AWS Amplify. Contribute to expo/amplify-demo development by creating an account on…*github.com](https://github.com/expo/amplify-demo)
 
-<!-- If you wanna see more there’s a great tutorial by [Nader Dabit](https://twitter.com/dabit3) here:
-<YouTube ... /> -->
+<!-- If you wanna see more there's a great tutorial by [Nader Dabit](https://twitter.com/dabit3) here:
+<Embed ... /> -->

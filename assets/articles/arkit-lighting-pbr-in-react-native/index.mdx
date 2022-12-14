@@ -1,6 +1,6 @@
 # ARKit Lighting & PBR in React Native
 
-import { Snack, TwitterProfile } from "../../../components/embeds";
+import { Embed } from "../../../components/embeds";
 
 ## Making things look real!!
 
@@ -14,15 +14,15 @@ Somehow these two libraries work insanely well together. This becomes apparent w
 
 ![](./images/18w5KhQAeKfWMTdRmb1Dx0Q.png)
 
-<Snack url="https://snack.expo.io/embedded/@bacon/ar-pbr" />
+<Embed url="https://snack.expo.io/embedded/@bacon/ar-pbr" />
 
 ## Getting Started
 
-This tutorial assumes you know how Expo AR works. If you don’t, here’s a beginner tutorial:
+This tutorial assumes you know how Expo AR works. If you don't, here's a beginner tutorial:
 [**ARKit in React Native Tutorial: The Basics**
-*By now you’ve probably seen some of the crazy things people have been making with ARKit. If you want to make AR stuff…*blog.expo.io](https://blog.expo.io/arkit-in-react-native-tutorial-the-basics-9f839539f0b9)
+*By now you've probably seen some of the crazy things people have been making with ARKit. If you want to make AR stuff…*blog.expo.io](https://blog.expo.io/arkit-in-react-native-tutorial-the-basics-9f839539f0b9)
 
-In today’s tutorial, we’ll be focusing on a few concepts:
+In today's tutorial, we'll be focusing on a few concepts:
 
 - **Setting up PBR & Shadows in three.js**
 
@@ -71,7 +71,7 @@ There are three main lights we need to focus on to get PBR working:
 
 - **Ambient Light:** The general lighting that all objects receive. As far as lights go, think of it as the: “participation award” light. 😜
 
-- **Directional Light:** This is used for shadow, it can be upsetting if you don’t know how to use it, hopefully that doesn’t happen.
+- **Directional Light:** This is used for shadow, it can be upsetting if you don't know how to use it, hopefully that doesn't happen.
 
 - **Point Light:** This is, finally, where we apply the dynamic ARKit light estimation. A point light will be used for our dynamic lighting system.
 
@@ -81,7 +81,7 @@ ARKit returns two main values for dynamic light estimation; they are, more or le
 
 - Lumens: The brightness / intensity of the light.
 
-In expo-three I’ve included a node called AR.Light that extends Point Light and automatically takes care of converting these values. 💡 If you like learning , then here’s the source:
+In expo-three I've included a node called AR.Light that extends Point Light and automatically takes care of converting these values. 💡 If you like learning , then here's the source:
 [**Light.js**
 *expo-three - Utilities for using THREE.js on Expo*github.com](https://github.com/expo/expo-three/blob/master/lib/AR/Light.js)
 
@@ -118,11 +118,11 @@ scene.add(this.shadowLight);
 scene.add(this.shadowLight.target);
 ```
 
-That frustrating thing I was telling you about is in regards to shadow light positioning. If you set the position it will move one side of the direction, but keep the other side stuck at the center. This means that the shadow won’t have full coverage. Luckily there is a shadowLight.target prop, easy just set that position…it didn’t work?…you need to add it to the scene :[ That was the hardest part, so kick back :)
+That frustrating thing I was telling you about is in regards to shadow light positioning. If you set the position it will move one side of the direction, but keep the other side stuck at the center. This means that the shadow won't have full coverage. Luckily there is a shadowLight.target prop, easy just set that position…it didn't work?…you need to add it to the scene :[ That was the hardest part, so kick back :)
 
 ### Dynamic light
 
-Next we want to add our dynamic AR Light. It’s important that we also call `point.update()` each frame so it will get the newest estimation from ARKit:
+Next we want to add our dynamic AR Light. It's important that we also call `point.update()` each frame so it will get the newest estimation from ARKit:
 
 ```js
 const point = new ThreeAR.Light();
@@ -192,7 +192,7 @@ Apply this to a cube and tell it to cast shadows:
 mesh.castShadow = true;
 ```
 
-Now, the last thing we need is something to receive the shadow. It has to be transparent, though…well, that’s why `ExpoTHREE.AR.ShadowFloor()` exists :) Just add it to your scene and you’re good to go! We’ll also use our dynamic light to set the shadow depth.
+Now, the last thing we need is something to receive the shadow. It has to be transparent, though…well, that's why `ExpoTHREE.AR.ShadowFloor()` exists :) Just add it to your scene and you're good to go! We'll also use our dynamic light to set the shadow depth.
 
 ```js
 const shadowFloor = new ExpoTHREE.AR.ShadowFloor({
@@ -206,15 +206,20 @@ scene.add(shadowFloor);
 shadowFloor.opacity = this.arPointLight.intensity;
 ```
 
-Aight, now you’ve created light, shadows, and you’re rendering something that looks arguably pretty real!
+Aight, now you've created light, shadows, and you're rendering something that looks arguably pretty real!
 
 ## Thanks for reading
 
 Hope this helps — let me know in the comments below if something deprecates!
 
-<TwitterProfile url="https://twitter.com/baconbrix" />
+<Embed url="https://twitter.com/baconbrix" />
+<Embed url="https://github.com/expo/expo-three" />
+<Embed url="https://docs.expo.io/versions/latest/sdk/AR" />
 
+<!--
 [**expo/expo-three**
 *expo-three — Utilities for using THREE.js on Expo*github.com](https://github.com/expo/expo-three)
+
 [**AR — Expo Documentation**
 *SDK API Reference Introduction AR Accelerometer Admob Amplitude AppLoading ART Asset Audio AuthSession AV…*docs.expo.io](https://docs.expo.io/versions/latest/sdk/AR)
+-->

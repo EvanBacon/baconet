@@ -1,6 +1,6 @@
 # Media Queries with React Native for iOS, Android, and Web
 
-import { TwitterProfile } from "../../../components/embeds";
+import { Embed } from "../../../components/embeds";
 
 ## The easiest way to create media queries universally!
 
@@ -8,9 +8,9 @@ import { TwitterProfile } from "../../../components/embeds";
 
 ![](./images/19u0qwz1W4sKsdwW4BN-Qgw.png)
 
-A big open question we’ve had while developing Expo web is how would someone go about creating media queries.
+A big open question we've had while developing Expo web is how would someone go about creating media queries.
 
-A media query is a style rule that can be toggled based on device conditions. They’re a critical part of _easily_ building a responsive layout that works on many different screen sizes or orientations.
+A media query is a style rule that can be toggled based on device conditions. They're a critical part of _easily_ building a responsive layout that works on many different screen sizes or orientations.
 
 Because there are already so many incredible libraries out there for using media queries with React I figured the best approach for a universal system would be to polyfill native and reuse the existing eco-system. The result is `@expo/match-media` which enables you to use most of your favorite responsive React libraries with Expo.
 
@@ -18,7 +18,7 @@ More specifically it uses the native Screen Orientation module that comes with E
 
 ## Tutorial
 
-For this example I’ll show you how to use [react-responsive](https://github.com/contra/react-responsive) universally in an Expo app. Of course [the readme](https://github.com/expo/match-media) will always have the most up-to-date information, but this probably won’t change much. 😁
+For this example I'll show you how to use [react-responsive](https://github.com/contra/react-responsive) universally in an Expo app. Of course [the readme](https://github.com/expo/match-media) will always have the most up-to-date information, but this probably won't change much. 😁
 
 First Install the packages:
 
@@ -26,7 +26,7 @@ First Install the packages:
 yarn add @expo/match-media react-responsive
 ```
 
-Then simply import the package at the root of your project (it’s a side-effect):
+Then simply import the package at the root of your project (it's a side-effect):
 
 ```js
 import "@expo/match-media";
@@ -52,13 +52,13 @@ export default function App() {
 }
 ```
 
-It’s that simple! Check out the docs for more information on what you can do with [React Responsive](https://github.com/evanbacon/react-responsive#with-hooks)! Now get out there and get queryinginging!
+It's that simple! Check out the docs for more information on what you can do with [React Responsive](https://github.com/evanbacon/react-responsive#with-hooks)! Now get out there and get queryinginging!
 
 ## Thanks for Reading
 
 If you found this post useful then be sure to clap 👏 and follow for more :]
 
-<TwitterProfile url="https://twitter.com/baconbrix" />
+<Embed url="https://twitter.com/baconbrix" />
 
 [**EvanBacon - Overview**
 *Sign up for your own profile on GitHub, the best place to host code, manage projects, and build software alongside 40…*github.com](https://github.com/evanbacon)

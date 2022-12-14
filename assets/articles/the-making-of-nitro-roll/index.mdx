@@ -4,9 +4,9 @@
 
 ![](./images/1D9OjVDf61guo6fz1--8mGQ.png)
 
-A little bit ago I was rewatching my pop’s favorite movie, an ancient classic called Tron.
+A little bit ago I was rewatching my pop's favorite movie, an ancient classic called Tron.
 
-I love Tron, not because it’s a movie and there’s no reading required, but because the game world is procedurally generated and I’m a very lazy man! So I can really relate to a guy who makes a game that makes itself… 🤗😁😅
+I love Tron, not because it's a movie and there's no reading required, but because the game world is procedurally generated and I'm a very lazy man! So I can really relate to a guy who makes a game that makes itself… 🤗😁😅
 
 Something I tend to forget is that Tron had a lot more games than just the Light-Cycles. This got me wondering if I could make a game that felt like it lived in the Troniverse 🤓 — something cyber-retro with an underlying puzzle feel to it and, of course, procedurally generated.
 
@@ -18,21 +18,21 @@ This is a simple, low-stress game where you move at your own pace through a endl
 
 ### Unique aesthetic
 
-I wanted the game to feel like Tron without directly copying any of the actual styles. One way to go about this would be to run a second scene with line materials and a blur effect on the render loop. This would give us a nice neon look, but that was veering a little too close to [Sunset Cyberspace](https://blog.expo.io/taking-a-stroll-through-sunset-cyberspace-73b125cf6476). Instead I used a _Sobel effect_ to create a neo-dark void feeling. **Sobel–Feldman operator **is a function that emphasizes edges; this isn’t typically used for games because it’s a pretty intensive filter, but I liked the feeling more than a typical cel-shader.
+I wanted the game to feel like Tron without directly copying any of the actual styles. One way to go about this would be to run a second scene with line materials and a blur effect on the render loop. This would give us a nice neon look, but that was veering a little too close to [Sunset Cyberspace](https://blog.expo.io/taking-a-stroll-through-sunset-cyberspace-73b125cf6476). Instead I used a _Sobel effect_ to create a neo-dark void feeling. **Sobel–Feldman operator **is a function that emphasizes edges; this isn't typically used for games because it's a pretty intensive filter, but I liked the feeling more than a typical cel-shader.
 
 ### Soft release
 
-I originally pushed this game to the App Store a couple weeks ago. I had a beta but didn’t want to deal with the nonsense of pushing through Apple twice. After it was deployed, I asked some friends to try it out and let me know what they think.
+I originally pushed this game to the App Store a couple weeks ago. I had a beta but didn't want to deal with the nonsense of pushing through Apple twice. After it was deployed, I asked some friends to try it out and let me know what they think.
 
 Originally the game was even simpler and way too easy. Since nothing changed and nothing got harder, the score was really just an indication of how long you played and not how good you were 😵. With this feedback, I looked into ways to make the game feel different each round, and get progressively harder.
 
-Making the blocks transform and move differently gave the game a more unique feeling and almost added a leveling effect to the experience. I was able to push it instantly and didn’t have to go pull a test flight version and submit a real build — it was already there! 🤡
+Making the blocks transform and move differently gave the game a more unique feeling and almost added a leveling effect to the experience. I was able to push it instantly and didn't have to go pull a test flight version and submit a real build — it was already there! 🤡
 
 ### Performance problems
 
 During the build I used GSAP, a popular animation library for tweening values. I kept noticing huge performance hits whenever I would initialize an animation. React Native is not great at creating these huge classes on the fly, so I opted to build the animations directly into the render loop of each entity. This dramatically increased performance and made the game feel silky smooth.
 
-## So what’s new?
+## So what's new?
 
 With each game, I try to add new features and through the awesomeness of Expo, I roll them out to all my old games. In Nitro Roll I really focused in on some of the more engaging features that devs could just drop in.
 
@@ -42,13 +42,13 @@ I added a new component called [Polaroid](https://github.com/EvanBacon/Expo-Nitr
 
 ### Daily Streak
 
-I added some Firebase logic that has no UI at the moment; it’s called “Daily Streak”. This is a great way to engage users and reward them for their loyalty🎂. It works by getting the player’s “last rewarded timestamp” and then comparing it to the current time.
+I added some Firebase logic that has no UI at the moment; it's called “Daily Streak”. This is a great way to engage users and reward them for their loyalty🎂. It works by getting the player's “last rewarded timestamp” and then comparing it to the current time.
 
 ![](./images/1L6fj-WaP3-eKuJ0HQuROhg.gif)
 
-Initially, the “last rewarded timestamp” won’t exist, so we set the streak to 1 (rewarding the player for their participation. 😝). The reason we do this is because it introduces them to the concept of returning to get a reward.
+Initially, the “last rewarded timestamp” won't exist, so we set the streak to 1 (rewarding the player for their participation. 😝). The reason we do this is because it introduces them to the concept of returning to get a reward.
 
-Say the player opens the app again an hour later; we’d compare the times and see that it’s less than 24 hours so the appropriate action would be to do nothing. If the player comes back the next day, we increment the counter, and update the last reward time. Finally if the player comes more than 48 hours later, we unfortunately restart the streak, setting it back at “1”, then giving them a back-handed reward which really serves to let them know that they have to start from scratch.
+Say the player opens the app again an hour later; we'd compare the times and see that it's less than 24 hours so the appropriate action would be to do nothing. If the player comes back the next day, we increment the counter, and update the last reward time. Finally if the player comes more than 48 hours later, we unfortunately restart the streak, setting it back at “1”, then giving them a back-handed reward which really serves to let them know that they have to start from scratch.
 
 Notice that by rewarding them for doing nothing we save ourselves from having to add 2 extra states, “introduction to the feature”, and “you messed up, start over”. Laziness wins again :}
 
@@ -56,7 +56,7 @@ Notice that by rewarding them for doing nothing we save ourselves from having to
 
 ### Currency system [WIP]
 
-Another thing worth noting is the functions added for collecting and tracking currency. This is a basic Firebase transaction used to add or subtract and in-game currency. I don’t use it anywhere in the game as purchases aren’t supported at the moment.
+Another thing worth noting is the functions added for collecting and tracking currency. This is a basic Firebase transaction used to add or subtract and in-game currency. I don't use it anywhere in the game as purchases aren't supported at the moment.
 
 ```js
 addCurrency = amount => new Promise((res, rej) =>
@@ -78,7 +78,7 @@ addCurrency = amount => new Promise((res, rej) =>
 
 ## Finally
 
-Through components Expo allows us to eliminate all of the boring reoccurring parts of making a game, so we can focus on building a fun, engaging experience. Let me know below or on [twitter](https://twitter.com/Baconbrix) what common game mechanics I’m missing or should investigate adding.
+Through components Expo allows us to eliminate all of the boring reoccurring parts of making a game, so we can focus on building a fun, engaging experience. Let me know below or on [twitter](https://twitter.com/Baconbrix) what common game mechanics I'm missing or should investigate adding.
 
 ### Links
 

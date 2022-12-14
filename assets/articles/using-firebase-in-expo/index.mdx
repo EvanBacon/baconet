@@ -1,6 +1,6 @@
 # Using Firebase in Expo
 
-import { TwitterProfile, Tweet, Gist } from "../../../components/embeds";
+import { Embed } from "../../../components/embeds";
 
 ## Build simple backends for your native app
 
@@ -56,17 +56,17 @@ Here is a boilerplate: [https://github.com/EvanBacon/expo-native-firebase](https
 
 ### Why Detached Expo?
 
-In the past if you wanted to add native Firebase to Expo, you needed to be an expert on the inter-workings of both libraries. This is counterintuitive to both Expo and Firebase’s philosophy of **“it just works”**.
+In the past if you wanted to add native Firebase to Expo, you needed to be an expert on the inter-workings of both libraries. This is counterintuitive to both Expo and Firebase's philosophy of **“it just works”**.
 
 These Unimodules were designed to be used in detached ExpoKit & vanilla React Native. Each module has detailed instructions on how to install, you should refer to the React Native Firebase docs on more detailed usage [https://rnfirebase.io/docs/master/getting-started](https://rnfirebase.io/docs/master/getting-started).
 
 The goal was to make this as close to **React-Native-Firebase** as possible. We love how RNFirebase matches the Web SDK, this makes migration and cross-platform development a dream.
 
-### What’s New?
+### What's New?
 
-The biggest change we made was moving each service into it’s own library. This means that each `expo-firebase` module will manage all of it’s own native code. Effectively cutting down on the amount of native code that you as a developer have to interact with.
+The biggest change we made was moving each service into it's own library. This means that each `expo-firebase` module will manage all of it's own native code. Effectively cutting down on the amount of native code that you as a developer have to interact with.
 
-Another huge request we’ve gotten is to make the apps slimmer. By having separate modules we can enable developers to create much slimmer apps. If there is a library you don’t want, or don’t need, just don’t include it!
+Another huge request we've gotten is to make the apps slimmer. By having separate modules we can enable developers to create much slimmer apps. If there is a library you don't want, or don't need, just don't include it!
 
 ### How to integrate
 
@@ -131,7 +131,7 @@ The more complex libraries will require 2–3 extra steps, these are:
 
 - Crashlytics
 
-## What’s next
+## What's next
 
 Ideally we will include most of the Firebase suite in the Expo client. This has been a very difficult challenge as Firebase is meant to be initialized natively.
 
@@ -143,11 +143,15 @@ Features like `Dynamic Linking`, `Invites`, and `Phone Auth` require custom **UR
 
 Feel free to reach out on [forums](http://forums.expo.io) or on twitter `**@expo`\*\* if you have any questions! Also follow and subscribe to stay up-to-date on the Firebase integration 💙🔥
 
-<TwitterProfile url="https://twitter.com/baconbrix" />
+<Embed url="https://twitter.com/baconbrix" />
 
-[**EvanBacon/expo-native-firebase**
-*An ExpoKit v30 project with expo-firebase added. . Contribute to EvanBacon/expo-native-firebase development by creating…*github.com](https://github.com/EvanBacon/expo-native-firebase)
-[**Expo (@expo) | Twitter**
-*The latest Tweets from Expo (@expo). Make & use native mobile apps written in just JavaScript using React Native. (Like…*twitter.com](https://twitter.com/expo)
+<Embed url="https://github.com/EvanBacon/expo-native-firebase" />
+
+<Embed url="https://twitter.com/expo" />
+
+<Embed url="https://rnfirebase.io/docs/master/getting-started" />
+
+<!--
 [\**React Native Firebase - Simple Firebase integration for React Native\*\*
 *Simple Firebase integration for React Native with support for 10+ Firebase modules including Authentication, Analytics…\*rnfirebase.io](https://rnfirebase.io/docs/master/getting-started)
+-->
