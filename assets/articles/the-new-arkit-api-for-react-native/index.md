@@ -1,0 +1,124 @@
+
+# The New ARKit API for React Native…
+
+## …is pretty neat.
+
+With the release of [**Expo SDK 28](https://blog.expo.io/expo-sdk-v28-0-0-is-now-available-f30e8253b530), **we finally have access to all the core features of ARKit through `**Expo.AR`**! Not only have we added 1.0 features like hit tests, and full light estimation, but you also get all the newest ARKit 1.5 stuff as well! (just as 2.0 is being released 😂) This update also allows for AR in any orientation or viewport size, so you can use AR on iPads, landscape devices, and the iPhone X!
+
+I’ve also introduced a lot of breaking changes, which can be found here too! Because the entire API was rewritten, you may run into some bumps while migrating. Check out our [official docs](https://docs.expo.io/versions/v28.0.0/sdk/AR) for more information about API usage and the string constants included.
+
+Meanwhile, if you’d like to just jump in, here’s [a basic scene with AR enabled](https://snack.expo.io/@bacon/basic-ar-scene).
+
+## A breakdown of all the new stuff in `Expo.AR`
+
+### Core Features
+
+* `performHitTest`: Gets the 3D position for a point on the screen.
+
+* `getARMatrices`: The matrix needed for the camera updates.
+
+* `setDetectionImagesAsync`: Registers images for AR Image recognition.
+
+* `getCurrentFrame`: Retrieves data lighting, facial, anchor, data from ARKit.
+
+* `getCameraTexture`: The live camera stream.
+
+### Running State
+
+* `startAsync`: Creates an AR Session.
+
+* `stopAsync`: Destroys the AR Session you created.
+
+* `reset`/`resume`/`pause`: As the names imply, you can now control when your session is running / getting data.
+
+### Callbacks
+
+Rather than check for new data each frame, you can now subscribe to updates.
+
+* `onFrameDidUpdate`: Called when new frame data is ready.
+
+* `onDidFailWithError`: When the AR Session throws an error, you can evaluate it here.
+
+* `onAnchorsDidUpdate`: Used to track when planes/images/faces have been updated.
+
+* `onCameraDidChangeTrackingState`: If the camera needs more information or has an issue with tracking, you can use this method to find why. ([Here’s an example on how to use it](https://github.com/expo/expo-graphics/blob/master/lib/ARCameraState.js).)
+
+* `onSessionWasInterrupted`: This can be called when the app leaves the foreground. The session won’t interrupt right away so this will be more accurate than using `ReactNative.AppState.` ([Usage example](https://github.com/expo/expo-graphics/blob/d0ca8695d2531e1cf2d34adb43282d480fdd4e16/lib/ARRunningState.js#L31-L33).)
+
+* `onSessionInterruptionEnded`: When the AR Session is no longer being interrupted.
+
+### Getters & Setters
+
+* `set/get PlaneDetection`: Use this to toggle between Vertical (1.5 only) and Horizontal detection.
+
+* `set/get LightEstimationEnabled`: If you don’t want ARKit to collect Light Estimation data, you can turn it off with this.
+
+* `set/get AutoFocusEnabled`: Toggle the Auto Focus off (1.5 only).
+
+* `set/get WorldAlignment`: Set the world alignment to track gravity, gravityAndHeading, or camera orientation. (You mostly won’t need to mess with this.)
+
+* `set/get ProvidesAudioData`: A useless method to toggle Audio Data; use `Expo.AV` instead.
+
+* `setConfigurationAsync`: Used to switch between the front (iPhone X only) and rear cameras.
+
+* `setWorldOriginAsync`: Given a Matrix4, this function will set the scene’s (0,0,0) to that location.
+
+### Availability
+
+* `isAvailable`: Prevents Android, simulators, TVs, sub-2015 devices, and bundled support (if you included it in your app store build).
+
+* `getUnavailabilityReason`: This will return the reason why you can’t access ARKit.
+
+* `getSupportedVideoFormats`: An array of formats (resolution, fps) used in the camera. The first element is the default format.
+
+* `isConfigurationAvailable`: Used to determine which cameras you can use. This is a little janky with front camera due to some Apple rules. For front camera, you should test for availability and for whether the phone is an iPhone X.
+
+* `isRearCameraAvailable`: An alias for: `isConfigurationAvailable(TrackingConfigurations.World)`.
+
+* `getVersion`: The version of ARKit that’s supported. If the phone has iOS 11.3+ then it’ll return “1.5”, otherwise you will get “1.0”. v1 cannot use image detection, auto focus, high-res by default, vertical plane detection.
+
+## Breaking Changes
+
+Most of the lower-level API is managed by expo-three. **Three.js** is a popular 3D library; we use this to render our ARKit scenes. `expo-three: 3.0.0-alpha.1` now has a dedicated `ExpoTHREE.AR…` for all features related to 3D rendering.
+
+* AR is no longer a part of the `ExponentGLViewManager` Native Module. You can now access AR bridge methods through `ExponentAR`.
+
+* `arSession` =&gt; Removed, to get texture use: `AR.getCameraTexture()`
+
+* `Expo.GLView.startARSessionAsync()` =&gt; `Expo.AR.startAsync()`
+
+* `Expo.GLView.stopARSessionAsync()` =&gt; `Expo.AR.stopAsync()`
+
+* `Expo.GLView.getARMatrices(arsession, width, height, near, far)` =&gt; `Expo.AR.getARMatrices(near, far)`
+
+* `ExpoTHREE.createARCamera() `=&gt; `new ExpoTHREE.AR.Camera()`
+
+* `ExpoTHREE.createRenderer()` =&gt; `new ExpoTHREE.Renderer()`
+
+* `ExpoTHREE.createARBackgroundTexture()` =&gt; `new ExpoTHREE.AR.BackgroundTexture()`
+
+* `ExpoTHREE.getPlanes()` =&gt; `Expo.AR.getCurrentFrame({[Expo.AR.FrameAttributes.Anchors]: {}})`
+
+* `ExpoTHREE.getRawFeaturePoints()` =&gt; `Expo.AR.getCurrentFrame({[Expo.AR.FrameAttributes.RawFeaturePoints]: true }})`
+
+* `ExpoGraphics.View.arEnabled` =&gt; `ExpoGraphics.View.isArEnabled`
+
+* `ExpoGraphics.View.arTrackingConfiguration` is also required to startup ARKit.
+
+## What’s next?
+
+This is all a lot of new stuff, and 3D things can be tricky on their own. Because of this, I’ll be writing more about `Expo.AR` to show you how you can implement different popular features like PBR.
+
+A good place to get started learning about Expo.AR is in the [expo-three example](https://github.com/expo/expo-three/tree/master/example/screens/AR). Of course if you find any issues with AR, feel free to [open an issue](https://github.com/expo/expo-three/issues).
+
+If you have any questions you can post them on the [forums](https://forums.expo.io/) or tweet at us —@baconbrix (me) or (if you already have me blocked) @expo (which will then be sent to me).
+[**Evan Bacon 🥓 (@Baconbrix) | Twitter**
+*The latest Tweets from Evan Bacon 🥓 (@Baconbrix). 20💙Building dope apps for @expo🔥 Lego master builder😱Son of…*twitter.com](https://twitter.com/baconbrix)
+
+Send feature requests (that aren’t ARCore, cuz it’s already there) to our canny.
+[**Feature Requests - Expo**
+*With Expo, you can write iOS and Android experiences in JavaScript using React Native.*expo.canny.io](https://expo.canny.io/feature-requests)
+
+Check out the dope rendering library.
+[**expo/expo-three**
+*expo-three - Utilities for using THREE.js on Expo*github.com](https://github.com/expo/expo-three/tree/master/example/screens/AR)

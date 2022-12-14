@@ -1,0 +1,85 @@
+
+# Building A Connected Game With Expo
+
+## Open Source Cross-Platform Javascript Game
+
+![](./images/16Jf-wEvycaJ7z9MvBWn1Pg.png)
+
+After developing my last game [Expo Sunset Cyberspace](https://blog.expo.io/taking-a-stroll-through-sunset-cyberspace-73b125cf6476), the biggest thing I noticed was how competitive my friends were. At the time, we would just share screenshots of our score. This being the future and all, I figured we may as well make this the centerpiece of our gaming experience.
+> **Stack: Expo, Three, Firebase**
+
+### Game Concept
+
+This game has an extremely simple concept: tap a circle when it lines up with a target, then another circle pivots around the first circle, and you get two chances to land it on the next target.
+
+### Scoring Points
+
+To connect it, I used *rematch* (a dope Redux library) to globally register the score every time the user scored a point. When the score changes, we check to see if our new score is better than our previous best score; if so we update our Firebase firestore with the new best score.
+
+Using *rematch, *I could also persist the best score so that when we restart the app, it’s saved into memory!
+
+### Procedural Games FTW!
+
+It took me only ~15 hours to code this, in its entirety. Not having to make assets saved me a lot of time.
+
+**Lazy Tip from a Lazy Boy:** I recommend using flat shading and 3D primitives to avoid having to create art for your game. Saves tons of time 🍔
+
+![Consider it a Life-Hack 😅](./images/1FQA1LHsEFsSGkMX-qyzizA.gif)*Consider it a Life-Hack 😅*
+
+## **Non-Invasive Social Integration**
+
+The formula for making a great Expo app boils down to just how quickly you can get to the experience.
+
+Most apps nowadays have a social aspect built in, but the problem with these are their annoying sign-in screens. No user wants to give personal information or private access to a new app that they have no clue about!
+
+### How hard could it be?
+
+The answer is very, very… not hard at all! 😘 🔥 Firebase provides us with a good trial state: **anonymous authentication**!
+
+When the app starts, we initialize our Firebase app and check if the user is logged in. In most apps this would be where a sign-up page butts in! But in Pillar Valley, we anonymously authenticate the user, and store the [device’s metadata](https://docs.expo.io/versions/latest/sdk/constants.html#expoconstantsdevicename) in our database.
+
+### Presentation
+
+After this we just need a basic compound query that filters our users for slugs, then sorts them by score. Add that to a paging FlatList and you’re good to go!
+
+## Adding all the other stuff you’d find in a game
+
+I looked at other games and noticed they all have a ton of things in common — things we should really just have components for—which I’ve now added for all Expo users to build into their next game:
+
+* **Share Button**: 💬 This takes a screenshot, and adds the name of the app to the app URL (from the app.json) and of course slaps my Twitter handle in it “[@baconbrix](https://twitter.com/Baconbrix)”. If we haven’t yet taken a screen shot of the game, then the button won’t render; this creates a nice effect that shows how we care about you playing the game more than we care about you sharing it! ❤️
+
+* **“Rate The App” Button**: ⭐️ Inspired by how I add 👏 clap emojis in my Medium articles. Now you too can manipulate, er, influence, people by putting a star on a button and having that button link to the App Store! 😄 This component pulls the app store / play store URL from the app.json: if it isn’t available, the button won’t render; if it is available, then we should link you to it!
+
+* **Mute Button**: 🗣 This was an easy one: just connect the state of our Audio singleton to our rematch redux (if it’s muted that we don’t play anything). This is also a good switch to persist in our redux as users typically don’t like having to mute every time!
+
+* **Leaderboard button**: This pushes a screen over our game using React Navigation.
+
+## Deployment
+
+Usually I would just deploy to the experience to Expo and be done with it. But recently, I read about [Julia Qiu](https://medium.com/@juliaqiuxy)’s [experience with releasing Slope Ninja](https://blog.expo.io/learning-how-to-code-one-email-at-a-time-6b63990644a1), so I had to try [deploying to the App Store](https://docs.expo.io/versions/latest/guides/app-stores.html#content) myself. It was so much more enjoyable than I could’ve ever imagined (maybe 27x easier than native deployment).
+
+## Sharing it around the web
+
+Finally when I pushed the app to all three providers, I uploaded the source code to Github, and tweeted it out! The response was great, and it was fun seeing the leader board fill up with all my favorite programmers from around the Twitter-verse, competing to be number one!! (As I write this, [Catalin MIRON](https://twitter.com/mironcatalin) is leading the pack with 240 points 🔥)
+
+The best part about working with Expo is the incredible community — I’m so motivated by all the support everyone gives one another.
+
+**If you haven’t yet, I strongly recommend [joining our community Slack](https://slack.expo.io/).**
+
+![](./images/1B6YVdLJlpSfTeZhqPjkcaA.gif)
+
+## Finally
+
+Creating games in Expo is super fast and really rewarding, the deployment is easy, and the codebase is simple! I have a lot of fun doing it, and it reminds me of why I learned to code!! 🙌
+
+### Links
+
+For all my little coders out there who scrolled to the very bottom instantly, I’ve got what you need! 🔥 😇 ⭐️ ❤️ 👏 😄
+[**EvanBacon/Expo-Pillar-Valley**
+*Expo-Pillar-Valley - A cross-platform video game built with Expo, three.js, and Firebase!*github.com](https://github.com/EvanBacon/Expo-Pillar-Valley/)
+[**Pillar Valley on Expo**
+*Immerse yourself in a suave world of zen*expo.io](https://expo.io/@bacon/pillar-valley)
+[**Pillar Valley on the App Store**
+*Read reviews, compare customer ratings, see screenshots, and learn more about Pillar Valley. Download Pillar Valley and…*itunes.apple.com](https://itunes.apple.com/us/app/pillar-valley/id1336398804?ls=1&mt=8)
+[**Pillar Valley - Android Apps on Google Play**
+*Immerse yourself in a suave world of zen*play.google.com](https://play.google.com/store/apps/details?id=com.evanbacon.pillarvalley)

@@ -1,0 +1,120 @@
+
+# Hit Testing in ARKit
+
+## A React Native Tutorial
+
+One of the coolest parts of ARKit is its ability to spot and stick to surfaces. Today we’re going to talk about how to do this with React Native.
+
+![Tapping to add a block](./images/1M4xJ7sm2me61xszk9gQj4g.gif)*Tapping to add a block*
+SyntaxError: Unexpected token w in JSON at position 10
+
+## Getting Started
+
+This tutorial assumes you’re familiar with:
+
+* React Native
+
+* Expo.AR
+
+* Sparrow migration patterns
+
+Go ahead and open the [starter project](https://snack.expo.io/@bacon/ar-hit-test-starter) as we quickly cover what’s provided in the starter:
+
+### Touchable View
+
+This view will wrap the ReactNative.PanResponder and allow us to just pass in a `onTouchesBegan` prop (holla at a iOS native dev). If you’re curious about how the PanResponder works, check out [the docs](https://facebook.github.io/react-native/docs/panresponder.html).
+
+Or forget that noise and just use the much better [GestureHandler](https://docs.expo.io/versions/latest/sdk/gesture-handler).
+
+### Basic AR Scene
+
+This is a generic three.js scene (learn more about this in my [past AR tutorials](https://blog.expo.io/arkit-in-react-native-tutorial-the-basics-9f839539f0b9).) three.js is the super popular 3D framework we use to render things in Expo.
+
+## Coding Stuff
+
+We’ll just be working in the `onTouchesBegan` function in the `App.js`. This function will be invoked when `onPanResponderGrant` is called in the `TouchableView` .
+
+```
+onTouchesBegan = async ({ locationX: x, locationY: y }) => {
+
+  // 1.
+  if (!this.renderer) {
+    return;
+  }
+
+  // Get the size of the renderer
+  const size = this.renderer.getSize();
+
+  // 2.
+  const { hitTest } = await AR.performHitTest(
+    {
+      x: x / size.width,
+      y: y / size.height,
+    },
+    // 3.
+    AR.HitTestResultTypes.HorizontalPlane
+  );
+};
+```
+
+
+1. Prevent doing anything if the scene hasn’t been built yet.
+
+1. To use the AR hit test function to invoke the [native function](https://developer.apple.com/documentation/arkit/arframe/2875718-hittest?language=objc), we also need to pass in a normalized point. Ex: { x: 0.5, y: 0.5} is the center of the screen; {x: 0, y: 0} is the top left of the screen.
+
+1. We need to pass in the `HitTestResultTypes` that we want to get. For this we’ll use [HorizontalPlane](https://developer.apple.com/documentation/arkit/arhittestresulttype/arhittestresulttypeestimatedhorizontalplane?language=objc).
+
+```
+// 1.
+for (let hit of hitTest) {
+  const { worldTransform } = hit;
+  // 2.
+  if (this.cube) {
+    this.scene.remove(this.cube);
+  }
+
+  // 3.
+  const geometry = new THREE.BoxGeometry(0.0254, 0.0254, 0.0254);
+  const material = new THREE.MeshPhongMaterial({
+    color: 0x00ff00,
+  });
+  this.cube = new THREE.Mesh(geometry, material);
+  // Add the cube to the scene
+  this.scene.add(this.cube);
+
+  // 4.
+  this.cube.matrixAutoUpdate = false;
+
+  const matrix = new THREE.Matrix4();
+  matrix.fromArray(worldTransform);
+
+  // 5.
+  this.cube.applyMatrix(matrix);
+  this.cube.updateMatrix();
+}
+```
+
+
+1. Traverse the hit test results using a `for loop` and deconstruct the worldTransform from the hit.
+
+1. If the scene already contains a cube (second tap), then we need to remove it,
+
+1. Create a three.js cube with a green material and add the cube to the scene.
+
+1. Turn off the auto matrix update, create a new Matrix 4 and convert the matrix array that was returned. The matrix array is an array of 16 numbers (4x4).
+
+1. Finally we will apply the matrix to the cube and manually update the cube.
+
+A quick note on the Matrix4: a matrix represents the position, scale, and orientation — so basically just everything. :]
+
+Anyways that’s all I’ve got for hit testing. I hope you learned something special! ❤ 🦄
+
+## Links
+
+Hey there, hope you jumped to the bottom. Here’s what we covered: [https://snack.expo.io/@bacon/ar-hit-test](https://snack.expo.io/@bacon/ar-hit-test)
+
+Block or report me on Twitter 🚫:
+[**Evan Bacon 🥓 (@Baconbrix) | Twitter**
+*The latest Tweets from Evan Bacon 🥓 (@Baconbrix). 20💙Building dope apps for @expo🔥 Lego master builder😱Son of…*twitter.com](https://twitter.com/Baconbrix)
+
+And show people the stuff you made on [our forums](http://forums.expo.io) (!) ⭐️💙 so I can throw you some stars 😉

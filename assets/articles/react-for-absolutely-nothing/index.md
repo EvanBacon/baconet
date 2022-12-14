@@ -1,0 +1,85 @@
+
+# React for Absolutely Nothing
+
+## Pluto the not planet
+
+React is an extremely powerful library, you can create a renderer for literally **anything! **So that got me thinking why isn’t there a React renderer for nothing? I mean after all doing nothing is one of my favorite hobbies.
+
+I would just sit and think why is it that I can use all of my favorite React features to build universal cross-platform applications, or full VR experiences, but not the thing I value most — After much thought (and noticing that the name react-nothing was available on NPM) I realized I must’ve just been the first person to have thought of this :]
+
+And now I’m very proud to announce that this problem has a solution, and that solution is [**React for Nothing](https://github.com/EvanBacon/react-nothing)!** Finally you can write React code that renders to absolutely nothing. It has a full reconciler, meaning you can write classes, hooks, components, use JSX and then render them nowhere.
+
+### Features:
+
+* Completely stress-free development cycle
+
+* No messy codebases to manage
+
+* Never need to worry about platform quirks disrupting your React development experience
+
+* Never need to worry about platform quirks disrupting your React development experience.
+> # Conceptually the host environment is non-existent.
+
+Before *React for Nothing,* React had a lot of catching up to do. So many other libraries could be used for practically nothing, but as a proud member of the React community I felt it was my responsibility to push the bar further.
+
+## Performance
+
+…is incredible. Because in the most literal sense you render nothing, this makes the performance virtually perfect. If you compare this library to any other renderer you’ll quickly realize that the “rendering” phase is what bogs down performance, we circumvent this problem by skipping it entirely.
+
+Surprisingly there isn’t a great community around testing nothing so you just need to eye-ball it most of the time.
+
+## Who’s Using Nothing?
+
+You may wonder who the target demographic would be for something like this, the answer is a resounding everyone. Just by reading this article you too are effectively doing nothing.
+
+## Getting Started
+
+Check out the example app for quick usage: [Example](https://github.com/EvanBacon/react-native-nothing/tree/master/example)
+
+Install the library with the following:
+
+```
+yarn add react-nothing
+```
+
+
+Then use it like you would any other React renderer:
+
+```
+import React, { useState, useEffect } from 'react';
+
+import { render } from 'react-nothing';
+
+function Example() { 
+  const [value, setValue] = useState(0);
+
+  useEffect(() => { 
+    const interval = setInterval(() => {   
+      setValue(currentValue => currentValue + 1);
+    }, 100); 
+    return () => {   
+      clearInterval(interval);  
+    }; 
+  });  
+
+  return (<div>{value}</div>);
+
+  // or for even more nothing...
+
+  return null;
+
+}
+
+render(<Counter/>);
+```
+
+
+## That’s All Folks👋🏻
+
+Now you’re ready to get out there and go do nothing!
+
+Thanks so much for reading, if you enjoyed then be sure to share the project, and star the repo on Github!
+[**Evan Bacon 🥓**
+*The latest Tweets from Evan Bacon 🥓 (@Baconbrix). @Expo core, @ReactNative core, @FlutterDev core, core core…*twitter.com](https://twitter.com/Baconbrix)
+[**EvanBacon/react-nothing**
+*AKA: React zen mode A universal React renderer for absolutely nothing. Inspired by the React Conf talk about building a…*github.com](https://github.com/EvanBacon/react-nothing)
