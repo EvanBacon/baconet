@@ -23,12 +23,12 @@ npm install --save react-native-web-hooks
 ### Then use it!
 
 ```js
-import { useRef } from 'react';
-import { StyleSheet, Linking, Text, Platform } from 'react-native';
+import { useRef } from "react";
+import { StyleSheet, Linking, Text, Platform } from "react-native";
 
-**import { useHover, useFocus, useActive } from 'react-native-web-hooks';**
+import { useHover, useFocus, useActive } from "react-native-web-hooks";
 
-function Link({ children, href = '#' }) {
+function Link({ children, href = "#" }) {
   // Create a ref to bind the hooks to
   const ref = useRef(null);
 
@@ -49,10 +49,11 @@ function Link({ children, href = '#' }) {
         styles.text,
 
         // When these booleans become true, the following styles will be applied...
-        isHovered && { color: 'blue' },
-        isFocused && { color: 'green' },
-        isActive && { color: 'red' },
-      ]}>
+        isHovered && { color: "blue" },
+        isFocused && { color: "green" },
+        isActive && { color: "red" },
+      ]}
+    >
       {children}
     </Text>
   );
