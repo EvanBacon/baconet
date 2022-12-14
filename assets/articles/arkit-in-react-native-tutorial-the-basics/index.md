@@ -1,4 +1,3 @@
-
 # ARKit in React Native Tutorial&#58; The Basics
 
 ## By now you’ve probably seen some of the crazy things people have been making with ARKit. If you want to make AR stuff, but don’t own a Mac (or don’t care for Swift/Xcode/Objective-C), you’ve come to the right place!
@@ -6,37 +5,38 @@
 ### **We’re going to make a super simple React Native app that renders a cube in 3D space, show the camera feed, and keep the cube in place as we move our device around it**.
 
 You can jump directly into source code for this project using this Snack:
-SyntaxError: Unexpected token w in JSON at position 10
+
+<Snack data-snack-id="@bacon/ar-tutorial-1" />
 
 ### A quick overview of the elements we’ll cover:
 
-* The React Native GLView 🔥
+- The React Native GLView 🔥
 
-* Creating a WebGL Renderer ∛
+- Creating a WebGL Renderer ∛
 
-* Three.js Scenes 🌁
+- Three.js Scenes 🌁
 
-* 3D Cameras 🎥
+- 3D Cameras 🎥
 
-* Camera Stream as Texture 🤳
+- Camera Stream as Texture 🤳
 
 ## Ingredients
 
 Here’s what you need to make a tasty AR snack:
 
-* A computer with internet access
+- A computer with internet access
 
-* An iOS device that sports the A9 chip (iPhone 6S and up; iPads from 2017+) and is running iOS 11+ (if you have an iPhone, it’s probably good enough).
+- An iOS device that sports the A9 chip (iPhone 6S and up; iPads from 2017+) and is running iOS 11+ (if you have an iPhone, it’s probably good enough).
 
-* Android is not currently supported. (But actively being worked on) 😅
+- Android is not currently supported. (But actively being worked on) 😅
 
-* You must use a physical device. 📱
+- You must use a physical device. 📱
 
 ## Creating the project
 
 If you’re familiar with accessing the Turbo Tax+ website, then you’ll be immediately comfortable setting up this project.
 
-* **Step 1:** [Go to snack.expo.io](https://snack.expo.io/)
+- **Step 1:** [Go to snack.expo.io](https://snack.expo.io/)
 
 That’s about it!
 
@@ -50,7 +50,6 @@ At the top of your Snack, add three.js and expo-three, and expo-graphics:
 import ExpoTHREE, { THREE } from 'expo-three';
 import { View as GraphicsView } from 'expo-graphics';
 ```
-
 
 Notice that we import Three.js from expo-three; this is to make sure that we use the same instance of **THREE** globally throughout our project.
 
@@ -66,10 +65,9 @@ render() {
   }
 ```
 
-
 If we go ahead and run it, you should see this:
 
-![Wait until tutorial #4…](./images/1NDSwqsXqYxMKeYB-uAJKBg.png)*Wait until tutorial #4…*
+![Wait until tutorial #4…](./images/1NDSwqsXqYxMKeYB-uAJKBg.png)_Wait until tutorial #4…_
 
 Just kidding! You should just see white or black. This view will create a WebGL context that we can use to make 3D stuff. When the context is created, it’ll call `onContextCreate`, which is where we can capture it.
 
@@ -88,7 +86,6 @@ onContextCreate = async ({gl, scale: pixelRatio, width, height}) => {
 }
 ```
 
-
 To draw things to the screen, we need a 3D WebGL renderer. The renderer is responsible for displaying your digital wonderland:
 
 ```
@@ -103,7 +100,6 @@ onContextCreate = async ({gl, scale: pixelRatio, width, height}) => {
 }
 ```
 
-
 `ExpoTHREE.Renderer` extends `THREE.WebGLRenderer` and does a little magic (DOM shimming) to get things going in React Native. ([Still curious? Check out the source](https://github.com/expo/expo-three/blob/a38dbc9ef411b7babebf13fe7e0665278890d0b5/lib/Renderer.js#L3-L23).)
 
 If you run it, you may see a bunch of warnings; use this to convert them to logs:
@@ -116,7 +112,6 @@ componentDidMount() {
 }
 ```
 
-
 After we build the renderer, let’s add a basic `THREE.Scene()`. AScene is the root node that we’ll use to add our lights, objects, and camera(s).
 
 ```
@@ -127,7 +122,6 @@ this.camera = new THREE.PerspectiveCamera(
   75, width / height, 0.1, 1000);
 ```
 
-
 Now we should add a cube to the scene! To do this we need a Mesh. (Meshes are composed from a Geometry and a Material.)
 
 ```
@@ -137,7 +131,7 @@ const geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
 const material = new THREE.MeshPhongMaterial({
   color: 0xff00ff,
 });
-    
+
 // Combine our geometry and material
 this.cube = new THREE.Mesh(geometry, material);
 // Place the box 0.4 meters in front of us.
@@ -145,7 +139,6 @@ this.cube.position.z = -0.4
 // Add the cube to the scene
 this.scene.add(this.cube);
 ```
-
 
 As you can see from the comments, every single unit is equal to 1 meter (39.3701 inches for my fellow American readers (Mom)). This means our cube is 3.9 inches.
 
@@ -156,7 +149,6 @@ We also need to add light to the scene so we can see colors:
 ```
 this.scene.add(new THREE.AmbientLight(0xffffff));
 ```
-
 
 Finally, we need a function that’s called every single frame. We call this the render loop. First we’ll add it to the component, then we’ll include it as the onRender prop in the GraphicsView.
 
@@ -173,7 +165,6 @@ onRender = () => {
   this.renderer.render(this.scene, this.camera);
 };
 ```
-
 
 When you run it, you should see this:
 
@@ -197,13 +188,11 @@ Now let’s add AR! Go to the `GraphicsView` and add the prop `isArEnabled`. Thi
   />
 ```
 
-
 At the top of our `onContextCreate` function add this:
 
 ```
 AR.setPlaneDetection(AR.PlaneDetectionTypes.Horizontal);
 ```
-
 
 This means that ARKit will find horizontal data; if your device is running 11.3 (ARKit 1.5) then you can use `.Vertical` as well!
 
@@ -213,10 +202,9 @@ The scene has a member called `background`— this can be a color, skybox, null,
 this.scene.background = new ThreeAR.BackgroundTexture(this.renderer);
 ```
 
-
 If you run the project, you should see something like this:
 
-![All we have here is a purple square that doesn’t move.](./images/1WOseNV6RfWiO5HDQVrB21Q.png)*All we have here is a purple square that doesn’t move.*
+![All we have here is a purple square that doesn’t move.](./images/1WOseNV6RfWiO5HDQVrB21Q.png)_All we have here is a purple square that doesn’t move._
 
 Notice that the cube doesn’t move; we actually want to move the camera around the scene to match our device orientation.
 
@@ -225,7 +213,6 @@ Replace the camera with a `ThreeAR.Camera`. (This just extends the `PerspectiveC
 ```
 this.camera = new ThreeAR.Camera(width, height, 0.01, 1000);
 ```
-
 
 Now finally, we have AR! 📱👏
 

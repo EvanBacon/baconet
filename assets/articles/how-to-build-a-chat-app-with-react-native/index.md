@@ -1,4 +1,3 @@
-
 # How To Build A Chat App With React Native
 
 ## Expo + Firebase + React Native + Gifted Chat
@@ -7,26 +6,26 @@ Let’s create a basic chat application that works on every iOS and Android devi
 
 Expo extends React Native and gives us all the tools we need to get moving quickly without having to use anything but javascript!
 
-![Here it is!!](./images/1UzG__5fIBC6a5HwFLD0RXQ.png)*Here it is!!*
-SyntaxError: Unexpected token w in JSON at position 10
+![Here it is!!](./images/1UzG__5fIBC6a5HwFLD0RXQ.png)_Here it is!!_
+<Snack url="https://snack.expo.io/embedded/@bacon/firebase-basic-chat"/>
 
 ## Requirements
 
 Here is what you need before we can get started.
 
-* Computer
+- Computer
 
-* Ability to type
+- Ability to type
 
 ## Building the App
 
 To make a chat app we will need a few things:
 
-* A server to store all the messages
+- A server to store all the messages
 
-* Screen to get the users name
+- Screen to get the users name
 
-* Screen to send and receive messages
+- Screen to send and receive messages
 
 Let’s go at these 1-by-1 with Gifs to keep your attention.
 
@@ -36,17 +35,17 @@ is a scary task, especially if you are pretty. We will use a service called Fire
 
 Go to the Firebase console and setup a new app: [https://console.firebase.google.com](https://console.firebase.google.com/u/0/)
 
-![Add a project.](./images/1ZybNV8cT8UXeiuRcQ15myg.png)*Add a project.*
+![Add a project.](./images/1ZybNV8cT8UXeiuRcQ15myg.png)_Add a project._
 
-![Add some info](./images/1eVzz_lpXceEIqdgBvyg78A.png)*Add some info*
+![Add some info](./images/1eVzz_lpXceEIqdgBvyg78A.png)_Add some info_
 
 ![](./images/1hsPWDdCfRY3lAKrK6NtqIA.png)
 
-![Go to the auth tab and click “Set up sign-in method”](./images/1xwKDU4h307bVj5xoGnvZjw.png)*Go to the auth tab and click “Set up sign-in method”*
+![Go to the auth tab and click “Set up sign-in method”](./images/1xwKDU4h307bVj5xoGnvZjw.png)_Go to the auth tab and click “Set up sign-in method”_
 
-![Scroll down and click on “Anonymous”, we want to enable this](./images/1pdhzYQ7vFFRp3lTc71bzOQ.png)*Scroll down and click on “Anonymous”, we want to enable this*
+![Scroll down and click on “Anonymous”, we want to enable this](./images/1pdhzYQ7vFFRp3lTc71bzOQ.png)_Scroll down and click on “Anonymous”, we want to enable this_
 
-![Enable and Save!](./images/1Y1YqDtYo5IU9hPmgVK9VkA.png)*Enable and Save!*
+![Enable and Save!](./images/1Y1YqDtYo5IU9hPmgVK9VkA.png)_Enable and Save!_
 
 ## Time to Code!
 
@@ -77,7 +76,6 @@ const navigator = createStackNavigator({
 export default navigator
 ```
 
-
 If we run this we will see a blank screen with a header bar. This is pretty cool but not really, let’s add a text field for our user’s name and then a button to go to the Chat screen.
 
 **components/Main.js**
@@ -97,7 +95,6 @@ const styles = StyleSheet.create({});
 export default Main;
 ```
 
-
 When we open the `Main.js` we should see a basic component and the styles setup. First let’s add the Text Input.
 
 **components/Main.js**
@@ -105,7 +102,7 @@ When we open the `Main.js` we should see a basic component and the styles setup.
 ```
 import {
   StyleSheet,
-  TextInput, // 1. <- Add this 
+  TextInput, // 1. <- Add this
   View,
 } from 'react-native';
 
@@ -141,7 +138,6 @@ const styles = StyleSheet.create({
 });
 ```
 
-
 1. Import the `TextInput` component from React Native
 
 1. Create a component `state` and give it a property called `name`, we will use this to update the and track the user input.
@@ -165,7 +161,6 @@ onChangeText = name => this.setState({ name }); // 1.
         />
 ```
 
-
 1. Here we update the component state with a new string value.
 
 If we run the app we should see our nifty `TextInput` let’s add a title and a button to go to the next screen
@@ -187,7 +182,7 @@ render() {
       <View>
 
         // 2. Add the title
-        <Text style={styles.title}>Enter your name:</Text> 
+        <Text style={styles.title}>Enter your name:</Text>
         <TextInput
           style={styles.nameInput}
           placeHolder="John Cena"
@@ -218,7 +213,6 @@ const styles = StyleSheet.create({
 })
 ```
 
-
 1. Add the new imports.
 
 1. Create a `Text` element that tell’s our user what to do.
@@ -238,10 +232,9 @@ onPress = () => {
 }
 ```
 
-
 1. We will navigate by using `this.props.navigation` which is provided at the screen level by our stack navigator. `navigation` has a method called `navigate` which will push a new screen, we will pass in the name of the screen we defined earlier in the `App.js` — *Chat *and then we will pass some props to that screen, specifically the `state.name` we created with the `TextInput`.
 
-![This is what we should have](./images/1AlAKoCtaLttJuW_dMXBuuw.png)*This is what we should have*
+![This is what we should have](./images/1AlAKoCtaLttJuW_dMXBuuw.png)_This is what we should have_
 
 ## Chat Screen
 
@@ -264,7 +257,6 @@ const styles = StyleSheet.create({});
 export default Chat;
 ```
 
-
 To get started make sure your Chat.js looks like this. Let’s setup the chat component.
 
 ```
@@ -284,7 +276,7 @@ class Chat extends React.Component {
   state = {
     messages: [],
   };
- 
+
   render() {
 
     // 4.
@@ -298,7 +290,6 @@ class Chat extends React.Component {
 
 export default Chat;
 ```
-
 
 1. Import GiftedChat from `‘react-native-gifted-chat’` This is the component that we will use to do most of the heavy lifting.
 
@@ -323,12 +314,11 @@ Fire.shared = new Fire();
 export default Fire;
 ```
 
-
 We should just have a basic class with a shared instance setup, let’s setup a Firebase app.
 
 ```
 // 1.
-import firebase from 'firebase'; 
+import firebase from 'firebase';
 
 class Fire {
   constructor() {
@@ -348,12 +338,11 @@ class Fire {
 }
 ```
 
-
 1. Import firebase, we will use this to access our database
 
 1. Initialize our Firebase app using the keys we get in our app
 
-![Here is an example of the creds](./images/1ETOHJEojfRBOUV9gMdH44Q.png)*Here is an example of the creds*
+![Here is an example of the creds](./images/1ETOHJEojfRBOUV9gMdH44Q.png)_Here is an example of the creds_
 
 In order to write and read from our database we need to be logged in, to do this we will get our current authentication, if it doesn’t exist then we want to sign in anonymously.
 
@@ -383,7 +372,6 @@ class Fire {
   };
 }
 ```
-
 
 1. After initializing, call our `observeAuth` function
 
@@ -417,7 +405,6 @@ off() {
 }
 ```
 
-
 1. Create a reference to a location in our database where the messages will be saved, in our case it’s `/messages`
 
 1. Make a method with a callback prop that calls our messages ref and get’s the last 20 messages, then whenever a new message comes in we will get that as well. When we get a message we want to send it a function to parse.
@@ -449,12 +436,11 @@ parse = snapshot => {
 };
 ```
 
-
 1. Deconstruct the snapshot.val(), calling snapshot.val() will return the value or object associated with the snapshot
 
 1. Let’s convert the timestamp that was saved, to a js Date.
 
-1. Finally we will create an object that GiftedChat is familiar with, then return it, _id is the unique key for the message, text, user, and timestamp are exactly what you might think.
+1. Finally we will create an object that GiftedChat is familiar with, then return it, \_id is the unique key for the message, text, user, and timestamp are exactly what you might think.
 
 We now need a way to send messages
 
@@ -488,7 +474,6 @@ send = messages => {
 append = message => this.ref.push(message);
 ```
 
-
 1. Create a helper for getting the user’s uid
 
 1. Get the accurate timestamp for saving messages
@@ -521,7 +506,6 @@ componentWillUnmount() {
 }
 ```
 
-
 1. When the component is added to the screen, we want to start looking for messages. Call the `Fire.shared.on` method and pass in a callback. We want our callback to get messages then add them to our current messages.
 
 1. When the component leaves the screen we want to unsubscribe from the database.
@@ -539,7 +523,6 @@ get user() {
 }
 ```
 
-
 Finally we need to give `GiftedChat` a reference to our user and the `onSend` method from `Fire`
 
 ```
@@ -553,7 +536,6 @@ render() {
     );
   }
 ```
-
 
 And that’s it! Now when you run the build you should be able to join your group and start saving messages to the database!!!
 

@@ -1,4 +1,3 @@
-
 # Instagram Clone (!) using Firebase, React Native & Expo.
 
 ## Because there just aren’t enough yet… 😂
@@ -9,24 +8,25 @@ Have you ever noticed how on the internet there are just no pictures, all plain 
 
 This app will allow you to scroll through everyone’s photos, read descriptions, choose or take photos, and upload them for the world to see! :)
 
-**NOTE:** Because this is a pretty big demo project, I’m mostly just going to show and explain commented code, so it’s not actually a line-by-line tutorial: you should know a *little* about React Native views, and Javascript. You won’t actually “*learn*” anything here 🤓.
+**NOTE:** Because this is a pretty big demo project, I’m mostly just going to show and explain commented code, so it’s not actually a line-by-line tutorial: you should know a _little_ about React Native views, and Javascript. You won’t actually “_learn_” anything here 🤓.
 
 ![](./images/1VA648isgIrFameDyACrgug.gif)
 
 ![](./images/1HtR9_F4Uu0gZ-Wf9rhu5_Q.gif)
-SyntaxError: Unexpected token w in JSON at position 10
+
+<Snack url="https://snack.expo.io/embedded/@bacon/github.com-evanbacon-firebase-instagram@@evanbacon-tutorial"/>
 
 ## Tech Stack
 
 In this project I use a combination of all the best stuff the internet has to offer right now:
 
-* Expo — RN APIs
+- Expo — RN APIs
 
-* React Native — Cross-platform development framework
+- React Native — Cross-platform development framework
 
-* Firebase — Database designed for simpler people, like me
+- Firebase — Database designed for simpler people, like me
 
-* React Navigation — Super easy way to push screens in React Native
+- React Navigation — Super easy way to push screens in React Native
 
 I use VSCode to make RN apps, but you could also use vim if you’re crazy.
 
@@ -48,7 +48,7 @@ Compound queries are usually overkill but eh..why not 😏 Navigate over to the 
 
 ![](./images/1nAJ4SoFD_PQd1N6kB-CtlQ.png)
 
-![Look, it was just redesigned…again](./images/16ceVYnXhFwixs2t1G3AedA.png)*Look, it was just redesigned…again*
+![Look, it was just redesigned…again](./images/16ceVYnXhFwixs2t1G3AedA.png)_Look, it was just redesigned…again_
 
 ### Storage
 
@@ -62,7 +62,7 @@ Click the Authentication tab and press “Set up sign-in method”. Now scroll d
 
 ![](./images/13PGayju1C7fTXPAFFkooDw.png)
 
-![BTW: The bad guy in Tron is named “CLU”](./images/1eTp2dD8xT1GGYzeQhEf8KA.png)*BTW: The bad guy in Tron is named “CLU”*
+![BTW: The bad guy in Tron is named “CLU”](./images/1eTp2dD8xT1GGYzeQhEf8KA.png)_BTW: The bad guy in Tron is named “CLU”_
 
 ### Configuration
 
@@ -158,7 +158,6 @@ const stackNavigator = createStackNavigator(
 // Export it as the root component
 export default stackNavigator;
 ```
-
 
 ### **Firebase data module**
 
@@ -280,7 +279,6 @@ Fire.shared = new Fire();
 export default Fire;
 ```
 
-
 Let me explain this all really quick…
 
 **Downloading Data
@@ -289,7 +287,7 @@ Let me explain this all really quick…
 **Uploading Data
 **We will pass a local image URI and a text description to the `post` method. We will then shrink the image to a nice (affordable) size 😇
 
-**Note on reducing image size:** My first social network completely crumbled when the first user posted the first picture, which was a 20mb HD picture of the rapper [Future](https://en.wikipedia.org/wiki/Future_(rapper)). 😩
+**Note on reducing image size:** My first social network completely crumbled when the first user posted the first picture, which was a 20mb HD picture of the rapper [Future](<https://en.wikipedia.org/wiki/Future_(rapper)>). 😩
 
 After we have the reduced image and some user info, we will upload the image using a helper function which wraps the firebase storage upload process, and returns a download URL: [https://github.com/EvanBacon/firebase-instagram/blob/%40evanbacon/tutorial/utils/uploadPhoto.js](https://github.com/EvanBacon/firebase-instagram/blob/%40evanbacon/tutorial/utils/uploadPhoto.js)
 
@@ -298,7 +296,6 @@ Then to actually upload data just:
 ```
 this.collection.add({ some data })
 ```
-
 
 **Helpers**
 
@@ -313,13 +310,11 @@ let ref = firebase.firestore().collection(collectionName)
 ref.orderBy('timestamp', 'desc').limit(size);
 ```
 
-
 If a cursor is present then we can attach it to the query. This allows us to effectively paginate complex data sets 😍
 
 ```
 ref = ref.startAfter(start);
 ```
-
 
 Now we can get the data, and reduce it into a nice format for the UI.
 
@@ -333,17 +328,15 @@ querySnapshot.forEach(function(doc) {
 });
 ```
 
-
 and finally to get the next page cursor:
 
 ```
 const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
 ```
 
-
 And that’s all it takes! (Kinda complex, actually 😅.)
 
-![But hopefully I made it a little simpler for you :}](./images/1HpRCfDzG0n60f53NYcmmpg.gif)*But hopefully I made it a little simpler for you :}*
+![But hopefully I made it a little simpler for you :}](./images/1HpRCfDzG0n60f53NYcmmpg.gif)_But hopefully I made it a little simpler for you :}_
 
 ### Feed Screen
 
@@ -464,12 +457,11 @@ export default class FeedScreen extends Component {
 }
 ```
 
-
-![Not seeing a lot of those pictures I promised…](./images/1DbXHYDRXIY76SySED_3IYQ.gif)*Not seeing a lot of those pictures I promised…*
+![Not seeing a lot of those pictures I promised…](./images/1DbXHYDRXIY76SySED_3IYQ.gif)_Not seeing a lot of those pictures I promised…_
 
 ### **Picking Media**
 
-Users will want to add data: to do this we will need access to the camera and gallery. `**SelectPhotoScreen.js` **will implement buttons that can ask for permission to use `CAMERA` or `CAMERA_ROLL` permission using the `Expo.Permissions` API. Then it’ll open the corresponding selection screen using the `Expo.ImagePicker` API.
+Users will want to add data: to do this we will need access to the camera and gallery. `**SelectPhotoScreen.js` \*\*will implement buttons that can ask for permission to use `CAMERA` or `CAMERA_ROLL` permission using the `Expo.Permissions` API. Then it’ll open the corresponding selection screen using the `Expo.ImagePicker` API.
 
 You could build the exact Instagram API using `Expo.Camera` & `Expo.MediaLibrary` for the gallery… I just didn’t have time :]
 
@@ -542,7 +534,6 @@ const styles = StyleSheet.create({
 });
 ```
 
-
 All we need now is a photo description. Provide a TextInput for … text input, using the `onChangeText` callback we can update the navigation state. The navigation state needs to know the description so it can post it to Firebase when the right header button is pressed.
 
 **Header Buttons
@@ -604,7 +595,6 @@ export default class NewPostScreen extends React.Component<Props> {
   }
 }
 ```
-
 
 ## Just like Crystal Skull…
 

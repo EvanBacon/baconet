@@ -1,0 +1,36 @@
+{
+  "title": "How To Build A Chat App With React Native",
+  "subtitle": "Expo + Firebase + React Native + Gifted Chat",
+  "author": "Evan Bacon",
+  "date": "2018-06-18T21:01:32.728Z",
+  "slug": "how-to-build-a-chat-app-with-react-native",
+  "url": "https://blog.expo.dev/how-to-build-a-chat-app-with-react-native-3ef8604ebb3c",
+  "images": [
+    "how-to-build-a-chat-app-with-react-native/images/1UzG__5fIBC6a5HwFLD0RXQ.png",
+    "how-to-build-a-chat-app-with-react-native/images/1ZybNV8cT8UXeiuRcQ15myg.png",
+    "how-to-build-a-chat-app-with-react-native/images/1eVzz_lpXceEIqdgBvyg78A.png",
+    "how-to-build-a-chat-app-with-react-native/images/1hsPWDdCfRY3lAKrK6NtqIA.png",
+    "how-to-build-a-chat-app-with-react-native/images/1xwKDU4h307bVj5xoGnvZjw.png",
+    "how-to-build-a-chat-app-with-react-native/images/1pdhzYQ7vFFRp3lTc71bzOQ.png",
+    "how-to-build-a-chat-app-with-react-native/images/1Y1YqDtYo5IU9hPmgVK9VkA.png",
+    "how-to-build-a-chat-app-with-react-native/images/1yJacTbw9AhbPBdskKSrkJw.png",
+    "how-to-build-a-chat-app-with-react-native/images/1AlAKoCtaLttJuW_dMXBuuw.png",
+    "how-to-build-a-chat-app-with-react-native/images/1ETOHJEojfRBOUV9gMdH44Q.png",
+    "how-to-build-a-chat-app-with-react-native/images/1OBT1wi1RfySRyMcO8snjNg.png"
+  ],
+  "language": "en",
+  "tags": [
+    "react-native",
+    "firebase",
+    "chat",
+    "mobile-app-development"
+  ],
+  "authors": [
+    {
+      "name": "Evan Bacon",
+      "username": "Baconbrix",
+      "userId": "16b715de038f"
+    }
+  ],
+  "featuredImage": "./images/1UzG__5fIBC6a5HwFLD0RXQ.png"
+}

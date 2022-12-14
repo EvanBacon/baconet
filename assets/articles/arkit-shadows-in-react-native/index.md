@@ -1,18 +1,18 @@
-
 # ARKit Shadows in React Native
 
 ## How to cast shadows on make-believe surfaces.
 
 Today I’ll show you how to make 3D objects cast shadows on the real-world ground!
 
-![[No Shadow Floor | Shadow Floor — from expo-three/example/AR/Model](https://github.com/expo/expo-three/tree/master/example)](./images/12x0MmETAOlsoSSrA5qC9Gw.png)*[No Shadow Floor | Shadow Floor — from expo-three/example/AR/Model](https://github.com/expo/expo-three/tree/master/example)*
+![[No Shadow Floor | Shadow Floor — from expo-three/example/AR/Model](https://github.com/expo/expo-three/tree/master/example)](./images/12x0MmETAOlsoSSrA5qC9Gw.png)_[No Shadow Floor | Shadow Floor — from expo-three/example/AR/Model](https://github.com/expo/expo-three/tree/master/example)_
 
 In expo-three, I included a mesh called `[ShadowFloor`](https://github.com/expo/expo-three/blob/master/lib/AR/ShadowFloor.js). [ShadowFloor](https://github.com/expo/expo-three/blob/master/lib/AR/ShadowFloor.js) is a `THREE.Plane` mesh that has a special transparent texture applied to it. This texture will receive a shadow without actually displaying any other content on it.
 
 We can stick this mesh on any surface and use it to make our AR Scene come to life!
-SyntaxError: Unexpected token w in JSON at position 10
 
-![Floating shadows break my brain](./images/1KzttinC4DiBBCMV3whg7aQ.jpeg)*Floating shadows break my brain*
+<Snack data-snack-id="@bacon/ar-shadows" />
+
+![Floating shadows break my brain](./images/1KzttinC4DiBBCMV3whg7aQ.jpeg)_Floating shadows break my brain_
 
 ## Setting things up
 
@@ -30,14 +30,13 @@ renderer.gammaOutput = true;
 renderer.shadowMap.enabled = true;
 ```
 
-
 ## Lighting
 
 There are two main lights we need for making shadows:
 
-* **Ambient — **The general lighting that all objects receive (the participation award of the lighting world)
+- **Ambient — **The general lighting that all objects receive (the participation award of the lighting world)
 
-* **Directional —** This is used for creating shadows: think of it as a vector, where the position is the end point and `light.target.position` is the starting point.
+- **Directional —** This is used for creating shadows: think of it as a vector, where the position is the end point and `light.target.position` is the starting point.
 
 ### Coding the Lights
 
@@ -46,7 +45,6 @@ Add a simple ambient light that emits a gray light equally over everything:
 ```
 scene.add(new THREE.AmbientLight(0x404040));
 ```
-
 
 Now we need to add a directional light for our shadow:
 
@@ -67,7 +65,6 @@ scene.add(this.shadowLight);
 scene.add(this.shadowLight.target);
 ```
 
-
 Rendering shadows is pretty expensive; we want to create only just enough of a map to cover our scene, and then we’ll move the light around to keep our scene lit. **Notice** that if you don’t add the `shadowLight.target` to the scene, then you cannot move the starting point of the light.
 
 Let’s add a cube that casts a shadow. Any node will work; just remember to add `cube.castShadow = true;`.
@@ -85,18 +82,16 @@ Let’s add a cube that casts a shadow. Any node will work; just remember to add
 *this.cube.castShadow = true;
 ```
 
-
 Finally, we need something to receive the shadow. Let’s create that special `ShadowFloor` node and add it to the scene:
 
 ```
 const shadowFloor = new ExpoTHREE.AR.ShadowFloor({
-  width: 1, 
+  width: 1,
   height: 1,
   opacity: 0.6, // The shadow density
 });
 scene.add(shadowFloor);
 ```
-
 
 That’s all it takes to add shadows to your AR scene!
 

@@ -1,22 +1,22 @@
-
 # Hit Testing in ARKit
 
 ## A React Native Tutorial
 
 One of the coolest parts of ARKit is its ability to spot and stick to surfaces. Today we’re going to talk about how to do this with React Native.
 
-![Tapping to add a block](./images/1M4xJ7sm2me61xszk9gQj4g.gif)*Tapping to add a block*
-SyntaxError: Unexpected token w in JSON at position 10
+![Tapping to add a block](./images/1M4xJ7sm2me61xszk9gQj4g.gif)_Tapping to add a block_
+
+<Snack url="https://snack.expo.io/embedded/@bacon/ar-hit-test" />
 
 ## Getting Started
 
 This tutorial assumes you’re familiar with:
 
-* React Native
+- React Native
 
-* Expo.AR
+- Expo.AR
 
-* Sparrow migration patterns
+- Sparrow migration patterns
 
 Go ahead and open the [starter project](https://snack.expo.io/@bacon/ar-hit-test-starter) as we quickly cover what’s provided in the starter:
 
@@ -57,7 +57,6 @@ onTouchesBegan = async ({ locationX: x, locationY: y }) => {
 };
 ```
 
-
 1. Prevent doing anything if the scene hasn’t been built yet.
 
 1. To use the AR hit test function to invoke the [native function](https://developer.apple.com/documentation/arkit/arframe/2875718-hittest?language=objc), we also need to pass in a normalized point. Ex: { x: 0.5, y: 0.5} is the center of the screen; {x: 0, y: 0} is the top left of the screen.
@@ -93,7 +92,6 @@ for (let hit of hitTest) {
   this.cube.updateMatrix();
 }
 ```
-
 
 1. Traverse the hit test results using a `for loop` and deconstruct the worldTransform from the hit.
 

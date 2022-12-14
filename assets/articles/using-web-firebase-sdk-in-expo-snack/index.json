@@ -1,0 +1,24 @@
+{
+  "title": "Using Web Firebase SDK in Expo Snack",
+  "subtitle": "TL;DR: if (!firebase.apps.length) firebase.initializeApp({ … }); instead of firebase.initializeApp({ … });",
+  "author": "Evan Bacon",
+  "date": "2018-08-10T19:55:36.461Z",
+  "slug": "using-web-firebase-sdk-in-expo-snack",
+  "url": "https://blog.expo.dev/using-web-firebase-sdk-in-expo-snack-1be5d7aa292e",
+  "images": [
+    "using-web-firebase-sdk-in-expo-snack/images/1lQ_a3ZF9IkXtsZIB0znqfg.jpeg"
+  ],
+  "language": "en",
+  "tags": [
+    "firebase",
+    "expo"
+  ],
+  "authors": [
+    {
+      "name": "Evan Bacon",
+      "username": "Baconbrix",
+      "userId": "16b715de038f"
+    }
+  ],
+  "featuredImage": "./images/1lQ_a3ZF9IkXtsZIB0znqfg.jpeg"
+}

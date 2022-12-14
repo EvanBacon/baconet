@@ -1,0 +1,36 @@
+{
+  "title": "Testing Universal React (Native) Apps with Jest and Expo!",
+  "subtitle": "The official approach to testing your universal projects",
+  "author": "Evan Bacon",
+  "date": "2019-09-23T15:29:17.511Z",
+  "slug": "testing-universal-react-native-apps-with-jest-and-expo",
+  "url": "https://blog.expo.dev/testing-universal-react-native-apps-with-jest-and-expo-113b4bf9cc44",
+  "images": [
+    "testing-universal-react-native-apps-with-jest-and-expo/images/1a4SNCDRRShRaZSwgvVi7vw.png",
+    "testing-universal-react-native-apps-with-jest-and-expo/images/1MijD1MHNmNvkSgG2FJC2CQ.png",
+    "testing-universal-react-native-apps-with-jest-and-expo/images/1l26tcpYbxXM5cqHD1XDMlw.png",
+    "testing-universal-react-native-apps-with-jest-and-expo/images/1dA-jFh6ZdtLtaqk_AjFCnA.png",
+    "testing-universal-react-native-apps-with-jest-and-expo/images/1lcYGWQuaF_xqL6NugcwQUQ.png",
+    "testing-universal-react-native-apps-with-jest-and-expo/images/1vewN_ckD61oDYp1aeTkPgg.png",
+    "testing-universal-react-native-apps-with-jest-and-expo/images/1hs2iUnf5wJp0P8pMEUaQhg.png",
+    "testing-universal-react-native-apps-with-jest-and-expo/images/124zK0JxaJiV8slTp3seexQ.png",
+    "testing-universal-react-native-apps-with-jest-and-expo/images/1SL47bMaKVXdKuG6fuuDqMA.png",
+    "testing-universal-react-native-apps-with-jest-and-expo/images/1btsjTuT2HQsNRI8M_0vE6w.png"
+  ],
+  "language": "en",
+  "tags": [
+    "react-native",
+    "expo",
+    "jest",
+    "react",
+    "testing"
+  ],
+  "authors": [
+    {
+      "name": "Evan Bacon",
+      "username": "Baconbrix",
+      "userId": "16b715de038f"
+    }
+  ],
+  "featuredImage": "./images/1a4SNCDRRShRaZSwgvVi7vw.png"
+}

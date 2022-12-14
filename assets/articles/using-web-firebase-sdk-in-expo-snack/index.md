@@ -1,4 +1,3 @@
-
 # Using Web Firebase SDK in Expo Snack
 
 ## TL;DR: if (!firebase.apps.length) firebase.initializeApp({ … }); instead of firebase.initializeApp({ … });
@@ -14,7 +13,6 @@ Device: (78:20) Firebase: Firebase App named '[DEFAULT]' already exists (app/dup
   Loading module://App.js
 ```
 
-
 ![](./images/1lQ_a3ZF9IkXtsZIB0znqfg.jpeg)
 
 Fixing this is very simple. Just check to make sure the app hasn’t been initialized before calling `firebase.initializeApp({ ... });`
@@ -25,9 +23,9 @@ Fixing this is very simple. Just check to make sure the app hasn’t been initia
 if (!firebase.apps.length) firebase.initializeApp({ ... });
 ```
 
-
 It’s kinda upsetting that firebase doesn’t just throw a warning and tell you what to do. 🙃
-SyntaxError: Unexpected token w in JSON at position 10
+
+<Snack url="https://snack.expo.io/embedded/@bacon/firebase-initialize-app" />
 
 ## Thanks for reading
 

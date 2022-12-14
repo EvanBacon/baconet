@@ -1,4 +1,3 @@
-
 # What’s New in Expo-Firebase rc.5
 
 ## TL;DR: It’s not in the client yet
@@ -7,7 +6,7 @@ Hey Expo/Firebase users, we have an exciting new update for you! This one is ful
 
 ![](./images/1zfqW_eScSZhkcxuNHho8Mw.png)
 
-![Before / After](./images/1KCkjvFidiM8t-WJkyNSH2A.png)*Before / After*
+![Before / After](./images/1KCkjvFidiM8t-WJkyNSH2A.png)_Before / After_
 
 ## No more extra imports
 
@@ -16,7 +15,6 @@ TL;DR: You can just Copy & Paste 😁
 ```
 import firebase from ‘expo-firebase-app’;
 ```
-
 
 In trying to cut down on bundle size, I split each Firebase service into its own package: this has been really great for cutting down on bugs and keeping out code that you may not (or don’t care to) understand.
 
@@ -30,7 +28,7 @@ All of your favorite array methods are now available in Expo-Firebase.
 
 My personal favorite: you can now use the `array-contains` query 😍. (Special thanks to [Elías Daniel Turbay](https://twitter.com/eliasturbay) for doing some digging on this 🔥 Check out [some of his stuff here](https://blog.expo.io/expo-featured-developer-elias-turbay-27b0f59f6938).)
 
-![A neato diagram from Firebase…figured I’d shake it up and not use carbon for everything. 😅](./images/1xinSdnexbRLd_f1TGFRDDg.png)*A neato diagram from Firebase…figured I’d shake it up and not use carbon for everything. 😅*
+![A neato diagram from Firebase…figured I’d shake it up and not use carbon for everything. 😅](./images/1xinSdnexbRLd_f1TGFRDDg.png)_A neato diagram from Firebase…figured I’d shake it up and not use carbon for everything. 😅_
 
 ## Initial Operations
 
@@ -43,7 +41,8 @@ For instance, if you were to tap a notification and it opened your app, if you o
 ## Dropped iOS 9
 
 Removing the old iOS Notification system has cut down on a lot of needless complexity and made it possible to start adding more robust iOS 12 notification features, and actions. 😘😍Next time though:
-SyntaxError: Unexpected token w in JSON at position 10
+
+<Tweet url="https://twitter.com/Baconbrix/status/1062902710305865730" />
 
 ## Other Things…
 
@@ -70,33 +69,34 @@ Nope. But one day 💙
 ### Tutorials
 
 Detaching is still pretty complex, I put together some video tutorials for ejecting and adding Expo-Firebase 🔥consider giving them likes for SEO/EGO purposes 😜
-SyntaxError: Unexpected token w in JSON at position 10
+
+<YouTube url="https://www.youtube.com/watch?v=pbHlXa3sCPw" />
 
 ## Future Plans
 
-* Integrate background tasks
+- Integrate background tasks
 
-* Add E2E with Expo-Detox
+- Add E2E with Expo-Detox
 
-* Add to the Expo turtle build for Standalone apps
+- Add to the Expo turtle build for Standalone apps
 
-* More robust iOS notifications
+- More robust iOS notifications
 
-* More examples of usage with other Expo APIs
+- More examples of usage with other Expo APIs
 
 ## Thanks
 
 To everyone who has supported this project:
 
-* [Mike Diarmid](https://twitter.com/mikediarmid) & [Elliot Hesp](https://twitter.com/elliothesp) Co-Creators of RNFirebase
+- [Mike Diarmid](https://twitter.com/mikediarmid) & [Elliot Hesp](https://twitter.com/elliothesp) Co-Creators of RNFirebase
 
-* [Elías Daniel Turbay](https://twitter.com/eliasturbay) for helping with Array features
+- [Elías Daniel Turbay](https://twitter.com/eliasturbay) for helping with Array features
 
-* [Markus Gray](https://github.com/cryptixcoder) for reporting Expo Firebase issues
+- [Markus Gray](https://github.com/cryptixcoder) for reporting Expo Firebase issues
 
-* [redpandatronicsuk](http://github.com/redpandatronicsuk) for reporting the require cycles
+- [redpandatronicsuk](http://github.com/redpandatronicsuk) for reporting the require cycles
 
-* [Eric Samelson](https://medium.com/@esamelson-expo) & [Stanisław Chmiela](https://twitter.com/sjchmiela) for reviewing PRs
+- [Eric Samelson](https://medium.com/@esamelson-expo) & [Stanisław Chmiela](https://twitter.com/sjchmiela) for reviewing PRs
 
 ## That’s it!
 

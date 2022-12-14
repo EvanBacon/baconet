@@ -1,0 +1,37 @@
+{
+  "title": "Instagram Clone (!) using Firebase, React Native & Expo.",
+  "subtitle": "Because there just aren’t enough yet… 😂",
+  "author": "Evan Bacon",
+  "date": "2018-07-05T23:06:33.550Z",
+  "slug": "instagram-clone-using-firebase-react-native-expo",
+  "url": "https://blog.expo.dev/instagram-clone-using-firebase-react-native-expo-cc32f61c7bba",
+  "images": [
+    "instagram-clone-using-firebase-react-native-expo/images/1VA648isgIrFameDyACrgug.gif",
+    "instagram-clone-using-firebase-react-native-expo/images/1HtR9_F4Uu0gZ-Wf9rhu5_Q.gif",
+    "instagram-clone-using-firebase-react-native-expo/images/1i7KAJG3hYZTj2gWTpUzGgg.png",
+    "instagram-clone-using-firebase-react-native-expo/images/1nAJ4SoFD_PQd1N6kB-CtlQ.png",
+    "instagram-clone-using-firebase-react-native-expo/images/16ceVYnXhFwixs2t1G3AedA.png",
+    "instagram-clone-using-firebase-react-native-expo/images/1t8H5D9E2smKjkFp3BJ5UUg.png",
+    "instagram-clone-using-firebase-react-native-expo/images/13PGayju1C7fTXPAFFkooDw.png",
+    "instagram-clone-using-firebase-react-native-expo/images/1eTp2dD8xT1GGYzeQhEf8KA.png",
+    "instagram-clone-using-firebase-react-native-expo/images/1bnY3KUIYg4xfIrVk0ObxXQ.png",
+    "instagram-clone-using-firebase-react-native-expo/images/17z8u7VqcJakJKor7KWlhHQ.png",
+    "instagram-clone-using-firebase-react-native-expo/images/1h0rD0cnrzrZBIfUZDFMDNw.png",
+    "instagram-clone-using-firebase-react-native-expo/images/1HpRCfDzG0n60f53NYcmmpg.gif",
+    "instagram-clone-using-firebase-react-native-expo/images/1DbXHYDRXIY76SySED_3IYQ.gif"
+  ],
+  "language": "en",
+  "tags": [
+    "react-native",
+    "mobile-app-development",
+    "instagram"
+  ],
+  "authors": [
+    {
+      "name": "Evan Bacon",
+      "username": "Baconbrix",
+      "userId": "16b715de038f"
+    }
+  ],
+  "featuredImage": "./images/1VA648isgIrFameDyACrgug.gif"
+}
