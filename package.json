@@ -13,6 +13,8 @@
     "@bacons/expo-router-top-tabs": "^0.0.1",
     "@bacons/head": "^0.0.3",
     "@bacons/mdx": "^0.0.1",
+    "@expo-google-fonts/inter": "^0.2.2",
+    "@expo-google-fonts/source-code-pro": "^0.2.2",
     "@expo/html-elements": "^0.2.0",
     "@tamagui/core": "^1.0.1-beta.226",
     "@types/react": "~18.0.24",
