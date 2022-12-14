@@ -46,17 +46,17 @@ First, we need to build a simple 3D application, then later we can add AR. To do
 
 At the top of your Snack, add three.js and expo-three, and expo-graphics:
 
-```
-import ExpoTHREE, { THREE } from 'expo-three';
-import { View as GraphicsView } from 'expo-graphics';
+```js
+import ExpoTHREE, { THREE } from "expo-three";
+import { View as GraphicsView } from "expo-graphics";
 ```
 
 Notice that we import Three.js from expo-three; this is to make sure that we use the same instance of **THREE** globally throughout our project.
 
 Now replace the render function with this:
 
-```
-render() {
+```js
+  render() {
     return (
       <GraphicsView
         style={{ flex: 1 }}
@@ -71,7 +71,7 @@ If we go ahead and run it, you should see this:
 
 Just kidding! You should just see white or black. This view will create a WebGL context that we can use to make 3D stuff. When the context is created, it’ll call `onContextCreate`, which is where we can capture it.
 
-```
+```js
 render() {
     return (
       <GraphicsView
@@ -88,8 +88,8 @@ onContextCreate = async ({gl, scale: pixelRatio, width, height}) => {
 
 To draw things to the screen, we need a 3D WebGL renderer. The renderer is responsible for displaying your digital wonderland:
 
-```
-onContextCreate = async ({gl, scale: pixelRatio, width, height}) => {
+```js
+onContextCreate = async ({ gl, scale: pixelRatio, width, height }) => {
   // Create a 3D renderer
   this.renderer = new ExpoTHREE.Renderer({
     gl,
@@ -97,14 +97,14 @@ onContextCreate = async ({gl, scale: pixelRatio, width, height}) => {
     width,
     height,
   });
-}
+};
 ```
 
 `ExpoTHREE.Renderer` extends `THREE.WebGLRenderer` and does a little magic (DOM shimming) to get things going in React Native. ([Still curious? Check out the source](https://github.com/expo/expo-three/blob/a38dbc9ef411b7babebf13fe7e0665278890d0b5/lib/Renderer.js#L3-L23).)
 
 If you run it, you may see a bunch of warnings; use this to convert them to logs:
 
-```
+```js
 componentDidMount() {
   // Turn off extra warnings
   THREE.suppressExpoWarnings(true)
@@ -114,17 +114,16 @@ componentDidMount() {
 
 After we build the renderer, let’s add a basic `THREE.Scene()`. AScene is the root node that we’ll use to add our lights, objects, and camera(s).
 
-```
+```js
 // We will add all of our meshes to this scene.
 this.scene = new THREE.Scene();
 // A generic camera
-this.camera = new THREE.PerspectiveCamera(
-  75, width / height, 0.1, 1000);
+this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 ```
 
 Now we should add a cube to the scene! To do this we need a Mesh. (Meshes are composed from a Geometry and a Material.)
 
-```
+```js
 // Make a cube - notice that each unit is 1 meter in real life, we will make our box 0.1 meters
 const geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
 // Simple color material
@@ -135,7 +134,7 @@ const material = new THREE.MeshPhongMaterial({
 // Combine our geometry and material
 this.cube = new THREE.Mesh(geometry, material);
 // Place the box 0.4 meters in front of us.
-this.cube.position.z = -0.4
+this.cube.position.z = -0.4;
 // Add the cube to the scene
 this.scene.add(this.cube);
 ```
@@ -146,13 +145,13 @@ We created a material that is just a single color: #ff00ff (purple). Then we add
 
 We also need to add light to the scene so we can see colors:
 
-```
+```js
 this.scene.add(new THREE.AmbientLight(0xffffff));
 ```
 
 Finally, we need a function that’s called every single frame. We call this the render loop. First we’ll add it to the component, then we’ll include it as the onRender prop in the GraphicsView.
 
-```
+```js
 // In the render method
 <GraphicsView
   style={{ flex: 1 }}
@@ -174,7 +173,7 @@ When you run it, you should see this:
 
 Now let’s add AR! Go to the `GraphicsView` and add the prop `isArEnabled`. This will initialize an AR Session natively. With this, we can make our cyber-camera match the orientation of our iOS device.
 
-```
+```js
 // In the render method
 <GraphicsView
   style={{ flex: 1 }}
@@ -185,12 +184,12 @@ Now let’s add AR! Go to the `GraphicsView` and add the prop `isArEnabled`. Thi
   // Bonus: debug props
   isArRunningStateEnabled
   isArCameraStateEnabled
-  />
+/>
 ```
 
 At the top of our `onContextCreate` function add this:
 
-```
+```js
 AR.setPlaneDetection(AR.PlaneDetectionTypes.Horizontal);
 ```
 
@@ -198,7 +197,7 @@ This means that ARKit will find horizontal data; if your device is running 11.3 
 
 The scene has a member called `background`— this can be a color, skybox, null, or texture. We’ll use a stream from the camera.
 
-```
+```js
 this.scene.background = new ThreeAR.BackgroundTexture(this.renderer);
 ```
 
@@ -210,7 +209,7 @@ Notice that the cube doesn’t move; we actually want to move the camera around 
 
 Replace the camera with a `ThreeAR.Camera`. (This just extends the `PerspectiveCamera` and has a few internal functions that allow us to do largely nothing. In fact, it’s so easy I have to ramble to fill in this tutorial.)
 
-```
+```js
 this.camera = new ThreeAR.Camera(width, height, 0.01, 1000);
 ```
 

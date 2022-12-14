@@ -1,11 +1,12 @@
-
 # Using Firebase in Expo
 
 ## Build simple backends for your native app
 
 ### **Update (Dec 2022):**
+
 > React Native Firebase now has official support for Expo Dev Clients. [Learn more](https://rnfirebase.io/#expo).
-> # *You can read the now outdated original post below, if you would like to.*
+>
+> # _You can read the now outdated original post below, if you would like to._
 
 We are super excited to announce that we will be rolling out a suite of [Unimodules](https://www.youtube.com/watch?v=-9CJZRv7uOY) that will provide you with easy access to native Firebase features! initially you will only be able to use these in a detached ExpoKit App. But over time we will be working to add these to vanilla Expo.
 
@@ -13,35 +14,35 @@ We are super excited to announce that we will be rolling out a suite of [Unimodu
 
 Here are the modules, you will need to detach to add them for now:
 
-* [App/Core](https://www.npmjs.com/package/expo-firebase-app)
+- [App/Core](https://www.npmjs.com/package/expo-firebase-app)
 
-* [Analytics](https://www.npmjs.com/package/expo-firebase-analytics)
+- [Analytics](https://www.npmjs.com/package/expo-firebase-analytics)
 
-* [Authentication](https://www.npmjs.com/package/expo-firebase-auth)
+- [Authentication](https://www.npmjs.com/package/expo-firebase-auth)
 
-* [Cloud Firestore](https://www.npmjs.com/package/expo-firebase-firestore)
+- [Cloud Firestore](https://www.npmjs.com/package/expo-firebase-firestore)
 
-* [Cloud Functions](https://www.npmjs.com/package/expo-firebase-functions)
+- [Cloud Functions](https://www.npmjs.com/package/expo-firebase-functions)
 
-* [Instance ID](https://www.npmjs.com/package/expo-firebase-instance-id)
+- [Instance ID](https://www.npmjs.com/package/expo-firebase-instance-id)
 
-* [Performance Monitor](https://www.npmjs.com/package/expo-firebase-performance)
+- [Performance Monitor](https://www.npmjs.com/package/expo-firebase-performance)
 
-* [Realtime Database](https://www.npmjs.com/package/expo-firebase-database)
+- [Realtime Database](https://www.npmjs.com/package/expo-firebase-database)
 
-* [Cloud Storage](https://www.npmjs.com/package/expo-firebase-storage)
+- [Cloud Storage](https://www.npmjs.com/package/expo-firebase-storage)
 
-* [Remote Config](https://www.npmjs.com/package/expo-firebase-remote-config)
+- [Remote Config](https://www.npmjs.com/package/expo-firebase-remote-config)
 
-* [Firebase Cloud Messaging](https://www.npmjs.com/package/expo-firebase-messaging)
+- [Firebase Cloud Messaging](https://www.npmjs.com/package/expo-firebase-messaging)
 
-* [Remote Notifications](https://www.npmjs.com/package/expo-firebase-notifications)
+- [Remote Notifications](https://www.npmjs.com/package/expo-firebase-notifications)
 
-* [Dynamic Linking](https://www.npmjs.com/package/expo-firebase-links)
+- [Dynamic Linking](https://www.npmjs.com/package/expo-firebase-links)
 
-* [Invites](https://www.npmjs.com/package/expo-firebase-invites)
+- [Invites](https://www.npmjs.com/package/expo-firebase-invites)
 
-* [Crashlytics](https://www.npmjs.com/package/expo-firebase-crashlytics)
+- [Crashlytics](https://www.npmjs.com/package/expo-firebase-crashlytics)
 
 And the source code can be found here:
 [**Firebase Modules**
@@ -69,24 +70,22 @@ Another huge request we’ve gotten is to make the apps slimmer. By having separ
 
 To get started you can install the core library `expo-firebase-app`. You can access any other imported firebase libraries through `expo-firebase-app`.
 
+```js
+import firebase from "expo-firebase-app";
 ```
-import firebase from 'expo-firebase-app';
-```
-
 
 Then to integrate any other library, you will need to install it & import it somewhere. You will only ever need to import it once, and before your initial usage.
 
-```
-import firebase from 'expo-firebase-app';
-import 'expo-firebase-database';
+```js
+import firebase from "expo-firebase-app";
+import "expo-firebase-database";
 
-firebase.database()
+firebase.database();
 ```
-
 
 If you are starting with Expo (recommended) then you can run the following commands:
 
-```
+```sh
 expo init my-lit-app
 
 cd my-lit-app
@@ -96,40 +95,39 @@ expo eject
 yarn add expo-firebase-app
 ```
 
-
 Simple libraries can be added with npm, then integrated like most Expo libraries. These libraries include:
 
-* Analytics
+- Analytics
 
-* Authentication
+- Authentication
 
-* Firestore
+- Firestore
 
-* Functions
+- Functions
 
-* Instance ID
+- Instance ID
 
-* Performance Monitor
+- Performance Monitor
 
-* Realtime Database
+- Realtime Database
 
-* Cloud Storage
+- Cloud Storage
 
-* Remote Config
+- Remote Config
 
 Some smaller aspects of each library may require extra lines to be added to the Android gradles.
 
 The more complex libraries will require 2–3 extra steps, these are:
 
-* Cloud Messaging
+- Cloud Messaging
 
-* Remote Notifications
+- Remote Notifications
 
-* Dynamic Linking
+- Dynamic Linking
 
-* Invites
+- Invites
 
-* Crashlytics
+- Crashlytics
 
 ## What’s next
 
@@ -148,5 +146,5 @@ Feel free to reach out on [forums](http://forums.expo.io) or on twitter `**@expo
 *An ExpoKit v30 project with expo-firebase added. . Contribute to EvanBacon/expo-native-firebase development by creating…*github.com](https://github.com/EvanBacon/expo-native-firebase)
 [**Expo (@expo) | Twitter**
 *The latest Tweets from Expo (@expo). Make & use native mobile apps written in just JavaScript using React Native. (Like…*twitter.com](https://twitter.com/expo)
-[**React Native Firebase - Simple Firebase integration for React Native**
+[**React Native Firebase - Simple Firebase integration for React Native\*\*
 *Simple Firebase integration for React Native with support for 10+ Firebase modules including Authentication, Analytics…*rnfirebase.io](https://rnfirebase.io/docs/master/getting-started)

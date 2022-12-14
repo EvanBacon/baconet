@@ -44,22 +44,22 @@ AuthSession manages all the weirdness around web authentication flows in a nativ
 
 To get started, import AuthSession, and define the auth related constants.
 
-```
-import { AuthSession } from 'expo';
+```js
+import { AuthSession } from "expo";
 
 const REDIRECT_URL = AuthSession.getRedirectUrl();
 
 const github = {
-  id: 'xxxxxxxxxxxxxxxxxxxx',
-  secret: 'xxxxxxxxxhixxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  id: "xxxxxxxxxxxxxxxxxxxx",
+  secret: "xxxxxxxxxhixxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 };
 
-const githubFields = ['user', 'public_repo'];
+const githubFields = ["user", "public_repo"];
 ```
 
 Now we want to start an auth session and retrieve a token from it
 
-```
+```js
 // 1
 const { params } = await AuthSession.startAsync({
   authUrl: authUrlWithId(github.id, githubFields),
@@ -71,8 +71,8 @@ function authUrlWithId(id, fields) {
     `https://github.com/login/oauth/authorize` +
     `?client_id=${id}` +
     `&redirect_uri=${encodeURIComponent(REDIRECT_URL)}` +
-     // 3
-    `&scope=${encodeURIComponent(fields.join(' '))}`
+    // 3
+    `&scope=${encodeURIComponent(fields.join(" "))}`
   );
 }
 ```
@@ -85,7 +85,7 @@ function authUrlWithId(id, fields) {
 
 We are going to skip over some error handling for the sake of brevity, but you can see in the example how to handle user cancellation or invalid redirect URI.
 
-```
+```js
 // 1
 const { access_token } = await createTokenWithCode(params.code);
 
@@ -98,10 +98,10 @@ async function createTokenWithCode(code) {
     `&code=${code}`;
   // 3
   const res = await fetch(url, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
   });
   return res.json();
@@ -116,21 +116,23 @@ async function createTokenWithCode(code) {
 
 Now to create a user, all we need to do is simply pass the token to Firebase with a Github provider.
 
-```
+```js
 const credential = firebase.auth.GithubAuthProvider.credential(token);
 
-const user = await firebase.auth().signInAndRetrieveDataWithCredential(credential);
+const user = await firebase
+  .auth()
+  .signInAndRetrieveDataWithCredential(credential);
 ```
 
 And just like that you have created a user! You can now access that user’s Github name and photo like so:
 
-```
+```js
 const { displayName, photoURL } = firebase.auth().currentUser;
 ```
 
 We can also link our Github account to an existing Firebase user.
 
-```
+```js
 const credential = firebase.auth.GithubAuthProvider.credential(token);
 
 firebase.auth().currentUser.linkAndRetrieveDataWithCredential(credential);
@@ -142,7 +144,7 @@ This is cool because now the user has the ability to sign in with their Github a
 
 In the example project you can see that we use `AsyncStorage` to save our access token locally, if for some reason we open the app and are not signed in, the system will automatically try and login with the stored credential.
 
-```
+```js
 await AsyncStorage.setItem(GithubStorageKey, token);
 
 ... Later ...
@@ -152,7 +154,7 @@ const token = await AsyncStorage.getItem(GithubStorageKey);
 
 Remember to clear your local token when the user chooses to sign-out. This will prevent the code from automatically logging the user back in.
 
-```
+```js
 await AsyncStorage.removeItem(GithubStorageKey);
 
 await firebase.auth().signOut();

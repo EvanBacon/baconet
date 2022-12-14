@@ -34,9 +34,8 @@ This is a generic three.js scene (learn more about this in my [past AR tutorials
 
 We’ll just be working in the `onTouchesBegan` function in the `App.js`. This function will be invoked when `onPanResponderGrant` is called in the `TouchableView` .
 
-```
+```js
 onTouchesBegan = async ({ locationX: x, locationY: y }) => {
-
   // 1.
   if (!this.renderer) {
     return;
@@ -63,7 +62,7 @@ onTouchesBegan = async ({ locationX: x, locationY: y }) => {
 
 1. We need to pass in the `HitTestResultTypes` that we want to get. For this we’ll use [HorizontalPlane](https://developer.apple.com/documentation/arkit/arhittestresulttype/arhittestresulttypeestimatedhorizontalplane?language=objc).
 
-```
+```js
 // 1.
 for (let hit of hitTest) {
   const { worldTransform } = hit;

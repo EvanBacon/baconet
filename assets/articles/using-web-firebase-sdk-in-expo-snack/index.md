@@ -4,7 +4,7 @@
 
 If you have tried using Firebase in a [snack.expo.io](https://snack.expo.io/) you may have noticed that the hot reloading will cause it to throw errors and not function properly.
 
-```
+```sh
 Device: (78:20) Firebase: Firebase App named '[DEFAULT]' already exists (app/duplicate-app).
   Evaluating module://Firebase/Fire.js
   Evaluating module://Screens/Login.js
@@ -19,7 +19,7 @@ Fixing this is very simple. Just check to make sure the app hasn’t been initia
 
 ### You can do that like this:
 
-```
+```js
 if (!firebase.apps.length) firebase.initializeApp({ ... });
 ```
 

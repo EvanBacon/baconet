@@ -1,4 +1,3 @@
-
 # Media Queries with React Native for iOS, Android, and Web
 
 ## The easiest way to create media queries universally!
@@ -9,7 +8,7 @@
 
 A big open question we’ve had while developing Expo web is how would someone go about creating media queries.
 
-A media query is a style rule that can be toggled based on device conditions. They’re a critical part of *easily* building a responsive layout that works on many different screen sizes or orientations.
+A media query is a style rule that can be toggled based on device conditions. They’re a critical part of _easily_ building a responsive layout that works on many different screen sizes or orientations.
 
 Because there are already so many incredible libraries out there for using media queries with React I figured the best approach for a universal system would be to polyfill native and reuse the existing eco-system. The result is `@expo/match-media` which enables you to use most of your favorite responsive React libraries with Expo.
 
@@ -21,39 +20,35 @@ For this example I’ll show you how to use [react-responsive](https://github.co
 
 First Install the packages:
 
-```
+```sh
 yarn add @expo/match-media react-responsive
 ```
 
-
 Then simply import the package at the root of your project (it’s a side-effect):
 
-```
-import '@expo/match-media'
+```js
+import "@expo/match-media";
 
 // Unleash the demo :D
 
 import { useMediaQuery } from "react-responsive";
 
 export default function App() {
-
-  const isTabletOrMobileDevice = useMediaQuery({    
+  const isTabletOrMobileDevice = useMediaQuery({
     maxDeviceWidth: 1224,
 
     // alternatively...
 
-    query: "(max-device-width: 1224px)"  
+    query: "(max-device-width: 1224px)",
   });
 
   if (isTabletOrMobileDevice) {
-    return (<Text>Hi Mobile Users 👋</Text>)
+    return <Text>Hi Mobile Users 👋</Text>;
   }
 
-  return (<Text>👋 Hello Desktop People</Text>)
-
+  return <Text>👋 Hello Desktop People</Text>;
 }
 ```
-
 
 It’s that simple! Check out the docs for more information on what you can do with [React Responsive](https://github.com/evanbacon/react-responsive#with-hooks)! Now get out there and get queryinginging!
 

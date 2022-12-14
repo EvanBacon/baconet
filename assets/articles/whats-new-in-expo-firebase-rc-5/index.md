@@ -12,7 +12,7 @@ Hey Expo/Firebase users, we have an exciting new update for you! This one is ful
 
 TL;DR: You can just Copy & Paste 😁
 
-```
+```js
 import firebase from ‘expo-firebase-app’;
 ```
 

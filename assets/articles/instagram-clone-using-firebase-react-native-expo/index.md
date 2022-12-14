@@ -94,20 +94,20 @@ The reason the StackNavigator is at the top most level is because as you can see
 
 We will also define the global background color with `cardStyle.`
 
-```
+```js
 // ./App.js
 
 // Import React Navigation
 import {
   createBottomTabNavigator,
   createStackNavigator,
-} from 'react-navigation';
+} from "react-navigation";
 
-import tabBarIcon from './utils/tabBarIcon';
+import tabBarIcon from "./utils/tabBarIcon";
 // Import the screens
-import FeedScreen from './screens/FeedScreen';
-import NewPostScreen from './screens/NewPostScreen';
-import SelectPhotoScreen from './screens/SelectPhotoScreen';
+import FeedScreen from "./screens/FeedScreen";
+import NewPostScreen from "./screens/NewPostScreen";
+import SelectPhotoScreen from "./screens/SelectPhotoScreen";
 
 // Create our main tab navigator for moving between the Feed and Photo screens
 const navigator = createBottomTabNavigator(
@@ -118,14 +118,14 @@ const navigator = createBottomTabNavigator(
       screen: FeedScreen,
       navigationOptions: {
         // Add a cool Material Icon for this screen
-        tabBarIcon: tabBarIcon('home'),
+        tabBarIcon: tabBarIcon("home"),
       },
     },
     // All the same stuff but for the Photo screen
     Photo: {
       screen: SelectPhotoScreen,
       navigationOptions: {
-        tabBarIcon: tabBarIcon('add-circle'),
+        tabBarIcon: tabBarIcon("add-circle"),
       },
     },
   },
@@ -133,10 +133,10 @@ const navigator = createBottomTabNavigator(
     // We want to hide the labels and set a nice 2-tone tint system for our tabs
     tabBarOptions: {
       showLabel: false,
-      activeTintColor: 'black',
-      inactiveTintColor: 'gray',
+      activeTintColor: "black",
+      inactiveTintColor: "gray",
     },
-  },
+  }
 );
 
 // Create the navigator that pushes high-level screens like the `NewPost` screen.
@@ -145,14 +145,14 @@ const stackNavigator = createStackNavigator(
     Main: {
       screen: navigator,
       // Set the title for our app when the tab bar screen is present
-      navigationOptions: { title: 'Instaham 🐷' },
+      navigationOptions: { title: "Instaham 🐷" },
     },
     // This screen will not have a tab bar
     NewPost: NewPostScreen,
   },
   {
-    cardStyle: { backgroundColor: 'white' },
-  },
+    cardStyle: { backgroundColor: "white" },
+  }
 );
 
 // Export it as the root component
@@ -165,36 +165,36 @@ We’ll handle all the Firebase stuff in one concise location called `Fire.js`.
 
 First, we have to initialize the Firebase app, then check the authentication of the user. If the user isn’t authenticated, then we need to sign them in anonymously.
 
-```
+```js
 // ./Fire.js
 
-import uuid from 'uuid';
+import uuid from "uuid";
 
-import getUserInfo from './utils/getUserInfo';
-import shrinkImageAsync from './utils/shrinkImageAsync';
-import uploadPhoto from './utils/uploadPhoto';
+import getUserInfo from "./utils/getUserInfo";
+import shrinkImageAsync from "./utils/shrinkImageAsync";
+import uploadPhoto from "./utils/uploadPhoto";
 
-const firebase = require('firebase');
+const firebase = require("firebase");
 // Required for side-effects
-require('firebase/firestore');
+require("firebase/firestore");
 
-const collectionName = 'snack-SJucFknGX';
+const collectionName = "snack-SJucFknGX";
 
 class Fire {
   constructor() {
     firebase.initializeApp({
-      apiKey: 'AIzaSyAQan8_IJ6fY6F8E06FMDKVbWlrdI75mvA',
-      authDomain: 'instahamm-b09ce.firebaseapp.com',
-      databaseURL: 'https://instahamm-b09ce.firebaseio.com',
-      projectId: 'instahamm-b09ce',
-      storageBucket: 'instahamm-b09ce.appspot.com',
-      messagingSenderId: '716190466061',
+      apiKey: "AIzaSyAQan8_IJ6fY6F8E06FMDKVbWlrdI75mvA",
+      authDomain: "instahamm-b09ce.firebaseapp.com",
+      databaseURL: "https://instahamm-b09ce.firebaseio.com",
+      projectId: "instahamm-b09ce",
+      storageBucket: "instahamm-b09ce.appspot.com",
+      messagingSenderId: "716190466061",
     });
     // Some nonsense...
     firebase.firestore().settings({ timestampsInSnapshots: true });
 
     // Listen for auth
-    firebase.auth().onAuthStateChanged(async user => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (!user) {
         await firebase.auth().signInAnonymously();
       }
@@ -203,7 +203,7 @@ class Fire {
 
   // Download Data
   getPaged = async ({ size, start }) => {
-    let ref = this.collection.orderBy('timestamp', 'desc').limit(size);
+    let ref = this.collection.orderBy("timestamp", "desc").limit(size);
     try {
       if (start) {
         ref = ref.startAfter(start);
@@ -211,7 +211,7 @@ class Fire {
 
       const querySnapshot = await ref.get();
       const data = [];
-      querySnapshot.forEach(function(doc) {
+      querySnapshot.forEach(function (doc) {
         if (doc.exists) {
           const post = doc.data() || {};
 
@@ -221,7 +221,7 @@ class Fire {
           const name = user.deviceName;
           const reduced = {
             key: doc.id,
-            name: (name || 'Secret Duck').trim(),
+            name: (name || "Secret Duck").trim(),
             ...post,
           };
           data.push(reduced);
@@ -236,16 +236,18 @@ class Fire {
   };
 
   // Upload Data
-  uploadPhotoAsync = async uri => {
+  uploadPhotoAsync = async (uri) => {
     const path = `${collectionName}/${this.uid}/${uuid.v4()}.jpg`;
     return uploadPhoto(uri, path);
   };
 
   post = async ({ text, image: localUri }) => {
     try {
-      const { uri: reducedImage, width, height } = await shrinkImageAsync(
-        localUri,
-      );
+      const {
+        uri: reducedImage,
+        width,
+        height,
+      } = await shrinkImageAsync(localUri);
 
       const remoteUri = await this.uploadPhotoAsync(reducedImage);
       this.collection.add({
@@ -293,7 +295,7 @@ After we have the reduced image and some user info, we will upload the image usi
 
 Then to actually upload data just:
 
-```
+```js
 this.collection.add({ some data })
 ```
 
@@ -305,32 +307,32 @@ Finally we will make some getters that help us get the UID, timestamp, and posts
 
 First we need a reference to the collection (complex parent nodes) we want to read from. Then we’ll attach a query to it that returns docs (child nodes) sorted by the child key `timestamp` . Also notice that we limit the payload to a page size.
 
-```
-let ref = firebase.firestore().collection(collectionName)
-ref.orderBy('timestamp', 'desc').limit(size);
+```js
+let ref = firebase.firestore().collection(collectionName);
+ref.orderBy("timestamp", "desc").limit(size);
 ```
 
 If a cursor is present then we can attach it to the query. This allows us to effectively paginate complex data sets 😍
 
-```
+```js
 ref = ref.startAfter(start);
 ```
 
 Now we can get the data, and reduce it into a nice format for the UI.
 
-```
+```js
 const querySnapshot = await ref.get();
 const data = [];
-querySnapshot.forEach(function(doc) {
+querySnapshot.forEach(function (doc) {
   if (doc.exists) {
-    const post = doc.data()
+    const post = doc.data();
   }
 });
 ```
 
 and finally to get the next page cursor:
 
-```
+```js
 const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
 ```
 
@@ -355,15 +357,15 @@ When the component loads, we check to see if the user is signed in; if they aren
 **One other cool thing
 **Sometimes loading in data can be a really janky process and it won’t look very good. To avoid this, use the `LayoutAnimation` API which automatically animates layout changes — life is gooood.
 
-```
+```js
 // screens/FeedScreen.js
 
-import firebase from 'firebase';
-import React, { Component } from 'react';
-import { LayoutAnimation, RefreshControl } from 'react-native';
+import firebase from "firebase";
+import React, { Component } from "react";
+import { LayoutAnimation, RefreshControl } from "react-native";
 
-import List from '../components/List';
-import Fire from '../Fire';
+import List from "../components/List";
+import Fire from "../Fire";
 
 // Set the default number of images to load for each pagination.
 const PAGE_SIZE = 5;
@@ -382,7 +384,7 @@ export default class FeedScreen extends Component {
       this.makeRemoteRequest();
     } else {
       // If we aren't then we should just start observing changes. This will be called when the user signs in
-      firebase.auth().onAuthStateChanged(user => {
+      firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           this.makeRemoteRequest();
         }
@@ -391,8 +393,8 @@ export default class FeedScreen extends Component {
   }
 
   // Append the item to our states `data` prop
-  addPosts = posts => {
-    this.setState(previousState => {
+  addPosts = (posts) => {
+    this.setState((previousState) => {
       let data = {
         ...previousState.data,
         ...posts,
@@ -406,7 +408,7 @@ export default class FeedScreen extends Component {
   };
 
   // Call our database and ask for a subset of the user posts
-  makeRemoteRequest = async lastKey => {
+  makeRemoteRequest = async (lastKey) => {
     // If we are currently getting posts, then bail out..
     if (this.state.loading) {
       return;
@@ -469,14 +471,14 @@ You could build the exact Instagram API using `Expo.Camera` & `Expo.MediaLibrary
 
 After the user has selected the media, push the description screen using `react-navigation.` React-Navigation provides us a `navigation` prop that allows for pushing and popping screens.
 
-```
+```js
 // screens/SelectPhotoScreen.js
 
-import { Constants, ImagePicker, Permissions } from 'expo';
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Constants, ImagePicker, Permissions } from "expo";
+import React, { Component } from "react";
+import { StyleSheet, Text, View } from "react-native";
 
-import getPermission from '../utils/getPermission';
+import getPermission from "../utils/getPermission";
 
 const options = {
   allowsEditing: true,
@@ -490,7 +492,7 @@ export default class SelectPhotoScreen extends Component {
     if (status) {
       const result = await ImagePicker.launchImageLibraryAsync(options);
       if (!result.cancelled) {
-        this.props.navigation.navigate('NewPost', { image: result.uri });
+        this.props.navigation.navigate("NewPost", { image: result.uri });
       }
     }
   };
@@ -500,7 +502,7 @@ export default class SelectPhotoScreen extends Component {
     if (status) {
       const result = await ImagePicker.launchCameraAsync(options);
       if (!result.cancelled) {
-        this.props.navigation.navigate('NewPost', { image: result.uri });
+        this.props.navigation.navigate("NewPost", { image: result.uri });
       }
     }
   };
@@ -522,14 +524,14 @@ export default class SelectPhotoScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   text: {
     padding: 24,
     fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
 ```
@@ -539,31 +541,31 @@ All we need now is a photo description. Provide a TextInput for … text input, 
 **Header Buttons
 **To make these as simple as possibly we will use the cool `react-navigation-header-buttons` library. Inside the button’s `onPress` method we will send data to the shared instance of `Fire` and pop the navigation stack to go back to the beginning.
 
-```
+```js
 // screens/NewPostScreen.js
 
-import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
-import { Image, TextInput, View } from 'react-native';
-import HeaderButtons from 'react-navigation-header-buttons';
+import { Ionicons } from "@expo/vector-icons";
+import React from "react";
+import { Image, TextInput, View } from "react-native";
+import HeaderButtons from "react-navigation-header-buttons";
 
-import Fire from '../Fire';
+import Fire from "../Fire";
 
 export default class NewPostScreen extends React.Component<Props> {
   static navigationOptions = ({ navigation }) => ({
-    title: 'New Post',
+    title: "New Post",
     headerRight: (
       <HeaderButtons IconComponent={Ionicons} iconSize={23} color="black">
         <HeaderButtons.Item
           title="Share"
           onPress={() => {
-            const text = navigation.getParam('text');
-            const image = navigation.getParam('image');
+            const text = navigation.getParam("text");
+            const image = navigation.getParam("image");
             if (text && image) {
               navigation.goBack();
               Fire.shared.post({ text: text.trim(), image });
             } else {
-              alert('Need valid description');
+              alert("Need valid description");
             }
           }}
         />
@@ -571,21 +573,21 @@ export default class NewPostScreen extends React.Component<Props> {
     ),
   });
 
-  state = { text: '' };
+  state = { text: "" };
 
   render() {
     const { image } = this.props.navigation.state.params;
     return (
-      <View style={{ padding: 10, flexDirection: 'row' }}>
+      <View style={{ padding: 10, flexDirection: "row" }}>
         <Image
           source={{ uri: image }}
-          style={{ resizeMode: 'contain', aspectRatio: 1, width: 72 }}
+          style={{ resizeMode: "contain", aspectRatio: 1, width: 72 }}
         />
         <TextInput
           multiline
           style={{ flex: 1, paddingHorizontal: 16 }}
           placeholder="Add a neat description..."
-          onChangeText={text => {
+          onChangeText={(text) => {
             this.setState({ text });
             this.props.navigation.setParams({ text });
           }}

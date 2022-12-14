@@ -1,4 +1,3 @@
-
 # Licenses&#58; The Best Part of Your App
 
 ## Automation + Style
@@ -9,15 +8,15 @@
 
 You might know about the “licenses” page that you should probably add to your app for legal reasons…or you might not because you’re busy lol
 
-![What we’ll be making, and hiding in our settings page ❤ love you [Mr. Doob](https://mrdoob.com/)](./images/1-oU8Em2jRJpKSzESiEVXMA.png)*What we’ll be making, and hiding in our settings page ❤ love you [Mr. Doob](https://mrdoob.com/)*
+![What we’ll be making, and hiding in our settings page ❤ love you [Mr. Doob](https://mrdoob.com/)](./images/1-oU8Em2jRJpKSzESiEVXMA.png)_What we’ll be making, and hiding in our settings page ❤ love you [Mr. Doob](https://mrdoob.com/)_
 
 To be honest, it never really crossed my mind to go about crediting cyber-framework people because the examples from major companies are overwhelming, and not really supporting the library creators 🦄🙃
 
-![I’m sure [Mattt](https://github.com/mattt) (NSHipster) appreciates the non-linked shoutout, but maybe it could be better. 😏[https://mat.tt/](https://mat.tt/)](./images/1QmhCcaEu7n2K8oevSyG94g.png)*I’m sure [Mattt](https://github.com/mattt) (NSHipster) appreciates the non-linked shoutout, but maybe it could be better. 😏[https://mat.tt/](https://mat.tt/)*
+![I’m sure [Mattt](https://github.com/mattt) (NSHipster) appreciates the non-linked shoutout, but maybe it could be better. 😏[https://mat.tt/](https://mat.tt/)](./images/1QmhCcaEu7n2K8oevSyG94g.png)_I’m sure [Mattt](https://github.com/mattt) (NSHipster) appreciates the non-linked shoutout, but maybe it could be better. 😏[https://mat.tt/](https://mat.tt/)_
 
 ## So why even do it?
 
-Turns out you *need* to indicate **Apache 2.0 Licenses**. 🔥 But let’s credit everyone, because they’re pretty cool people!
+Turns out you _need_ to indicate **Apache 2.0 Licenses**. 🔥 But let’s credit everyone, because they’re pretty cool people!
 
 ## Also…
 
@@ -35,17 +34,15 @@ Now that I’ve made it really easy to sue me, let’s make licenses pages! This
 
 **A. Overwhelmingly long** and thorough ones that aren’t really all that helpful as there will be about a hundred libs (but you do you). Run this in your projects root directory:
 
-```
+```sh
 npm-license-crawler -dependencies -json licenses.json
 ```
 
-
 **B. A concise and clean** list of direct packages that you use in your app: (I like this one because I recognize all the libraries in the list). In your projects root directory:
 
-```
+```sh
 npm-license-crawler -onlyDirectDependencies -json licenses.json
 ```
-
 
 You can also filter out licenses that you don’t need to legally display, if that’s what you’re into 🤷‍.
 
@@ -65,14 +62,14 @@ Finally, imagine if **you** are an open-source dev and get to see your face in s
 
 ## Links
 
-* The Snack: [https://snack.expo.io/@bacon/licenses](https://snack.expo.io/@bacon/licenses)
+- The Snack: [https://snack.expo.io/@bacon/licenses](https://snack.expo.io/@bacon/licenses)
 
-* You can keep up with me on [Twitter](https://twitter.com/baconbrix) or [Github](https://github.com/evanbacon)
+- You can keep up with me on [Twitter](https://twitter.com/baconbrix) or [Github](https://github.com/evanbacon)
 
-* Share your cool apps, source, or questions on our [forums](http://forums.expo.io) 👥
+- Share your cool apps, source, or questions on our [forums](http://forums.expo.io) 👥
 
-* Subscribe to [Exposition](https://blog.expo.io/), or [follow us on Twitter](https://twitter.com/expo) for the most up-to-date news 📰
+- Subscribe to [Exposition](https://blog.expo.io/), or [follow us on Twitter](https://twitter.com/expo) for the most up-to-date news 📰
 
-* Check out [examples on Github](https://github.com/expo/examples) ⭐️
+- Check out [examples on Github](https://github.com/expo/examples) ⭐️
 
 **50 claps** because it justifies the 75 company hours I borrowed to make this article.

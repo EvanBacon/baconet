@@ -1,19 +1,18 @@
-
 # Testing Universal React (Native) Apps with Jest and Expo!
 
 ## The official approach to testing your universal projects
 
 ![](./images/1a4SNCDRRShRaZSwgvVi7vw.png)
 
-Earlier this year we announced [web support for Expo](https://blog.expo.io/expo-cli-and-sdk-web-support-beta-d0c588221375) making it a universal framework for building apps. With this came a few big questions around stability and maintainability. For instance how would someone write a universal project and ensure that it works on *every* platform.
+Earlier this year we announced [web support for Expo](https://blog.expo.io/expo-cli-and-sdk-web-support-beta-d0c588221375) making it a universal framework for building apps. With this came a few big questions around stability and maintainability. For instance how would someone write a universal project and ensure that it works on _every_ platform.
 
-Unit testing with Jest is an integral part of projects that are built with React. The tests run quickly and give us a wide variety of configuration options. But we’ve also found that sometimes entire classes of bugs slip through with several Jest configurations, such as the preset included with React Native, and the testing never seems to really *cover everything.*
+Unit testing with Jest is an integral part of projects that are built with React. The tests run quickly and give us a wide variety of configuration options. But we’ve also found that sometimes entire classes of bugs slip through with several Jest configurations, such as the preset included with React Native, and the testing never seems to really _cover everything._
 
 ## 🤔 What’s wrong with the existing testing methods?
 
 **TL;DR:** Existing approaches only test iOS code but never run Android, or web.
 
-If you were to create a new React Native project now (late 2019) with the React Native CLI, you’ll be using the built-in Jest preset. With Expo CLI you use `jest-expo` which until *recently* just composed the React Native preset with added mocks for Expo APIs.
+If you were to create a new React Native project now (late 2019) with the React Native CLI, you’ll be using the built-in Jest preset. With Expo CLI you use `jest-expo` which until _recently_ just composed the React Native preset with added mocks for Expo APIs.
 
 The problem with these existing solutions is that you have just one Jest project that mocks out a single native platform to run the tests. It’s not entirely clear which platform that is when you’re using it but upon further digging of the source code [you’ll see it’s just iOS](https://github.com/facebook/react-native/blob/7a2463e1f396ffcfbd86e68170f624d31a1be4e1/jest-preset.js#L14).
 
@@ -21,7 +20,7 @@ This means that any unexpected behavior on Android, web, or Node (SSR) is comple
 
 1. The Platform API is mocked to iOS so the following is true: `Platform.OS === 'ios'` and `Platform.select({ ios: 'ios', default: 'other' }) === 'ios'`
 
-```
+```js
 import { Platform } from 'react-native';
 
 if (Platform.OS === 'ios') {
@@ -52,29 +51,25 @@ get doesMyCodeWork(): boolean {
 }
 ```
 
-
 2. The aforementioned Jest presets configure the module resolver to look for files ending in `.ios.js` and `.native.js`, which means anything else like `.android.js`, `.web.js`, `.macos.js`, `.windows.js`, or `.yournewos.js` will not be imported or tested.
 
-```
+```js
 // > 📁 **Module.ios.js**
 
-export {
-  // Expected values...
-}
+export // Expected values...
+ {};
 
 // > 📁 Module.web.js, Module.android.js, Module.windows.js, etc...
 
-export {
-  // Unexpected values...
-}
+export // Unexpected values...
+ {};
 
 // > 📁 MyCode.js
 
-import { /* Expected values */ } from './Module';
+import /* Expected values */ "./Module";
 
 // 🛑 Will fail in prod but pass in tests!
 ```
-
 
 So even if you write extremely thorough tests they may not cover code that ends up failing in production because a lot of platform-specific features are never even executed!
 
@@ -82,15 +77,15 @@ So even if you write extremely thorough tests they may not cover code that ends 
 
 **TL;DR:** `[jest-expo@^35.0.0`](https://github.com/expo/expo/tree/master/packages/jest-expo)
 
-![A universal platform test runner for Jest](./images/1MijD1MHNmNvkSgG2FJC2CQ.png)*A universal platform test runner for Jest*
+![A universal platform test runner for Jest](./images/1MijD1MHNmNvkSgG2FJC2CQ.png)_A universal platform test runner for Jest_
 
-In order to create sturdy, well-tested universal libraries (like [**these](https://github.com/expo/expo/tree/master/packages) **packages) we needed to create a completely new way for ensuring that all API code was covered. The result is `jest-expo@^35.0.0`, which is the first universal testing preset for React.
+In order to create sturdy, well-tested universal libraries (like [\*\*these](https://github.com/expo/expo/tree/master/packages) \*\*packages) we needed to create a completely new way for ensuring that all API code was covered. The result is `jest-expo@^35.0.0`, which is the first universal testing preset for React.
 
 `jest-expo` works by recomposing the React Native Jest preset with platform-specific module resolution, then running all of the unit tests on every platform you’re supporting. (More info on why this wasn’t just upstreamed at the bottom).
 
 ### 🤝 Framework Agnostic
 
-`jest-expo` can scale down to work with *any* React Native project. The `expo` name simply means that it provides coverage for the underlying platforms Expo supports, which are currently iOS, Android, web, and Node (for server-side rendering). We built it in a very composable way so you can run it with tools that don’t support all of the platforms Expo runs on.
+`jest-expo` can scale down to work with _any_ React Native project. The `expo` name simply means that it provides coverage for the underlying platforms Expo supports, which are currently iOS, Android, web, and Node (for server-side rendering). We built it in a very composable way so you can run it with tools that don’t support all of the platforms Expo runs on.
 
 **Important: **Check the migration section for more info on how to do universal testing with bi-platform (iOS & Android only) React Native projects.
 
@@ -98,12 +93,11 @@ In order to create sturdy, well-tested universal libraries (like [**these](https
 
 In universal projects made with Expo CLI you can simply run `yarn add --dev jest-expo@^35.0.0` and change the Jest preset in `package.json`:
 
-```
+```json
 // package.json
 
 "jest": { "preset": "jest-expo/universal" }
 ```
-
 
 👉 For backwards-compatibility, the preset `jest-expo` is currently an alias for `jest-expo/ios`.
 
@@ -111,11 +105,11 @@ In universal projects made with Expo CLI you can simply run `yarn add --dev jest
 
 Run `yarn test --watch` or `yarn jest --watch` to start the test runner in watch mode, then you may notice the new options with the **X (⇪x)** key which will enable you to choose which platforms you want to test.
 
-![You can now select which platforms you want to test by pressing **X**](./images/1l26tcpYbxXM5cqHD1XDMlw.png)*You can now select which platforms you want to test by pressing **X***
+![You can now select which platforms you want to test by pressing **X**](./images/1l26tcpYbxXM5cqHD1XDMlw.png)\*You can now select which platforms you want to test by pressing **X\***
 
 Just like with developing an app, you probably won’t want to test every platform at the same time. Because of this we’ve added the option to choose which platforms you want to run in the terminal.
 
-![Press **X **to open the platform selection dialog](./images/1dA-jFh6ZdtLtaqk_AjFCnA.png)*Press **X **to open the platform selection dialog*
+![Press **X **to open the platform selection dialog](./images/1dA-jFh6ZdtLtaqk_AjFCnA.png)_Press **X **to open the platform selection dialog_
 
 You’ll now notice that your tests are being run multiple times, each with a different platform. This means that all platform specific features and conditionals can be covered and no bugs are missed.
 
@@ -125,16 +119,13 @@ You’ll now notice that your tests are being run multiple times, each with a di
 
 You can now use the Platform API from React Native in your tests to conditionally run platform specific tests in the same file as well:
 
-```
-import { Platform } from 'react-native';
+```js
+import { Platform } from "react-native";
 
-if (Platform.OS === 'web') {
-  it(`does a web thing`, () => {
-
-  });
+if (Platform.OS === "web") {
+  it(`does a web thing`, () => {});
 }
 ```
-
 
 The Platform API is correctly mocked out so the application code you are testing will be aware of which conditions should be executed on a platform.
 
@@ -142,7 +133,7 @@ The Platform API is correctly mocked out so the application code you are testing
 
 You may find that some tests shouldn’t be universal and instead should only run in either native (Android, iOS, etc…) or web environments. Because of this we’ve added **platform-specific test resolution**. You can specify which tests run on which platforms by using platform extensions like these:
 
-```
+```sh
 - Example-test**.ts** : All platforms will run these tests
 - Example-test**.ios.ts** : iOS only
 - Example-test**.android.ts** : Android only
@@ -151,12 +142,11 @@ You may find that some tests shouldn’t be universal and instead should only ru
 - Example-test**.node.ts** : Node (SSR) only
 ```
 
-
 ![](./images/1vewN_ckD61oDYp1aeTkPgg.png)
 
 **Very Important: **These extensions are additive, meaning that if you had a file with `.ios.ts` and a file with `.native.ts`, the **tests from both files will run**. This is different from the bundler resolution where `.ios.ts` would take precedence over `.native.ts` and `.ts` files.
 
-![Node runs all: `node.js, web.js, .js`](./images/1hs2iUnf5wJp0P8pMEUaQhg.png)*Node runs all: `node.js, web.js, .js`*
+![Node runs all: `node.js, web.js, .js`](./images/1hs2iUnf5wJp0P8pMEUaQhg.png)_Node runs all: `node.js, web.js, .js`_
 
 ### 💥 Snapshot Testing
 
@@ -164,9 +154,9 @@ One of my **favorite new features** is the multi-platform snapshot testing. This
 
 For instance imagine you had a snapshot test in `Example-test.native.ts` that saves the `Platform.OS` as a snapshot. When running the tests, Jest will first create `Example-test.native.ts.snap` with the contents `"ios"`. Then, it will run the test again as Android, overwriting the snapshot’s contents with `"android"`. This means when you run the tests again, `Platform.OS` will first be `"ios"` but the snapshot will contain`"android"`, causing the test to undesirably fail.
 
-![Universal snapshot testing that scales](./images/124zK0JxaJiV8slTp3seexQ.png)*Universal snapshot testing that scales*
+![Universal snapshot testing that scales](./images/124zK0JxaJiV8slTp3seexQ.png)_Universal snapshot testing that scales_
 
-The solution to this is to read and write **platform-specific snapshots** with a platform extension so each platform can compare the correct results. When using **jest-expo/universal**, a test like `Example-test.native.ts` will run as iOS and Android then write the snapshot contents to `Example-test.native.ts.snap**.ios`** and `Example-test.native.ts.snap**.android`**, respectively.
+The solution to this is to read and write **platform-specific snapshots** with a platform extension so each platform can compare the correct results. When using **jest-expo/universal**, a test like `Example-test.native.ts` will run as iOS and Android then write the snapshot contents to `Example-test.native.ts.snap**.ios`** and `Example-test.native.ts.snap**.android`\*\*, respectively.
 
 ```
 > 📁 Example-test.js
@@ -194,8 +184,7 @@ exports[`Platform.OS works as expected`] = `"web"`;
 exports[`Platform.OS works as expected`] = `"web"`;
 ```
 
-
-You should **avoid inline snapshots** unless you want all platforms to match the exact same value. This feature was added because we needed to snapshot test the styles for `[expo-linear-gradient`](https://github.com/expo/expo/tree/master/packages/expo-linear-gradient/src/__tests__)** **and we wanted the web version to have CSS and the native version to have computed native styles.
+You should **avoid inline snapshots** unless you want all platforms to match the exact same value. This feature was added because we needed to snapshot test the styles for `[expo-linear-gradient`](https://github.com/expo/expo/tree/master/packages/expo-linear-gradient/src/__tests__)\*\* \*\*and we wanted the web version to have CSS and the native version to have computed native styles.
 
 ## 🎒 Migration Guide
 
@@ -207,21 +196,21 @@ Assuming you’re using **jest-expo** or **react-native** for your Jest preset; 
 
 1. Migrate your tests without breaking them:
 
-* **A. If you plan on making your tests universal:** Use the `jest.preset: jest-expo/universal` value in your `package.json`,run your tests (`yarn jest`), then press “X” and deselect every platform except iOS.
+- **A. If you plan on making your tests universal:** Use the `jest.preset: jest-expo/universal` value in your `package.json`,run your tests (`yarn jest`), then press “X” and deselect every platform except iOS.
 
-* **Note:** If you use `jest-expo/universal`, `jest-expo/web`, or `jest-expo/node` you’ll need to install `react-native-web` and `react-dom` (this only applies to **bi-platform CLIs like react-native-cli**).
+- **Note:** If you use `jest-expo/universal`, `jest-expo/web`, or `jest-expo/node` you’ll need to install `react-native-web` and `react-dom` (this only applies to **bi-platform CLIs like react-native-cli**).
 
-* **B. You don’t want to add any new platform support:** Use the iOS only preset `jest-expo/ios`. This is essentially what you previously had but with possibly a little more thorough module-resolution config.
+- **B. You don’t want to add any new platform support:** Use the iOS only preset `jest-expo/ios`. This is essentially what you previously had but with possibly a little more thorough module-resolution config.
 
-* **C. You want to write new tests for all other platforms: **Use `jest-expo/universal` then rename your tests from `MyCoolModule-test.js -&gt; MyCoolModule-test.ios.js` which means only the iOS runner will be used. You can then add different test files for the other platforms. Alternatively the **React Native Platform API works as expected in `jest-expo` **so you can also just wrap all of your tests in `if (Platform.OS === 'ios') {}`
+- **C. You want to write new tests for all other platforms: **Use `jest-expo/universal` then rename your tests from `MyCoolModule-test.js -&gt; MyCoolModule-test.ios.js` which means only the iOS runner will be used. You can then add different test files for the other platforms. Alternatively the **React Native Platform API works as expected in `jest-expo` **so you can also just wrap all of your tests in `if (Platform.OS === 'ios') {}`
 
 ### ✧ Native-only Projects
 
-![jest-expo can be scaled back and used for native-only systems](./images/1SL47bMaKVXdKuG6fuuDqMA.png)*jest-expo can be scaled back and used for native-only systems*
+![jest-expo can be scaled back and used for native-only systems](./images/1SL47bMaKVXdKuG6fuuDqMA.png)_jest-expo can be scaled back and used for native-only systems_
 
 If you’re using a bi-platform tool like [Ignite CLI by Infinite Red](https://github.com/infinitered/ignite) or [React Native CLI by react-native-community](https://github.com/react-native-community/cli) you can create a preset that supports just iOS and Android like so:
 
-```
+```json
 // package.json
 
 // 🛑 Replace (iOS only)
@@ -236,14 +225,13 @@ If you’re using a bi-platform tool like [Ignite CLI by Infinite Red](https://g
 }
 ```
 
-
-* **Note:** If you use `jest-expo/universal`, `jest-expo/web`, or `jest-expo/node` you’ll need to install `react-native-web` and `react-dom` (this doesn’t apply to projects made with [Expo CLI](https://docs.expo.io/versions/latest/workflow/expo-cli/) or [Snack](https://snack.expo.io)).
+- **Note:** If you use `jest-expo/universal`, `jest-expo/web`, or `jest-expo/node` you’ll need to install `react-native-web` and `react-dom` (this doesn’t apply to projects made with [Expo CLI](https://docs.expo.io/versions/latest/workflow/expo-cli/) or [Snack](https://snack.expo.io)).
 
 ## **💫 Future Plans**
 
 ### Style Testing with Enzyme
 
-We’ve also created a library for testing how components are rendered called `**jest-expo-enzyme` **which is still in beta. This just conveniently adds Enzyme support to `jest-expo` (which was annoying to do manually). I use this library to test visual components like `expo-blur`, `[expo-linear-gradient`](https://github.com/expo/expo/blob/9f2770d366a212a3ccddc8d209daf9c185481f8b/packages/expo-linear-gradient/src/__tests__/LinearGradient-test.native.tsx#L6-L17), and `expo-gl`. You can use it today, but expect more on this in a future post.
+We’ve also created a library for testing how components are rendered called `**jest-expo-enzyme` \*\*which is still in beta. This just conveniently adds Enzyme support to `jest-expo` (which was annoying to do manually). I use this library to test visual components like `expo-blur`, `[expo-linear-gradient`](https://github.com/expo/expo/blob/9f2770d366a212a3ccddc8d209daf9c185481f8b/packages/expo-linear-gradient/src/__tests__/LinearGradient-test.native.tsx#L6-L17), and `expo-gl`. You can use it today, but expect more on this in a future post.
 
 ### Universal Test Coverage
 
@@ -265,7 +253,7 @@ My initial thought was to try and upstream these features to React Native but th
 
 ## 👏 Special Thanks
 
-Thanks to [**James Ide](https://github.com/ide)** and [**Simen Bekkhus](https://github.com/SimenB)** for all of their help reviewing PRs and giving feedback!
+Thanks to [\*\*James Ide](https://github.com/ide)** and [**Simen Bekkhus](https://github.com/SimenB)\*\* for all of their help reviewing PRs and giving feedback!
 
 ## 👋 Thanks for Reading
 
@@ -274,11 +262,13 @@ If you have any questions, please feel free to tweet at Expo or me:
 *The latest Tweets from Evan Bacon 🥓 (@Baconbrix). @Expo core. Expo for Web, React Native, Bluetooth, #PWA-lister…*twitter.com](https://twitter.com/baconbrix)
 
 ### Check out the README for more information on extending the preset
+
 [**jest-expo**
 *A Jest preset to painlessly test your Expo apps. If you have problems with the code in this repository, please file…*www.npmjs.com](https://www.npmjs.com/package/jest-expo)
 
 ### ⭐️ Star the Repo on Github!
+
 [**expo/expo**
 *Check out our documentation https://docs.expo.io to learn more about developing with Expo. Expo is an open-source…*github.com](https://github.com/expo/expo)
 
-![Also jest-expo now has type-ahead 😍](./images/1btsjTuT2HQsNRI8M_0vE6w.png)*Also jest-expo now has type-ahead 😍*
+![Also jest-expo now has type-ahead 😍](./images/1btsjTuT2HQsNRI8M_0vE6w.png)_Also jest-expo now has type-ahead 😍_

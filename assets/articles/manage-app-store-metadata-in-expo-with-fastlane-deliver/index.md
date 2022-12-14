@@ -1,4 +1,3 @@
-
 # Manage App Store Metadata in Expo with Fastlane Deliver
 
 ## Learn how to use Fastlane deliver with Expo to bring the ancient art of copy-pasting to your App Store metadata.
@@ -7,12 +6,11 @@
 
 Run these two commands in an Expo project:
 
-```
+```sh
 fastlane deliver init
 
 fastlane deliver --skip_binary_upload
 ```
-
 
 *Heads up this is **requires a Mac.** (Sorry my differently-computable friends *😩😞*.[ It has something to do with Xcode tools](https://github.com/fastlane/fastlane/issues/9823).*😵*)*
 
@@ -24,33 +22,33 @@ I would make more but I hate having to change gears and do creative writing + fi
 
 ## It takes longer to write metadata than it takes to build an Expo app.
 
-But luckily Fastlane provides an awesome tool (or “action”) for us to make this exponentially easier, it’s called [deliver](https://docs.fastlane.tools/actions/deliver/). I avoided it in the past because I thought you needed an .xcproject to make it work, but using the right flags will allow us to make this completely Expo-compatible! (*expatible*?? 🤔)
+But luckily Fastlane provides an awesome tool (or “action”) for us to make this exponentially easier, it’s called [deliver](https://docs.fastlane.tools/actions/deliver/). I avoided it in the past because I thought you needed an .xcproject to make it work, but using the right flags will allow us to make this completely Expo-compatible! (_expatible_?? 🤔)
 
 ![](./images/1rfi9DPJ_iJlbO4_otCuuEQ.png)
 
-![Match works with existing apps; it’ll just download the current data.](./images/1ZJq9sYCvzoMBqMOlzcwvlg.png)*Match works with existing apps; it’ll just download the current data.*
+![Match works with existing apps; it’ll just download the current data.](./images/1ZJq9sYCvzoMBqMOlzcwvlg.png)_Match works with existing apps; it’ll just download the current data._
 
 Start by [downloading Fastlane](https://docs.fastlane.tools/#getting-started) if you don’t already have it.
 
 Then, in an Expo project, run `fastlane deliver init`.
 
-![Also saves any screenshots you made already.](./images/1Is23O3ax-zOjXw-D8G12dQ.png)*Also saves any screenshots you made already.*
+![Also saves any screenshots you made already.](./images/1Is23O3ax-zOjXw-D8G12dQ.png)_Also saves any screenshots you made already._
 
 ## Now we can easily edit and copy our constant data to other apps.
 
-* trade_representative_contact_information/*.txt
+- trade_representative_contact_information/\*.txt
 
-* copyright.txt
+- copyright.txt
 
-* [en-US]/privacy_url.txt
+- [en-US]/privacy_url.txt
 
-* [en-US]/marketing_url.txt
+- [en-US]/marketing_url.txt
 
-* [en-US]/support_url.txt
+- [en-US]/support_url.txt
 
 ![](./images/1tmHELWKkIgcqu6463AyVNQ.png)
 
-![Yeah, I’m never going back.](./images/1crWPzrrWrxKJHGs9LO4E9Q.png)*Yeah, I’m never going back.*
+![Yeah, I’m never going back.](./images/1crWPzrrWrxKJHGs9LO4E9Q.png)_Yeah, I’m never going back._
 
 ## Now you’re free to edit and bulk refactor.
 
@@ -58,18 +56,17 @@ This is especially great for screenshots, as manually uploading them takes forev
 
 ![](./images/1HV4vrurdl5GHRBLQ4spVlA.jpeg)
 
-![Just screenshot your app in ~3 places then appure takes care of the rest](./images/1uGcFoNXiWAN7nL6uYxW6GA.jpeg)*Just screenshot your app in ~3 places then appure takes care of the rest*
+![Just screenshot your app in ~3 places then appure takes care of the rest](./images/1uGcFoNXiWAN7nL6uYxW6GA.jpeg)_Just screenshot your app in ~3 places then appure takes care of the rest_
 
 ## **Sync your changes… it’ll take a few minutes/**seconds**.**
 
-```
+```sh
 fastlane deliver --skip_binary_upload
 ```
 
-
 ## Also you’ll get some really **advantageous** warnings.
 
-```
+```sh
 +-----------+----------------+
 
 |     Potential problems     |
@@ -85,19 +82,18 @@ fastlane deliver --skip_binary_upload
 +-----------+----------------+
 ```
 
-
 And that’s all there is to it! Hopefully this cuts your usage of iTunes Connect ~50% while you continue to build your full suite of My Little Pony workout apps! 🦄
 
 ## Links
 
-* You can keep up with my non-stop trashy coding on [twitter](https://twitter.com/baconbrix), [instagram](https://www.instagram.com/baconbrix/), or [Github](https://github.com/evanbacon) 🤢🌝
+- You can keep up with my non-stop trashy coding on [twitter](https://twitter.com/baconbrix), [instagram](https://www.instagram.com/baconbrix/), or [Github](https://github.com/evanbacon) 🤢🌝
 
-* Share your Expo apps, source, or questions on our fourms: [https://forums.expo.io/](https://forums.expo.io/) 👥
+- Share your Expo apps, source, or questions on our fourms: [https://forums.expo.io/](https://forums.expo.io/) 👥
 
-* Subscribe to [Exposition](https://blog.expo.io/), or [follow us on Twitter](https://twitter.com/expo) for most up-to-date news 📰
+- Subscribe to [Exposition](https://blog.expo.io/), or [follow us on Twitter](https://twitter.com/expo) for most up-to-date news 📰
 
-* [Video tutorials on youtube](https://www.youtube.com/channel/UCx_YiR733cfqVPRsQ1n8Fag) 📹
+- [Video tutorials on youtube](https://www.youtube.com/channel/UCx_YiR733cfqVPRsQ1n8Fag) 📹
 
-* Check out dope Expo examples [on Github](https://github.com/expo) ⭐️
+- Check out dope Expo examples [on Github](https://github.com/expo) ⭐️
 
 (🙏 50 claps 👏 so my parents can continue to be confused by what I do.

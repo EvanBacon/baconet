@@ -1,7 +1,6 @@
-
 # The New Expo CLI
 
-## 
+##
 
 In Expo SDK 46 we introduced a new “Local Expo CLI”, to replace the “Global Expo CLI” (`npm i -g expo-cli`). Unlike the global CLI, the local CLI is installed in every project and stays versioned with the runtime code — meaning projects are easier to set up, stay working longer, and the tooling updates less often.
 
@@ -13,14 +12,13 @@ The most important difference is that users must now invoke `npx expo start` ins
 
 You can continue to use `yarn start` or `npm run start` when the `package.json` contains:
 
-```
+```json
 {
-  "scripts": { 
+  "scripts": {
     "start": "expo start"
   }
 }
 ```
-
 
 This means you’ll also no longer see the annoying and persistent “There is a new version of expo-cli” notice anymore:
 
@@ -28,10 +26,10 @@ This means you’ll also no longer see the annoying and persistent “There is a
 
 This does mean if you need a CLI bug fix, you’ll either need to update your `expo` package version or force the CLI version with Yarn resolutions in the `package.json`:
 
-```
+```json
 {
   "resolutions": {
-    "@expo/cli": "xxx" 
+    "@expo/cli": "xxx"
   }
 }
 ```
@@ -68,7 +66,7 @@ The global `expo-cli` package included the ability to build/submit native app bi
 
 Most of what lived in the legacy global CLI now lives in `eas-cli` which is agnostic to the Expo SDK version (available for use in any React Native app) and therefore doesn’t need to be installed in a user’s project.
 
-The classic build service required native binaries like Fastlane for code signing which complicated the overall package. Now that we’ve moved these features, Expo apps are much easier to use in more places. For example, modern tools like CodeSandbox, Replit, and Blitz can *potentially* be used for building universal apps in the browser as an alternative to [Snack](https://snack.expo.dev/).
+The classic build service required native binaries like Fastlane for code signing which complicated the overall package. Now that we’ve moved these features, Expo apps are much easier to use in more places. For example, modern tools like CodeSandbox, Replit, and Blitz can _potentially_ be used for building universal apps in the browser as an alternative to [Snack](https://snack.expo.dev/).
 
 Most of the updates users were getting to the legacy Expo CLI were related to the cloud services, essentially had no overlap with the tools used for local development. So, no need to worry about seeing fewer updates to the Local Expo CLI, we’re still actively building new features and fixing bugs — these will be released at the same cadence as other Expo SDK packages.
 
@@ -112,10 +110,10 @@ Since we were planning a rewrite, figured it would be a good time to simplify ev
 
 We know large changes like this are complicated, and we appreciate the patience of everyone involved! We’re confident that the new CLI will bring many positive changes and make the developer experience much more stable going forward! Right off the bat, we have a PR open to add [custom entry point support](https://github.com/expo/expo/pull/18381) for projects using the local CLI.
 
-* 💬 Join us on [Discord](https://chat.expo.dev/) or the [forums](https://forums.expo.dev/) to discuss the release.
+- 💬 Join us on [Discord](https://chat.expo.dev/) or the [forums](https://forums.expo.dev/) to discuss the release.
 
-* ⭐️ Help us out by [starring Expo on GitHub](https://github.com/expo/expo), filing bug reports in [issues](https://github.com/expo/expo/issues), or opening [discussions](https://github.com/expo/expo/discussions) with questions or proposals.
+- ⭐️ Help us out by [starring Expo on GitHub](https://github.com/expo/expo), filing bug reports in [issues](https://github.com/expo/expo/issues), or opening [discussions](https://github.com/expo/expo/discussions) with questions or proposals.
 
-* 🥓 Follow me on Twitter for more updates: [baconbrix](https://twitter.com/Baconbrix).
-[**EvanBacon - Overview**
-*You can't perform that action at this time. You signed in with another tab or window. You signed out in another tab or…*github.com](https://github.com/evanbacon)
+- 🥓 Follow me on Twitter for more updates: [baconbrix](https://twitter.com/Baconbrix).
+  [**EvanBacon - Overview**
+  *You can't perform that action at this time. You signed in with another tab or window. You signed out in another tab or…*github.com](https://github.com/evanbacon)

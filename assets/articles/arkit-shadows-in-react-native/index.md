@@ -22,7 +22,7 @@ This tutorial assumes that you know how AR works in Expo; if you need to refresh
 
 Now after our context loads, we’ll enable shadows in our renderer:
 
-```
+```js
 // renderer = new ExpoTHREE.Renderer(...)
 ...
 renderer.gammaInput = true;
@@ -42,13 +42,13 @@ There are two main lights we need for making shadows:
 
 Add a simple ambient light that emits a gray light equally over everything:
 
-```
+```js
 scene.add(new THREE.AmbientLight(0x404040));
 ```
 
 Now we need to add a directional light for our shadow:
 
-```
+```js
 let light = new THREE.DirectionalLight(0xffffff, 0.6);
 light.castShadow = true;
 // default is 50 - meters for resolution, massive memory hog
@@ -69,22 +69,22 @@ Rendering shadows is pretty expensive; we want to create only just enough of a m
 
 Let’s add a cube that casts a shadow. Any node will work; just remember to add `cube.castShadow = true;`.
 
-```
-*// Make a cube - notice that each unit is 1 meter in real life, we will make our box 0.1 meters
-*const geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
-*// Simple color material
-*const material = new THREE.MeshPhongMaterial({
+```js
+// Make a cube - notice that each unit is 1 meter in real life, we will make our box 0.1 meters
+const geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
+// Simple color material
+const material = new THREE.MeshPhongMaterial({
   color: 0xff00ff,
 });
-*// Combine our geometry and material
-*this.cube = new THREE.Mesh(geometry, material);
-*// Remember to activate shadows!!
-*this.cube.castShadow = true;
+// Combine our geometry and material
+this.cube = new THREE.Mesh(geometry, material);
+// Remember to activate shadows!!
+this.cube.castShadow = true;
 ```
 
 Finally, we need something to receive the shadow. Let’s create that special `ShadowFloor` node and add it to the scene:
 
-```
+```js
 const shadowFloor = new ExpoTHREE.AR.ShadowFloor({
   width: 1,
   height: 1,

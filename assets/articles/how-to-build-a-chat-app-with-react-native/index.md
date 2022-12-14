@@ -59,12 +59,12 @@ To get this connected let’s add react-navigation and connect the screens. We w
 
 **App.js**
 
-```
+```js
 // Import the screens
-import Main from './components/Main';
-import Chat from './components/Chat';
+import Main from "./components/Main";
+import Chat from "./components/Chat";
 // Import React Navigation
-import { createStackNavigator } from 'react-navigation'
+import { createStackNavigator } from "react-navigation";
 
 // Create the navigator
 const navigator = createStackNavigator({
@@ -73,16 +73,16 @@ const navigator = createStackNavigator({
 });
 
 // Export it as the root component
-export default navigator
+export default navigator;
 ```
 
 If we run this we will see a blank screen with a header bar. This is pretty cool but not really, let’s add a text field for our user’s name and then a button to go to the Chat screen.
 
 **components/Main.js**
 
-```
-import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+```js
+import React, { Component } from "react";
+import { View, StyleSheet } from "react-native";
 
 class Main extends Component {
   render() {
@@ -99,7 +99,7 @@ When we open the `Main.js` we should see a basic component and the styles setup.
 
 **components/Main.js**
 
-```
+```js
 import {
   StyleSheet,
   TextInput, // 1. <- Add this
@@ -146,10 +146,9 @@ const styles = StyleSheet.create({
 
 Now we need to update the state when the user types something. To do that we will observe the changes and save them to the component state.
 
-```
+```js
 // Inside the Main component...
-onChangeText = name => this.setState({ name }); // 1.
-
+onChangeText = (name) => this.setState({ name }); // 1.
 
 // Inside the render() method...
 
@@ -158,14 +157,14 @@ onChangeText = name => this.setState({ name }); // 1.
   style={styles.nameInput}
   placeHolder="John Cena"
   value={this.state.name}
-        />
+/>;
 ```
 
 1. Here we update the component state with a new string value.
 
 If we run the app we should see our nifty `TextInput` let’s add a title and a button to go to the next screen
 
-```
+```js
 // 1.
 import {
   StyleSheet,
@@ -225,11 +224,11 @@ const styles = StyleSheet.create({
 
 Now let’s add the onPress that takes us to the Chat screen. In the Main component right before the `onChangeText` method, add this.
 
-```
+```js
 onPress = () => {
   // 1.
-  this.props.navigation.navigate('Chat', { name: this.state.name });
-}
+  this.props.navigation.navigate("Chat", { name: this.state.name });
+};
 ```
 
 1. We will navigate by using `this.props.navigation` which is provided at the screen level by our stack navigator. `navigation` has a method called `navigate` which will push a new screen, we will pass in the name of the screen we defined earlier in the `App.js` — *Chat *and then we will pass some props to that screen, specifically the `state.name` we created with the `TextInput`.
@@ -242,9 +241,9 @@ That’s all we need to do in our Main.js, you can open the **Chat.js** and star
 
 **components/Chat.js**
 
-```
-import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+```js
+import React, { Component } from "react";
+import { View, StyleSheet } from "react-native";
 
 class Chat extends Component {
   render() {
@@ -259,17 +258,16 @@ export default Chat;
 
 To get started make sure your Chat.js looks like this. Let’s setup the chat component.
 
-```
-import React from 'react';
+```js
+import React from "react";
 
 // 1.
-import { GiftedChat } from 'react-native-gifted-chat';
+import { GiftedChat } from "react-native-gifted-chat";
 
 class Chat extends React.Component {
-
   // 2.
   static navigationOptions = ({ navigation }) => ({
-    title: (navigation.state.params || {}).name || 'Chat!',
+    title: (navigation.state.params || {}).name || "Chat!",
   });
 
   // 3.
@@ -278,13 +276,8 @@ class Chat extends React.Component {
   };
 
   render() {
-
     // 4.
-    return (
-      <GiftedChat
-        messages={this.state.messages}
-      />
-    );
+    return <GiftedChat messages={this.state.messages} />;
   }
 }
 
@@ -307,7 +300,7 @@ Let’s go to Fire.js to set this up!
 
 **/Fire.js**
 
-```
+```js
 class Fire {}
 
 Fire.shared = new Fire();
@@ -316,9 +309,9 @@ export default Fire;
 
 We should just have a basic class with a shared instance setup, let’s setup a Firebase app.
 
-```
+```js
 // 1.
-import firebase from 'firebase';
+import firebase from "firebase";
 
 class Fire {
   constructor() {
@@ -328,12 +321,12 @@ class Fire {
   // 2.
   init = () =>
     firebase.initializeApp({
-      apiKey: 'AIzaSyDLgW8QG1qO8O5WZLC1U8WaqCr5-CvEVmo',
-      authDomain: 'chatter-b85d7.firebaseapp.com',
-      databaseURL: 'https://chatter-b85d7.firebaseio.com',
-      projectId: 'chatter-b85d7',
-      storageBucket: '',
-      messagingSenderId: '861166145757',
+      apiKey: "AIzaSyDLgW8QG1qO8O5WZLC1U8WaqCr5-CvEVmo",
+      authDomain: "chatter-b85d7.firebaseapp.com",
+      databaseURL: "https://chatter-b85d7.firebaseio.com",
+      projectId: "chatter-b85d7",
+      storageBucket: "",
+      messagingSenderId: "861166145757",
     });
 }
 ```
@@ -346,7 +339,7 @@ class Fire {
 
 In order to write and read from our database we need to be logged in, to do this we will get our current authentication, if it doesn’t exist then we want to sign in anonymously.
 
-```
+```js
 class Fire {
   constructor() {
     this.init();
@@ -360,7 +353,7 @@ class Fire {
     firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
 
   // 3.
-  onAuthStateChanged = user => {
+  onAuthStateChanged = (user) => {
     if (!user) {
       try {
         // 4.
@@ -383,7 +376,7 @@ class Fire {
 
 Now we need a way to subscribe to messages, after `onAuthStateChanged`
 
-```
+```js
 // 1.
 get ref() {
   return firebase.database().ref('messages');
@@ -415,9 +408,8 @@ off() {
 
 Ok now we can get messages, we need to format them correctly for GiftedChat, to do this we will reduce (change the shape) the snapshot (data returned from firebase) in the parse method.
 
-```
-parse = snapshot => {
-
+```js
+parse = (snapshot) => {
   // 1.
   const { timestamp: numberStamp, text, user } = snapshot.val();
   const { key: _id } = snapshot;
@@ -432,7 +424,7 @@ parse = snapshot => {
     text,
     user,
   };
- return message;
+  return message;
 };
 ```
 
@@ -444,7 +436,7 @@ parse = snapshot => {
 
 We now need a way to send messages
 
-```
+```js
 // 1.
 get uid() {
   return (firebase.auth().currentUser || {}).uid;
@@ -490,7 +482,7 @@ At the bottom of the component add subscribers and unsubscribers:
 
 **components/Chat.js**
 
-```
+```js
 // 1.
 componentDidMount() {
     Fire.shared.on(message =>
@@ -512,7 +504,7 @@ componentWillUnmount() {
 
 Next we need a simple reference to our user so `GiftedChat` knows which side of the screen to put our chat bubbles on…
 
-```
+```js
 get user() {
 
   // Return our name and our UID for GiftedChat to parse
@@ -525,7 +517,7 @@ get user() {
 
 Finally we need to give `GiftedChat` a reference to our user and the `onSend` method from `Fire`
 
-```
+```js
 render() {
     return (
       <GiftedChat

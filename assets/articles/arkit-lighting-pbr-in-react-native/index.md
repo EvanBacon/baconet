@@ -31,7 +31,7 @@ In today’s tutorial, we’ll be focusing on a few concepts:
 
 First, add the shadows prop to our GraphicsView:
 
-```
+```js
 <GraphicsView
   ...
   isShadowsEnabled={true}
@@ -40,7 +40,7 @@ First, add the shadows prop to our GraphicsView:
 
 To get shadows to render we need to enable gamma in/out, and activate the renderer shadow map:
 
-```
+```js
 renderer.gammaInput = true;
 renderer.gammaOutput = true;
 renderer.shadowMap.enabled = true;
@@ -52,7 +52,7 @@ renderer.shadowMap.enabled = true;
 
 PBR is very simple in three.js. We let the renderer know that we want the lights to be physically correct, and define a tone map.
 
-```
+```js
 this.renderer.physicallyCorrectLights = true;
 this.renderer.toneMapping = THREE.ReinhardToneMapping;
 
@@ -90,7 +90,7 @@ We want our mesh to look real in all lights; to do this we just have to add a fe
 
 ### Basic ambient light
 
-```
+```js
 scene.add(new THREE.AmbientLight(0x404040));
 ```
 
@@ -98,7 +98,7 @@ scene.add(new THREE.AmbientLight(0x404040));
 
 Shadow Light is a little more involved. We want to define the size of the shadow map to be only as big as we need. Rendering shadows is expensive so you should exercise caution.
 
-```
+```js
 let light = new THREE.DirectionalLight(0xffffff, 0.6);
 light.castShadow = true;
 // default is 50 - meters for resolution, massive memory hog
@@ -121,7 +121,7 @@ That frustrating thing I was telling you about is in regards to shadow light pos
 
 Next we want to add our dynamic AR Light. It’s important that we also call `point.update()` each frame so it will get the newest estimation from ARKit:
 
-```
+```js
 const point = new ThreeAR.Light();
 point.position.y = 2; // 2 Meters = 6.56168 Feet ;)
 ...
@@ -143,9 +143,9 @@ If we want something to look real in 3D, we need to apply a couple different tex
 
 In this tutorial, we rely on some built-in features of three.js to get around having to manually tweak values.
 
-```
+```js
 const diffuseAsset = await AssetUtils.resolveAsync(
-'https://github.com/mrdoob/three.js/blob/master/examples/textures/brick_diffuse.jpg?raw=true'
+  "https://github.com/mrdoob/three.js/blob/master/examples/textures/brick_diffuse.jpg?raw=true"
 );
 const diffuse = await ExpoTHREE.loadAsync(diffuseAsset);
 diffuse.wrapS = THREE.RepeatWrapping;
@@ -154,7 +154,7 @@ diffuse.anisotropy = 4;
 diffuse.repeat.set(1, 1);
 
 const bumpAsset = await AssetUtils.resolveAsync(
-'https://github.com/mrdoob/three.js/blob/master/examples/textures/brick_bump.jpg?raw=true'
+  "https://github.com/mrdoob/three.js/blob/master/examples/textures/brick_bump.jpg?raw=true"
 );
 const bumpMap = await ExpoTHREE.loadAsync(bumpAsset);
 bumpMap.wrapS = THREE.RepeatWrapping;
@@ -163,7 +163,7 @@ bumpMap.anisotropy = 4;
 bumpMap.repeat.set(1, 1);
 
 const roughnessAsset = await AssetUtils.resolveAsync(
-'https://github.com/mrdoob/three.js/blob/master/examples/textures/brick_roughness.jpg?raw=true'
+  "https://github.com/mrdoob/three.js/blob/master/examples/textures/brick_roughness.jpg?raw=true"
 );
 const roughnessMap = await ExpoTHREE.loadAsync(roughnessAsset);
 roughnessMap.wrapS = THREE.RepeatWrapping;
@@ -185,13 +185,13 @@ const cubeMat = new THREE.MeshStandardMaterial({
 
 Apply this to a cube and tell it to cast shadows:
 
-```
-mesh.castShadow = true
+```js
+mesh.castShadow = true;
 ```
 
 Now, the last thing we need is something to receive the shadow. It has to be transparent, though…well, that’s why `ExpoTHREE.AR.ShadowFloor()` exists :) Just add it to your scene and you’re good to go! We’ll also use our dynamic light to set the shadow depth.
 
-```
+```js
 const shadowFloor = new ExpoTHREE.AR.ShadowFloor({
   width: 1,
   height: 1,

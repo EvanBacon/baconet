@@ -1,4 +1,3 @@
-
 # The Status Bar Manager in React Native
 
 ## 🚨 In iOS 14+ the status bar is now regular height, therefore this package has been deprecated in favor of react-native-safe-area-context which is available in Expo Go, and integrated in React Navigation!
@@ -17,17 +16,15 @@ After reading a bunch on this, and scouring the React Native source code, I deci
 
 Firstly, it’s important to note that you don’t access the `StatusBar` height through `ReactNative.StatusBar`; instead, you need to import a native module called `StatusBarManager`.
 
-```
+```js
 import { NativeEventEmitter, NativeModules } from ‘react-native’; const { StatusBarManager } = NativeModules;
 ```
 
-
 From here, it’s actually pretty easy — you just use the imperative API and call things such as getHeight: a function with a callback that you use to…, well, get the status bar height 😝.
 
+```js
+StatusBarManager.getHeight(({ height }) => {});
 ```
-StatusBarManager.getHeight(({height}) => {});
-```
-
 
 “expo/status-bar-height” wraps this API for silly reasons that I’ll explain shortly…or right now :]
 
@@ -41,35 +38,32 @@ To add insult to injury, these calls aren’t directly swapped: `willChange` is 
 
 As a remedy, I wrote the expo/status-bar-height API to use only `willChange`, which means no key is passed to the listener.
 
+```js
+StatusBarHeight.addEventListener((height) => {});
+StatusBarHeight.removeEventListener((height) => {});
 ```
-StatusBarHeight.addEventListener((height) => {})
-StatusBarHeight.removeEventListener((height) => {})
-```
-
 
 ### Async Height
 
 If you’d like to get the height without listeners, you can do so with the following:
 
-```
+```js
 const height = await StatusBarHeight.getAsync();
 ```
-
 
 ### Unsafe Height
 
 If for whatever reason you don’t want to call the async `getHeight` method, the last value is cached and accessible. This could be used for interactions connected to a ScrollView.
 
+```js
+StatusBarHeight.height;
 ```
-StatusBarHeight.height
-```
-
 
 ### Indecisive naming
 
 Because EventEmitter is confusing to me (I’m not a smart person 😭), I added all formats for the listener API:
 
-```
+```js
 StatusBarHeight.addEventListener()
 StatusBarHeight.addListener()
 StatusBarHeight.on()
@@ -78,7 +72,6 @@ StatusBarHeight.off()
 StatusBarHeight.removeListener()
 StatusBarHeight.removeEventListener()
 ```
-
 
 ### Finally
 

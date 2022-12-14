@@ -1,4 +1,3 @@
-
 # The Making of Nitro Roll
 
 ## An Open-Source, Cross-Platform Javascript Game
@@ -11,7 +10,7 @@ I love Tron, not because it’s a movie and there’s no reading required, but b
 
 Something I tend to forget is that Tron had a lot more games than just the Light-Cycles. This got me wondering if I could make a game that felt like it lived in the Troniverse 🤓 — something cyber-retro with an underlying puzzle feel to it and, of course, procedurally generated.
 
-![Thomas-Cycle is coming soon :]](./images/1mV23edRw6Ni0A7jBUyLfTw.gif)*Thomas-Cycle is coming soon :]*
+![Thomas-Cycle is coming soon :]](./images/1mV23edRw6Ni0A7jBUyLfTw.gif)_Thomas-Cycle is coming soon :]_
 
 ## The concept
 
@@ -19,7 +18,7 @@ This is a simple, low-stress game where you move at your own pace through a endl
 
 ### Unique aesthetic
 
-I wanted the game to feel like Tron without directly copying any of the actual styles. One way to go about this would be to run a second scene with line materials and a blur effect on the render loop. This would give us a nice neon look, but that was veering a little too close to [Sunset Cyberspace](https://blog.expo.io/taking-a-stroll-through-sunset-cyberspace-73b125cf6476). Instead I used a *Sobel effect* to create a neo-dark void feeling. **Sobel–Feldman operator **is a function that emphasizes edges; this isn’t typically used for games because it’s a pretty intensive filter, but I liked the feeling more than a typical cel-shader.
+I wanted the game to feel like Tron without directly copying any of the actual styles. One way to go about this would be to run a second scene with line materials and a blur effect on the render loop. This would give us a nice neon look, but that was veering a little too close to [Sunset Cyberspace](https://blog.expo.io/taking-a-stroll-through-sunset-cyberspace-73b125cf6476). Instead I used a _Sobel effect_ to create a neo-dark void feeling. **Sobel–Feldman operator **is a function that emphasizes edges; this isn’t typically used for games because it’s a pretty intensive filter, but I liked the feeling more than a typical cel-shader.
 
 ### Soft release
 
@@ -59,24 +58,23 @@ Notice that by rewarding them for doing nothing we save ourselves from having to
 
 Another thing worth noting is the functions added for collecting and tracking currency. This is a basic Firebase transaction used to add or subtract and in-game currency. I don’t use it anywhere in the game as purchases aren’t supported at the moment.
 
-```
-addCurrency = amount => new Promise((res, rej) =>        
-  this.db.runTransaction(transaction =>          
-    transaction.get(this.doc).then(userDoc => {            
-      if (!userDoc.exists) {              
-        throw 'Document does not exist!';            
-      }             
-      const data = userDoc.data();            
-      const currency = data.currency || 0;            
-      const newCurrency = currency + amount;                  
-      transaction.update(this.doc, { currency: newCurrency });             
-      this.user.currency = newCurrency;            
-      return newCurrency;          
-    });        
+```js
+addCurrency = amount => new Promise((res, rej) =>
+  this.db.runTransaction(transaction =>
+    transaction.get(this.doc).then(userDoc => {
+      if (!userDoc.exists) {
+        throw 'Document does not exist!';
+      }
+      const data = userDoc.data();
+      const currency = data.currency || 0;
+      const newCurrency = currency + amount;
+      transaction.update(this.doc, { currency: newCurrency });
+      this.user.currency = newCurrency;
+      return newCurrency;
+    });
   ).then(res).catch(rej);
-); 
+);
 ```
-
 
 ## Finally
 

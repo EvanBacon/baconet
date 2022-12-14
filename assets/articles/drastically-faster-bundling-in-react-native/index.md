@@ -1,4 +1,3 @@
-
 # Drastically Faster Bundling in React Native
 
 ## Expo “Exotic” System
@@ -9,24 +8,23 @@ Today I’m proud to introduce the largest bundling improvement, possibly in the
 
 To use it, update to `expo-cli@^4.12.0` or greater, and enable the beta flag `EXPO_USE_EXOTIC`:
 
-```
+```sh
 EXPO_USE_EXOTIC=1 expo start
 ```
-
 
 This will enable a set of experimental bundler improvements for Metro (the default bundler for React Native), the most notable of which is a faster JavaScript transformer.
 
 The results are as follows (measured against a hello world app):
 
-* **~2x Faster** for initial bundling.
+- **~2x Faster** for initial bundling.
 
-* **~18% Smaller** production bundles.
+- **~18% Smaller** production bundles.
 
-* [**Documentation](https://github.com/expo/expo-cli/tree/master/packages/metro-config) **for the feature.
+- [\*\*Documentation](https://github.com/expo/expo-cli/tree/master/packages/metro-config) \*\*for the feature.
 
 ![](./images/1fw5SabzHwU--AfKU_OhUWA.gif)
 
-![`expo start -c` in a blank project (iOS) with Exotic enabled: ~100% faster.](./images/1WL6XApqsIwbJmBrCV_HkxA.gif)*`expo start -c` in a blank project (iOS) with Exotic enabled: ~100% faster.*
+![`expo start -c` in a blank project (iOS) with Exotic enabled: ~100% faster.](./images/1WL6XApqsIwbJmBrCV_HkxA.gif)_`expo start -c` in a blank project (iOS) with Exotic enabled: ~100% faster._
 
 ## Improvements Explained
 
@@ -34,23 +32,25 @@ To understand how these improvements work, you’ll first need to understand how
 
 When you create a Node project, whether it uses React DOM, React Native, or another library/framework, you’ll have a bunch of files using various JavaScript language features. Each file adds to the total time that it takes to transform the application source code before we send it to the runtime (Web browser, Expo Dev Client, etc).
 
-![Consider every file and how long they take to Transpile](./images/1T3Egnv7dDun-TmFSp9deOw.gif)*Consider every file and how long they take to Transpile*
+![Consider every file and how long they take to Transpile](./images/1T3Egnv7dDun-TmFSp9deOw.gif)_Consider every file and how long they take to Transpile_
 
 The files in our app can be divided into two logical groups; application code, and Node modules. This distinction is important for a bundler. Application code is unpredictable, the user can change the rules at any time. One day, you might use `require` in your code, and the next, you could be using `import`/`export`.
 
 In contrast, Node modules are more static. High-quality Node modules will often be shipped with support for different JavaScript module systems, the main two being ES Modules (`module` field in the package.json), and CommonJS (`main` field in the package.json). We can use these standards to help us optimize our bundling.
 
-![These files can be split into two different groups](./images/1JMvPYWUN2oNGW7Hlwkpl5w.gif)*These files can be split into two different groups*
+![These files can be split into two different groups](./images/1JMvPYWUN2oNGW7Hlwkpl5w.gif)_These files can be split into two different groups_
 
 The most obvious optimization would be to simply skip transforming our code. However, If we did this, many files would have runtime errors because they may be using language features that aren’t supported in our runtime. For example, if you ship `import`/`export` syntax to a Node runtime, Node will error out because it doesn’t know how to handle that feature.
+
 > 💡 React Native is similar to a browser environment (JavaScriptCore engine), but it doesn’t have a DOM API, so there’s no way to pass ES Module code to the JS Engine. This means we need to use CommonJS code.
 
-![Skipping all transformation would cause errors in many files](./images/1QHcSinKGEjyRyv70LkEuoQ.gif)*Skipping all transformation would cause errors in many files*
+![Skipping all transformation would cause errors in many files](./images/1QHcSinKGEjyRyv70LkEuoQ.gif)_Skipping all transformation would cause errors in many files_
 
 To ensure our JavaScript code works, we can transform it using Babel. Babel is easy to customize, simple to use, and has a great ecosystem of plugins. However, the problem with Babel is that plugins add up and result in slower builds over time.
+
 > 💡 React Native’s Babel preset includes a long list of Babel plugins and does much of the same work as`@babel/preset-env`
 
-![Babel can transform our code, but it’s very expensive](./images/1rc2fr3hivkO6aCc-F99jtQ.gif)*Babel can transform our code, but it’s very expensive*
+![Babel can transform our code, but it’s very expensive](./images/1rc2fr3hivkO6aCc-F99jtQ.gif)_Babel can transform our code, but it’s very expensive_
 
 By default, Metro bundler will transform every file in your project using Babel. Using the most expensive transformation on the maximum amount of code is a simple approach that trades off speed for compatibility, but it turns out that we might not need to make this sacrifice for these two reasons:
 
@@ -58,7 +58,7 @@ By default, Metro bundler will transform every file in your project using Babel.
 
 1. As your project progresses, you may find yourself adding Babel plugins for aliasing, adding dotenv support, etc. your untransformed Node modules almost certainly don’t need these extra customizations, often they just need basic operations like `import`/`export` transformation, resulting in a lot of wasted time.
 
-![Metro transforms everything with Babel (even files that don’t need to be transformed)](./images/1SwwWbiffPQxOlRj2gOBseg.gif)*Metro transforms everything with Babel (even files that don’t need to be transformed)*
+![Metro transforms everything with Babel (even files that don’t need to be transformed)](./images/1SwwWbiffPQxOlRj2gOBseg.gif)_Metro transforms everything with Babel (even files that don’t need to be transformed)_
 
 This is where my recent improvements come into place.
 
@@ -70,7 +70,7 @@ As mentioned earlier, Babel has many customizations that you add for your projec
 
 Switching all transformation over to one of these tools would be far from ideal because users would lose out on the ability to add custom language features to their projects. But there is one place we can safely use them…
 
-![Breakdown of JS transformers. [Cite: Sucrase repo](https://github.com/alangpierce/sucrase/blob/68ed7ff/README.md)](./images/1WTya9sLMBf2fIjJpXk_1iQ.png)*Breakdown of JS transformers. [Cite: Sucrase repo](https://github.com/alangpierce/sucrase/blob/68ed7ff/README.md)*
+![Breakdown of JS transformers. [Cite: Sucrase repo](https://github.com/alangpierce/sucrase/blob/68ed7ff/README.md)](./images/1WTya9sLMBf2fIjJpXk_1iQ.png)_Breakdown of JS transformers. [Cite: Sucrase repo](https://github.com/alangpierce/sucrase/blob/68ed7ff/README.md)_
 
 In Expo CLI, we configure Metro to transpile our untransformed Node modules with Sucrase, resulting in substantially faster React Native bundling! We currently use Sucrase because:
 
@@ -80,7 +80,7 @@ In Expo CLI, we configure Metro to transpile our untransformed Node modules with
 
 1. Finally, and possibly the most surprising: Sucrase is written in JS, whereas the others are native (Rust, Go, etc), this means that npm installs go smoother on Windows and Linux machines and reduces npm install log-spam from optional dependencies. This is a real concern for many new developers and it’s also a tax on maintainers to handle issues related to the install logs.
 
-![We use a faster system for transforming static libraries; Surcase instead of Babel.](./images/1CqJF-PC33tQ0yIueed_q1A.gif)*We use a faster system for transforming static libraries; Surcase instead of Babel.*
+![We use a faster system for transforming static libraries; Surcase instead of Babel.](./images/1CqJF-PC33tQ0yIueed_q1A.gif)_We use a faster system for transforming static libraries; Surcase instead of Babel._
 
 Metro bundler has no concept of “loader rules”, this is a feature from the popular bundler **Webpack,** that I’ve shoehorned into Metro with a custom transformer.
 
@@ -92,7 +92,7 @@ To summarize: “Exotic” is a Metro transformer with three default “loader r
 
 1. And finally, we pass everything else through to the runtime, without needing to transform it.
 
-![Exotic is a metro transformer with loader rules that handle groups of files differently.](./images/145DZ235fD5sWzgQeQpILdQ.png)*Exotic is a metro transformer with loader rules that handle groups of files differently.*
+![Exotic is a metro transformer with loader rules that handle groups of files differently.](./images/145DZ235fD5sWzgQeQpILdQ.png)_Exotic is a metro transformer with loader rules that handle groups of files differently._
 
 And just like that, we now have a system which is a lot more like web development, and in some regards a little bit better. In the web ecosystem, there are so few (major) packages that need to be transformed locally that the concept of having first-class support for optimizing this step isn’t really worth the effort or added complexity.
 
@@ -100,13 +100,13 @@ The React Native ecosystem is almost **exclusively** made up of packages which n
 
 Again, the results are about 2x faster in basic “Hello World” projects and stay fast at scale, making your large production apps bundle noticeably faster than before:
 
-![At Scale: Expo “Native Component List” Monorepo bundles ~14s faster (gif 2x playback)](./images/14v8JefXaoMg-q2GmLzdW7A.gif)*At Scale: Expo “Native Component List” Monorepo bundles ~14s faster (gif 2x playback)*
+![At Scale: Expo “Native Component List” Monorepo bundles ~14s faster (gif 2x playback)](./images/14v8JefXaoMg-q2GmLzdW7A.gif)_At Scale: Expo “Native Component List” Monorepo bundles ~14s faster (gif 2x playback)_
 
 As a bonus, bundle sizes are also smaller by about 18% in “Hello World” apps. This is because many libraries are already shipped in an optimal format, and by needlessly transforming them with a random Babel cocktail, we increase the size, but only a little bit, and everywhere.
 
 With Expo’s Exotic transformer we don’t have this issue, we do less, and get more (technically we get less JS, but you get it)!
 
-![Running `expo export` in a fresh project with Exotic enabled: ~18% size reduction.](./images/1WL6XApqsIwbJmBrCV_HkxA.gif)*Running `expo export` in a fresh project with Exotic enabled: ~18% size reduction.*
+![Running `expo export` in a fresh project with Exotic enabled: ~18% size reduction.](./images/1WL6XApqsIwbJmBrCV_HkxA.gif)_Running `expo export` in a fresh project with Exotic enabled: ~18% size reduction._
 
 ## Important Considerations
 
@@ -136,10 +136,10 @@ If you enjoyed this article and found it helpful, please share it with other Rea
 
 Special thanks to [Lydia Hallie](https://medium.com/@lydiahallie), and [Brent Vatne](https://twitter.com/notbrent) for proofreading, [Satyajit Sahoo](https://twitter.com/satya164) for sanity checks on Metro bundler’s `react-native` package.json feature, and as always the Expo team for sponsoring my research and open source.
 
-* 💬 Join us on [Discord](https://chat.expo.dev/) or the [forums](https://forums.expo.dev/) to discuss the release.
+- 💬 Join us on [Discord](https://chat.expo.dev/) or the [forums](https://forums.expo.dev/) to discuss the release.
 
-* ⭐️ Help us out by [starring Expo on GitHub](https://github.com/expo/expo), filing bug reports in [issues](https://github.com/expo/expo/issues), or opening [discussions](https://github.com/expo/expo/discussions) with questions or proposals.
+- ⭐️ Help us out by [starring Expo on GitHub](https://github.com/expo/expo), filing bug reports in [issues](https://github.com/expo/expo/issues), or opening [discussions](https://github.com/expo/expo/discussions) with questions or proposals.
 
-* 🥓 Follow me on Twitter for more updates: [baconbrix](https://twitter.com/Baconbrix).
-[**EvanBacon — Overview**
-*You can’t perform that action at this time. You signed in with another tab or window. You signed out in another tab or…*github.com](https://github.com/evanbacon)
+- 🥓 Follow me on Twitter for more updates: [baconbrix](https://twitter.com/Baconbrix).
+  [**EvanBacon — Overview**
+  *You can’t perform that action at this time. You signed in with another tab or window. You signed out in another tab or…*github.com](https://github.com/evanbacon)

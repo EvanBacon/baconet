@@ -1,11 +1,10 @@
-
 # Filtering Images with Expo
 
 ## Without any OpenGL knowledge required(!)
 
-TLDR: Using the module [**‘expo-pixi’](https://github.com/expo/expo-pixi)**, you can filter images really easily! [**‘ExpoPixi.FilterImage’](https://github.com/expo/expo-pixi/blob/943f82bb2ca8ed2e2fe62c5a2b854054fb475980/examples/filter-image/App.js#L125-L130)** is a drop-in replacement for the ***`Image`*** component.
+TLDR: Using the module [\*\*‘expo-pixi’](https://github.com/expo/expo-pixi)**, you can filter images really easily! [**‘ExpoPixi.FilterImage’](https://github.com/expo/expo-pixi/blob/943f82bb2ca8ed2e2fe62c5a2b854054fb475980/examples/filter-image/App.js#L125-L130)** is a drop-in replacement for the \***`Image`\*\*\* component.
 
-![Queen Kylie](./images/1y_ld-s00aqvwuOSndcngAg.png)*Queen Kylie*
+![Queen Kylie](./images/1y_ld-s00aqvwuOSndcngAg.png)_Queen Kylie_
 
 React Native and Expo are pretty great — nowadays, my whole life revolves around them! Unfortunately, there are still some apps that are really hard to build with it. Right now the list includes Snapchat and Instagram.
 
@@ -31,20 +30,19 @@ Finally, we’ll center our sprite in our component, resizing it according to a 
 
 Because all of the aforementioned actions are very common, we’re able to bundle everything in one component, and match the shape of the native Image component. By doing this we can avoid having to use GL all together!
 
-```
+```js
 <ExpoPixi.FilterImage
-  source={require('./personal/kylie_jenner_099.png')}
+  source={require("./personal/kylie_jenner_099.png")}
   resizeMode="cover"
   filters={new PIXI.filters.DotFilter(0.5)}
 />
 ```
 
-
 And just like that we have the article’s showcase image! We can also stack multiple shaders on top of each other!
 
-```
+```js
 const filters = [
-  new PIXI.filters.BlurFilter(), 
+  new PIXI.filters.BlurFilter(),
   new PIXI.filters.NoiseFilter()
 ];
 
@@ -57,14 +55,12 @@ const filters = [
 />
 ```
 
-
 You can even use this to create image editing effects like adjusting brightness, contrast, saturation, etc.
 
-```
-const filter = new PIXI.filters.ColorMatrixFilter()
+```js
+const filter = new PIXI.filters.ColorMatrixFilter();
 filter.brightness(0.5);
 ```
-
 
 ## Finally
 

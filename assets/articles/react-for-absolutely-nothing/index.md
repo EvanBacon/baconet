@@ -1,4 +1,3 @@
-
 # React for Absolutely Nothing
 
 ## Pluto the not planet
@@ -7,20 +6,20 @@ React is an extremely powerful library, you can create a renderer for literally 
 
 I would just sit and think why is it that I can use all of my favorite React features to build universal cross-platform applications, or full VR experiences, but not the thing I value most — After much thought (and noticing that the name react-nothing was available on NPM) I realized I must’ve just been the first person to have thought of this :]
 
-And now I’m very proud to announce that this problem has a solution, and that solution is [**React for Nothing](https://github.com/EvanBacon/react-nothing)!** Finally you can write React code that renders to absolutely nothing. It has a full reconciler, meaning you can write classes, hooks, components, use JSX and then render them nowhere.
+And now I’m very proud to announce that this problem has a solution, and that solution is [\*\*React for Nothing](https://github.com/EvanBacon/react-nothing)!\*\* Finally you can write React code that renders to absolutely nothing. It has a full reconciler, meaning you can write classes, hooks, components, use JSX and then render them nowhere.
 
 ### Features:
 
-* Completely stress-free development cycle
+- Completely stress-free development cycle
 
-* No messy codebases to manage
+- No messy codebases to manage
 
-* Never need to worry about platform quirks disrupting your React development experience
+- Never need to worry about platform quirks disrupting your React development experience
 
-* Never need to worry about platform quirks disrupting your React development experience.
-> # Conceptually the host environment is non-existent.
+- Never need to worry about platform quirks disrupting your React development experience.
+  > # Conceptually the host environment is non-existent.
 
-Before *React for Nothing,* React had a lot of catching up to do. So many other libraries could be used for practically nothing, but as a proud member of the React community I felt it was my responsibility to push the bar further.
+Before _React for Nothing,_ React had a lot of catching up to do. So many other libraries could be used for practically nothing, but as a proud member of the React community I felt it was my responsibility to push the bar further.
 
 ## Performance
 
@@ -38,41 +37,38 @@ Check out the example app for quick usage: [Example](https://github.com/EvanBaco
 
 Install the library with the following:
 
-```
+```sh
 yarn add react-nothing
 ```
 
-
 Then use it like you would any other React renderer:
 
-```
-import React, { useState, useEffect } from 'react';
+```js
+import React, { useState, useEffect } from "react";
 
-import { render } from 'react-nothing';
+import { render } from "react-nothing";
 
-function Example() { 
+function Example() {
   const [value, setValue] = useState(0);
 
-  useEffect(() => { 
-    const interval = setInterval(() => {   
-      setValue(currentValue => currentValue + 1);
-    }, 100); 
-    return () => {   
-      clearInterval(interval);  
-    }; 
-  });  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setValue((currentValue) => currentValue + 1);
+    }, 100);
+    return () => {
+      clearInterval(interval);
+    };
+  });
 
-  return (<div>{value}</div>);
+  return <div>{value}</div>;
 
   // or for even more nothing...
 
   return null;
-
 }
 
-render(<Counter/>);
+render(<Counter />);
 ```
-
 
 ## That’s All Folks👋🏻
 

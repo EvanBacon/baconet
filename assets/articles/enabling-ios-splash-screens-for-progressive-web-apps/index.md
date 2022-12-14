@@ -54,10 +54,12 @@ Once you have the images you’ll need to add a media attribute that defines _ex
 
 Even though you can define an `orientation` field in your `manifest.json`, you cannot actually lock the iOS PWA orientation. This means that you need to account for landscape images as well. To do this, you’ll have to create new images for every device, and add `(orientation: portrait)` or `(orientation: landscape)` to your media attributes.
 
-```
-<link rel="apple-touch-startup-image"
-media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
-href="/image.png" />
+```html
+<link
+  rel="apple-touch-startup-image"
+  media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+  href="/image.png"
+/>
 ```
 
 Of course adding landscape support will effectively **double** your image count, taking you from 10 to 20 startup images. Because the splash screen works offline I would hypothesize that it’s cached locally like the touch-icon. If this is true, then it should only ever be downloaded once and not have a continuous impact on the user’s data plan.
@@ -68,8 +70,8 @@ Of course adding landscape support will effectively **double** your image count,
 
 Splash screens won’t work at all if you don’t include this meta tag which enables PWA behavior. It will also remove the URL bar, bottom tool bar, and navigation gestures from your PWA, so you’ll need to add custom navigation.
 
-```
-<meta name="apple-mobile-web-app-capable" content="yes">
+```html
+<meta name="apple-mobile-web-app-capable" content="yes" />
 ```
 
 You can also add the following [for parity in chrome](https://bugzilla.mozilla.org/show_bug.cgi?id=1114631):`&lt;meta name="mobile-web-app-capable" content="yes"&gt;`

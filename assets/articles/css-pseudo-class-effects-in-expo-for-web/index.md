@@ -1,4 +1,3 @@
-
 # CSS Pseudo-Class effects in Expo for Web!
 
 ## How to use Hover, Focus, and Active states in your universal app.
@@ -13,18 +12,17 @@ Because I was using these hooks so often, I rolled them all into one convenient 
 
 ### First, install it.
 
-```
+```sh
 yarn add react-native-web-hooks
 
-or
+# or
 
 npm install --save react-native-web-hooks
 ```
 
-
 ### Then use it!
 
-```
+```js
 import { useRef } from 'react';
 import { StyleSheet, Linking, Text, Platform } from 'react-native';
 
@@ -61,7 +59,6 @@ function Link({ children, href = '#' }) {
 }
 ```
 
-
 And just like that you now have a universal link element with pseudo-classes applied to it!
 
 ```
@@ -74,12 +71,11 @@ And just like that you now have a universal link element with pseudo-classes app
 :visited =X> No JS Support 🙁 This is due to security, imagine being able to load a bunch of invisible links on the page and seeing if the user had visited them in the past.
 ```
 
-
 In the future, this method will be replaced by **React Flare** which is being actively worked on at Facebook. I imagine the syntax will be pretty similar, so until that happens I would highly recommend using this approach.
 
 For more cool Expo web facts, check out this Gitbook I put together:
 [**Awesome Web!**
-*Expo for web tips and tricks! baconbrix.gitbook.io](https://baconbrix.gitbook.io/react-native-web/)*
+\*Expo for web tips and tricks! baconbrix.gitbook.io](https://baconbrix.gitbook.io/react-native-web/)\*
 
 If you find a bug or want to contribute to this library please feel free!
 [**Build software better, together**
