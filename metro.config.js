@@ -1,4 +1,9 @@
-// Learn more https://docs.expo.io/guides/customizing-metro
-const { getDefaultConfig } = require('expo/metro-config');
+const { getDefaultConfig } = require("expo/metro-config");
 
-module.exports = getDefaultConfig(__dirname);
+const config = getDefaultConfig(__dirname);
+
+config.resolver.sourceExts.push("md", "mdx");
+
+config.transformer.babelTransformerPath = require.resolve("./transformer.js");
+
+module.exports = config;
