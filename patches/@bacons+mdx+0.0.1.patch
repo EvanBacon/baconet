@@ -1,0 +1,42 @@
+diff --git a/node_modules/@bacons/mdx/build/metro-transformer.js b/node_modules/@bacons/mdx/build/metro-transformer.js
+index e9befbc..eae75a7 100644
+--- a/node_modules/@bacons/mdx/build/metro-transformer.js
++++ b/node_modules/@bacons/mdx/build/metro-transformer.js
+@@ -17,6 +17,24 @@ async function transform(props) {
+         // Append this final rule at the end of the compiler chain:
+         compiler.use(() => {
+             return (tree, _file) => {
++
++
++                function walkForImages(node) {
++
++                    if (node.tagName === 'img') {
++                        console.log("node", node);
++                        if (node.properties.src.startsWith('.')) {
++                            // Relative path should be turned into a require statement:
++                            node.properties.src = `require("${node.properties.src}")`;
++                        }
++                        // node.properties.src = "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png";
++                    }
++                    if (node.children) {
++                        node.children.forEach(walkForImages);
++                    }
++                }
++
++                tree.children.map(walkForImages);
+                 (0, unist_util_visit_1.default)(tree, "element", (node) => {
+                     // Ensure we don't use react-dom elements
+                     node.tagName = "html." + node.tagName;
+@@ -28,9 +46,9 @@ async function transform(props) {
+             path: props.filename,
+         });
+         props.src = getTemplate(contents);
+-        // console.log("\n-----\n");
+-        // console.log("Compiled MDX file:", filename, "\n", src);
+-        // console.log("\n-----\n");
++        console.log("\n-----\n");
++        console.log("Compiled MDX file:", props.filename, "\n", props.src);
++        console.log("\n-----\n");
+     }
+     return props;
+ }
