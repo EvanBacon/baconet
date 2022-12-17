@@ -1449,6 +1449,11 @@
     <true/>
     <key>ITSAppUsesNonExemptEncryption</key>
     <false/>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>exp</string>
+      <string>itms-appss</string>
+    </array>
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>NSAppTransportSecurity</key>
