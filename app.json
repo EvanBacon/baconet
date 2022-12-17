@@ -29,6 +29,10 @@
         "ITSAppUsesNonExemptEncryption": false,
         "NSUserActivityTypes": [
           "com.baconet.expo.index_route"
+        ],
+        "LSApplicationQueriesSchemes": [
+          "exp",
+          "itms-appss"
         ]
       },
       "associatedDomains": [
