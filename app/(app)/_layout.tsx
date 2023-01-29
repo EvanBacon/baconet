@@ -1,32 +1,23 @@
-import { Footer, H1, A, Header, Nav } from "@expo/html-elements";
+import { Image, View } from "@bacons/react-views";
+import {
+  CommonActions,
+  NavigationHelpersContext,
+} from "@react-navigation/native";
+import { TabRouter } from "@react-navigation/routers";
+import { Link, Navigator, Slot, Tabs } from "expo-router";
 import React from "react";
-import { Platform, SafeAreaView, useWindowDimensions } from "react-native";
+import { useWindowDimensions } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-// import { A } from "../Anchor";
 import * as Icons from "../../components/medium";
-import { Image, Text, View } from "@bacons/react-views";
-
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
-import {
-  Children,
-  Layout,
-  Link,
-  Stack,
-  Tabs,
-  useHref,
-  useLink,
-  useNavigation,
-} from "expo-router";
+import { makeIcon } from "../../components/TabBarIcon";
 
 function HeaderLogo() {
   const isLarge = useWidth(1265);
 
   return (
     <Link style={{ paddingVertical: 40 }} href="/" replace>
-      <H1
+      <h1
         style={[
           {
             margin: 0,
@@ -41,7 +32,7 @@ function HeaderLogo() {
         ]}
       >
         <Icons.Logo fill={DARK} style={{ height: 30 }} />
-      </H1>
+      </h1>
     </Link>
   );
 }
@@ -66,10 +57,8 @@ function VerticalTabBar({ children, style }) {
     );
   });
 
-  return <Nav style={style}>{newChildren}</Nav>;
+  return <nav style={style}>{newChildren}</nav>;
 }
-
-import { NavigationHelpersContext } from "@react-navigation/native";
 
 function SideBar() {
   const isLarge = useWidth(1265);
@@ -84,7 +73,7 @@ function SideBar() {
 
   console.log("current", current);
   return (
-    <View
+    <div
       style={[
         {
           alignItems: "flex-end",
@@ -98,7 +87,7 @@ function SideBar() {
         },
       ]}
     >
-      <View
+      <div
         style={[
           {
             position: "fixed",
@@ -116,7 +105,7 @@ function SideBar() {
           },
         ]}
       >
-        <Header
+        <header
           zIndex={3}
           style={[
             {
@@ -165,8 +154,8 @@ function SideBar() {
             >
               Media
             </SideBarTabItem>
-            <View>
-              <View
+            <div>
+              <div
                 style={{
                   marginHorizontal: isLarge ? 0 : "auto",
                   width: isLarge ? "80%" : "33%",
@@ -175,36 +164,36 @@ function SideBar() {
                   height: 1,
                 }}
               />
-            </View>
+            </div>
             {/* <SideBarTabItem href="#" icon={<Icons.Link />}>
               Link
             </SideBarTabItem> */}
           </VerticalTabBar>
 
-          <Footer
+          <footer
             style={{
               justifyContent: "center",
               alignItems: "center",
               marginVertical: 16,
             }}
           >
-            <A
+            <a
               style={{ width: 32, marginVertical: 8, height: 32 }}
               href="https://github.com/evanbacon/portfolio"
               hrefAttrs={{ target: "_blank" }}
               target="_blank"
             >
               <Icons.Code />
-            </A>
-          </Footer>
-        </Header>
-      </View>
-    </View>
+            </a>
+          </footer>
+        </header>
+      </div>
+    </div>
   );
 }
 
 function TabLink({ focused, name, ...props }) {
-  const { state, navigation } = Layout.useContext();
+  const { state, navigation } = Navigator.useContext();
   const route = state.routes.find((route, i) => {
     return route.name === name;
   });
@@ -244,8 +233,6 @@ function TabLink({ focused, name, ...props }) {
   return <Link onPress={onPress} onLongPress={onLongPress} {...props} />;
 }
 
-import { CommonActions, useLinkBuilder } from "@react-navigation/native";
-
 function SideBarTabItem({ children, href, icon, selected, name }) {
   const isLarge = useWidth(1265);
   // const buildLink = useLinkBuilder();
@@ -270,10 +257,9 @@ function SideBarTabItem({ children, href, icon, selected, name }) {
         //   backgroundColor: "rgba(231, 233, 234, 0.1)",
       }}
     >
-      <View
+      <div
         style={{
           padding: 12,
-
           flexDirection: "row",
           alignItems: "center",
         }}
@@ -281,7 +267,7 @@ function SideBarTabItem({ children, href, icon, selected, name }) {
         {icon({ focused: selected, color: "#000" })}
 
         {isLarge && (
-          <Text
+          <span
             style={[
               {
                 color: "#000",
@@ -297,9 +283,9 @@ function SideBarTabItem({ children, href, icon, selected, name }) {
             ]}
           >
             {children}
-          </Text>
+          </span>
         )}
-      </View>
+      </div>
     </Link>
   );
 }
@@ -328,9 +314,6 @@ function ProfileImage({ style, ...props }) {
 }
 
 // import { createContext } from '@radix-ui/react-context';
-
-import { TabRouter } from "@react-navigation/routers";
-import { makeIcon } from "../../components/TabBarIcon";
 
 export default function App({ children }) {
   const isRowLayout = useWidth(600);
@@ -382,12 +365,12 @@ export default function App({ children }) {
       style={[{ flex: 1 }, isRowLayout && { flexDirection: "row-reverse" }]}
     >
       {!isRowLayout && <CustomHeader />}
-      <Layout router={TabRouter}>
+      <Navigator router={TabRouter}>
         <View style={{ flex: 1 }}>
-          <Children />
+          <Slot />
         </View>
         {isRowLayout ? <SideBar /> : <CustomTabBar />}
-      </Layout>
+      </Navigator>
     </View>
   );
 }
@@ -398,23 +381,23 @@ const GOLD = "#A8A8A8";
 function CustomTabBar() {
   return (
     <TabBar>
-      <A href="#">
+      <a href="#">
         <Icons.Home style={{ color: DARK }} />
-      </A>
-      <A href="#">
+      </a>
+      <a href="#">
         <Icons.Search style={{ color: GOLD }} />
-      </A>
-      <A href="#">
+      </a>
+      <a href="#">
         <Icons.Lists style={{ color: GOLD }} />
-      </A>
-      <A href="#">
+      </a>
+      <a href="#">
         <ProfileImage
           style={{
             width: 24,
             height: 24,
           }}
         />
-      </A>
+      </a>
     </TabBar>
   );
 }
@@ -449,11 +432,12 @@ function CustomHeader() {
         backgroundColor: "white",
       }}
     >
-      <Header>
-        <A href="#">
-          <View
-            center
+      <header>
+        <a href="#">
+          <div
             style={{
+              justifyContent: "center",
+              alignItems: "center",
               padding: 5,
               borderWidth: 1,
               borderRadius: 100,
@@ -463,9 +447,9 @@ function CustomHeader() {
             <Icons.Notifications
               style={{ width: 25, height: 25, color: GOLD }}
             />
-          </View>
-        </A>
-      </Header>
+          </div>
+        </a>
+      </header>
     </View>
   );
 }
@@ -518,7 +502,7 @@ function TabBar({ children, style }) {
         style,
       ]}
     >
-      <Nav>{newChildren}</Nav>
+      <nav>{newChildren}</nav>
     </View>
   );
 }

@@ -43,6 +43,9 @@ export default function StackLayout({ segment }) {
       <Stack
         screenOptions={{
           headerRight(props) {
+            if (Platform.OS === "web") {
+              return null;
+            }
             return <ShareButton />;
           },
         }}
