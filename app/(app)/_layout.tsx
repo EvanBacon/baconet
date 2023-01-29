@@ -180,7 +180,6 @@ function SideBar() {
             <a
               style={{ width: 32, marginVertical: 8, height: 32 }}
               href="https://github.com/evanbacon/portfolio"
-              hrefAttrs={{ target: "_blank" }}
               target="_blank"
             >
               <Icons.Code />

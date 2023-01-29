@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View, Pressable } from "@bacons/react-views";
+import { Image, Pressable, StyleSheet, Text, View } from "@bacons/react-views";
 import {
   Inter_300Light,
   Inter_400Regular,
@@ -9,7 +9,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { BlurView } from "expo-blur";
 import { Link, Stack } from "expo-router";
 import React from "react";
-import { Platform, ScrollView, TouchableOpacity } from "react-native";
+import { Platform, ScrollView } from "react-native";
 
 import MaskedView from "../../../components/mask";
 import { data } from "../../../data/media";

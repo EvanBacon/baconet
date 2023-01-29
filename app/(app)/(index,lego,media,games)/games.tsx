@@ -1,11 +1,11 @@
-import { StyleSheet, View } from "@bacons/react-views";
+import { StyleSheet } from "@bacons/react-views";
 import { Stack } from "expo-router";
-import React, { useMemo } from "react";
-import { ScrollView, Text } from "react-native";
-import ProjectCard from "../../../components/Card";
+import React from "react";
 
+import ProjectCard from "../../../components/Card";
 import { Projects } from "../../../components/data";
 import { ScreenScroller } from "../../../components/ScreenScroller";
+
 export default function Page() {
   return (
     <>

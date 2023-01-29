@@ -1,5 +1,5 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { DarkTheme, DefaultTheme, useRoute } from "@react-navigation/native";
+import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 import { Stack, usePathname } from "expo-router";
 import {
   Platform,
