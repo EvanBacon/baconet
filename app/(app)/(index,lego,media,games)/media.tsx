@@ -63,55 +63,11 @@ function CoolBackground({ image }) {
 
       <MaskedView
         style={StyleSheet.absoluteFill}
-        maskElement={
-          <LinearGradient
-            colors={["rgba(0,0,0,1)", "rgba(0,0,0,0)"]}
-            locations={[0.58, 0.76]}
-            style={StyleSheet.absoluteFill}
-          />
-        }
+        colors={["rgba(0,0,0,1)", "rgba(0,0,0,0)"]}
+        locations={[0.58, 0.76]}
       >
         <Image
           style={StyleSheet.absoluteFill}
-          source={{
-            uri: image,
-          }}
-        />
-      </MaskedView>
-    </>
-  );
-}
-function CoolBackgroundWeb({ image }) {
-  return (
-    <>
-      <Image
-        style={StyleSheet.absoluteFill}
-        source={{
-          uri: image,
-        }}
-      />
-      <BlurView intensity={40} tint="dark" style={StyleSheet.absoluteFill} />
-
-      <MaskedView
-        style={StyleSheet.absoluteFill}
-        maskElement={
-          <LinearGradient
-            colors={["rgba(0,0,0,1)", "rgba(0,0,0,0)"]}
-            locations={[0.58, 0.76]}
-            style={StyleSheet.absoluteFill}
-          />
-        }
-      >
-        <Image
-          style={[
-            StyleSheet.absoluteFill,
-            {
-              "-webkit-mask-image":
-                "linear-gradient(to bottom, black 58%, transparent 76%)",
-              "mask-image":
-                "linear-gradient(to bottom, black 58%, transparent 76%)",
-            },
-          ]}
           source={{
             uri: image,
           }}
@@ -156,7 +112,7 @@ function Tile({ image, slug, title, subtitle, themeColor }) {
               justifyContent: "space-between",
             }}
           >
-            <CoolBackgroundWeb image={image} />
+            <CoolBackground image={image} />
 
             <View style={{ alignItems: "flex-end" }}>
               <View
