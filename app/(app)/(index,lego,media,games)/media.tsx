@@ -6,72 +6,27 @@ import {
   useFonts,
 } from "@expo-google-fonts/inter";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import MaskedView from "../../../components/mask";
 import { BlurView } from "expo-blur";
-import { LinearGradient } from "expo-linear-gradient";
 import { Link, Stack } from "expo-router";
 import React from "react";
-import {
-  Platform,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 
-function GradientMask({ colors, children, style, ...props }) {
-  if (Platform.OS === "web") {
-    return (
-      <>
-        <View
-          {...props}
-          style={[
-            style,
-            {
-              maskImage: `linear-gradient(${colors.join(",")})`,
-            },
-          ]}
-        />
-
-        {children}
-      </>
-    );
-  }
-
-  return (
-    <MaskedView
-      style={style}
-      maskElement={
-        <LinearGradient colors={colors} style={StyleSheet.absoluteFill} />
-      }
-    >
-      {children}
-    </MaskedView>
-  );
-}
+import MaskedView from "../../../components/mask";
 
 function CoolBackground({ image }) {
+  const src = typeof image === "number" ? image : { uri: image };
+  const style = [StyleSheet.absoluteFill, { width: "100%", height: "100%" }];
   return (
     <>
-      <Image
-        style={StyleSheet.absoluteFill}
-        source={{
-          uri: image,
-        }}
-      />
+      <Image style={style} source={src} />
       <BlurView intensity={40} tint="dark" style={StyleSheet.absoluteFill} />
 
       <MaskedView
-        style={StyleSheet.absoluteFill}
+        style={style}
         colors={["rgba(0,0,0,1)", "rgba(0,0,0,0)"]}
         locations={[0.58, 0.76]}
       >
-        <Image
-          style={StyleSheet.absoluteFill}
-          source={{
-            uri: image,
-          }}
-        />
+        <Image style={style} source={src} />
       </MaskedView>
     </>
   );
@@ -95,6 +50,7 @@ function Tile({ image, slug, title, subtitle, themeColor }) {
 
             marginVertical: 8,
             aspectRatio: 1.3,
+            flex: 1,
             maxHeight: 360,
             borderRadius: 14,
 
@@ -186,7 +142,8 @@ export default function Page() {
       style={{ flex: 1 }}
       contentInsetAdjustmentBehavior="automatic"
       contentContainerStyle={{
-        alignItems: "center",
+        alignItems: "stretch",
+        paddingHorizontal: 16,
         justifyContent: "center",
       }}
     >
@@ -223,7 +180,7 @@ export default function Page() {
         themeColor={"#393229"}
         slug="expo-cli"
         subtitle="Ground up rewrite of the Expo Dev Tools"
-        image="https://scontent-dfw5-1.cdninstagram.com/v/t51.2885-15/290662534_5202774666496949_3606581906019361043_n.jpg?stp=dst-jpg_e35_p1080x1080&_nc_ht=scontent-dfw5-1.cdninstagram.com&_nc_cat=105&_nc_ohc=cY0USjZUkyAAX_a8crB&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=Mjg3MTM2MzA1ODg5MzkwNjE1Ng%3D%3D.2-ccb7-5&oh=00_AfASYsHvUlBXmggx3J9lopJYb0k4Si6hA4r_-bHAry1CKA&oe=639F7C45&_nc_sid=30a2ef"
+        image={require("../../../assets/talks/appjs-2022.jpg")}
       />
       <Tile
         title="Introducing Expo for Web"
