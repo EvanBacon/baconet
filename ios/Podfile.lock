@@ -24,6 +24,8 @@ PODS:
     - EXJSONUtils
   - Expo (47.0.8):
     - ExpoModulesCore
+  - ExpoCrypto (12.0.0):
+    - ExpoModulesCore
   - ExpoHead (0.0.3):
     - ExpoModulesCore
   - ExpoKeepAwake (11.0.1):
@@ -33,7 +35,11 @@ PODS:
   - ExpoModulesCore (1.0.3):
     - React-Core
     - ReactCommon/turbomodule/core
+  - ExpoRandom (13.0.0):
+    - ExpoModulesCore
   - ExpoSystemUI (2.0.1):
+    - ExpoModulesCore
+  - ExpoWebBrowser (12.0.0):
     - ExpoModulesCore
   - EXSplashScreen (0.17.5):
     - ExpoModulesCore
@@ -395,11 +401,14 @@ DEPENDENCIES:
   - EXJSONUtils (from `../node_modules/expo-json-utils/ios`)
   - EXManifests (from `../node_modules/expo-manifests/ios`)
   - Expo (from `../node_modules/expo`)
+  - ExpoCrypto (from `../node_modules/expo-crypto/ios`)
   - "ExpoHead (from `../node_modules/@bacons/head/ios`)"
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - ExpoLinearGradient (from `../node_modules/expo-linear-gradient/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
+  - ExpoRandom (from `../node_modules/expo-random/ios`)
   - ExpoSystemUI (from `../node_modules/expo-system-ui/ios`)
+  - ExpoWebBrowser (from `../node_modules/expo-web-browser/ios`)
   - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - EXStructuredHeaders (from `../node_modules/expo-structured-headers/ios`)
   - EXUpdates (from `../node_modules/expo-updates/ios`)
@@ -476,6 +485,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-manifests/ios"
   Expo:
     :path: "../node_modules/expo"
+  ExpoCrypto:
+    :path: "../node_modules/expo-crypto/ios"
   ExpoHead:
     :path: "../node_modules/@bacons/head/ios"
   ExpoKeepAwake:
@@ -484,8 +495,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-linear-gradient/ios"
   ExpoModulesCore:
     :path: "../node_modules/expo-modules-core"
+  ExpoRandom:
+    :path: "../node_modules/expo-random/ios"
   ExpoSystemUI:
     :path: "../node_modules/expo-system-ui/ios"
+  ExpoWebBrowser:
+    :path: "../node_modules/expo-web-browser/ios"
   EXSplashScreen:
     :path: "../node_modules/expo-splash-screen/ios"
   EXStructuredHeaders:
@@ -586,11 +601,14 @@ SPEC CHECKSUMS:
   EXJSONUtils: 09aef2c1fba1a116ca8c73a2c8299aac00d96b43
   EXManifests: 347f49430b63444579aa013f0ad057d16b8d1cc8
   Expo: 36b5f625d36728adbdd1934d4d57182f319ab832
+  ExpoCrypto: 51e7662c7f5bfeab25b7909b8a5d545ec15d4877
   ExpoHead: a516d35f066ab3625aa9ed3860680f9874548f35
   ExpoKeepAwake: 69b59d0a8d2b24de9f82759c39b3821fec030318
   ExpoLinearGradient: b40c2133ad57ae105b1b12a319e314463c817f6b
   ExpoModulesCore: b5d21c8880afda6fb6ee95469f9ac2ec9b98e995
+  ExpoRandom: 58b7e0a5fe1adf1cb6dc1cbe503a6fe9524f36ce
   ExpoSystemUI: c844dec5e49e677bcd6bfe15cc305b02127b1124
+  ExpoWebBrowser: 073e50f16669d498fb49063b9b7fe780b24f7fda
   EXSplashScreen: 3e989924f61a8dd07ee4ea584c6ba14be9b51949
   EXStructuredHeaders: fb774e45eac2e5d62ba40b28176bfbfba61b843e
   EXUpdates: e687436502147e80ef13cf6eedd17e3039ef47d6
