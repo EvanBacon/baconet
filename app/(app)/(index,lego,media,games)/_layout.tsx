@@ -36,7 +36,6 @@ export default function StackLayout({ segment }) {
   const posts = usePosts();
 
   const initRouteName = segment.replace(/^\(/, "").replace(/\)$/, "");
-  console.log("layout route", initRouteName);
 
   return (
     <OutletContext.Provider value={posts}>

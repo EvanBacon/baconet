@@ -1,6 +1,6 @@
-import { View, Text } from "@bacons/react-views";
 import { Stack, useSearchParams } from "expo-router";
 import { data } from "../../../../data/media";
+
 export default function Page() {
   const { video } = useSearchParams();
 
@@ -8,15 +8,15 @@ export default function Page() {
 
   if (!item) {
     return (
-      <View
+      <div
         style={{
           flex: 1,
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Text>Not found: {video}</Text>
-      </View>
+        <h2>Not found: {video}</h2>
+      </div>
     );
   }
   return (
@@ -26,12 +26,10 @@ export default function Page() {
           title: item.title,
         }}
       />
-      <View
-        style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}
-      >
-        <Text>{item.title}</Text>
-        <Text>{item.subtitle}</Text>
-      </View>
+      <div style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
+        <h2>{item.title}</h2>
+        <h4>{item.subtitle}</h4>
+      </div>
     </>
   );
 }
