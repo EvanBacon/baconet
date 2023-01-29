@@ -1,5 +1,5 @@
 import { TopTabs } from "@bacons/expo-router-top-tabs";
-import { Stack } from "expo-router";
+import { Stack, useSearchParams } from "expo-router";
 import { Image, Text, View } from "react-native";
 
 import { getItem } from "../../../../../components/fetchItem";
@@ -20,9 +20,9 @@ export function ErrorBoundary({ error }) {
   );
 }
 
-export default function CustomLayout({ route }) {
-  console.log("route:", route);
-  const item = getItem(route.params?.item);
+export default function CustomLayout() {
+  const { item: id } = useSearchParams();
+  const item = getItem(id);
 
   return (
     <>

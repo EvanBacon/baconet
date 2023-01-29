@@ -1,4 +1,3 @@
-import { Article, Footer, H2, H3, P } from "@expo/html-elements";
 import { Video } from "expo-av";
 import { BlurView } from "expo-blur";
 import React from "react";
@@ -50,7 +49,7 @@ export function MediaBackground({ resizeMode, isHovered, ...props }) {
 
   if (props.video) {
     return (
-      <View style={baseStyle}>
+      <div style={baseStyle}>
         <Video
           ref={videoRef}
           source={props.video}
@@ -61,7 +60,7 @@ export function MediaBackground({ resizeMode, isHovered, ...props }) {
           isLooping
           style={[StyleSheet.absoluteFill, { zIndex: -1 }]}
         />
-        <View
+        <div
           style={{
             zIndex: 5,
             flex: 1,
@@ -71,14 +70,14 @@ export function MediaBackground({ resizeMode, isHovered, ...props }) {
           }}
         >
           {props.children}
-        </View>
-      </View>
+        </div>
+      </div>
     );
   }
   console.log("props.image", props.image);
 
   return (
-    <View style={baseStyle}>
+    <div style={baseStyle}>
       <Image
         source={props.image}
         style={[
@@ -91,7 +90,7 @@ export function MediaBackground({ resizeMode, isHovered, ...props }) {
         resizeMode={resizeMode}
       />
 
-      <View
+      <div
         style={{
           flex: 1,
           justifyContent: "center",
@@ -100,8 +99,8 @@ export function MediaBackground({ resizeMode, isHovered, ...props }) {
         }}
       >
         {props.children}
-      </View>
-    </View>
+      </div>
+    </div>
   );
 }
 
@@ -133,7 +132,7 @@ export default function ProjectCard({
   return (
     <Link href={"./item/" + slug} asChild>
       <Pressable>
-        <Article
+        <article
           ref={ref}
           style={[
             styles.container,
@@ -148,33 +147,33 @@ export default function ProjectCard({
             video={video}
             resizeMode="cover"
           >
-            <Footer style={styles.footer}>
+            <footer style={styles.footer}>
               <Underlay color={themeColor} />
 
               <BlurView intensity={100} style={styles.blur} />
 
-              <View style={{ flexDirection: "row", flexShrink: 1 }}>
+              <div style={{ flexDirection: "row", flexShrink: 1 }}>
                 {icon && (
                   <Image source={icon} style={styles.icon} resizeMode="cover" />
                 )}
-                <View style={{ flex: 1 }}>
-                  {title && <H2 style={styles.title}>{title}</H2>}
+                <div style={{ flex: 1 }}>
+                  {title && <h2 style={styles.title}>{title}</h2>}
                   {description && !renderDescription && (
-                    <H3 style={styles.description}>{description}</H3>
+                    <h3 style={styles.description}>{description}</h3>
                   )}
                   {renderDescription && renderDescription()}
-                  {year && <P style={styles.year}>{year}</P>}
-                </View>
-              </View>
+                  {year && <p style={styles.year}>{year}</p>}
+                </div>
+              </div>
 
-              <View
+              <div
                 style={{
                   flexDirection: "row",
                   justifyContent: "space-around",
                 }}
               >
                 {actions.map((social, index) => (
-                  <View key={social.icon}>
+                  <div key={social.icon}>
                     <Link
                       href={social.url}
                       style={{ marginLeft: index === 0 ? 0 : 24 }}
@@ -185,12 +184,12 @@ export default function ProjectCard({
                     >
                       <SocialIcon name={social.icon} color="white" size={24} />
                     </Link>
-                  </View>
+                  </div>
                 ))}
-              </View>
-            </Footer>
+              </div>
+            </footer>
           </MediaBackground>
-        </Article>
+        </article>
       </Pressable>
     </Link>
   );

@@ -1,13 +1,11 @@
 import React from "react";
 
-import { View, StyleSheet, ScrollView } from "react-native";
-import { A } from "@expo/html-elements";
+import { StyleSheet } from "react-native";
 import ProjectCard from "../../../components/Card";
 import { Podcasts } from "../../../components/data";
 import { Stack } from "expo-router";
 import { ScreenScroller } from "../../../components/ScreenScroller";
 
-const IA = A as any;
 export default function Media({ navigation }) {
   return (
     <>
@@ -22,17 +20,17 @@ export default function Media({ navigation }) {
             key={project.title}
             {...project}
             renderDescription={() => (
-              <View style={styles.aWrapper}>
+              <div style={styles.aWrapper}>
                 {authors.map((author, index) => (
-                  <IA
+                  <a
                     key={author}
                     href={`https://twitter.com/${author}`}
                     style={styles.a}
                   >
                     {`@${author}${index !== authors.length - 1 ? " | " : ""}`}
-                  </IA>
+                  </a>
                 ))}
-              </View>
+              </div>
             )}
           />
         ))}

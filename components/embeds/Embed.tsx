@@ -1,4 +1,3 @@
-import { A } from "@expo/html-elements";
 import { ActivityIndicator, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Text, Image } from "@bacons/react-views";
@@ -113,9 +112,9 @@ export function Embed({ url }: { url: string }) {
         borderWidth: 1,
       }}
     >
-      <A hrefAttrs={{ target: "_blank" }} href={url}>
+      <a target="_blank" href={url}>
         Embed not implemented: {url}
-      </A>
+      </a>
     </View>
   );
 }

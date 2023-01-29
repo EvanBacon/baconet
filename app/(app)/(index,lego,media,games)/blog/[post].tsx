@@ -1,20 +1,15 @@
-import { StyleSheet, View } from "@bacons/react-views";
-import { Stack, useHref } from "expo-router";
+import { StyleSheet } from "@bacons/react-views";
+import { Stack, useSearchParams } from "expo-router";
 import React from "react";
-import { useRoute } from "@react-navigation/native";
 import { ScrollView, useWindowDimensions } from "react-native";
 import Markdown from "react-native-markdown-renderer";
 
 import { usePosts } from "../../../../components/api";
 import { useOutletContext } from "../../../../components/OutletContext";
 
-export default function Page({ route }) {
-  const route2 = useRoute();
-  const href = useHref();
-  console.log("!!route!!", href, route2, route);
+export default function Page() {
   const { width } = useWindowDimensions();
-
-  const postId = route.params?.post;
+  const { post: postId } = useSearchParams();
 
   const posts = useOutletContext<ReturnType<typeof usePosts>>();
   // console.log("route", route, posts);
@@ -37,7 +32,7 @@ export default function Page({ route }) {
       <Stack.Screen
         options={{ headerLargeTitle: true, title: post.fields.title }}
       />
-      <View
+      <div
         style={{
           alignItems: "center",
           flex: 1,
@@ -57,7 +52,7 @@ export default function Page({ route }) {
           {/* @ts-expect-error */}
           <Markdown>{post.fields.body}</Markdown>
         </ScrollView>
-      </View>
+      </div>
     </>
   );
 }

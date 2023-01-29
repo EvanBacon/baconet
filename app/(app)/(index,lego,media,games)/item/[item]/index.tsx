@@ -1,13 +1,6 @@
-import { Link, Stack, useHref } from "expo-router";
+import { Link, useSearchParams } from "expo-router";
 import React from "react";
-import {
-  Image,
-  Animated,
-  Platform,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
+import { Image, Platform, ScrollView } from "react-native";
 
 import {
   Lego,
@@ -29,11 +22,11 @@ function getRelated(index: number) {
 }
 
 export default function Page() {
-  const route = useHref();
-  const item = getItem(route.params?.item);
+  const route = useSearchParams();
+  const item = getItem(route.item);
   const props = useScrollProps();
 
-  const index = parseInt(route.params?.item.split("-")[1]);
+  const index = parseInt(route.item.split("-")[1]);
   const related = getRelated(index + 1).concat(getRelated(index + 2));
   return (
     <ScreenScroller {...props}>
@@ -41,11 +34,11 @@ export default function Page() {
 
       {/* <Text>{JSON.stringify({ item }, null, 2)}</Text> */}
 
-      <View style={{ paddingHorizontal: 12 }}>
+      <div style={{ paddingHorizontal: 12 }}>
         <InfoSection item={item} />
         <AwardsSection item={item} />
         <RecommendedSection items={related} />
-      </View>
+      </div>
     </ScreenScroller>
   );
 }
@@ -101,14 +94,14 @@ function InfoListItem({
 }) {
   if (children == null) return null;
   return (
-    <View
+    <div
       style={{ flexDirection: "row", paddingVertical: 8, alignItems: "center" }}
     >
-      <View>
-        <Text style={{ fontWeight: "bold", fontSize: 16 }}>{title}</Text>
-        {subtitle && <Text style={{ fontSize: 14 }}>{subtitle}</Text>}
-      </View>
-      <View
+      <div>
+        <h1 style={{ fontWeight: "bold", fontSize: 16 }}>{title}</h1>
+        {subtitle && <h2 style={{ fontSize: 14 }}>{subtitle}</h2>}
+      </div>
+      <div
         style={{
           marginHorizontal: 12,
           flex: 1,
@@ -120,19 +113,19 @@ function InfoListItem({
           borderColor: "#6e707255",
         }}
       />
-      <Text style={{ color: "#6e7072" }}>{children}</Text>
-    </View>
+      <span style={{ color: "#6e7072" }}>{children}</span>
+    </div>
   );
 }
 
 function Section({ title, children }) {
   return (
-    <View style={{ paddingVertical: 12 }}>
-      <Text style={{ fontWeight: "bold", fontSize: 24, paddingBottom: 12 }}>
+    <div style={{ paddingVertical: 12 }}>
+      <h3 style={{ fontWeight: "bold", fontSize: 24, paddingBottom: 12 }}>
         {title}
-      </Text>
+      </h3>
       {children}
-    </View>
+    </div>
   );
 }
 
@@ -156,20 +149,20 @@ function ProjectPreview(project: Project) {
         params: { item: project.slug },
       }}
     >
-      <View style={{ paddingRight: 12 }}>
-        <View style={{ width: 192, maxWidth: 192, paddingHorizontal: 1 }}>
+      <div style={{ paddingRight: 12 }}>
+        <div style={{ width: 192, maxWidth: 192, paddingHorizontal: 1 }}>
           <Image
             style={{ height: 150, width: 190, resizeMode: "cover" }}
             source={project.image}
           />
-          <View style={{ paddingTop: 12 }}>
-            <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+          <div style={{ paddingTop: 12 }}>
+            <h3 style={{ fontSize: 16, fontWeight: "bold" }}>
               {project.title}
-            </Text>
-            <Text style={{ color: "#6e7072" }}>{project.description}</Text>
-          </View>
-        </View>
-      </View>
+            </h3>
+            <span style={{ color: "#6e7072" }}>{project.description}</span>
+          </div>
+        </div>
+      </div>
     </Link>
   );
 }
