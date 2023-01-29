@@ -25,9 +25,7 @@ function HeaderLogo() {
             flex: 1,
             alignItems: "center",
             maxHeight: 23,
-          },
-          !isLarge && {
-            justifyContent: "center",
+            marginVertical: 2,
           },
         ]}
       >
