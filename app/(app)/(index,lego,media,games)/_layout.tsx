@@ -1,6 +1,6 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { DarkTheme, DefaultTheme, useRoute } from "@react-navigation/native";
-import { Stack, useHref } from "expo-router";
+import { Stack, usePathname } from "expo-router";
 import {
   Platform,
   Share,
@@ -13,7 +13,7 @@ import { OutletContext } from "../../../components/OutletContext";
 
 function ShareButton() {
   const theme = useColorScheme() === "dark" ? DarkTheme : DefaultTheme;
-  const { href } = useHref();
+  const href = usePathname();
   const link = new URL(href, "https://evanbacon.dev").toString();
   return (
     <TouchableOpacity
@@ -35,10 +35,8 @@ function ShareButton() {
 export default function StackLayout({ segment }) {
   const posts = usePosts();
 
-  const route = useRoute();
-
   const initRouteName = segment.replace(/^\(/, "").replace(/\)$/, "");
-  console.log("layout route", route, initRouteName);
+  console.log("layout route", initRouteName);
 
   return (
     <OutletContext.Provider value={posts}>

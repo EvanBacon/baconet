@@ -1,27 +1,23 @@
-import { MDXComponents, MDXStyles } from "@bacons/mdx";
+import { Image, Text } from "@bacons/react-views";
 import {
-  ScrollView,
+  Inter_300Light,
+  Inter_400Regular,
+  Inter_700Bold,
+  useFonts,
+} from "@expo-google-fonts/inter";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import MaskedView from "../../../components/mask";
+import { BlurView } from "expo-blur";
+import { LinearGradient } from "expo-linear-gradient";
+import { Link, Stack } from "expo-router";
+import React from "react";
+import {
   Platform,
+  ScrollView,
   StyleSheet,
   TouchableOpacity,
   View,
 } from "react-native";
-import { Image, Text } from "@bacons/react-views";
-import React from "react";
-
-import { Link, Stack } from "expo-router";
-
-import {
-  useFonts,
-  Inter_400Regular,
-  Inter_700Bold,
-  Inter_300Light,
-} from "@expo-google-fonts/inter";
-import { SourceCodePro_400Regular } from "@expo-google-fonts/source-code-pro";
-import MaskedView from "@react-native-masked-view/masked-view";
-
-import { BlurView } from "expo-blur";
-import { LinearGradient } from "expo-linear-gradient";
 
 function GradientMask({ colors, children, style, ...props }) {
   if (Platform.OS === "web") {
@@ -85,8 +81,6 @@ function CoolBackground({ image }) {
     </>
   );
 }
-
-import Ionicons from "@expo/vector-icons/Ionicons";
 
 function Tile({ image, slug, title, subtitle, themeColor }) {
   return (

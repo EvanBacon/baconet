@@ -1223,14 +1223,6 @@
   resolved "https://registry.yarnpkg.com/@bacons/expo-background-color/-/expo-background-color-1.0.2.tgz#6e8929203cf6cccd6bc044146477b9cdb0433724"
   integrity sha512-I7797crohIdu/2Vt8kN7Vf4c6xCoASczeIA1oTd4JLUYiMhmzm0ocwEVXrNzXjwwbHHeuF+OOkLM8qSQC4lxoA==
 
-"@bacons/expo-metro-runtime@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@bacons/expo-metro-runtime/-/expo-metro-runtime-2.0.1.tgz#96e85e4649638f182eff0b44310102e90444582f"
-  integrity sha512-UMN6akb5GHd9Lb7r6tueiNRRaIkO493VWLiCGCE21EAMNtPNfIdpIUTiaFUWx3tNQVnjswknzVA5LzGc3pNJ7g==
-  dependencies:
-    "@bacons/react-views" "^1.1.3"
-    qs "^6.10.3"
-
 "@bacons/expo-router-top-tabs@^0.0.1":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@bacons/expo-router-top-tabs/-/expo-router-top-tabs-0.0.1.tgz#d13e18cf879051a824e35fc2975a75c9619b3f29"
@@ -1506,15 +1498,15 @@
     tmp "^0.0.33"
     tslib "^1.10.0"
 
-"@expo/html-elements@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@expo/html-elements/-/html-elements-0.2.0.tgz#dcf1df1c5350289ffb3934809582b2a85651e507"
-  integrity sha512-bdkOwWXX7E4ha8rKZDSYRtW/XhDlO7mj+8YzKOywxOjGsJqZ5N0HZireHH8sQxq7krdFnpXADL5c/0HX3gIesA==
-
 "@expo/html-elements@^0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@expo/html-elements/-/html-elements-0.2.2.tgz#d4d361df6c4089d67cc2fd98d34a5347ac4c1a5d"
   integrity sha512-hMS/5UfBgusKo5K0kpXdrddkxBg9LaJ8Dnijxats+7Uj0Mrk+NaRx3jOUsHTzd7pAroeqx5WGwzJ7wppsksBVA==
+
+"@expo/html-elements@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@expo/html-elements/-/html-elements-0.3.1.tgz#eecff358ba24e2799cbf3c26f3faecbf792b83ce"
+  integrity sha512-v7fxt+PzQvRU0hYec5lPTbrmoVl9t21WZHRa3IjfpvPbYFqReuh8rSs80vjKB3uQxM47MOjNn3TFUsMCbnGnhg==
 
 "@expo/image-utils@0.3.20":
   version "0.3.20"
@@ -1559,13 +1551,6 @@
     json5 "^1.0.1"
     write-file-atomic "^2.3.0"
 
-"@expo/match-media@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@expo/match-media/-/match-media-0.3.0.tgz#e22360d9bd69b76d97f6c2da220e5d806fbadb92"
-  integrity sha512-J6JXamR4tYTvYLbmvoUeO+v4SC36Xyi1C4K9Wqrxxp5xbQCqIqqZrj3ZTFZdRO5IWiu3B407yL4e/kDbqz4EdQ==
-  dependencies:
-    css-mediaquery "^0.1.2"
-
 "@expo/metro-config@~0.5.0", "@expo/metro-config@~0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@expo/metro-config/-/metro-config-0.5.1.tgz#58c715041e1773ad653519535c017138bfc766de"
@@ -1579,6 +1564,14 @@
     getenv "^1.0.0"
     resolve-from "^5.0.0"
     sucrase "^3.20.0"
+
+"@expo/metro-runtime@~0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@expo/metro-runtime/-/metro-runtime-0.0.1.tgz#5d08c0ba1fbca56def35353b0a88847f3bb04be0"
+  integrity sha512-X8bhZgu6bhJzrPkVP+M51/MKt+fLzBwomEBwC/capjlXtZj2qGikMrw3cRVpygskfug7iTQl5Xbpx6D4URzlLA==
+  dependencies:
+    "@bacons/react-views" "^1.1.3"
+    qs "^6.10.3"
 
 "@expo/osascript@2.0.33", "@expo/osascript@^2.0.31":
   version "2.0.33"
@@ -2186,86 +2179,6 @@
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.24.51.tgz#645f33fe4e02defe26f2f5c0410e1c094eac7f5f"
   integrity sha512-1P1OROm/rdubP5aFDSZQILU0vrLCJ4fvHt6EoqHEM+2D/G5MK3bIaymUKLit8Js9gbns5UyJnkP/TZROLw4tUA==
 
-"@tamagui/compose-refs@^1.0.1-beta.226":
-  version "1.0.1-beta.226"
-  resolved "https://registry.yarnpkg.com/@tamagui/compose-refs/-/compose-refs-1.0.1-beta.226.tgz#17c76dbcbfe818ee849110a72042ff3e73ee8ee9"
-  integrity sha512-S77iDdvWYWD73juY8Qmb8SnzwlGnSoow+MJsF1mWbcTRz4JTQKW/9gdKyZZgBUKS0iqr/Bm4mThnnkWWP5/pnA==
-
-"@tamagui/constants@^1.0.1-beta.226":
-  version "1.0.1-beta.226"
-  resolved "https://registry.yarnpkg.com/@tamagui/constants/-/constants-1.0.1-beta.226.tgz#5371cbfcec5cda19f0c46925066ba99dc1a0df2e"
-  integrity sha512-Ma5g+26udrd65e/cVouKu/W7c+3KLhY37OTHu0m/KTblAcc6lb9TW5puY+pWVLKaJJ0nd4smZpechz7WgLsU3A==
-
-"@tamagui/core@^1.0.1-beta.226":
-  version "1.0.1-beta.226"
-  resolved "https://registry.yarnpkg.com/@tamagui/core/-/core-1.0.1-beta.226.tgz#1b73b0eee8f68898da4d985bb588cc53c8c15641"
-  integrity sha512-kuthResHoVEnq/zcnE/XFCw72k/pii2RV8uvKkSnHoYPorj73gkDbFhg5tevINUVJgYCXvaovV52q2W+ohkKOQ==
-  dependencies:
-    "@expo/match-media" "^0.3.0"
-    "@tamagui/compose-refs" "^1.0.1-beta.226"
-    "@tamagui/constants" "^1.0.1-beta.226"
-    "@tamagui/helpers" "^1.0.1-beta.226"
-    "@tamagui/normalize-css-color-lite" "^1.0.1-beta.226"
-    "@tamagui/react-native-use-pressable" "^1.0.1-beta.226"
-    "@tamagui/react-native-use-responder-events" "^1.0.1-beta.226"
-    "@tamagui/types-react-native" "^1.0.1-beta.226"
-    "@tamagui/use-did-finish-ssr" "^1.0.1-beta.226"
-    "@tamagui/use-event" "^1.0.1-beta.226"
-    "@tamagui/use-force-update" "^1.0.1-beta.226"
-
-"@tamagui/helpers@^1.0.1-beta.226":
-  version "1.0.1-beta.226"
-  resolved "https://registry.yarnpkg.com/@tamagui/helpers/-/helpers-1.0.1-beta.226.tgz#60fe84b220cdfbc99209a3b3d74767e89c97cc80"
-  integrity sha512-yTg0u2HClJI8vDsCdA1jEiZjRpjJ5k50XMzltBXk1g9e4FbcjfQsprBC8/iZ7yAgBTrwRMWLkLB9KpuhkrLp1w==
-  dependencies:
-    "@tamagui/simple-hash" "^1.0.1-beta.226"
-
-"@tamagui/normalize-css-color-lite@^1.0.1-beta.226":
-  version "1.0.1-beta.226"
-  resolved "https://registry.yarnpkg.com/@tamagui/normalize-css-color-lite/-/normalize-css-color-lite-1.0.1-beta.226.tgz#eb41de97773c5d8a894ded3e2935ca1b6a68ff2b"
-  integrity sha512-9XDTW91ekm3D1NpE0SFQry/K05lMQUwWg/2Yq0BJt4TYJ6BJOlRKjtB6TDe37T6uxS+Muuo82xpLycclUVp9UA==
-
-"@tamagui/react-native-use-pressable@^1.0.1-beta.226":
-  version "1.0.1-beta.226"
-  resolved "https://registry.yarnpkg.com/@tamagui/react-native-use-pressable/-/react-native-use-pressable-1.0.1-beta.226.tgz#44fdb529ab0c99881ef8891e843b6538cb8dc691"
-  integrity sha512-hfQYu21f21VHk9XST+WnfU3Kv/nhi8xxjVLcVBr0ob6L2QmCmHCPF27F2l7RcIx91yg0WBwvGGu32EeC/iIXRw==
-  dependencies:
-    react ">=18"
-
-"@tamagui/react-native-use-responder-events@^1.0.1-beta.226":
-  version "1.0.1-beta.226"
-  resolved "https://registry.yarnpkg.com/@tamagui/react-native-use-responder-events/-/react-native-use-responder-events-1.0.1-beta.226.tgz#a0f66d3e6c756b02ed1262c4548c96a429ab9457"
-  integrity sha512-PbA/vv69EHxkkNim3lqTnLWygOkuUNmFWng72NlsW6jSg+ikZJxNcMigli0qBb9+TqCY9EeyxZOdG5Fcx3ajqw==
-  dependencies:
-    react ">=18"
-
-"@tamagui/simple-hash@^1.0.1-beta.226":
-  version "1.0.1-beta.226"
-  resolved "https://registry.yarnpkg.com/@tamagui/simple-hash/-/simple-hash-1.0.1-beta.226.tgz#c5dfee2ebe531e84b973740f46ae7c3028147daf"
-  integrity sha512-tgMrnw6Ur+05uskicO3JG2MZct4Bd8vLLl6+mHrxsDisHt8Rxpd8YKs/+t/9puSscXs+ivxtM8ml/oroBrec6g==
-
-"@tamagui/types-react-native@^1.0.1-beta.226":
-  version "1.0.1-beta.226"
-  resolved "https://registry.yarnpkg.com/@tamagui/types-react-native/-/types-react-native-1.0.1-beta.226.tgz#7370e5290361679afd4146f36796c4a2e4620c7f"
-  integrity sha512-XXQqfW4/2VFSsNOKxMDPObQKSnN5xcOtkeDM8hdBeDW0WCiO3nyJjjP19W9tfhn3AjcS9D1CLEu2TWozXsYYnQ==
-  dependencies:
-    "@types/react" "^18.0.15"
-
-"@tamagui/use-did-finish-ssr@^1.0.1-beta.226":
-  version "1.0.1-beta.226"
-  resolved "https://registry.yarnpkg.com/@tamagui/use-did-finish-ssr/-/use-did-finish-ssr-1.0.1-beta.226.tgz#812846e489f47a370c672f41a81ed43196ff698b"
-  integrity sha512-4Cbr0FhXFrLXm9+07a2Pie8/MIlwRnE+CRuIc3KypxWDoGV40jPptLJztC/gup4FSwqJs+F3EsqxxbNk/NC1rw==
-
-"@tamagui/use-event@^1.0.1-beta.226":
-  version "1.0.1-beta.226"
-  resolved "https://registry.yarnpkg.com/@tamagui/use-event/-/use-event-1.0.1-beta.226.tgz#158c947060ab4719bd6c1178f59c153b88ea3f69"
-  integrity sha512-o1/K51O9gCqD3FAnxHBYCzE/sHuE/PvFMF7cDZYFpuThfTbevm7sdMxe7Un/oYCdLWiBMILzm4zrOLzVpB2zGg==
-
-"@tamagui/use-force-update@^1.0.1-beta.226":
-  version "1.0.1-beta.226"
-  resolved "https://registry.yarnpkg.com/@tamagui/use-force-update/-/use-force-update-1.0.1-beta.226.tgz#d42e838719828bd38b99519f39c78701188818f5"
-  integrity sha512-d4WIny2HT9w6z6f7i2+c8LYBgqRnfnlYmZKMmexbr6g+QleD8yQ2/hMlhgaa8+c32HD583mbe7ERQhollCbiYg==
-
 "@types/hammerjs@^2.0.36":
   version "2.0.41"
   resolved "https://registry.yarnpkg.com/@types/hammerjs/-/hammerjs-2.0.41.tgz#f6ecf57d1b12d2befcce00e928a6a097c22980aa"
@@ -2384,7 +2297,7 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@^18.0.15", "@types/react@~18.0.24":
+"@types/react@~18.0.24":
   version "18.0.26"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.26.tgz#8ad59fc01fef8eaf5c74f4ea392621749f0b7917"
   integrity sha512-hCR3PJQsAIXyxhTNSiDFY//LhnMZWpNNr5etoCqx/iUfGc5gXWtQR2Phl908jVR6uPXacojQWTg4qRpkxTuGug==
@@ -3477,11 +3390,6 @@ css-in-js-utils@^2.0.0:
     hyphenate-style-name "^1.0.2"
     isobject "^3.0.1"
 
-css-mediaquery@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/css-mediaquery/-/css-mediaquery-0.1.2.tgz#6a2c37344928618631c54bd33cedd301da18bea0"
-  integrity sha512-COtn4EROW5dBGlE/4PiKnh6rZpAPxDeFLaEEwt4i10jpDMFt2EhQGS79QmmrO+iKCHv0PU/HrOWEhijFd1x99Q==
-
 css-select@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/css-select/-/css-select-5.1.0.tgz#b8ebd6554c3637ccc76688804ad3f6a6fdaea8a6"
@@ -4016,18 +3924,19 @@ expo-random@^13.0.0:
   dependencies:
     base64-js "^1.3.0"
 
-expo-router@~0.0.39:
-  version "0.0.39"
-  resolved "https://registry.yarnpkg.com/expo-router/-/expo-router-0.0.39.tgz#7ff4802bd3db67dc4733a0e65589a0a7987fb17a"
-  integrity sha512-NF85fMr/we/8E4Wh8wy5CuUVWGP5kQcCnr7sVQzjYWjIcfqvltQiTHFxUchlg/Xhaxav8P+/+Rr8oGiiIqsAoQ==
+expo-router@1.0.0-rc3:
+  version "1.0.0-rc3"
+  resolved "https://registry.yarnpkg.com/expo-router/-/expo-router-1.0.0-rc3.tgz#3f773221be53f15ab6ea574d05b3597c9ff556be"
+  integrity sha512-aS7t/crzQhosdgme/5g8pOr87RjBOVmDT3uQD+lNfRuvRm07hqgT4ia9K/oTBaPZKCqS3lOxn4DIh5DuH8uREw==
   dependencies:
-    "@bacons/expo-metro-runtime" "^2.0.1"
     "@bacons/react-views" "^1.1.3"
+    "@expo/metro-runtime" "~0.0.1"
     "@radix-ui/react-slot" "^1.0.0"
     "@react-navigation/bottom-tabs" "^6.3.3"
     "@react-navigation/native" "^6.0.12"
     "@react-navigation/native-stack" "^6.8.0"
     expo-splash-screen "^0.16.2"
+    url "^0.11.0"
 
 expo-splash-screen@^0.16.2:
   version "0.16.2"
@@ -7148,13 +7057,6 @@ react@18.1.0:
   version "18.1.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.1.0.tgz#6f8620382decb17fdc5cc223a115e2adbf104890"
   integrity sha512-4oL8ivCz5ZEPyclFQXaNksK3adutVS8l2xzZU0cqEFrE9Sb7fC0EFK5uEk74wIreL1DERyjvsU915j1pcT2uEQ==
-  dependencies:
-    loose-envify "^1.1.0"
-
-react@>=18:
-  version "18.2.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
-  integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
 
