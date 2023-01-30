@@ -1,6 +1,6 @@
 import { StyleSheet } from "@bacons/react-views";
 import React from "react";
-import { Platform, Animated, ScrollView } from "react-native";
+import { Platform, Animated } from "react-native";
 
 export function ScreenScroller({ children, ...props }) {
   return (

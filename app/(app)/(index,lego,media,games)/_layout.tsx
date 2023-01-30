@@ -14,7 +14,7 @@ import { OutletContext } from "../../../components/OutletContext";
 function ShareButton() {
   const theme = useColorScheme() === "dark" ? DarkTheme : DefaultTheme;
   const href = usePathname();
-  const link = new URL(href, "https://evanbacon.dev").toString();
+  const link = new URL(href, "https://baconet.netlify.app").toString();
   return (
     <TouchableOpacity
       style={{

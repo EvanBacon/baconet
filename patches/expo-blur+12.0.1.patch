@@ -1,0 +1,12 @@
+diff --git a/node_modules/expo-blur/build/BlurView.web.js b/node_modules/expo-blur/build/BlurView.web.js
+index b59a983..be51491 100644
+--- a/node_modules/expo-blur/build/BlurView.web.js
++++ b/node_modules/expo-blur/build/BlurView.web.js
+@@ -21,6 +21,7 @@ function getBlurStyle({ intensity, tint }) {
+     };
+     if (isBlurSupported()) {
+         style.backdropFilter = `saturate(180%) blur(${intensity * 0.2}px)`;
++        style['-webkit-backdrop-filter'] = `saturate(180%) blur(${intensity * 0.2}px)`;
+     }
+     return style;
+ }

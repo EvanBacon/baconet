@@ -1,5 +1,5 @@
 import { requireNativeModule } from "expo-modules-core";
-import { useHref } from "expo-router";
+import { usePathname } from "expo-router";
 import { useEffect } from "react";
 import { View, Text, StyleSheet, Platform } from "react-native";
 
@@ -67,7 +67,7 @@ export function MetaShortcut(props: Omit<Shortcut, "info">) {
   if (Platform.OS !== "ios") {
     return null;
   }
-  const { href } = useHref();
+  const href = usePathname();
 
   useEffect(() => {
     shortcuts = shortcuts.filter((value) => value.info.href !== href);

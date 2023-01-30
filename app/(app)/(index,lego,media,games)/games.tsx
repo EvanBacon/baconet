@@ -1,3 +1,4 @@
+import { Head } from "@bacons/head";
 import { StyleSheet } from "@bacons/react-views";
 import { Stack } from "expo-router";
 import React from "react";
@@ -9,6 +10,18 @@ import { ScreenScroller } from "../../../components/ScreenScroller";
 export default function Page() {
   return (
     <>
+      <Head>
+        <title>Games | Bacon Blog</title>
+        <meta name="description" content="Evan Bacon's blog" />
+        <meta
+          property="og:image"
+          content="https://icogen.vercel.app/api/icon?icon=1f195"
+        />
+        <meta
+          name="keywords"
+          content="evan bacon,expo,javascript,typescript,ios,android,native,react native,react,learn"
+        />
+      </Head>
       <Stack.Screen
         options={{
           title: "Games",

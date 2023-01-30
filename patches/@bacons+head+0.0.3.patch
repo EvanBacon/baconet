@@ -1,7 +1,15 @@
 diff --git a/node_modules/@bacons/head/build/ExpoHead.ios.js b/node_modules/@bacons/head/build/ExpoHead.ios.js
-index 1004475..0619ee2 100644
+index 1004475..86fbe81 100644
 --- a/node_modules/@bacons/head/build/ExpoHead.ios.js
 +++ b/node_modules/@bacons/head/build/ExpoHead.ios.js
+@@ -1,6 +1,6 @@
+ import * as App from "expo-application";
+ import { createURL } from "expo-linking";
+-import { useHref } from "expo-router";
++import { usePathname } from "expo-router";
+ import React from "react";
+ import ExpoHead from "./ExpoHeadModule.native";
+ // isEligibleForPrediction
 @@ -40,7 +40,7 @@ export function setWebUrl(url) {
  function getStaticUrlFromExpoRouter(href) {
      // const host = "https://expo.io";
@@ -22,15 +30,21 @@ index 1004475..0619ee2 100644
  // import { useContextKey } from "expo-router/build/Route";
  // import { AppState, Linking } from "react-native";
  export function Head({ children }) {
-     const link = useHref();
+-    const link = useHref();
+-    const activity = React.useMemo(() => {
+-        const userActivity = {
+-            title: getLastSegment(link.href),
+-            activityType: ExpoHead.activities.INDEXED_ROUTE,
+-        };
++    const link = usePathname();
 +    const { renderableChildren, metaChildren } = React.useMemo(() => {
 +        const renderableChildren = [];
 +        const metaChildren = [];
 +
-+        React.Children.forEach(children, (child) => {
-+            if (!React.isValidElement(child)) {
-+                return;
-+            }
+         React.Children.forEach(children, (child) => {
+             if (!React.isValidElement(child)) {
+                 return;
+             }
 +            if (typeof child.type === "string") {
 +                metaChildren.push(child);
 +            } else {
@@ -43,15 +57,11 @@ index 1004475..0619ee2 100644
 +
 +    console.log('children:', renderableChildren, metaChildren);
 +
-     const activity = React.useMemo(() => {
-         const userActivity = {
-             title: getLastSegment(link.href),
-             activityType: ExpoHead.activities.INDEXED_ROUTE,
-         };
--        React.Children.forEach(children, (child) => {
--            if (!React.isValidElement(child)) {
--                return;
--            }
++    const activity = React.useMemo(() => {
++        const userActivity = {
++            title: getLastSegment(link),
++            activityType: ExpoHead.activities.INDEXED_ROUTE,
++        };
 +
 +        metaChildren.forEach((child) => {
              if (child.type === "title") {
@@ -78,12 +88,28 @@ index 1004475..0619ee2 100644
                  }
                  // <meta name="keywords" content="foo,bar,baz" />
                  if (["keywords"].includes(name)) {
+@@ -109,13 +127,13 @@ export function Head({ children }) {
+             }
+         });
+         const resolved = {
+-            webpageURL: getStaticUrlFromExpoRouter(link.href),
++            webpageURL: getStaticUrlFromExpoRouter(link),
+             eligibleForSearch: true,
+             keywords: [userActivity.title],
+             ...userActivity,
+             // dateModified: new Date().toISOString(),
+             userInfo: {
+-                href: createURL(link.href),
++                href: createURL(link),
+             },
+         };
+         if (App.applicationName) {
 @@ -125,7 +143,7 @@ export function Head({ children }) {
              resolved.id = urlToId(resolved.webpageURL);
          }
          return resolved;
 -    }, [children, link.href]);
-+    }, [metaChildren, link.href]);
++    }, [metaChildren, link]);
      React.useEffect(() => {
          if (activity) {
              ExpoHead.createActivity(activity);
@@ -418,3 +444,54 @@ index ef95609..9b10dc3 100644
      }
  
      AsyncFunction("clearActivities") { (ids: [String], promise: Promise) in
+diff --git a/node_modules/@bacons/head/src/ExpoHead.ios.tsx b/node_modules/@bacons/head/src/ExpoHead.ios.tsx
+index d9cd1ae..fc841ee 100644
+--- a/node_modules/@bacons/head/src/ExpoHead.ios.tsx
++++ b/node_modules/@bacons/head/src/ExpoHead.ios.tsx
+@@ -1,6 +1,6 @@
+ import * as App from "expo-application";
+ import { createURL } from "expo-linking";
+-import { useHref } from "expo-router";
++import { usePathname } from "expo-router";
+ import React from "react";
+ 
+ import ExpoHead from "./ExpoHeadModule.native";
+@@ -111,11 +111,11 @@ function getLastSegment(path: string) {
+ // import { useContextKey } from "expo-router/build/Route";
+ // import { AppState, Linking } from "react-native";
+ export function Head({ children }: { children?: React.ReactNode }) {
+-  const link = useHref();
++  const link = usePathname();
+ 
+   const activity = React.useMemo(() => {
+     const userActivity: UserActivity = {
+-      title: getLastSegment(link.href),
++      title: getLastSegment(link),
+       activityType: ExpoHead.activities.INDEXED_ROUTE,
+     };
+ 
+@@ -167,13 +167,13 @@ export function Head({ children }: { children?: React.ReactNode }) {
+     });
+ 
+     const resolved: UserActivity = {
+-      webpageURL: getStaticUrlFromExpoRouter(link.href),
++      webpageURL: getStaticUrlFromExpoRouter(link),
+       eligibleForSearch: true,
+       keywords: [userActivity.title!],
+       ...userActivity,
+       // dateModified: new Date().toISOString(),
+       userInfo: {
+-        href: createURL(link.href),
++        href: createURL(link),
+       },
+     };
+ 
+@@ -186,7 +186,7 @@ export function Head({ children }: { children?: React.ReactNode }) {
+     }
+ 
+     return resolved;
+-  }, [children, link.href]);
++  }, [children, link]);
+ 
+   React.useEffect(() => {
+     if (activity) {

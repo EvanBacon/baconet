@@ -1,3 +1,4 @@
+import { Head } from "@bacons/head";
 import { Image, Pressable, StyleSheet, Text, View } from "@bacons/react-views";
 import {
   Inter_300Light,
@@ -9,6 +10,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { BlurView } from "expo-blur";
 import { Link, Stack } from "expo-router";
 import React from "react";
+import { useWindowDimensions } from "react-native";
 import { Platform, ScrollView } from "react-native";
 
 import MaskedView from "../../../components/mask";
@@ -39,6 +41,8 @@ function CoolBackground({ image, hovered }) {
 }
 
 function Tile({ image, slug, title, subtitle, themeColor }) {
+  const { width } = useWindowDimensions();
+  const row = width >= 600;
   return (
     <Link href={"./watch/" + slug} asChild>
       <Pressable>
@@ -60,7 +64,14 @@ function Tile({ image, slug, title, subtitle, themeColor }) {
                 maxHeight: 360,
                 borderRadius: 14,
                 backgroundColor: "transparent",
+              },
+              // TODO: Media queries
+              !row && {
+                width: "100%",
+              },
+              row && {
                 width: "90%",
+                aspectRatio: 1.3,
               },
             ]}
           >
@@ -157,39 +168,55 @@ export default function Page() {
   if (!fontsLoaded) return null;
 
   return (
-    <ScrollView
-      style={{ flex: 1 }}
-      contentInsetAdjustmentBehavior="automatic"
-      contentContainerStyle={{
-        alignItems: "stretch",
-        maxWidth: 800,
-        paddingHorizontal: 16,
-        justifyContent: "center",
-      }}
-    >
-      <Stack.Screen
-        options={{
-          title: "Videos",
-          headerLargeTitle: true,
-          headerTitleStyle: {
-            fontFamily: "Inter_700Bold",
-          },
-
-          headerLargeTitleStyle: {
-            fontFamily: "Inter_700Bold",
-          },
-        }}
-      />
-
-      {data.map((value, index) => (
-        <Tile
-          key={index}
-          title={value.title}
-          slug={value.slug}
-          subtitle={value.subtitle}
-          image={value.image}
+    <>
+      <Head>
+        <title>Media | Bacon Blog</title>
+        <meta name="description" content="Evan Bacon's blog" />
+        <meta
+          property="og:image"
+          content="https://icogen.vercel.app/api/icon?icon=1f195"
         />
-      ))}
-    </ScrollView>
+        <meta
+          name="keywords"
+          content="evan bacon,expo,javascript,typescript,ios,android,native,react native,react,learn"
+        />
+      </Head>
+      <ScrollView
+        style={{ flex: 1 }}
+        contentInsetAdjustmentBehavior="automatic"
+        contentContainerStyle={[
+          {
+            alignItems: "stretch",
+            maxWidth: 800,
+            paddingHorizontal: 16,
+            justifyContent: "center",
+          },
+        ]}
+      >
+        <Stack.Screen
+          options={{
+            title: "Videos",
+            headerLargeTitle: true,
+            headerTitleStyle: {
+              fontFamily: "Inter_700Bold",
+            },
+
+            headerLargeTitleStyle: {
+              fontFamily: "Inter_700Bold",
+            },
+          }}
+        />
+
+        {data.map((value, index) => (
+          <Tile
+            key={index}
+            title={value.title}
+            slug={value.slug}
+            subtitle={value.subtitle}
+            image={value.image}
+          />
+        ))}
+      </ScrollView>
+    </>
   );
 }
