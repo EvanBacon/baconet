@@ -17,12 +17,11 @@ export default function Page() {
     () => mdxctx.keys().find((p) => p === "./" + postId + "/index.mdx"),
     [postId]
   );
+
   const mdinfo = React.useMemo(
     () => mdxctx.keys().find((p) => p === "./" + postId + "/index.json"),
     [postId]
   );
-
-  console.log("mdxctx", mdxctx.keys());
 
   const MD = MDKey ? mdxctx(MDKey).default : null;
   const Info = mdinfo ? mdxctx(mdinfo) : null;

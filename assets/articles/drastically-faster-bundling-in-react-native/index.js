@@ -1,0 +1,32 @@
+module.exports = {
+  title: "Drastically Faster Bundling in React Native",
+  subtitle: "Expo “Exotic” System",
+  author: "Evan Bacon",
+  date: "2021-10-08T22:45:36.616Z",
+  slug: "drastically-faster-bundling-in-react-native",
+  url: "https://blog.expo.dev/drastically-faster-bundling-in-react-native-a54f268e0ed1",
+  images: [
+    "drastically-faster-bundling-in-react-native/images/1fw5SabzHwU--AfKU_OhUWA.gif",
+    "drastically-faster-bundling-in-react-native/images/1WL6XApqsIwbJmBrCV_HkxA.gif",
+    "drastically-faster-bundling-in-react-native/images/1T3Egnv7dDun-TmFSp9deOw.gif",
+    "drastically-faster-bundling-in-react-native/images/1JMvPYWUN2oNGW7Hlwkpl5w.gif",
+    "drastically-faster-bundling-in-react-native/images/1QHcSinKGEjyRyv70LkEuoQ.gif",
+    "drastically-faster-bundling-in-react-native/images/1rc2fr3hivkO6aCc-F99jtQ.gif",
+    "drastically-faster-bundling-in-react-native/images/1SwwWbiffPQxOlRj2gOBseg.gif",
+    "drastically-faster-bundling-in-react-native/images/1WTya9sLMBf2fIjJpXk_1iQ.png",
+    "drastically-faster-bundling-in-react-native/images/1CqJF-PC33tQ0yIueed_q1A.gif",
+    "drastically-faster-bundling-in-react-native/images/145DZ235fD5sWzgQeQpILdQ.png",
+    "drastically-faster-bundling-in-react-native/images/14v8JefXaoMg-q2GmLzdW7A.gif",
+    "drastically-faster-bundling-in-react-native/images/1WL6XApqsIwbJmBrCV_HkxA.gif",
+  ],
+  language: "en",
+  tags: ["react", "react-native", "coding", "development", "javascript"],
+  authors: [
+    {
+      name: "Evan Bacon",
+      username: "Baconbrix",
+      userId: "16b715de038f",
+    },
+  ],
+  featuredImage: require("./images/1WTya9sLMBf2fIjJpXk_1iQ.png"),
+};

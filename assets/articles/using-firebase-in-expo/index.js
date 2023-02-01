@@ -1,0 +1,25 @@
+module.exports = {
+  title: "Using Firebase in Expo",
+  subtitle: "Build simple backends for your native app",
+  author: "Evan Bacon",
+  date: "2018-09-25T04:32:37.970Z",
+  slug: "using-firebase-in-expo",
+  url: "https://blog.expo.dev/using-firebase-in-expo-e13844061832",
+  images: [],
+  language: "en",
+  tags: [
+    "firebase",
+    "expo",
+    "javascript",
+    "mobile-app-development",
+    "react-native",
+  ],
+  authors: [
+    {
+      name: "Evan Bacon",
+      username: "Baconbrix",
+      userId: "16b715de038f",
+    },
+  ],
+  // featuredImage: require("./images/"),
+};

@@ -1,5 +1,12 @@
 import { Head } from "@bacons/head";
-import { Image, ImageProps, StyleSheet, Text, View } from "@bacons/react-views";
+import {
+  Image,
+  Pressable,
+  ImageProps,
+  StyleSheet,
+  Text,
+  View,
+} from "@bacons/react-views";
 import { Link, useNavigation, useRouter } from "expo-router";
 import React, { useMemo } from "react";
 import {
@@ -11,7 +18,7 @@ import {
 
 import { MetaShortcut } from "../../../components/shortcuts";
 
-const mdxctx = require.context("../../../assets/articles", true, /\.json$/);
+const mdxctx = require.context("../../../assets/articles", true, /\.js$/);
 
 export default function Page() {
   const navigation = useNavigation("../../");
@@ -30,7 +37,7 @@ export default function Page() {
   return (
     <>
       <Head>
-        <title>Feed | Bacon Blog</title>
+        <title>Evan Bacon's Blog</title>
         <meta name="description" content="Evan Bacon's blog" />
         <meta
           property="og:image"
@@ -93,51 +100,83 @@ function PostsList() {
             }}
             asChild
           >
-            <TouchableOpacity>
-              <View
-                style={{ margin: 12, backgroundColor: "white", padding: 12 }}
-              >
+            <Pressable>
+              {({ hovered, pressed }) => (
                 <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    paddingBottom: 8,
-                    justifyContent: "space-between",
-                  }}
+                  style={[
+                    {
+                      margin: 12,
+                      backgroundColor: "white",
+                      transitionDuration: "0.2s",
+                    },
+                    hovered && {
+                      backgroundColor: "rgba(0,0,0,0.1)",
+                    },
+                    pressed && {
+                      backgroundColor: "rgba(0,0,0,0.2)",
+                    },
+                  ]}
                 >
+                  {item.featuredImage && (
+                    <Image
+                      source={item.featuredImage}
+                      style={{
+                        height: 128,
+                        width: "100%",
+                        resizeMode: "cover",
+                      }}
+                    />
+                  )}
                   <View
                     style={{
-                      flexDirection: "row",
-                      alignItems: "center",
+                      padding: 12,
                     }}
                   >
-                    <ProfileImage style={{ marginRight: 8 }} />
-                    <Text style={{ fontSize: 16 }}>{item.author}</Text>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        paddingBottom: 8,
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      {false && (
+                        <View
+                          style={{
+                            flexDirection: "row",
+                            alignItems: "center",
+                          }}
+                        >
+                          <ProfileImage style={{ marginRight: 8 }} />
+                          <Text style={{ fontSize: 16 }}>{item.author}</Text>
+                        </View>
+                      )}
+                      <Text
+                        style={{
+                          color: "#38434D",
+                        }}
+                      >
+                        {new Date(item.date).toDateString()}
+                      </Text>
+                    </View>
+
+                    <Text style={{ fontWeight: "bold", fontSize: 20 }}>
+                      {item.title}
+                    </Text>
+
+                    <Text
+                      numberOfLines={3}
+                      lineBreakMode="tail"
+                      style={{ fontSize: 16, marginTop: 8, color: "#38434D" }}
+                    >
+                      {item.subtitle}
+                    </Text>
+
+                    <Tags tags={item.tags} />
                   </View>
-                  <Text
-                    style={{
-                      color: "#38434D",
-                    }}
-                  >
-                    {new Date(item.date).toDateString()}
-                  </Text>
                 </View>
-
-                <Text style={{ fontWeight: "bold", fontSize: 20 }}>
-                  {item.title}
-                </Text>
-
-                <Text
-                  numberOfLines={3}
-                  lineBreakMode="tail"
-                  style={{ fontSize: 16, marginTop: 8, color: "#38434D" }}
-                >
-                  {item.subtitle}
-                </Text>
-
-                <Tags tags={item.tags} />
-              </View>
-            </TouchableOpacity>
+              )}
+            </Pressable>
           </Link>
         );
       }}

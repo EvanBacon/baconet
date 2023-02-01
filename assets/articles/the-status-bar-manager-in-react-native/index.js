@@ -1,0 +1,22 @@
+module.exports = {
+  title: "The Status Bar Manager in React Native",
+  subtitle:
+    "🚨 In iOS 14+ the status bar is now regular height, therefore this package has been deprecated in favor of react-native-safe-area-context which is available in Expo Go, and integrated in React Navigation!",
+  author: "Evan Bacon",
+  date: "2018-02-07T21:28:32.315Z",
+  slug: "the-status-bar-manager-in-react-native",
+  url: "https://blog.expo.dev/the-status-bar-manager-in-react-native-6226058ecba",
+  images: [
+    "the-status-bar-manager-in-react-native/images/1fQR8YBxM4b1K7DTBy9QojA.gif",
+  ],
+  language: "en",
+  tags: ["react-native", "ux-design", "mobile-app-development"],
+  authors: [
+    {
+      name: "Evan Bacon",
+      username: "Baconbrix",
+      userId: "16b715de038f",
+    },
+  ],
+  featuredImage: require("./images/1fQR8YBxM4b1K7DTBy9QojA.gif"),
+};
