@@ -4,37 +4,39 @@ export const data = [
     themeColor: "#1D2025",
     slug: "router",
     subtitle: "Introducing the first File System-based router for native apps",
-    image:
-      "https://github.com/expo/router/blob/main/docs/static/img/og-image.png?raw=true",
+    image: { uri: "/images/expo-router.png" },
+    video: { uri: "/videos/expo_for_web.mp4" },
   },
   {
     title: "Test Once with Expo Jest",
     slug: "jest",
     themeColor: "#674B39",
     subtitle: "Smarter apps require smarter tests",
-    image: "https://baconet.netlify.app/react-europe-1.jpg",
+    image: { uri: "/images/react-europe-1.jpg" },
+    video: { uri: "/videos/expo_for_web.mp4" },
   },
   {
     title: "Run Once with Expo CLI",
     themeColor: "#393229",
     slug: "expo-cli",
     subtitle: "Ground up rewrite of the Expo Dev Tools",
-    image: require("../assets/talks/appjs-2022.jpg"),
+    image: { uri: "/images/appjs-2022.jpg" },
+    video: { uri: "/videos/expo_for_web.mp4" },
   },
   {
     title: "Render Once with Expo Web",
     themeColor: "#F3F3F3",
     slug: "expo-web",
     subtitle: "Instant access and searchability",
-    image:
-      "https://evanbacon.dev/_next/static/images/debut-expo-web-bc443a04029ef4fb4ff804ed9595fd64.jpg",
+    image: { uri: "/images/debut-expo-web.jpg" },
+    video: { uri: "/videos/expo_for_web.mp4" },
   },
   {
     title: "Write Once with Expo",
     themeColor: "#17171E",
     slug: "write-once",
     subtitle: "Universal React apps as a reality",
-    image:
-      "https://evanbacon.dev/_next/static/images/expo-for-web-c86e9f9487769ece7af3e7611c52313e.jpg",
+    image: { uri: "/images/expo-for-web-reactive.jpg" },
+    video: { uri: "/videos/expo_for_web.mp4" },
   },
 ];

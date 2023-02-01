@@ -1,3 +1,9 @@
+import {
+  Inter_300Light,
+  Inter_400Regular,
+  Inter_700Bold,
+  useFonts,
+} from "@expo-google-fonts/inter";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 import { Stack, usePathname } from "expo-router";
@@ -36,6 +42,14 @@ export default function StackLayout({ segment }) {
   const posts = usePosts();
 
   const initRouteName = segment.replace(/^\(/, "").replace(/\)$/, "");
+
+  const [fontsLoaded] = useFonts({
+    Inter_300Light,
+    Inter_400Regular,
+    Inter_700Bold,
+  });
+
+  if (!fontsLoaded) return null;
 
   return (
     <OutletContext.Provider value={posts}>
@@ -83,6 +97,10 @@ export default function StackLayout({ segment }) {
         />
 
         <Stack.Screen name="blog/[post]" />
+        <Stack.Screen
+          name="watch/[video]"
+          options={{ presentation: "modal" }}
+        />
       </Stack>
     </OutletContext.Provider>
   );

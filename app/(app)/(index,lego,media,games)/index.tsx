@@ -1,7 +1,6 @@
 import { Head } from "@bacons/head";
 import {
   Link,
-  Tabs,
   usePathname,
   useRouter,
   useNavigation,

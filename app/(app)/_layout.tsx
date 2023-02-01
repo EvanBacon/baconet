@@ -131,13 +131,15 @@ function SideBar() {
             >
               Home
             </SideBarTabItem>
-            <SideBarTabItem
-              href="/lego"
-              selected={current.name === "(lego)"}
-              icon={makeIcon("build")}
-            >
-              Lego
-            </SideBarTabItem>
+            {false && (
+              <SideBarTabItem
+                href="/lego"
+                selected={current.name === "(lego)"}
+                icon={makeIcon("build")}
+              >
+                Lego
+              </SideBarTabItem>
+            )}
             <SideBarTabItem
               href="/games"
               selected={current.name === "(games)"}
@@ -163,9 +165,13 @@ function SideBar() {
                 }}
               />
             </div>
-            {/* <SideBarTabItem href="#" icon={<Icons.Link />}>
-              Link
-            </SideBarTabItem> */}
+            <SideBarTabItem
+              href="/about"
+              selected={current.name === "(about)"}
+              icon={makeIcon("person")}
+            >
+              Media
+            </SideBarTabItem>
           </VerticalTabBar>
 
           <footer
@@ -346,11 +352,21 @@ export default function App({ children }) {
             tabBarIcon: makeIcon("mic"),
           }}
         />
+        {false && (
+          <Tabs.Screen
+            name="(lego)"
+            options={{
+              title: "Lego",
+              tabBarIcon: makeIcon("build"),
+            }}
+          />
+        )}
+
         <Tabs.Screen
-          name="(lego)"
+          name="(about)"
           options={{
-            title: "Lego",
-            tabBarIcon: makeIcon("build"),
+            title: "Evan Bacon",
+            tabBarIcon: makeIcon("person"),
           }}
         />
       </Tabs>

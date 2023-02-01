@@ -3807,7 +3807,7 @@ expo-auth-session@~3.8.0:
     invariant "^2.2.4"
     qs "6.9.1"
 
-expo-av@~13.0.2:
+expo-av@^13.0.2:
   version "13.0.2"
   resolved "https://registry.yarnpkg.com/expo-av/-/expo-av-13.0.2.tgz#06c2c5140b334319ed2844823181f7b88092da13"
   integrity sha512-u+y9wUBodp08UjRZYckNWzr9zEQHK6eScRBkhdTd9Rq48SEZ7eN6xXn79hubvk0P5nj7lFS+hdKjmx9T5XHGww==
