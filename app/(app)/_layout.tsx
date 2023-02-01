@@ -140,13 +140,15 @@ function SideBar() {
                 Lego
               </SideBarTabItem>
             )}
-            <SideBarTabItem
-              href="/games"
-              selected={current.name === "(games)"}
-              icon={makeIcon("game-controller")}
-            >
-              Games
-            </SideBarTabItem>
+            {false && (
+              <SideBarTabItem
+                href="/games"
+                selected={current.name === "(games)"}
+                icon={makeIcon("game-controller")}
+              >
+                Games
+              </SideBarTabItem>
+            )}
             <SideBarTabItem
               href="/media"
               selected={current.name === "(media)"}
@@ -341,6 +343,9 @@ export default function App({ children }) {
         <Tabs.Screen
           name="(games)"
           options={{
+            // TODO:
+            href: null,
+
             title: "Games",
             tabBarIcon: makeIcon("game-controller"),
           }}
@@ -352,15 +357,16 @@ export default function App({ children }) {
             tabBarIcon: makeIcon("mic"),
           }}
         />
-        {false && (
-          <Tabs.Screen
-            name="(lego)"
-            options={{
-              title: "Lego",
-              tabBarIcon: makeIcon("build"),
-            }}
-          />
-        )}
+
+        <Tabs.Screen
+          name="(lego)"
+          options={{
+            // TODO:
+            href: null,
+            title: "Lego",
+            tabBarIcon: makeIcon("build"),
+          }}
+        />
 
         <Tabs.Screen
           name="(about)"
