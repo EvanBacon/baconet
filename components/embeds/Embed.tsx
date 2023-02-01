@@ -86,10 +86,10 @@ export function Embed({ url }: { url: string }) {
     );
   } else if (url.match(/^https:\/\/snack\.expo\.io\/(.*)/)) {
     return <Snack url={url} />;
+  } else if (url.match(/^https:\/\/gist\.github\.com\/(.*)/)) {
+    return <Gist url={url} />;
   }
-  //  else if (url.match(/^https:\/\/gist\.github\.com\/(.*)/)) {
-  //     return <Gist url={url} />;
-  //   } else if (url.match(/^https:\/\/snack\.expo\.io\/(.*)/)) {
+  // else if (url.match(/^https:\/\/snack\.expo\.io\/(.*)/)) {
   //     return <Snack url={url} />;
   //   } else if (url.match(/^https:\/\/www\.youtube\.com\/watch\?v=(.*)/)) {
   //     return <YouTube url={url} />;
