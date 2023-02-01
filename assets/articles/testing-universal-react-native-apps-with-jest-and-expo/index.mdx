@@ -82,7 +82,7 @@ So even if you write extremely thorough tests they may not cover code that ends 
 
 ![A universal platform test runner for Jest](./images/1MijD1MHNmNvkSgG2FJC2CQ.png)_A universal platform test runner for Jest_
 
-In order to create sturdy, well-tested universal libraries (like [\*\*these](https://github.com/expo/expo/tree/master/packages) \*\*packages) we needed to create a completely new way for ensuring that all API code was covered. The result is `jest-expo@^35.0.0`, which is the first universal testing preset for React.
+In order to create sturdy, well-tested universal libraries (like [**these**](https://github.com/expo/expo/tree/master/packages) packages) we needed to create a completely new way for ensuring that all API code was covered. The result is `jest-expo@^35.0.0`, which is the first universal testing preset for React.
 
 `jest-expo` works by recomposing the React Native Jest preset with platform-specific module resolution, then running all of the unit tests on every platform you're supporting. (More info on why this wasn't just upstreamed at the bottom).
 
@@ -159,7 +159,7 @@ For instance imagine you had a snapshot test in `Example-test.native.ts` that sa
 
 ![Universal snapshot testing that scales](./images/124zK0JxaJiV8slTp3seexQ.png)_Universal snapshot testing that scales_
 
-The solution to this is to read and write **platform-specific snapshots** with a platform extension so each platform can compare the correct results. When using **jest-expo/universal**, a test like `Example-test.native.ts` will run as iOS and Android then write the snapshot contents to `Example-test.native.ts.snap**.ios`** and `Example-test.native.ts.snap**.android`\*\*, respectively.
+The solution to this is to read and write **platform-specific snapshots** with a platform extension so each platform can compare the correct results. When using **jest-expo/universal**, a test like `Example-test.native.ts` will run as iOS and Android then write the snapshot contents to `Example-test.native.ts.snap**.ios` and `Example-test.native.ts.snap**.android`, respectively.
 
 ```
 > 📁 Example-test.js
@@ -187,7 +187,7 @@ exports[`Platform.OS works as expected`] = `"web"`;
 exports[`Platform.OS works as expected`] = `"web"`;
 ```
 
-You should **avoid inline snapshots** unless you want all platforms to match the exact same value. This feature was added because we needed to snapshot test the styles for `[expo-linear-gradient`](https://github.com/expo/expo/tree/master/packages/expo-linear-gradient/src/__tests__)\*\* \*\*and we wanted the web version to have CSS and the native version to have computed native styles.
+You should **avoid inline snapshots** unless you want all platforms to match the exact same value. This feature was added because we needed to snapshot test the styles for `[expo-linear-gradient`](https://github.com/expo/expo/tree/master/packages/expo-linear-gradient/src/__tests__) and we wanted the web version to have CSS and the native version to have computed native styles.
 
 ## 🎒 Migration Guide
 
@@ -230,7 +230,7 @@ If you're using a bi-platform tool like [Ignite CLI by Infinite Red](https://git
 
 ### Style Testing with Enzyme
 
-We've also created a library for testing how components are rendered called `**jest-expo-enzyme` \*\*which is still in beta. This just conveniently adds Enzyme support to `jest-expo` (which was annoying to do manually). I use this library to test visual components like `expo-blur`, `[expo-linear-gradient`](https://github.com/expo/expo/blob/9f2770d366a212a3ccddc8d209daf9c185481f8b/packages/expo-linear-gradient/src/__tests__/LinearGradient-test.native.tsx#L6-L17), and `expo-gl`. You can use it today, but expect more on this in a future post.
+We've also created a library for testing how components are rendered called `jest-expo-enzyme` which is still in beta. This just conveniently adds Enzyme support to `jest-expo` (which was annoying to do manually). I use this library to test visual components like `expo-blur`, `[expo-linear-gradient`](https://github.com/expo/expo/blob/9f2770d366a212a3ccddc8d209daf9c185481f8b/packages/expo-linear-gradient/src/__tests__/LinearGradient-test.native.tsx#L6-L17), and `expo-gl`. You can use it today, but expect more on this in a future post.
 
 ### Universal Test Coverage
 

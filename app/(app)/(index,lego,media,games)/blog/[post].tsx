@@ -104,10 +104,16 @@ export default function Page() {
               minWidth: "100%",
               maxWidth: "100%",
               minHeight: 180,
+              maxHeight: 360,
             }}
             a={{
               fontFamily: "Inter_400Regular",
               textDecorationLine: "underline",
+            }}
+            li={{
+              fontFamily: "Inter_400Regular",
+              fontSize: 16,
+              lineHeight: 30,
             }}
             hr={{
               paddingBottom: 10,
@@ -178,25 +184,3 @@ function AutoHeightImage(props) {
     />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    padding: 24,
-  },
-  main: {
-    flex: 1,
-    justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
-  },
-});
