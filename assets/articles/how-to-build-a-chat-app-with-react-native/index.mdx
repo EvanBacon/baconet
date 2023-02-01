@@ -17,7 +17,6 @@ Expo extends React Native and gives us all the tools we need to get moving quick
 Here is what you need before we can get started.
 
 - Computer
-
 - Ability to type
 
 ## Building the App
@@ -25,9 +24,7 @@ Here is what you need before we can get started.
 To make a chat app we will need a few things:
 
 - A server to store all the messages
-
 - Screen to get the users name
-
 - Screen to send and receive messages
 
 Let's go at these 1-by-1 with Gifs to keep your attention.
@@ -216,14 +213,10 @@ const styles = StyleSheet.create({
 ```
 
 1. Add the new imports.
-
-1. Create a `Text` element that tell's our user what to do.
-
-1. Build a Button by adding a Text and wrapping it in a TouchableOpacity. Then assign the onPress to this.onPress, we'll create that in a second.
-
-1. Make the title stile, add some margin and give it a nice large font
-
-1. Create a style for the button text
+2. Create a `Text` element that tell's our user what to do.
+3. Build a Button by adding a Text and wrapping it in a TouchableOpacity. Then assign the onPress to this.onPress, we'll create that in a second.
+4. Make the title stile, add some margin and give it a nice large font
+5. Create a style for the button text
 
 Now let's add the onPress that takes us to the Chat screen. In the Main component right before the `onChangeText` method, add this.
 
@@ -287,13 +280,10 @@ class Chat extends React.Component {
 export default Chat;
 ```
 
-1. Import GiftedChat from `‘react-native-gifted-chat'` This is the component that we will use to do most of the heavy lifting.
-
-1. `navigationOptions` is used to configure how the navigation components (Header) look and act. We are passing an object with a `title` property that will set the title to either the state.params.name or a default value of `Chat!`
-
-1. Create the component state and give it a messages prop then assign it to an array.
-
-1. Replace the View with the GiftedChat component and give it our state.messages to render.
+1. Import GiftedChat from `'react-native-gifted-chat'` This is the component that we will use to do most of the heavy lifting.
+2. `navigationOptions` is used to configure how the navigation components (Header) look and act. We are passing an object with a `title` property that will set the title to either the state.params.name or a default value of `Chat!`
+3. Create the component state and give it a messages prop then assign it to an array.
+4. Replace the View with the GiftedChat component and give it our state.messages to render.
 
 ## Database
 
@@ -335,8 +325,7 @@ class Fire {
 ```
 
 1. Import firebase, we will use this to access our database
-
-1. Initialize our Firebase app using the keys we get in our app
+2. Initialize our Firebase app using the keys we get in our app
 
 ![Here is an example of the creds](./images/1ETOHJEojfRBOUV9gMdH44Q.png)_Here is an example of the creds_
 
@@ -370,12 +359,9 @@ class Fire {
 ```
 
 1. After initializing, call our `observeAuth` function
-
-1. we want to get our auth, if we were signed in before then this will return a user, if we weren't then this will be null.
-
-1. onAuthStateChanged gets called as soon as firebase finds our auth.
-
-1. if we weren't signed in then sign in anonymously, if this fails then we will pop an alert with an error message.
+2. we want to get our auth, if we were signed in before then this will return a user, if we weren't then this will be null.
+3. onAuthStateChanged gets called as soon as firebase finds our auth.
+4. if we weren't signed in then sign in anonymously, if this fails then we will pop an alert with an error message.
 
 Now we need a way to subscribe to messages, after `onAuthStateChanged`
 
@@ -402,12 +388,9 @@ off() {
 ```
 
 1. Create a reference to a location in our database where the messages will be saved, in our case it's `/messages`
-
-1. Make a method with a callback prop that calls our messages ref and get's the last 20 messages, then whenever a new message comes in we will get that as well. When we get a message we want to send it a function to parse.
-
-1. Create the parse method, we will add more here later
-
-1. Add a function to unsubscribe to the database
+2. Make a method with a callback prop that calls our messages ref and get's the last 20 messages, then whenever a new message comes in we will get that as well. When we get a message we want to send it a function to parse.
+3. Create the parse method, we will add more here later
+4. Add a function to unsubscribe to the database
 
 Ok now we can get messages, we need to format them correctly for GiftedChat, to do this we will reduce (change the shape) the snapshot (data returned from firebase) in the parse method.
 
@@ -432,10 +415,8 @@ parse = (snapshot) => {
 ```
 
 1. Deconstruct the snapshot.val(), calling snapshot.val() will return the value or object associated with the snapshot
-
-1. Let's convert the timestamp that was saved, to a js Date.
-
-1. Finally we will create an object that GiftedChat is familiar with, then return it, \_id is the unique key for the message, text, user, and timestamp are exactly what you might think.
+2. Let's convert the timestamp that was saved, to a js Date.
+3. Finally we will create an object that GiftedChat is familiar with, then return it, \_id is the unique key for the message, text, user, and timestamp are exactly what you might think.
 
 We now need a way to send messages
 
@@ -470,14 +451,10 @@ append = message => this.ref.push(message);
 ```
 
 1. Create a helper for getting the user's uid
-
-1. Get the accurate timestamp for saving messages
-
-1. Make a send function that accepts an array of messages, then loop through the messages
-
-1. Create a shape that if good for firebase and save it to our server
-
-1. The append function will save the message object with a unique ID
+2. Get the accurate timestamp for saving messages
+3. Make a send function that accepts an array of messages, then loop through the messages
+4. Create a shape that if good for firebase and save it to our server
+5. The append function will save the message object with a unique ID
 
 That's it for the backend, now we can go back to the Chat.js screen and connect everything!
 
@@ -502,8 +479,7 @@ componentWillUnmount() {
 ```
 
 1. When the component is added to the screen, we want to start looking for messages. Call the `Fire.shared.on` method and pass in a callback. We want our callback to get messages then add them to our current messages.
-
-1. When the component leaves the screen we want to unsubscribe from the database.
+2. When the component leaves the screen we want to unsubscribe from the database.
 
 Next we need a simple reference to our user so `GiftedChat` knows which side of the screen to put our chat bubbles on…
 
@@ -540,9 +516,9 @@ Also your header should have text, my phone is on the bed behind me and I don't 
 
 ## Links
 
-The full project: [https://snack.expo.io/@bacon/firebase-basic-chat](https://snack.expo.io/@bacon/firebase-basic-chat)
+The full project:
 
-Actively avoid my twitter:
+<Embed url="https://snack.expo.io/@bacon/firebase-basic-chat" />
 
 <Embed url="https://twitter.com/baconbrix" />
 

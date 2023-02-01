@@ -27,13 +27,9 @@ Very few apps implement this correctly, and others implemented the splash screen
 It may not seem like much, but if you do make a PWA then I would highly advise you to add a splash screen. Besides all of the great points listed in [Apple's Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/launch-screen/), there are at least 2 other things:
 
 - The PWA will appear to load faster.
-
 - Create a preview that isn't blank in the multi-tasker (personally I think this is the most important).
-
 - Your app _feels_ native, even if it is just for a second.
-
 - Assuming you're [using Expo](https://blog.expo.io/expo-cli-and-sdk-web-support-beta-d0c588221375): Match your native app splash screen automatically.
-
 - Finally, provide bragging material about how your PWA does something that most major websites don't do.
 
 ## How to do it right… AFAICT
@@ -48,7 +44,7 @@ If you set just one image (like in the apple docs) nothing will happen. You need
 
 Once you have the images you'll need to add a media attribute that defines _exactly_ what you're trying to target. This means: width, height, scale (`-webkit-device-pixel-ratio`), and orientation.
 
-**It's really buggy! **You can define certain legacy sizes, and they'll make the splash screen render at a clearly different height in the multi-tasker. In this case I'm using an iPhone 8 Plus with `1242x2148` instead of the correct `1242x2208` dimensions. So I guess if you really want to stand out, now's your chance! 😄
+**It's really buggy!** You can define certain legacy sizes, and they'll make the splash screen render at a clearly different height in the multi-tasker. In this case I'm using an iPhone 8 Plus with `1242x2148` instead of the correct `1242x2208` dimensions. So I guess if you really want to stand out, now's your chance! 😄
 
 <Embed url="https://twitter.com/Baconbrix/status/1106094378978664448" />
 

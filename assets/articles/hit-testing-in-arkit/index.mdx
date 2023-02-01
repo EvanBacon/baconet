@@ -15,16 +15,14 @@ One of the coolest parts of ARKit is its ability to spot and stick to surfaces. 
 This tutorial assumes you're familiar with:
 
 - React Native
-
 - Expo.AR
-
 - Sparrow migration patterns
 
 Go ahead and open the [starter project](https://snack.expo.io/@bacon/ar-hit-test-starter) as we quickly cover what's provided in the starter:
 
 ### Touchable View
 
-This view will wrap the ReactNative.PanResponder and allow us to just pass in a `onTouchesBegan` prop (holla at a iOS native dev). If you're curious about how the PanResponder works, check out [the docs](https://facebook.github.io/react-native/docs/panresponder.html).
+This view will wrap the `ReactNative.PanResponder` and allow us to just pass in a `onTouchesBegan` prop (holla at a iOS native dev). If you're curious about how the PanResponder works, check out [the docs](https://facebook.github.io/react-native/docs/panresponder.html).
 
 Or forget that noise and just use the much better [GestureHandler](https://docs.expo.io/versions/latest/sdk/gesture-handler).
 
@@ -59,10 +57,8 @@ onTouchesBegan = async ({ locationX: x, locationY: y }) => {
 ```
 
 1. Prevent doing anything if the scene hasn't been built yet.
-
-1. To use the AR hit test function to invoke the [native function](https://developer.apple.com/documentation/arkit/arframe/2875718-hittest?language=objc), we also need to pass in a normalized point. Ex: { x: 0.5, y: 0.5} is the center of the screen; {x: 0, y: 0} is the top left of the screen.
-
-1. We need to pass in the `HitTestResultTypes` that we want to get. For this we'll use [HorizontalPlane](https://developer.apple.com/documentation/arkit/arhittestresulttype/arhittestresulttypeestimatedhorizontalplane?language=objc).
+2. To use the AR hit test function to invoke the [native function](https://developer.apple.com/documentation/arkit/arframe/2875718-hittest?language=objc), we also need to pass in a normalized point. Ex: { x: 0.5, y: 0.5} is the center of the screen; {x: 0, y: 0} is the top left of the screen.
+3. We need to pass in the `HitTestResultTypes` that we want to get. For this we'll use [HorizontalPlane](https://developer.apple.com/documentation/arkit/arhittestresulttype/arhittestresulttypeestimatedhorizontalplane?language=objc).
 
 ```js
 // 1.
@@ -95,14 +91,10 @@ for (let hit of hitTest) {
 ```
 
 1. Traverse the hit test results using a `for loop` and deconstruct the worldTransform from the hit.
-
-1. If the scene already contains a cube (second tap), then we need to remove it,
-
-1. Create a three.js cube with a green material and add the cube to the scene.
-
-1. Turn off the auto matrix update, create a new Matrix 4 and convert the matrix array that was returned. The matrix array is an array of 16 numbers (4x4).
-
-1. Finally we will apply the matrix to the cube and manually update the cube.
+2. If the scene already contains a cube (second tap), then we need to remove it,
+3. Create a three.js cube with a green material and add the cube to the scene.
+4. Turn off the auto matrix update, create a new Matrix 4 and convert the matrix array that was returned. The matrix array is an array of 16 numbers (4x4).
+5. Finally we will apply the matrix to the cube and manually update the cube.
 
 A quick note on the Matrix4: a matrix represents the position, scale, and orientation — so basically just everything. :]
 
@@ -110,9 +102,9 @@ Anyways that's all I've got for hit testing. I hope you learned something specia
 
 ## Links
 
-Hey there, hope you jumped to the bottom. Here's what we covered: [https://snack.expo.io/@bacon/ar-hit-test](https://snack.expo.io/@bacon/ar-hit-test)
+Hey there, hope you jumped to the bottom. Here's what we covered:
 
-Block or report me on Twitter 🚫:
+<Embed url="https://snack.expo.io/@bacon/ar-hit-test" />
 
 <Embed url="https://twitter.com/baconbrix" />
 

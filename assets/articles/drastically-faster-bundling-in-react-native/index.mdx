@@ -1,6 +1,7 @@
 # Drastically Faster Bundling in React Native
 
 import { Embed } from "../../../components/embeds";
+import Thanks from "../../../components/thanks.mdx";
 
 ## Expo “Exotic” System
 
@@ -19,7 +20,6 @@ This will enable a set of experimental bundler improvements for Metro (the defau
 The results are as follows (measured against a hello world app):
 
 - **~2x Faster** for initial bundling.
-
 - **~18% Smaller** production bundles.
 
 - [\*\*Documentation](https://github.com/expo/expo-cli/tree/master/packages/metro-config) \*\*for the feature.
@@ -57,8 +57,7 @@ To ensure our JavaScript code works, we can transform it using Babel. Babel is e
 By default, Metro bundler will transform every file in your project using Babel. Using the most expensive transformation on the maximum amount of code is a simple approach that trades off speed for compatibility, but it turns out that we might not need to make this sacrifice for these two reasons:
 
 1. Many Node modules, like `react` ship with CommonJS support, meaning the library author already transformed it, so you don't have to.
-
-1. As your project progresses, you may find yourself adding Babel plugins for aliasing, adding dotenv support, etc. your untransformed Node modules almost certainly don't need these extra customizations, often they just need basic operations like `import`/`export` transformation, resulting in a lot of wasted time.
+2. As your project progresses, you may find yourself adding Babel plugins for aliasing, adding dotenv support, etc. your untransformed Node modules almost certainly don't need these extra customizations, often they just need basic operations like `import`/`export` transformation, resulting in a lot of wasted time.
 
 ![Metro transforms everything with Babel (even files that don't need to be transformed)](./images/1SwwWbiffPQxOlRj2gOBseg.gif)_Metro transforms everything with Babel (even files that don't need to be transformed)_
 
@@ -77,10 +76,8 @@ Switching all transformation over to one of these tools would be far from ideal 
 In Expo CLI, we configure Metro to transpile our untransformed Node modules with Sucrase, resulting in substantially faster React Native bundling! We currently use Sucrase because:
 
 1. According to the benchmarks, Sucrase is a very fast transformer, and we only need improved transformation. Notice: ESBuild is also a bundler and minifier, it's a bit of an apples to oranges comparison.
-
-1. It has Flow support built-in, React Native ships with Flow types in place (I'd love to see this change!) so it's a no-op. I also experimented with using a fork of React Native that is transpiled ahead of time, but it was a bit inconvenient to maintain.
-
-1. Finally, and possibly the most surprising: Sucrase is written in JS, whereas the others are native (Rust, Go, etc), this means that npm installs go smoother on Windows and Linux machines and reduces npm install log-spam from optional dependencies. This is a real concern for many new developers and it's also a tax on maintainers to handle issues related to the install logs.
+2. It has Flow support built-in, React Native ships with Flow types in place (I'd love to see this change!) so it's a no-op. I also experimented with using a fork of React Native that is transpiled ahead of time, but it was a bit inconvenient to maintain.
+3. Finally, and possibly the most surprising: Sucrase is written in JS, whereas the others are native (Rust, Go, etc), this means that npm installs go smoother on Windows and Linux machines and reduces npm install log-spam from optional dependencies. This is a real concern for many new developers and it's also a tax on maintainers to handle issues related to the install logs.
 
 ![We use a faster system for transforming static libraries; Surcase instead of Babel.](./images/1CqJF-PC33tQ0yIueed_q1A.gif)_We use a faster system for transforming static libraries; Surcase instead of Babel._
 
@@ -89,10 +86,8 @@ Metro bundler has no concept of “loader rules”, this is a feature from the p
 To summarize: “Exotic” is a Metro transformer with three default “loader rules”:
 
 1. Application code uses **Babel** for max customization.
-
-1. We compensate for untransformed Node modules by using **Sucrase **(or a related tool).
-
-1. And finally, we pass everything else through to the runtime, without needing to transform it.
+2. We compensate for untransformed Node modules by using **Sucrase **(or a related tool).
+3. And finally, we pass everything else through to the runtime, without needing to transform it.
 
 ![Exotic is a metro transformer with loader rules that handle groups of files differently.](./images/145DZ235fD5sWzgQeQpILdQ.png)_Exotic is a metro transformer with loader rules that handle groups of files differently._
 
@@ -125,23 +120,16 @@ In fact, Metro has first-class support for this anti-pattern. You could use a `r
 In Expo's Metro config, we compensated for these issues by making the following changes:
 
 1. We opt-out of the `react-native` package.json field, and require packages to respect CommonJS/ESModules presets. Runtimes are not analogous to frameworks, `react-native` is not the JS engine, JavaScriptCore (Safari) or Hermes is, which means that if code is good enough for JSC on web, it's good enough for JSC on mobile (with the exception: JSC in React Native doesn't expose any mechanism for providing ESModule code so CommonJS must be used instead).
-
-1. Expo's Metro config ships a hardcoded list of matchers for identifying packages like `react-native` which need to be transpiled locally, hopefully library authors read this article, update their packages, and we can reduce the hardcoded list to be nothing at all. In the future, just like web dev, each project should be responsible for maintaining a list of packages that require local transpilation.
+2. Expo's Metro config ships a hardcoded list of matchers for identifying packages like `react-native` which need to be transpiled locally, hopefully library authors read this article, update their packages, and we can reduce the hardcoded list to be nothing at all. In the future, just like web dev, each project should be responsible for maintaining a list of packages that require local transpilation.
 
 ## I Need Your Help
 
 This project is aimed at shifting the React Native ecosystem to ship better libraries and making Metro bundler work more like a web bundler. By closing this gap, and making React Native more bundler agnostic (like React.js) we can easily move between different bundlers like Webpack or ESBuild. No longer should we have to feel FOMO when React.js frameworks get lightning-fast bundler improvements, or useful new bundler plugins, etc. As React developers, we should be able to utilize these things too, but it'll take some major changes to catch up and make this a reality.
 
-## Thanks For Reading 👋
+## Finally
 
 If you enjoyed this article and found it helpful, please share it with other React developers!
 
 Special thanks to [Lydia Hallie](https://medium.com/@lydiahallie), and [Brent Vatne](https://twitter.com/notbrent) for proofreading, [Satyajit Sahoo](https://twitter.com/satya164) for sanity checks on Metro bundler's `react-native` package.json feature, and as always the Expo team for sponsoring my research and open source.
 
-- 💬 Join us on [Discord](https://chat.expo.dev/) or the [forums](https://forums.expo.dev/) to discuss the release.
-
-- ⭐️ Help us out by [starring Expo on GitHub](https://github.com/expo/expo), filing bug reports in [issues](https://github.com/expo/expo/issues), or opening [discussions](https://github.com/expo/expo/discussions) with questions or proposals.
-
-- 🥓 Follow me on Twitter for more updates: [baconbrix](https://twitter.com/Baconbrix).
-
-<Embed url="https://github.com/evanbacon" />
+<Thanks />

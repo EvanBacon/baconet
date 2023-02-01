@@ -18,7 +18,7 @@ This game has an extremely simple concept: tap a circle when it lines up with a 
 
 To connect it, I used _rematch_ (a dope Redux library) to globally register the score every time the user scored a point. When the score changes, we check to see if our new score is better than our previous best score; if so we update our Firebase firestore with the new best score.
 
-Using *rematch, *I could also persist the best score so that when we restart the app, it's saved into memory!
+Using _rematch_, I could also persist the best score so that when we restart the app, it's saved into memory!
 
 ### Procedural Games FTW!
 
@@ -26,7 +26,7 @@ It took me only ~15 hours to code this, in its entirety. Not having to make asse
 
 **Lazy Tip from a Lazy Boy:** I recommend using flat shading and 3D primitives to avoid having to create art for your game. Saves tons of time 🍔
 
-![Consider it a Life-Hack 😅](./images/1FQA1LHsEFsSGkMX-qyzizA.gif)_Consider it a Life-Hack 😅_
+![Consider it a Life-Hack 😅](./images/1FQA1LHsEFsSGkMX-qyzizA.gif) _Consider it a Life-Hack 😅_
 
 ## **Non-Invasive Social Integration**
 
@@ -49,11 +49,8 @@ After this we just need a basic compound query that filters our users for slugs,
 I looked at other games and noticed they all have a ton of things in common — things we should really just have components for—which I've now added for all Expo users to build into their next game:
 
 - **Share Button**: 💬 This takes a screenshot, and adds the name of the app to the app URL (from the app.json) and of course slaps my Twitter handle in it “[@baconbrix](https://twitter.com/Baconbrix)”. If we haven't yet taken a screen shot of the game, then the button won't render; this creates a nice effect that shows how we care about you playing the game more than we care about you sharing it! ❤️
-
 - **“Rate The App” Button**: ⭐️ Inspired by how I add 👏 clap emojis in my Medium articles. Now you too can manipulate, er, influence, people by putting a star on a button and having that button link to the App Store! 😄 This component pulls the app store / play store URL from the app.json: if it isn't available, the button won't render; if it is available, then we should link you to it!
-
 - **Mute Button**: 🗣 This was an easy one: just connect the state of our Audio singleton to our rematch redux (if it's muted that we don't play anything). This is also a good switch to persist in our redux as users typically don't like having to mute every time!
-
 - **Leaderboard button**: This pushes a screen over our game using React Navigation.
 
 ## Deployment

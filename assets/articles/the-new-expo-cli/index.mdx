@@ -1,6 +1,7 @@
 # The New Expo CLI
 
 import { Embed } from "../../../components/embeds";
+import Thanks from "../../../components/thanks";
 
 In Expo SDK 46 we introduced a new “Local Expo CLI”, to replace the “Global Expo CLI” (`npm i -g expo-cli`). Unlike the global CLI, the local CLI is installed in every project and stays versioned with the runtime code — meaning projects are easier to set up, stay working longer, and the tooling updates less often.
 
@@ -100,12 +101,8 @@ Since we were planning a rewrite, figured it would be a good time to simplify ev
 6. Reduced global side-effects of `npx expo start` to a single ngrok value in the `.expo` folder, meaning runs are more idempotent — before this change, URL arguments like `--port` could leak into different Expo CLI processes.
 7. A warning will be printed to suggest restarting the dev server when you modify `metro.config.js`, `babel.config.js`, and `webpack.config.js` while the dev server is running.
 
-## Thanks for reading 👋
+## Notice
 
 We know large changes like this are complicated, and we appreciate the patience of everyone involved! We're confident that the new CLI will bring many positive changes and make the developer experience much more stable going forward! Right off the bat, we have a PR open to add [custom entry point support](https://github.com/expo/expo/pull/18381) for projects using the local CLI.
 
-- 💬 Join us on [Discord](https://chat.expo.dev/) or the [forums](https://forums.expo.dev/) to discuss the release.
-- ⭐️ Help us out by [starring Expo on GitHub](https://github.com/expo/expo), filing bug reports in [issues](https://github.com/expo/expo/issues), or opening [discussions](https://github.com/expo/expo/discussions) with questions or proposals.
-- 🥓 Follow me on Twitter for more updates: [baconbrix](https://twitter.com/Baconbrix).
-
-<Embed url="https://github.com/evanbacon" />
+<Thanks />

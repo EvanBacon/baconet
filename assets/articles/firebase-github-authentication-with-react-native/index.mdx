@@ -14,23 +14,18 @@ This is a hard thing to search because the “Github” part usually returns any
 
 ### The Process
 
-- Create a Github app: [\*https://github.com/settings/applications/new](https://github.com/settings/applications/new)\*
-
+- Create a Github app: [https://github.com/settings/applications/new](https://github.com/settings/applications/new)
 - Create a Firebase app: [https://console.firebase.google.com/u/0/](https://console.firebase.google.com/u/0/)
-
 - Enable Github Auth & add the Github client ID and secret
-
 - Make a new Snack: [https://snack.expo.io](https://snack.expo.io)
-
 - Use Expo.AuthSession to get a user token
-
 - Create a Firebase user with the token
 
 ## And now with pictures:
 
 ![Sorry for mobile users 😅😓](./images/1wW8iThgpeu_7zYLCyhdx1A.png)_Sorry for mobile users 😅😓_
 
-Now we just need to add the URL callback. This can be achieved by using the following formula: `[https://auth.expo.io/](https://auth.expo.io/) + @yourExpoUsername + yourProjectName` or just get the result of `Expo.AuthSession.getRedirectUrl()` which will return the same thing. If you use the wrong URL you will be given an Error: `*redirect_uri_mismatch` \*you can change the URL at any time.
+Now we just need to add the URL callback. This can be achieved by using the following formula: `https://auth.expo.io/ + @yourExpoUsername + yourProjectName` or just get the result of `Expo.AuthSession.getRedirectUrl()` which will return the same thing. If you use the wrong URL you will be given an Error: `redirect_uri_mismatch` you can change the URL at any time.
 
 ![](./images/1GuHvY0dx2WdDu9JoFJ3MgA.png)
 
@@ -40,7 +35,7 @@ This code is basically just drag and drop, it'll work under most conditions and 
 
 ![Another one of my signature “quick” tutorials… 🙃](./images/1reOODJnge_ty7zbvsKgHLw.gif)_Another one of my signature “quick” tutorials… 🙃_
 
-The only key thing you should know about is `Expo.AuthSession` [https://docs.expo.io/versions/latest/sdk/auth-session](https://docs.expo.io/versions/latest/sdk/auth-session)
+The only key thing you should know about is [`Expo.AuthSession`](https://docs.expo.io/versions/latest/sdk/auth-session)
 
 AuthSession manages all the weirdness around web authentication flows in a native app. This means you don't have to do any awkward or unreliable things like adding a listener to ReactNative.Linking. You can use AuthSession for things like Github, Twitter, Instagram, ect…
 
@@ -80,10 +75,8 @@ function authUrlWithId(id, fields) {
 ```
 
 1. Start an AuthSession and pass it a `authUrl` that we will create with our Github client ID. This will return special code that we can use later for creating an “access token”.
-
-1. Compose a auth URL with our ID and the fields (or scope) we wish to get access to. Fields work like permissions in the Facebook API.
-
-1. We will take a list of fields and encode them into a web friendly URL. Learn more about the different kinds of scopes here: [https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/)
+2. Compose a auth URL with our ID and the fields (or scope) we wish to get access to. Fields work like permissions in the Facebook API.
+3. We will take a list of fields and encode them into a web friendly URL. Learn more about the different kinds of scopes here: [https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/)
 
 We are going to skip over some error handling for the sake of brevity, but you can see in the example how to handle user cancellation or invalid redirect URI.
 
@@ -111,10 +104,8 @@ async function createTokenWithCode(code) {
 ```
 
 1. The last part of the Auth Session is creating an “access token” from the returned code. We can then use this token to create a Firebase user.
-
-1. Create another custom URL but this time we will pass it “code” along with our Github ID and secret.
-
-1. Now we will post our code to the Github API and request that it returns data in the form of a JSON object which we can easily parse in JavaScript.
+2. Create another custom URL but this time we will pass it “code” along with our Github ID and secret.
+3. Now we will post our code to the Github API and request that it returns data in the form of a JSON object which we can easily parse in JavaScript.
 
 Now to create a user, all we need to do is simply pass the token to Firebase with a Github provider.
 

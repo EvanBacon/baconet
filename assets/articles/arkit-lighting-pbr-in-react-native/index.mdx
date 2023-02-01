@@ -19,15 +19,13 @@ Somehow these two libraries work insanely well together. This becomes apparent w
 ## Getting Started
 
 This tutorial assumes you know how Expo AR works. If you don't, here's a beginner tutorial:
-[**ARKit in React Native Tutorial: The Basics**
-*By now you've probably seen some of the crazy things people have been making with ARKit. If you want to make AR stuff…*blog.expo.io](https://blog.expo.io/arkit-in-react-native-tutorial-the-basics-9f839539f0b9)
+
+<Embed url="https://blog.expo.io/arkit-in-react-native-tutorial-the-basics-9f839539f0b9" />
 
 In today's tutorial, we'll be focusing on a few concepts:
 
 - **Setting up PBR & Shadows in three.js**
-
 - **Using ARKit Light Estimation to change our lighting properties**
-
 - **Creating a model with a complex texture**
 
 ## Shadows
@@ -82,8 +80,8 @@ ARKit returns two main values for dynamic light estimation; they are, more or le
 - Lumens: The brightness / intensity of the light.
 
 In expo-three I've included a node called AR.Light that extends Point Light and automatically takes care of converting these values. 💡 If you like learning , then here's the source:
-[**Light.js**
-*expo-three - Utilities for using THREE.js on Expo*github.com](https://github.com/expo/expo-three/blob/master/lib/AR/Light.js)
+
+<Embed url="https://github.com/expo/expo-three/blob/master/lib/AR/Light.js" />
 
 ## Coding the Lights
 
@@ -139,9 +137,7 @@ point.update()
 If we want something to look real in 3D, we need to apply a couple different textures. The standard set of textures used to make something look nice are as follows:
 
 - **Diffuse**: The most common kind of map. This is used for defining color or images. Most of the time we only use the Diffuse map.
-
 - **Normal**: This purple-blue image is used to define bumps, and lighting in your model.
-
 - **Specular**: Used to define the textures shiny parts and highlight colors.
 
 In this tutorial, we rely on some built-in features of three.js to get around having to manually tweak values.
