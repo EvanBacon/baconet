@@ -2,8 +2,11 @@ import {
   Inter_300Light,
   Inter_400Regular,
   Inter_700Bold,
+  Inter_900Black,
   useFonts,
 } from "@expo-google-fonts/inter";
+import { SourceCodePro_400Regular } from "@expo-google-fonts/source-code-pro";
+
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 import { Stack, usePathname } from "expo-router";
@@ -47,6 +50,8 @@ export default function StackLayout({ segment }) {
     Inter_300Light,
     Inter_400Regular,
     Inter_700Bold,
+    Inter_900Black,
+    SourceCodePro_400Regular,
   });
 
   if (!fontsLoaded) return null;

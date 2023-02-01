@@ -1,11 +1,6 @@
 import { Head } from "@bacons/head";
-import {
-  Link,
-  usePathname,
-  useRouter,
-  useNavigation,
-  useSearchParams,
-} from "expo-router";
+import { Image, ImageProps, StyleSheet, Text, View } from "@bacons/react-views";
+import { Link, useNavigation, useRouter } from "expo-router";
 import React, { useMemo } from "react";
 import {
   FlatList,
@@ -13,20 +8,12 @@ import {
   PlatformColor,
   TouchableOpacity,
 } from "react-native";
-import { StyleSheet, ImageProps, Image, Text, View } from "@bacons/react-views";
 
-import { usePosts } from "../../../components/api";
 import { MetaShortcut } from "../../../components/shortcuts";
-import { useOutletContext } from "../../../components/OutletContext";
+
+const mdxctx = require.context("../../../assets/articles", true, /\.json$/);
 
 export default function Page() {
-  const route = usePathname();
-  const params = useSearchParams();
-  const def = useMemo(
-    () => (params?.q ? decodeURIComponent(params?.q) : ""),
-    [params?.q]
-  );
-
   const navigation = useNavigation("../../");
   const link = useRouter();
   React.useEffect(() => {
@@ -39,14 +26,6 @@ export default function Page() {
 
     return unsubscribe;
   }, [navigation, link]);
-
-  const [value, setValue] = React.useState(def);
-
-  React.useEffect(() => {
-    if (def) {
-      setValue(def);
-    }
-  }, [def]);
 
   return (
     <>
@@ -79,8 +58,19 @@ export default function Page() {
 export { ErrorBoundary } from "expo-router";
 
 function PostsList() {
-  const posts = useOutletContext<ReturnType<typeof usePosts>>();
-  // console.log("posts", posts);
+  const posts = React.useMemo(
+    () =>
+      mdxctx
+        .keys()
+        .map((key) => {
+          return mdxctx(key);
+        })
+        .sort((a, b) => {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        }),
+    [mdxctx.keys()]
+  );
+
   return (
     <FlatList
       style={{
@@ -90,14 +80,12 @@ function PostsList() {
       contentInsetAdjustmentBehavior="automatic"
       data={posts}
       renderItem={({ item }) => {
-        // console.log("item", item);
-        const { author, created } = item.fields;
         return (
           <Link
             href={{
               pathname: "/blog/[post]",
               params: {
-                post: item.fields.slug,
+                post: item.slug,
               },
             }}
             style={{
@@ -109,35 +97,34 @@ function PostsList() {
               <View
                 style={{ margin: 12, backgroundColor: "white", padding: 12 }}
               >
-                {author && (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    paddingBottom: 8,
+                    justifyContent: "space-between",
+                  }}
+                >
                   <View
                     style={{
                       flexDirection: "row",
                       alignItems: "center",
-                      paddingBottom: 8,
-                      justifyContent: "space-between",
                     }}
                   >
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                      }}
-                    >
-                      <ProfileImage style={{ marginRight: 8 }} />
-                      <Text style={{ fontSize: 16 }}>{author.name}</Text>
-                    </View>
-                    <Text
-                      style={{
-                        color: "#38434D",
-                      }}
-                    >
-                      {new Date(created).toDateString()}
-                    </Text>
+                    <ProfileImage style={{ marginRight: 8 }} />
+                    <Text style={{ fontSize: 16 }}>{item.author}</Text>
                   </View>
-                )}
+                  <Text
+                    style={{
+                      color: "#38434D",
+                    }}
+                  >
+                    {new Date(item.date).toDateString()}
+                  </Text>
+                </View>
+
                 <Text style={{ fontWeight: "bold", fontSize: 20 }}>
-                  {item.fields.title}
+                  {item.title}
                 </Text>
 
                 <Text
@@ -145,10 +132,10 @@ function PostsList() {
                   lineBreakMode="tail"
                   style={{ fontSize: 16, marginTop: 8, color: "#38434D" }}
                 >
-                  {item.fields.body}
+                  {item.subtitle}
                 </Text>
 
-                <Tags tags={item.fields.tags} />
+                <Tags tags={item.tags} />
               </View>
             </TouchableOpacity>
           </Link>

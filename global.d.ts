@@ -42,3 +42,8 @@ declare module "react" {
 
 import { TextStyle } from "@bacons/react-views";
 import { StyleProp } from "react-native";
+
+declare module "*.mdx" {
+  function Component(props: any): JSX.Element;
+  export default Component;
+}

@@ -24,16 +24,16 @@ function TweetEmbedWebView({ url }: { url: string }) {
 
 function useBio(url) {
   const [bio, setBio] = React.useState(null);
-  React.useEffect(() => {
-    fetch(url)
-      .then((res) => res.text())
-      .then((html) => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, "text/html");
-        const bio = doc.querySelector(".ProfileHeaderCard-bio");
-        setBio(bio?.textContent);
-      });
-  }, [url]);
+  // React.useEffect(() => {
+  //   fetch(url)
+  //     .then((res) => res.text())
+  //     .then((html) => {
+  //       const parser = new DOMParser();
+  //       const doc = parser.parseFromString(html, "text/html");
+  //       const bio = doc.querySelector(".ProfileHeaderCard-bio");
+  //       setBio(bio?.textContent);
+  //     });
+  // }, [url]);
   return bio;
 }
 
