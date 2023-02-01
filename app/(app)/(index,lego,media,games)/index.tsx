@@ -15,6 +15,7 @@ import {
   PlatformColor,
   TouchableOpacity,
 } from "react-native";
+import { BlurCard } from "../../../components/blur-card";
 
 import { MetaShortcut } from "../../../components/shortcuts";
 
@@ -55,9 +56,7 @@ export default function Page() {
         subtitle="Look for bacon"
       />
 
-      <View style={styles.container}>
-        <PostsList />
-      </View>
+      <PostsList />
     </>
   );
 }
@@ -83,129 +82,27 @@ function PostsList() {
       style={{
         flex: 1,
       }}
-      contentContainerStyle={{}}
+      contentContainerStyle={{
+        alignItems: "stretch",
+        maxWidth: 800,
+        paddingHorizontal: 16,
+        justifyContent: "center",
+      }}
       contentInsetAdjustmentBehavior="automatic"
       data={posts}
       renderItem={({ item }) => {
         return (
-          <Link
-            href={{
-              pathname: "/blog/[post]",
-              params: {
-                post: item.slug,
-              },
-            }}
-            style={{
-              flex: 1,
-            }}
-            asChild
-          >
-            <Pressable>
-              {({ hovered, pressed }) => (
-                <View
-                  style={[
-                    {
-                      margin: 12,
-                      backgroundColor: "white",
-                      transitionDuration: "0.2s",
-                    },
-                    hovered && {
-                      backgroundColor: "rgba(0,0,0,0.1)",
-                    },
-                    pressed && {
-                      backgroundColor: "rgba(0,0,0,0.2)",
-                    },
-                  ]}
-                >
-                  {item.featuredImage && (
-                    <Image
-                      source={item.featuredImage}
-                      style={{
-                        height: 128,
-                        width: "100%",
-                        resizeMode: "cover",
-                      }}
-                    />
-                  )}
-                  <View
-                    style={{
-                      padding: 12,
-                    }}
-                  >
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                        paddingBottom: 8,
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      {false && (
-                        <View
-                          style={{
-                            flexDirection: "row",
-                            alignItems: "center",
-                          }}
-                        >
-                          <ProfileImage style={{ marginRight: 8 }} />
-                          <Text style={{ fontSize: 16 }}>{item.author}</Text>
-                        </View>
-                      )}
-                      <Text
-                        style={{
-                          color: "#38434D",
-                        }}
-                      >
-                        {new Date(item.date).toDateString()}
-                      </Text>
-                    </View>
-
-                    <Text style={{ fontWeight: "bold", fontSize: 20 }}>
-                      {item.title}
-                    </Text>
-
-                    <Text
-                      numberOfLines={3}
-                      lineBreakMode="tail"
-                      style={{ fontSize: 16, marginTop: 8, color: "#38434D" }}
-                    >
-                      {item.subtitle}
-                    </Text>
-
-                    <Tags tags={item.tags} />
-                  </View>
-                </View>
-              )}
-            </Pressable>
-          </Link>
+          <BlurCard
+            href={"/blog/" + item.slug}
+            image={item.featuredImage}
+            subtitle={item.subtitle}
+            title={item.title}
+            cta={new Date(item.date).toDateString()}
+            icon="book-outline"
+          />
         );
       }}
     />
-  );
-}
-
-function Tags({ tags }: { tags?: string[] }) {
-  if (!tags?.length) {
-    return null;
-  }
-
-  return (
-    <View style={{ paddingTop: 12, flexDirection: "row", flexWrap: "wrap" }}>
-      {tags.map((tag) => (
-        <View
-          key={tag}
-          style={{
-            backgroundColor: "rgba(0,0,0,0.08)",
-            padding: 4,
-            borderRadius: 4,
-            marginRight: 8,
-            marginBottom: 8,
-          }}
-        >
-          <Text>{tag}</Text>
-        </View>
-      ))}
-    </View>
   );
 }
 
@@ -235,30 +132,6 @@ export function CupertinoItemSeparatorComponent() {
         }}
       />
     </View>
-  );
-}
-
-function ProfileImage({ style, ...props }: Partial<ImageProps>) {
-  return (
-    <Image
-      {...props}
-      // @ts-expect-error
-      alt="Evan Bacon"
-      source={{
-        uri: "https://avatars.githubusercontent.com/u/9664363?v=4",
-        // uri: "https://miro.medium.com/fit/c/48/48/0*7hpwPqrKW-8i1C3u.jpg",
-      }}
-      style={[
-        {
-          backgroundColor: "#71767b",
-          width: 32,
-          height: 32,
-          borderRadius: 999,
-          boxShadow: "rgb(0 0 0 / 5%) 0px 0px 0px 1px inset",
-        },
-        style,
-      ]}
-    />
   );
 }
 

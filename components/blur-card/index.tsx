@@ -12,7 +12,11 @@ export function BlurCard({
   href,
   title,
   subtitle,
+  icon = "play",
+  cta = "Watch Now",
 }: {
+  cta?: string;
+  icon?: string;
   image: any;
   href: string;
   title: string;
@@ -78,7 +82,7 @@ export function BlurCard({
                 >
                   <Ionicons
                     style={{ marginRight: -4 }}
-                    name="play"
+                    name={icon}
                     size={30}
                     color="black"
                   />
@@ -88,6 +92,7 @@ export function BlurCard({
                 <Text
                   style={[
                     {
+                      textTransform: "uppercase",
                       color: "white",
                       fontSize: 10,
                       // letterSpacing: 1.5,
@@ -105,7 +110,7 @@ export function BlurCard({
                     },
                   ]}
                 >
-                  WATCH NOW
+                  {cta}
                 </Text>
                 <Text
                   style={{
