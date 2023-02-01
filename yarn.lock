@@ -1240,13 +1240,13 @@
   dependencies:
     react-helmet "6.1.0"
 
-"@bacons/mdx@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@bacons/mdx/-/mdx-0.0.1.tgz#117fe744e1b8b3992be363383c83c79449e9c498"
-  integrity sha512-o+aDWidTu4IYp4vWzkjcnnaLxoaJKooKDBOvWr+EYkIp2Q2DWIT4+Zb/tq67vDGAaURkE6j5x0cK5Lt6f43cFQ==
+"@bacons/mdx@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@bacons/mdx/-/mdx-0.0.2.tgz#9a41e716a9e5bb684c67d11786b399eadf9b2e76"
+  integrity sha512-CLmI84Hq9P0Gf4MjkJilpGgDFDYDEphcaBEBgEKpw5eHR1vn5t2Nrjm6B4cM+8QeVSJ565TdXCPb1R9FPqbqPg==
   dependencies:
     "@bacons/react-views" "^1.1.3"
-    "@expo/html-elements" "^0.2.2"
+    "@expo/html-elements" "^0.3.1"
     "@mdx-js/mdx" "^1.6.22"
     unist-util-visit "^1.4.1"
 
@@ -1497,11 +1497,6 @@
     sudo-prompt "^8.2.0"
     tmp "^0.0.33"
     tslib "^1.10.0"
-
-"@expo/html-elements@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@expo/html-elements/-/html-elements-0.2.2.tgz#d4d361df6c4089d67cc2fd98d34a5347ac4c1a5d"
-  integrity sha512-hMS/5UfBgusKo5K0kpXdrddkxBg9LaJ8Dnijxats+7Uj0Mrk+NaRx3jOUsHTzd7pAroeqx5WGwzJ7wppsksBVA==
 
 "@expo/html-elements@^0.3.1":
   version "0.3.1"

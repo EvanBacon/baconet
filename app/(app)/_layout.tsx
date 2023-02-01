@@ -1,3 +1,4 @@
+import { Head } from "@bacons/head";
 import { Image, View } from "@bacons/react-views";
 import {
   CommonActions,
@@ -325,72 +326,96 @@ export default function App({ children }) {
 
   if (!isRowLayout) {
     return (
-      <Tabs
-        screenOptions={{
-          tabBarShowLabel: false,
-          headerShown: false,
-          tabBarActiveTintColor: "black",
-        }}
-      >
-        <Tabs.Screen
-          name="(index)"
-          options={{
-            title: "Feed",
-            tabBarIcon: makeIcon("home"),
+      <>
+        <GlobalHead />
+        <Tabs
+          screenOptions={{
+            tabBarShowLabel: false,
+            headerShown: false,
+            tabBarActiveTintColor: "black",
           }}
-        />
+        >
+          <Tabs.Screen
+            name="(index)"
+            options={{
+              title: "Feed",
+              tabBarIcon: makeIcon("home"),
+            }}
+          />
 
-        <Tabs.Screen
-          name="(games)"
-          options={{
-            // TODO:
-            href: null,
+          <Tabs.Screen
+            name="(games)"
+            options={{
+              // TODO:
+              href: null,
 
-            title: "Games",
-            tabBarIcon: makeIcon("game-controller"),
-          }}
-        />
-        <Tabs.Screen
-          name="(media)"
-          options={{
-            title: "Media",
-            tabBarIcon: makeIcon("mic"),
-          }}
-        />
+              title: "Games",
+              tabBarIcon: makeIcon("game-controller"),
+            }}
+          />
+          <Tabs.Screen
+            name="(media)"
+            options={{
+              title: "Media",
+              tabBarIcon: makeIcon("mic"),
+            }}
+          />
 
-        <Tabs.Screen
-          name="(lego)"
-          options={{
-            // TODO:
-            href: null,
-            title: "Lego",
-            tabBarIcon: makeIcon("build"),
-          }}
-        />
+          <Tabs.Screen
+            name="(lego)"
+            options={{
+              // TODO:
+              href: null,
+              title: "Lego",
+              tabBarIcon: makeIcon("build"),
+            }}
+          />
 
-        <Tabs.Screen
-          name="(about)"
-          options={{
-            title: "Evan Bacon",
-            tabBarIcon: makeIcon("person"),
-          }}
-        />
-      </Tabs>
+          <Tabs.Screen
+            name="(about)"
+            options={{
+              title: "Evan Bacon",
+              tabBarIcon: makeIcon("person"),
+            }}
+          />
+        </Tabs>
+      </>
     );
   }
 
   return (
-    <View
-      style={[{ flex: 1 }, isRowLayout && { flexDirection: "row-reverse" }]}
-    >
-      {!isRowLayout && <CustomHeader />}
-      <Navigator router={TabRouter}>
-        <View style={{ flex: 1 }}>
-          <Slot />
-        </View>
-        {isRowLayout ? <SideBar /> : <CustomTabBar />}
-      </Navigator>
-    </View>
+    <>
+      <GlobalHead />
+      <View
+        style={[{ flex: 1 }, isRowLayout && { flexDirection: "row-reverse" }]}
+      >
+        {!isRowLayout && <CustomHeader />}
+        <Navigator router={TabRouter}>
+          <View style={{ flex: 1 }}>
+            <Slot />
+          </View>
+          {isRowLayout ? <SideBar /> : <CustomTabBar />}
+        </Navigator>
+      </View>
+    </>
+  );
+}
+
+function GlobalHead() {
+  return (
+    <Head>
+      {/* favicon */}
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+      />
+      <link rel="manifest" href="/manifest.json" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+      <link rel="shortcut icon" href="/favicon.ico" />
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4630eb" />
+    </Head>
   );
 }
 

@@ -12,7 +12,7 @@
     "@bacons/expo-background-color": "^1.0.2",
     "@bacons/expo-router-top-tabs": "^0.0.1",
     "@bacons/head": "^0.0.3",
-    "@bacons/mdx": "^0.0.1",
+    "@bacons/mdx": "^0.0.2",
     "@expo-google-fonts/inter": "^0.2.2",
     "@expo-google-fonts/source-code-pro": "^0.2.2",
     "@expo/html-elements": "^0.3.1",
