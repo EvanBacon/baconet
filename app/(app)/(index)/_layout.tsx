@@ -40,6 +40,7 @@ function ShareButton() {
 }
 
 export default function StackLayout({ segment }) {
+  return <Stack />;
   const initRouteName = segment.replace(/^\(/, "").replace(/\)$/, "");
 
   useLoadFonts({
@@ -54,7 +55,6 @@ export default function StackLayout({ segment }) {
 
   return (
     <Stack
-      id={useContextKey()}
       screenOptions={{
         headerLargeTitle: true,
         headerTitleStyle: {

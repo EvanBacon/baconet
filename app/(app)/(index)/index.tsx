@@ -22,18 +22,7 @@ import { MetaShortcut } from "../../../components/shortcuts";
 const mdxctx = require.context("../../../assets/articles", true, /\.js$/);
 
 export default function Page() {
-  const navigation = useNavigation("../../");
-  const link = useRouter();
-  React.useEffect(() => {
-    console.log("setup");
-    const unsubscribe = navigation.addListener("tabLongPress", (e) => {
-      console.log("long");
-      // Do something
-      link.replace("/_expo");
-    });
-
-    return unsubscribe;
-  }, [navigation, link]);
+  return <PostsList />;
 
   return (
     <>
@@ -75,7 +64,7 @@ function PostsList() {
           return new Date(b.date).getTime() - new Date(a.date).getTime();
         })
         // Limit to 5
-        .slice(0, 5),
+        .slice(0, 1),
     [mdxctx.keys()]
   );
 

@@ -45,48 +45,46 @@ export default function TabbedSlot({
 
   const { routes } = state;
 
-  const ff = routes.map((route, index) => {
-    const descriptor = descriptors[route.key];
-    const { lazy = true, unmountOnBlur } = descriptor.options;
-    const isFocused = state.index === index;
-
-    if (unmountOnBlur && !isFocused) {
-      return null;
-    }
-
-    if (lazy && !loaded.includes(route.key) && !isFocused) {
-      // Don't render a lazy screen if we've never navigated to it
-      return null;
-    }
-
-    return (
-      <Screen
-        activityState={isFocused ? 2 : 0}
-        key={route.key}
-        style={[
-          StyleSheet.absoluteFill,
-          { overflow: "hidden", zIndex: isFocused ? 0 : -1 },
-          style,
-        ]}
-        accessibilityElementsHidden={!isFocused}
-        importantForAccessibility={isFocused ? "auto" : "no-hide-descendants"}
-        enabled={detachInactiveScreens}
-        freezeOnBlur={descriptor.options.freezeOnBlur}
-      >
-        {descriptor.render()}
-      </Screen>
-    );
-  });
-
-  console.log("ff", ff);
-
   return (
     <ScreenContainer
       enabled={detachInactiveScreens}
       hasTwoStates
       style={styles.container}
     >
-      {ff}
+      {routes.map((route, index) => {
+        const descriptor = descriptors[route.key];
+        const { lazy = true, unmountOnBlur } = descriptor.options;
+        const isFocused = state.index === index;
+
+        if (unmountOnBlur && !isFocused) {
+          return null;
+        }
+
+        if (lazy && !loaded.includes(route.key) && !isFocused) {
+          // Don't render a lazy screen if we've never navigated to it
+          return null;
+        }
+
+        return (
+          <Screen
+            activityState={isFocused ? 2 : 0}
+            key={route.key}
+            style={[
+              StyleSheet.absoluteFill,
+              { overflow: "hidden", zIndex: isFocused ? 0 : -1 },
+              style,
+            ]}
+            accessibilityElementsHidden={!isFocused}
+            importantForAccessibility={
+              isFocused ? "auto" : "no-hide-descendants"
+            }
+            enabled={detachInactiveScreens}
+            freezeOnBlur={descriptor.options.freezeOnBlur}
+          >
+            {descriptor.render()}
+          </Screen>
+        );
+      })}
     </ScreenContainer>
   );
 }

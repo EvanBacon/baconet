@@ -45,7 +45,7 @@ function useWidth(size) {
   return width >= size;
 }
 
-function SideBar() {
+function SideBar({ visible }) {
   const isLarge = useWidth(1265);
 
   const navigation = React.useContext(NavigationHelpersContext)!;
@@ -56,6 +56,9 @@ function SideBar() {
   return (
     <div
       style={[
+        !visible && {
+          display: "none",
+        },
         {
           alignItems: "flex-end",
           minWidth: 60,
@@ -156,16 +159,12 @@ function SideBar() {
   );
 }
 
-function TabBar() {
-  const navigation = React.useContext(NavigationHelpersContext)!;
-
-  const state = navigation.getState();
-  const current = state.routes.find((route, i) => state.index === i);
-
+function TabBar({ visible }) {
   return (
-    <nav
+    <div
       style={{
         paddingBottom: useSafeAreaInsets().bottom,
+        display: visible ? "flex" : "none",
       }}
     >
       <nav
@@ -210,7 +209,7 @@ function TabBar() {
           </TabBarItem>
         ))}
       </nav>
-    </nav>
+    </div>
   );
 }
 
@@ -331,6 +330,7 @@ function SideBarTabItem({
 }
 
 import TabbedSlot, { TabbedNavigator } from "../../components/TabbedSlot";
+import { Text } from "../../components/useFont";
 
 export default function App() {
   const isRowLayout = useWidth(600);
@@ -352,11 +352,11 @@ export default function App() {
             flexDirection: isRowLayout ? "row" : "column",
           }}
         >
-          {isRowLayout && <SideBar />}
+          <SideBar visible={isRowLayout} />
           <TabbedNavigator.Slot />
-          {!isRowLayout && <TabBar />}
+          <TabBar visible={!isRowLayout} />
         </View>
-
+        {/* 
         <TabbedNavigator.Screen
           name="(index)"
           options={{
@@ -379,7 +379,7 @@ export default function App() {
             title: "Evan Bacon",
             tabBarIcon: makeIcon("person"),
           }}
-        />
+        /> */}
       </TabbedNavigator>
     </>
   );
