@@ -312,6 +312,7 @@ function SideBarTabItem({
 }
 import { TabRouter } from "@react-navigation/native";
 import { useLinkBuilder } from "../../components/useLinkBuilder";
+import TabbedSlot from "../../components/TabbedSlot";
 
 export default function App() {
   const isRowLayout = useWidth(600);
@@ -323,7 +324,7 @@ export default function App() {
       <Navigator router={TabRouter}>
         <View style={{ flex: 1, flexDirection: "row" }}>
           <SideBar />
-          <Slot />
+          <TabbedSlot />
         </View>
       </Navigator>
       {false && (
