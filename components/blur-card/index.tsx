@@ -1,4 +1,4 @@
-import { Image, Pressable, StyleSheet, Text, View } from "@bacons/react-views";
+import { Image, Pressable, StyleSheet, View } from "@bacons/react-views";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { BlurView } from "expo-blur";
 import { Link } from "expo-router";
@@ -6,6 +6,7 @@ import React from "react";
 import { Platform, useWindowDimensions } from "react-native";
 
 import MaskedView from "../mask";
+import { Text } from "../useFont";
 
 export function BlurCard({
   image,
@@ -154,18 +155,25 @@ function CoolBackground({ image, hovered }) {
     hovered && { transform: [{ scale: "1.05" }] },
     { width: "100%", height: "100%" },
   ];
+  // Disable to hide react-native-web style errors.
+  const isCool = Platform.OS !== "web";
+
   return (
     <>
       <Image style={style} source={src} />
-      <BlurView intensity={40} tint="dark" style={StyleSheet.absoluteFill} />
+      {isCool && (
+        <BlurView intensity={40} tint="dark" style={StyleSheet.absoluteFill} />
+      )}
 
-      <MaskedView
-        style={style}
-        colors={["rgba(0,0,0,1)", "rgba(0,0,0,0)"]}
-        locations={[0.58, 0.76]}
-      >
-        <Image style={style} source={src} />
-      </MaskedView>
+      {isCool && (
+        <MaskedView
+          style={style}
+          colors={["rgba(0,0,0,1)", "rgba(0,0,0,0)"]}
+          locations={[0.58, 0.76]}
+        >
+          <Image style={style} source={src} />
+        </MaskedView>
+      )}
     </>
   );
 }

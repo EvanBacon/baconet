@@ -4,6 +4,7 @@ import React from "react";
 import { ScrollView } from "react-native";
 
 import { BlurCard } from "../../../components/blur-card";
+import { useFont } from "../../../components/useFont";
 import { data } from "../../../data/media";
 
 export default function Page() {
@@ -38,11 +39,11 @@ export default function Page() {
             title: "Videos",
             headerLargeTitle: true,
             headerTitleStyle: {
-              fontFamily: "Inter_700Bold",
+              fontFamily: useFont("Inter_700Bold"),
             },
 
             headerLargeTitleStyle: {
-              fontFamily: "Inter_700Bold",
+              fontFamily: useFont("Inter_700Bold"),
             },
           }}
         />

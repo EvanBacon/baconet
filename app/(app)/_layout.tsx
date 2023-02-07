@@ -4,13 +4,13 @@ import {
   CommonActions,
   NavigationHelpersContext,
 } from "@react-navigation/native";
-import { Link, Navigator } from "expo-router";
+import { Link, Navigator, Tabs } from "expo-router";
 import { QualifiedSlot, Slot } from "expo-router/build/views/Layout";
 import React from "react";
-import { useWindowDimensions } from "react-native";
+import { Platform, useWindowDimensions } from "react-native";
 
 import * as Icons from "../../components/medium";
-import { Tabs } from "../../components/tab-bar/BottomTabs";
+// import { Tabs } from "../../components/tab-bar/BottomTabs";
 import { makeIcon } from "../../components/TabBarIcon";
 
 function HeaderLogo() {
@@ -65,7 +65,7 @@ function SideBar() {
       <div
         style={[
           {
-            position: "fixed",
+            position: Platform.select({ web: "fixed", default: "absolute" }),
             height: "100%",
             paddingHorizontal: 4,
             borderRightWidth: 1,
@@ -101,7 +101,7 @@ function SideBar() {
 
           <nav>
             <SideBarTabItem
-              name="index"
+              name="(index)"
               selected={current.name === "(index)"}
               href="/"
               icon={makeIcon("home")}
@@ -123,7 +123,7 @@ function SideBar() {
               selected={current.name === "(about)"}
               icon={makeIcon("person")}
             >
-              Media
+              About
             </SideBarTabItem>
           </nav>
 
@@ -154,7 +154,7 @@ function SideBarDivider() {
   const isLarge = useWidth(1265);
 
   return (
-    <div>
+    <div style={{ paddingBottom: 35 }}>
       <div
         style={{
           marginHorizontal: isLarge ? 0 : "auto",
@@ -200,9 +200,9 @@ function useContextRoute(name: string) {
 }
 
 function TabLink({ focused, name, ...props }) {
+  const buildLink = useLinkBuilder();
   const { state, navigation } = Navigator.useContext();
   const ctxRoute = useContextRoute(name);
-  console.log("sate:", name, ctxRoute);
 
   if (!ctxRoute) {
     return null;
@@ -233,7 +233,11 @@ function TabLink({ focused, name, ...props }) {
     });
   };
 
-  return <Link onPress={onPress} onLongPress={onLongPress} {...props} />;
+  const href = buildLink(name);
+
+  console.log("REF:", name, href);
+  // onPress={onPress} onLongPress={onLongPress}
+  return <Link {...props} href={href} />;
 }
 
 function SideBarTabItem({
@@ -255,56 +259,59 @@ function SideBarTabItem({
   // return null;
   // console.log("side bar:", buildLink("media"));
   return (
-    <TabLink
-      name={name}
-      href={href}
-      accessibilityHasPopup="menu"
-      style={{
-        paddingBottom: 35,
-        paddingVertical: 4,
-        display: "flex",
-        width: "100%",
-        borderRadius: 999,
-        transitionProperty: ["background-color", "box-shadow"],
-        transitionDuration: "200ms",
-      }}
-      hoverStyle={{
-        backgroundColor: "rgba(0, 0, 0, 0.1)",
-        //   backgroundColor: "rgba(231, 233, 234, 0.1)",
-      }}
-    >
-      <div
+    <div style={{ paddingBottom: 35 }}>
+      <TabLink
+        name={name}
+        href={href}
+        accessibilityHasPopup="menu"
         style={{
-          padding: 12,
-          flexDirection: "row",
-          alignItems: "center",
+          paddingVertical: 4,
+          display: "flex",
+          width: "100%",
+          borderRadius: 999,
+          transitionProperty: ["background-color", "box-shadow"],
+          transitionDuration: "200ms",
+        }}
+        hoverStyle={{
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
+          //   backgroundColor: "rgba(231, 233, 234, 0.1)",
         }}
       >
-        {icon({ focused: selected, color: "#000" })}
+        <div
+          style={{
+            padding: 12,
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          {icon({ focused: selected, color: "#000" })}
 
-        {isLarge && (
-          <span
-            style={[
-              {
-                color: "#000",
-                // color: "#e7e9ea",
-                fontSize: 20,
-                marginLeft: 20,
-                marginRight: 16,
-                lineHeight: 24,
-              },
-              selected && {
-                fontWeight: "bold",
-              },
-            ]}
-          >
-            {children}
-          </span>
-        )}
-      </div>
-    </TabLink>
+          {isLarge && (
+            <span
+              style={[
+                {
+                  color: "#000",
+                  // color: "#e7e9ea",
+                  fontSize: 20,
+                  marginLeft: 20,
+                  marginRight: 16,
+                  lineHeight: 24,
+                },
+                selected && {
+                  fontWeight: "bold",
+                },
+              ]}
+            >
+              {children}
+            </span>
+          )}
+        </div>
+      </TabLink>
+    </div>
   );
 }
+import { TabRouter } from "@react-navigation/native";
+import { useLinkBuilder } from "../../components/useLinkBuilder";
 
 export default function App() {
   const isRowLayout = useWidth(600);
@@ -312,7 +319,8 @@ export default function App() {
   return (
     <>
       <GlobalHead />
-      <Navigator>
+      {/* <Tabs /> */}
+      <Navigator router={TabRouter}>
         <View style={{ flex: 1, flexDirection: "row" }}>
           <SideBar />
           <Slot />

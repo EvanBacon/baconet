@@ -3,7 +3,6 @@ import {
   Inter_400Regular,
   Inter_700Bold,
   Inter_900Black,
-  useFonts,
 } from "@expo-google-fonts/inter";
 import { SourceCodePro_400Regular } from "@expo-google-fonts/source-code-pro";
 
@@ -17,6 +16,7 @@ import {
   TouchableOpacity,
   useColorScheme,
 } from "react-native";
+import { useFont, useLoadFonts } from "../../../components/useFont";
 
 function ShareButton() {
   const theme = useColorScheme() === "dark" ? DarkTheme : DefaultTheme;
@@ -42,7 +42,7 @@ function ShareButton() {
 export default function StackLayout({ segment }) {
   const initRouteName = segment.replace(/^\(/, "").replace(/\)$/, "");
 
-  const [fontsLoaded] = useFonts({
+  useLoadFonts({
     Inter_300Light,
     Inter_400Regular,
     Inter_700Bold,
@@ -58,11 +58,11 @@ export default function StackLayout({ segment }) {
       screenOptions={{
         headerLargeTitle: true,
         headerTitleStyle: {
-          fontFamily: "Inter_700Bold",
+          fontFamily: useFont("Inter_700Bold"),
         },
 
         headerLargeTitleStyle: {
-          fontFamily: "Inter_700Bold",
+          fontFamily: useFont("Inter_700Bold"),
         },
 
         headerRight(props) {

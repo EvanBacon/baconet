@@ -4,6 +4,7 @@ import { Link } from "expo-router";
 import { Pressable, View, Text } from "@bacons/react-views";
 import { ExternalLink } from "../ExternalLink";
 import { ExternalCard } from "./Profile";
+import { useFont } from "../useFont";
 
 export function NpmPackage({ url }: { url: string }) {
   const pkg = url.match(/npmjs\.com\/package\/(.*)/)?.[1].toLowerCase();
@@ -27,7 +28,7 @@ export function NpmPackage({ url }: { url: string }) {
           data-text="true"
           style={{
             color: "#ECEDEE",
-            fontFamily: "Inter_400Regular",
+            fontFamily: useFont("Inter_400Regular"),
             fontSize: 16,
           }}
         >
@@ -53,7 +54,7 @@ export function NpmPackage({ url }: { url: string }) {
               >
                 <span
                   style={{
-                    fontFamily: "Inter_400Regular",
+                    fontFamily: useFont("Inter_400Regular"),
                     fontSize: 14,
                     color: "#ECEDEE",
                   }}

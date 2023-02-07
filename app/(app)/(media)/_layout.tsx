@@ -3,7 +3,6 @@ import {
   Inter_400Regular,
   Inter_700Bold,
   Inter_900Black,
-  useFonts,
 } from "@expo-google-fonts/inter";
 import { SourceCodePro_400Regular } from "@expo-google-fonts/source-code-pro";
 
@@ -20,6 +19,11 @@ import {
 
 import { usePosts } from "../../../components/api";
 import { OutletContext } from "../../../components/OutletContext";
+import { useFont, useLoadFonts } from "../../../components/useFont";
+
+// export const unstable_settings = {
+//   initialRouteName: "media",
+// };
 
 function ShareButton() {
   const theme = useColorScheme() === "dark" ? DarkTheme : DefaultTheme;
@@ -47,7 +51,7 @@ export default function StackLayout({ segment }) {
 
   const initRouteName = segment.replace(/^\(/, "").replace(/\)$/, "");
 
-  const [fontsLoaded] = useFonts({
+  useLoadFonts({
     Inter_300Light,
     Inter_400Regular,
     Inter_700Bold,
@@ -63,11 +67,11 @@ export default function StackLayout({ segment }) {
       screenOptions={{
         headerLargeTitle: true,
         headerTitleStyle: {
-          fontFamily: "Inter_700Bold",
+          fontFamily: useFont("Inter_700Bold"),
         },
 
         headerLargeTitleStyle: {
-          fontFamily: "Inter_700Bold",
+          fontFamily: useFont("Inter_700Bold"),
         },
 
         headerRight(props) {

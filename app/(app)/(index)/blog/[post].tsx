@@ -4,6 +4,7 @@ import { Stack, usePathname, useSearchParams } from "expo-router";
 import * as Linking from "expo-linking";
 import React from "react";
 import { Image, ScrollView, Text, View } from "react-native";
+import { useFont } from "../../../../components/useFont";
 
 const mdxctx = require.context(
   "../../../../assets/articles",
@@ -69,6 +70,8 @@ export default function Page() {
   const { post: postId } = useSearchParams();
   const data = useData(postId);
 
+  const Inter_900Black = useFont("Inter_900Black");
+
   if (!data) {
     return <Text>Not Found: {postId}</Text>;
   }
@@ -83,10 +86,10 @@ export default function Page() {
         options={{
           title: info.title,
           headerTitleStyle: {
-            fontFamily: "Inter_900Black",
+            fontFamily: Inter_900Black,
           },
           headerLargeTitleStyle: {
-            fontFamily: "Inter_900Black",
+            fontFamily: Inter_900Black,
           },
         }}
       />
@@ -114,11 +117,11 @@ function MarkdownTheme({ children }: { children: React.ReactNode }) {
   return (
     <MDXStyles
       h1={{
-        fontFamily: "Inter_900Black",
+        fontFamily: useFont("Inter_900Black"),
         fontSize: 32,
       }}
       h2={{
-        fontFamily: "Inter_900Black",
+        fontFamily: useFont("Inter_900Black"),
         marginTop: 16,
         fontSize: 22,
         marginBottom: 0,
@@ -139,13 +142,13 @@ function MarkdownTheme({ children }: { children: React.ReactNode }) {
         paddingHorizontal: 4,
       }}
       p={{
-        fontFamily: "Inter_400Regular",
+        fontFamily: useFont("Inter_400Regular"),
         lineHeight: 30,
         fontSize: 20,
         marginBottom: 8,
       }}
       blockquote={{
-        fontFamily: "Inter_400Regular",
+        fontFamily: useFont("Inter_400Regular"),
         borderLeftWidth: 3,
         fontSize: 21,
         borderLeftColor: "#292929",
@@ -160,11 +163,11 @@ function MarkdownTheme({ children }: { children: React.ReactNode }) {
         maxHeight: 360,
       }}
       a={{
-        fontFamily: "Inter_400Regular",
+        fontFamily: useFont("Inter_400Regular"),
         textDecorationLine: "underline",
       }}
       li={{
-        fontFamily: "Inter_400Regular",
+        fontFamily: useFont("Inter_400Regular"),
         fontSize: 16,
         lineHeight: 30,
       }}
