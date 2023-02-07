@@ -18,7 +18,7 @@ export default function About() {
       </Head>
       <div style={{ flex: 1, padding: 16 }}>
         <Image
-          source={require("../../../assets/brand/evanbacon-2022.jpg")}
+          source={require("../../assets/brand/evanbacon-2022.jpg")}
           resizeMode="cover"
           style={{ width: 100, height: 100, borderRadius: 50 }}
         />

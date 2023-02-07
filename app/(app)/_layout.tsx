@@ -361,16 +361,6 @@ export default function App({ children }) {
         />
 
         <Tabs.Screen
-          name="(games)"
-          options={{
-            // TODO:
-            href: null,
-
-            title: "Games",
-            tabBarIcon: makeIcon("game-controller"),
-          }}
-        />
-        <Tabs.Screen
           name="(media)"
           options={{
             title: "Media",
@@ -379,17 +369,7 @@ export default function App({ children }) {
         />
 
         <Tabs.Screen
-          name="(lego)"
-          options={{
-            // TODO:
-            href: null,
-            title: "Lego",
-            tabBarIcon: makeIcon("build"),
-          }}
-        />
-
-        <Tabs.Screen
-          name="(about)"
+          name="about"
           options={{
             title: "Evan Bacon",
             tabBarIcon: makeIcon("person"),
