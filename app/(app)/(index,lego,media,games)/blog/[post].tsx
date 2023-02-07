@@ -179,6 +179,23 @@ function MarkdownTheme({ children }: { children: React.ReactNode }) {
       }}
     >
       <MDXComponents
+        li={({ style, ...props }) => (
+          <View style={{ flexDirection: "row", alignItems: "flex-start" }}>
+            <View
+              style={{
+                marginTop: 12,
+                marginRight: 8,
+                width: 6,
+                height: 6,
+                borderRadius: 3,
+                backgroundColor: "black",
+              }}
+            />
+            <View style={{ flex: 1 }}>
+              <Text {...props} style={style} />
+            </View>
+          </View>
+        )}
         hr={({ style }) => (
           <View style={style}>
             {["", "", ""].map((v, i) => (
