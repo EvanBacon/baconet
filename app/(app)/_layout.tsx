@@ -48,11 +48,6 @@ function useWidth(size) {
 function SideBar({ visible }) {
   const isLarge = useWidth(1265);
 
-  const navigation = React.useContext(NavigationHelpersContext)!;
-
-  const state = navigation.getState();
-  const current = state.routes.find((route, i) => state.index === i);
-
   return (
     <div
       style={[
@@ -109,29 +104,14 @@ function SideBar({ visible }) {
           <HeaderLogo />
 
           <nav>
-            <SideBarTabItem
-              name="(index)"
-              selected={current.name === "(index)"}
-              href="/"
-              icon={makeIcon("home")}
-            >
+            <SideBarTabItem name="(index)" icon={makeIcon("home")}>
               Home
             </SideBarTabItem>
-            <SideBarTabItem
-              name="(media)"
-              href="/media"
-              selected={current.name === "(media)"}
-              icon={makeIcon("mic")}
-            >
+            <SideBarTabItem name="(media)" icon={makeIcon("mic")}>
               Media
             </SideBarTabItem>
             <SideBarDivider />
-            <SideBarTabItem
-              name="about"
-              href="/about"
-              selected={current.name === "(about)"}
-              icon={makeIcon("person")}
-            >
+            <SideBarTabItem name="about" icon={makeIcon("information-circle")}>
               About
             </SideBarTabItem>
           </nav>
@@ -180,8 +160,8 @@ function TabBar({ visible }) {
       >
         {[
           { name: "(index)", icon: "home" },
-          { name: "(media)", icon: "body" },
-          { name: "about", icon: "code" },
+          { name: "(media)", icon: "mic" },
+          { name: "about", icon: "information-circle" },
         ].map((tab, i) => (
           <TabBarItem key={i} name={tab.name}>
             {({ focused, pressed, hovered }) => (
@@ -260,15 +240,11 @@ function TabBarItem({
 
 function SideBarTabItem({
   children,
-  href,
   icon,
-  selected,
   name,
 }: {
   children: string;
-  href: string;
   icon: (props: { focused?: boolean; color: string }) => JSX.Element;
-  selected: boolean;
   name: string;
 }) {
   const isLarge = useWidth(1265);
@@ -278,9 +254,8 @@ function SideBarTabItem({
   // console.log("side bar:", buildLink("media"));
   return (
     <div style={{ paddingBottom: 35 }}>
-      <TabbedNavigator.Link
+      <TabBarItem
         name={name}
-        href={href}
         accessibilityHasPopup="menu"
         style={{
           paddingVertical: 4,
@@ -295,36 +270,38 @@ function SideBarTabItem({
           //   backgroundColor: "rgba(231, 233, 234, 0.1)",
         }}
       >
-        <div
-          style={{
-            padding: 12,
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          {icon({ focused: selected, color: "#000" })}
+        {({ focused }) => (
+          <div
+            style={{
+              padding: 12,
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            {icon({ focused, color: "#000" })}
 
-          {isLarge && (
-            <span
-              style={[
-                {
-                  color: "#000",
-                  // color: "#e7e9ea",
-                  fontSize: 20,
-                  marginLeft: 20,
-                  marginRight: 16,
-                  lineHeight: 24,
-                },
-                selected && {
-                  fontWeight: "bold",
-                },
-              ]}
-            >
-              {children}
-            </span>
-          )}
-        </div>
-      </TabbedNavigator.Link>
+            {isLarge && (
+              <span
+                style={[
+                  {
+                    color: "#000",
+                    // color: "#e7e9ea",
+                    fontSize: 20,
+                    marginLeft: 20,
+                    marginRight: 16,
+                    lineHeight: 24,
+                  },
+                  focused && {
+                    fontWeight: "bold",
+                  },
+                ]}
+              >
+                {children}
+              </span>
+            )}
+          </div>
+        )}
+      </TabBarItem>
     </div>
   );
 }
