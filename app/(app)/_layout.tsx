@@ -7,11 +7,17 @@ import {
 import { Link, Navigator, Tabs } from "expo-router";
 import { QualifiedSlot, Slot } from "expo-router/build/views/Layout";
 import React from "react";
-import { Platform, useWindowDimensions } from "react-native";
+import {
+  Platform,
+  Pressable,
+  useWindowDimensions,
+  ViewStyle,
+} from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import * as Icons from "../../components/medium";
 // import { Tabs } from "../../components/tab-bar/BottomTabs";
-import { makeIcon } from "../../components/TabBarIcon";
+import { makeIcon, TabBarIcon } from "../../components/TabBarIcon";
 
 function HeaderLogo() {
   return (
@@ -150,6 +156,64 @@ function SideBar() {
   );
 }
 
+function TabBar() {
+  const navigation = React.useContext(NavigationHelpersContext)!;
+
+  const state = navigation.getState();
+  const current = state.routes.find((route, i) => state.index === i);
+
+  return (
+    <nav
+      style={{
+        paddingBottom: useSafeAreaInsets().bottom,
+      }}
+    >
+      <nav
+        style={{
+          flexDirection: "row",
+          borderTopWidth: 1,
+          borderTopColor: "rgba(230, 230, 230, 1)",
+          justifyContent: "space-around",
+          alignItems: "center",
+          height: 49,
+          paddingHorizontal: 16,
+        }}
+      >
+        {[
+          { name: "(index)", icon: "home" },
+          { name: "(media)", icon: "body" },
+          { name: "about", icon: "code" },
+        ].map((tab, i) => (
+          <TabBarItem key={i} name={tab.name}>
+            {({ focused, pressed, hovered }) => (
+              <TabBarIcon
+                color="black"
+                style={[
+                  {
+                    paddingHorizontal: 8,
+                  },
+                  Platform.select({
+                    web: {
+                      transitionDuration: "100ms",
+                      transform: hovered ? [{ scale: 1.1 }] : [],
+                    },
+                  }),
+                  pressed && {
+                    transform: [{ scale: 0.9 }],
+                    opacity: 0.8,
+                  },
+                ]}
+                name={tab.icon}
+                focused={focused}
+              />
+            )}
+          </TabBarItem>
+        ))}
+      </nav>
+    </nav>
+  );
+}
+
 function SideBarDivider() {
   const isLarge = useWidth(1265);
 
@@ -168,76 +232,31 @@ function SideBarDivider() {
   );
 }
 
-function useContextRoute(name: string) {
-  const context = Navigator.useContext();
+function useIsTabSelected(name: string): boolean {
+  const navigation = React.useContext(NavigationHelpersContext)!;
 
-  const { state, descriptors } = context;
+  const state = navigation.getState();
+  const current = state.routes.find((route, i) => state.index === i);
 
-  const current = state.routes.find((route, i) => {
-    return route.name === name;
-  });
-
-  if (!current) {
-    console.warn(
-      `Could not find route with name: ${name}. Options: ${state.routes
-        .map((r) => r.name)
-        .join(", ")}`
-    );
-  }
-
-  // const current = state.routes.find((route, i) => {
-  //   return state.index === i;
-  // });
-
-  if (!current) {
-    return null;
-  }
-
-  return {
-    route: current,
-    descriptor: descriptors[current.key],
-  };
+  return current.name === name;
 }
 
-function TabLink({ focused, name, ...props }) {
-  const buildLink = useLinkBuilder();
-  const { state, navigation } = Navigator.useContext();
-  const ctxRoute = useContextRoute(name);
+function TabBarItem({
+  children,
+  name,
+  style,
+}: {
+  children?: any;
+  name: string;
+  style?: ViewStyle;
+}) {
+  const focused = useIsTabSelected(name);
 
-  if (!ctxRoute) {
-    return null;
-  }
-
-  const { route } = ctxRoute;
-  // const navigation = useNavigation();
-
-  const onPress = () => {
-    const event = navigation.emit({
-      type: "tabPress",
-      target: route.key,
-      canPreventDefault: true,
-    });
-
-    if (!focused && !event.defaultPrevented) {
-      navigation.dispatch({
-        ...CommonActions.navigate({ name: route.name, merge: true }),
-        target: state.key,
-      });
-    }
-  };
-
-  const onLongPress = () => {
-    navigation.emit({
-      type: "tabLongPress",
-      target: route.key,
-    });
-  };
-
-  const href = buildLink(name);
-
-  console.log("REF:", name, href);
-  // onPress={onPress} onLongPress={onLongPress}
-  return <Link {...props} href={href} />;
+  return (
+    <TabbedNavigator.Link name={name} asChild style={style}>
+      <Pressable>{(props) => children({ ...props, focused })}</Pressable>
+    </TabbedNavigator.Link>
+  );
 }
 
 function SideBarTabItem({
@@ -260,7 +279,7 @@ function SideBarTabItem({
   // console.log("side bar:", buildLink("media"));
   return (
     <div style={{ paddingBottom: 35 }}>
-      <TabLink
+      <TabbedNavigator.Link
         name={name}
         href={href}
         accessibilityHasPopup="menu"
@@ -306,13 +325,12 @@ function SideBarTabItem({
             </span>
           )}
         </div>
-      </TabLink>
+      </TabbedNavigator.Link>
     </div>
   );
 }
-import { TabRouter } from "@react-navigation/native";
-import { useLinkBuilder } from "../../components/useLinkBuilder";
-import TabbedSlot from "../../components/TabbedSlot";
+
+import TabbedSlot, { TabbedNavigator } from "../../components/TabbedSlot";
 
 export default function App() {
   const isRowLayout = useWidth(600);
@@ -321,53 +339,48 @@ export default function App() {
     <>
       <GlobalHead />
       {/* <Tabs /> */}
-      <Navigator router={TabRouter}>
-        <View style={{ flex: 1, flexDirection: "row" }}>
-          <SideBar />
-          <TabbedSlot />
-        </View>
-      </Navigator>
-      {false && (
-        <Tabs
-          customView={
-            isRowLayout ? (
-              <View style={{ flex: 1, flexDirection: "row" }}>
-                <SideBar />
-                <QualifiedSlot />
-              </View>
-            ) : null
-          }
-          screenOptions={{
-            tabBarShowLabel: false,
-            headerShown: false,
-            tabBarActiveTintColor: "black",
+      <TabbedNavigator
+        screenOptions={{
+          tabBarShowLabel: false,
+          headerShown: false,
+          tabBarActiveTintColor: "black",
+        }}
+      >
+        <View
+          style={{
+            flex: 1,
+            flexDirection: isRowLayout ? "row" : "column",
           }}
         >
-          <Tabs.Screen
-            name="(index)"
-            options={{
-              title: "Feed",
-              tabBarIcon: makeIcon("home"),
-            }}
-          />
+          {isRowLayout && <SideBar />}
+          <TabbedNavigator.Slot />
+          {!isRowLayout && <TabBar />}
+        </View>
 
-          <Tabs.Screen
-            name="(media)"
-            options={{
-              title: "Media",
-              tabBarIcon: makeIcon("mic"),
-            }}
-          />
+        <TabbedNavigator.Screen
+          name="(index)"
+          options={{
+            title: "Feed",
+            tabBarIcon: makeIcon("home"),
+          }}
+        />
 
-          <Tabs.Screen
-            name="about"
-            options={{
-              title: "Evan Bacon",
-              tabBarIcon: makeIcon("person"),
-            }}
-          />
-        </Tabs>
-      )}
+        <TabbedNavigator.Screen
+          name="(media)"
+          options={{
+            title: "Media",
+            tabBarIcon: makeIcon("mic"),
+          }}
+        />
+
+        <TabbedNavigator.Screen
+          name="about"
+          options={{
+            title: "Evan Bacon",
+            tabBarIcon: makeIcon("person"),
+          }}
+        />
+      </TabbedNavigator>
     </>
   );
 }

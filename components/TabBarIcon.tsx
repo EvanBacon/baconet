@@ -7,6 +7,7 @@ export function TabBarIcon(props: {
   name: React.ComponentProps<typeof Ionicons>["name"];
   focused?: boolean;
   color: string;
+  style?: React.ComponentProps<typeof Ionicons>["style"];
 }) {
   let resolvedName: any = props.name;
   if (!props.focused) {
@@ -16,7 +17,7 @@ export function TabBarIcon(props: {
   return (
     <Ionicons
       size={30}
-      style={{ marginBottom: -3 }}
+      style={[{ marginBottom: -3 }, props.style]}
       {...props}
       name={resolvedName}
     />
