@@ -51,9 +51,11 @@ export default function Page() {
           <BlurCard
             key={index}
             title={value.title}
-            href={"./watch/" + value.slug}
+            href={value.url}
+            // href={"./watch/" + value.slug}
             subtitle={value.subtitle}
             image={value.image}
+            blank
           />
         ))}
       </ScrollView>

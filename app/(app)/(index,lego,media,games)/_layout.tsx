@@ -60,6 +60,15 @@ export default function StackLayout({ segment }) {
     <OutletContext.Provider value={posts}>
       <Stack
         screenOptions={{
+          headerLargeTitle: true,
+          headerTitleStyle: {
+            fontFamily: "Inter_700Bold",
+          },
+
+          headerLargeTitleStyle: {
+            fontFamily: "Inter_700Bold",
+          },
+
           headerRight(props) {
             if (Platform.OS === "web") {
               return null;
@@ -77,6 +86,9 @@ export default function StackLayout({ segment }) {
                   title: "Home",
                   headerLargeTitle: true,
                   headerRight(props) {
+                    if (Platform.OS === "web") {
+                      return null;
+                    }
                     // if (Platform.OS === "web") {
                     //   return (
                     //     <SearchBar

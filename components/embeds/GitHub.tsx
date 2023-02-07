@@ -1,4 +1,7 @@
 import { Text } from "@bacons/react-views";
+import React from "react";
+
+import { ProfileCard } from "./Profile";
 
 function removeExtension(value: string) {
   return value.replace(/\.[^/.]+$/, "");
@@ -11,11 +14,24 @@ export function Gist({ url }: { url: string }) {
 export function GitHubRepo({ url }: { url: string }) {
   return <Text>GitHub repo Embed not implemented: {url}</Text>;
 }
-export function GitHubProfile({ url }: { url: string }) {
-  return <Text>GitHub profile Embed not implemented: {url}</Text>;
-}
 
-import React from "react";
+const BIOS = {
+  evanbacon: `Building 𝝠 Expo • Follow me on Twitter for updates 🥓`,
+};
+export function GitHubProfile({ url }: { url: string }) {
+  const username = url.match(/github\.com\/(.*)/)?.[1].toLowerCase();
+  const picture = url + ".png";
+  const bio = BIOS[username] || "No bio available";
+  return (
+    <ProfileCard
+      title={username}
+      image={picture}
+      subtitle={bio}
+      website="GitHub"
+      url={url}
+    />
+  );
+}
 
 function ReactEmbedGist({
   gist,

@@ -73,7 +73,9 @@ function PostsList() {
         })
         .sort((a, b) => {
           return new Date(b.date).getTime() - new Date(a.date).getTime();
-        }),
+        })
+        // Limit to 5
+        .slice(0, 5),
     [mdxctx.keys()]
   );
 
@@ -90,18 +92,16 @@ function PostsList() {
       }}
       contentInsetAdjustmentBehavior="automatic"
       data={posts}
-      renderItem={({ item }) => {
-        return (
-          <BlurCard
-            href={"/blog/" + item.slug}
-            image={item.featuredImage}
-            subtitle={item.subtitle}
-            title={item.title}
-            cta={new Date(item.date).toDateString()}
-            icon="book-outline"
-          />
-        );
-      }}
+      renderItem={({ item }) => (
+        <BlurCard
+          href={"/blog/" + item.slug}
+          image={item.featuredImage}
+          subtitle={item.subtitle}
+          title={item.title}
+          cta={new Date(item.date).toDateString()}
+          icon="book-outline"
+        />
+      )}
     />
   );
 }

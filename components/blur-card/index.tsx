@@ -14,6 +14,7 @@ export function BlurCard({
   subtitle,
   icon = "play",
   cta = "Watch Now",
+  blank,
 }: {
   cta?: string;
   icon?: string;
@@ -21,11 +22,16 @@ export function BlurCard({
   href: string;
   title: string;
   subtitle: string;
+  blank?: boolean;
 }) {
   const { width } = useWindowDimensions();
   const row = width >= 600;
   return (
-    <Link href={href} asChild>
+    <Link
+      href={href}
+      hrefAttrs={{ target: blank ? "_blank" : undefined }}
+      asChild
+    >
       <Pressable>
         {({ hovered, pressed }) => (
           <View

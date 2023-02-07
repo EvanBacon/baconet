@@ -184,13 +184,15 @@ function SideBar() {
               marginVertical: 16,
             }}
           >
-            <a
-              style={{ width: 32, marginVertical: 8, height: 32 }}
-              href="https://github.com/evanbacon/portfolio"
-              target="_blank"
-            >
-              <Icons.Code />
-            </a>
+            {false && (
+              <a
+                style={{ width: 32, marginVertical: 8, height: 32 }}
+                href="https://github.com/evanbacon/portfolio"
+                target="_blank"
+              >
+                <Icons.Code />
+              </a>
+            )}
           </footer>
         </header>
       </div>
