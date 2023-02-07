@@ -5,7 +5,12 @@ import {
   NavigationHelpersContext,
 } from "@react-navigation/native";
 import { TabRouter } from "@react-navigation/routers";
-import { Link, Navigator, Slot, Tabs } from "expo-router";
+import {
+  Link,
+  Navigator,
+  Slot,
+  // Tabs
+} from "expo-router";
 import React from "react";
 import { useWindowDimensions } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -321,69 +326,79 @@ function ProfileImage({ style, ...props }) {
   );
 }
 
+import { QualifiedSlot } from "expo-router/build/views/Layout";
+import { Tabs } from "../../components/tab-bar/BottomTabs";
 // import { createContext } from '@radix-ui/react-context';
 
 export default function App({ children }) {
   const isRowLayout = useWidth(600);
 
-  if (!isRowLayout) {
-    return (
-      <>
-        <GlobalHead />
-        <Tabs
-          screenOptions={{
-            tabBarShowLabel: false,
-            headerShown: false,
-            tabBarActiveTintColor: "black",
+  // if (!isRowLayout) {
+  return (
+    <>
+      <GlobalHead />
+      <Tabs
+        customView={
+          isRowLayout ? (
+            <View style={{ flex: 1, flexDirection: "row" }}>
+              <SideBar />
+              <QualifiedSlot />
+            </View>
+          ) : null
+        }
+        screenOptions={{
+          tabBarShowLabel: false,
+          headerShown: false,
+          tabBarActiveTintColor: "black",
+        }}
+      >
+        <Tabs.Screen
+          name="(index)"
+          options={{
+            title: "Feed",
+            tabBarIcon: makeIcon("home"),
           }}
-        >
-          <Tabs.Screen
-            name="(index)"
-            options={{
-              title: "Feed",
-              tabBarIcon: makeIcon("home"),
-            }}
-          />
+        />
 
-          <Tabs.Screen
-            name="(games)"
-            options={{
-              // TODO:
-              href: null,
+        <Tabs.Screen
+          name="(games)"
+          options={{
+            // TODO:
+            href: null,
 
-              title: "Games",
-              tabBarIcon: makeIcon("game-controller"),
-            }}
-          />
-          <Tabs.Screen
-            name="(media)"
-            options={{
-              title: "Media",
-              tabBarIcon: makeIcon("mic"),
-            }}
-          />
+            title: "Games",
+            tabBarIcon: makeIcon("game-controller"),
+          }}
+        />
+        <Tabs.Screen
+          name="(media)"
+          options={{
+            title: "Media",
+            tabBarIcon: makeIcon("mic"),
+          }}
+        />
 
-          <Tabs.Screen
-            name="(lego)"
-            options={{
-              // TODO:
-              href: null,
-              title: "Lego",
-              tabBarIcon: makeIcon("build"),
-            }}
-          />
+        <Tabs.Screen
+          name="(lego)"
+          options={{
+            // TODO:
+            href: null,
+            title: "Lego",
+            tabBarIcon: makeIcon("build"),
+          }}
+        />
 
-          <Tabs.Screen
-            name="(about)"
-            options={{
-              title: "Evan Bacon",
-              tabBarIcon: makeIcon("person"),
-            }}
-          />
-        </Tabs>
-      </>
-    );
-  }
+        <Tabs.Screen
+          name="(about)"
+          options={{
+            title: "Evan Bacon",
+            tabBarIcon: makeIcon("person"),
+          }}
+        />
+      </Tabs>
+    </>
+  );
+  // }
 
   return (
     <>
@@ -417,6 +432,12 @@ function GlobalHead() {
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4630eb" />
+
+      <meta name="robots" content="index, follow" />
+      <meta
+        name="googlebot"
+        content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
+      />
     </Head>
   );
 }
