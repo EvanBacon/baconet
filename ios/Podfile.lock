@@ -13,6 +13,8 @@ PODS:
     - ExpoModulesCore
   - EXConstants (14.0.2):
     - ExpoModulesCore
+  - EXDevice (5.0.0):
+    - ExpoModulesCore
   - EXErrorRecovery (4.0.1):
     - ExpoModulesCore
   - EXFileSystem (15.1.1):
@@ -395,6 +397,7 @@ DEPENDENCIES:
   - EXAV (from `../node_modules/expo-av/ios`)
   - EXBlur (from `../node_modules/expo-blur/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
+  - EXDevice (from `../node_modules/expo-device/ios`)
   - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
@@ -473,6 +476,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-blur/ios"
   EXConstants:
     :path: "../node_modules/expo-constants/ios"
+  EXDevice:
+    :path: "../node_modules/expo-device/ios"
   EXErrorRecovery:
     :path: "../node_modules/expo-error-recovery/ios"
   EXFileSystem:
@@ -595,6 +600,7 @@ SPEC CHECKSUMS:
   EXAV: 9a45d37772c5329294c054a041dcc39931fc5032
   EXBlur: d87af64a1b4ae264059983bf54baca72be2cbc7d
   EXConstants: 3c86653c422dd77e40d10cbbabb3025003977415
+  EXDevice: 734a55d8935ea8e075d12df1919a0497153bf55c
   EXErrorRecovery: ae43433feb0608a64dc5b1c8363b3e7769a9ea24
   EXFileSystem: 60602b6eefa6873f97172c684b7537c9760b50d6
   EXFont: 319606bfe48c33b5b5063fb0994afdc496befe80

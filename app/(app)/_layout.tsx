@@ -1,11 +1,13 @@
 import { Head } from "@bacons/head";
-import { View } from "@bacons/react-views";
+import { Text, View } from "@bacons/react-views";
 import { NavigationHelpersContext } from "@react-navigation/native";
 import { Link } from "expo-router";
 import React from "react";
 import {
+  DevSettings,
   Platform,
   Pressable,
+  TouchableOpacity,
   useWindowDimensions,
   ViewStyle,
 } from "react-native";
@@ -290,11 +292,37 @@ function SideBarTabItem({
   );
 }
 
+import * as Device from "expo-device";
+
 export default function App() {
   const isRowLayout = useWidth(600);
 
   return (
     <>
+      {process.env.IS_APP_CLIP && Platform.OS === "ios" && Device.isDevice && (
+        // FAB for reloading manually
+
+        <TouchableOpacity
+          zIndex={999}
+          style={{
+            zIndex: 999,
+            position: "absolute",
+            bottom: 68,
+            right: 8,
+            backgroundColor: "red",
+            width: 50,
+            height: 50,
+            borderRadius: 25,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          onPress={() => {
+            DevSettings.reload();
+          }}
+        >
+          <p style={{ color: "white" }}>Reload</p>
+        </TouchableOpacity>
+      )}
       <GlobalHead />
       {/* <Tabs /> */}
       <TabbedNavigator
