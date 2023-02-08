@@ -3,7 +3,7 @@
   "subtitle": "Expo Go can get you from zero to “hello world” without ever needing to do a native build. This works great for many cases, but when it comes time for custom native code, then what do you do?",
   "author": "Evan Bacon",
   "date": "2021-05-28T00:16:51.286Z",
-  "slug": "introducing-expo-run-commands",
+  "slug": "run-cmd",
   "url": "https://blog.expo.dev/introducing-expo-run-commands-835ae8da4813",
   "images": [
     "introducing-expo-run-commands/images/1WdIKBmcJMH7xB0ya37M-iA.png",
