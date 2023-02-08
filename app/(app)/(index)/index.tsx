@@ -16,7 +16,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { BlurCard } from "../../../components/blur-card";
-
+import { useScrollToTop } from "@react-navigation/native";
 import { MetaShortcut } from "../../../components/shortcuts";
 
 const mdxctx = require.context("../../../assets/articles", true, /\.js$/);
@@ -51,6 +51,10 @@ export default function Page() {
 export { ErrorBoundary } from "expo-router";
 
 function PostsList() {
+  const ref = React.useRef(null);
+
+  useScrollToTop(ref);
+
   const posts = React.useMemo(
     () =>
       mdxctx
@@ -71,6 +75,7 @@ function PostsList() {
       style={{
         flex: 1,
       }}
+      ref={ref}
       contentContainerStyle={{
         alignItems: "stretch",
         maxWidth: 800,

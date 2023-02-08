@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 import { Text } from "./useFont";
 
 export function Title({ children, date: dateString }) {
@@ -12,15 +12,17 @@ export function Title({ children, date: dateString }) {
   const dateFormatted = `${month} ${day}, ${year}`;
   return (
     <>
-      <Text
-        style={{
-          fontFamily: "Inter_900Black",
-          fontSize: 32,
-          marginBottom: 8,
-        }}
-      >
-        {children}
-      </Text>
+      {Platform.OS !== "ios" && (
+        <Text
+          style={{
+            fontFamily: "Inter_900Black",
+            fontSize: 32,
+            marginBottom: 8,
+          }}
+        >
+          {children}
+        </Text>
+      )}
       <View style={{ alignItems: "center", flexDirection: "row" }}>
         <View
           style={{

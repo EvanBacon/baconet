@@ -6,8 +6,13 @@ import { ScrollView } from "react-native";
 import { BlurCard } from "../../../components/blur-card";
 import { useFont } from "../../../components/useFont";
 import { data } from "../../../data/media";
+import { useScrollToTop } from "@react-navigation/native";
 
 export default function Page() {
+  const ref = React.useRef(null);
+
+  useScrollToTop(ref);
+
   return (
     <>
       <Head>
@@ -23,6 +28,7 @@ export default function Page() {
         />
       </Head>
       <ScrollView
+        ref={ref}
         style={{ flex: 1 }}
         contentInsetAdjustmentBehavior="automatic"
         contentContainerStyle={[

@@ -158,6 +158,7 @@ function CoolBackground({ image, hovered }) {
   // Disable to hide react-native-web style errors.
   const isCool = true; //Platform.OS !== "web";
 
+  console.log("image", image);
   return (
     <>
       <Image style={style} source={src} />

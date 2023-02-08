@@ -9,7 +9,7 @@ export default function About() {
         <meta name="description" content="About Evan Bacon" />
         <meta
           property="og:image"
-          content="https://icogen.vercel.app/api/icon?icon=🥓"
+          content="https://icogen.vercel.app/api/icon?icon=1f953"
         />
         <meta
           name="keywords"

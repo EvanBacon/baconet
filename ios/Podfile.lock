@@ -22,7 +22,7 @@ PODS:
   - EXJSONUtils (0.4.0)
   - EXManifests (0.4.0):
     - EXJSONUtils
-  - Expo (47.0.8):
+  - Expo (47.0.13):
     - ExpoModulesCore
   - ExpoCrypto (12.0.0):
     - ExpoModulesCore
@@ -32,7 +32,7 @@ PODS:
     - ExpoModulesCore
   - ExpoLinearGradient (12.0.1):
     - ExpoModulesCore
-  - ExpoModulesCore (1.0.3):
+  - ExpoModulesCore (1.1.1):
     - React-Core
     - ReactCommon/turbomodule/core
   - ExpoRandom (13.0.0):
@@ -600,12 +600,12 @@ SPEC CHECKSUMS:
   EXFont: 319606bfe48c33b5b5063fb0994afdc496befe80
   EXJSONUtils: 09aef2c1fba1a116ca8c73a2c8299aac00d96b43
   EXManifests: 347f49430b63444579aa013f0ad057d16b8d1cc8
-  Expo: 36b5f625d36728adbdd1934d4d57182f319ab832
+  Expo: b9fa98bf260992312ee3c424400819fb9beadafe
   ExpoCrypto: 51e7662c7f5bfeab25b7909b8a5d545ec15d4877
   ExpoHead: a516d35f066ab3625aa9ed3860680f9874548f35
   ExpoKeepAwake: 69b59d0a8d2b24de9f82759c39b3821fec030318
   ExpoLinearGradient: b40c2133ad57ae105b1b12a319e314463c817f6b
-  ExpoModulesCore: b5d21c8880afda6fb6ee95469f9ac2ec9b98e995
+  ExpoModulesCore: 485dff3a59b036a33b6050c0a5aea3cf1037fdd1
   ExpoRandom: 58b7e0a5fe1adf1cb6dc1cbe503a6fe9524f36ce
   ExpoSystemUI: c844dec5e49e677bcd6bfe15cc305b02127b1124
   ExpoWebBrowser: 073e50f16669d498fb49063b9b7fe780b24f7fda
