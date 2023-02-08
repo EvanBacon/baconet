@@ -9,12 +9,7 @@ import {
 } from "@bacons/react-views";
 import { Link, useNavigation, useRouter } from "expo-router";
 import React, { useMemo } from "react";
-import {
-  FlatList,
-  Platform,
-  PlatformColor,
-  TouchableOpacity,
-} from "react-native";
+import { FlatList } from "react-native-gesture-handler";
 import { BlurCard } from "../../../components/blur-card";
 import { useScrollToTop } from "@react-navigation/native";
 import { MetaShortcut } from "../../../components/shortcuts";
@@ -95,34 +90,5 @@ function PostsList() {
         />
       )}
     />
-  );
-}
-
-export function cupertinoColor(iosName, fallback) {
-  if (Platform.OS === "ios") {
-    return PlatformColor(iosName);
-  } else {
-    return fallback;
-  }
-}
-
-export function CupertinoItemSeparatorComponent() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: cupertinoColor(
-          "secondarySystemGroupedBackground",
-          "rgba(0,0,0,0.1)"
-        ),
-      }}
-    >
-      <View
-        style={{
-          height: StyleSheet.hairlineWidth,
-          backgroundColor: cupertinoColor("separator", "#C6C6C8"),
-        }}
-      />
-    </View>
   );
 }
