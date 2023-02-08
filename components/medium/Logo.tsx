@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import Svg, { G, Path } from "react-native-svg";
 
 const SvgComponent = forwardRef((props, ref) => (
-  <Svg ref={ref} viewBox="0, 0, 400,269.9186991869919" {...props}>
+  <Svg ref={ref} viewBox="0, 0, 400, 269" {...props}>
     <G id="svgg">
       <Path
         id="path0"

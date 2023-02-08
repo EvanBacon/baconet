@@ -7,15 +7,17 @@ import { CommonActions } from "@react-navigation/native";
 function useNavigatorContext() {
   const context = Navigator.useContext();
 
-  console.log("useNavigatorContext", context);
-  if (
-    !(
-      context.router.name === "TabRouter" || context.router instanceof TabRouter
-    )
-  ) {
-    throw new Error(
-      "useTabbedSlot must be used inside a Navigator with a tab router: <Navigator route={TabRouter} />"
-    );
+  if (process.env.NODE_ENV !== "production") {
+    if (
+      !(
+        context.router.name === "TabRouter" ||
+        context.router instanceof TabRouter
+      )
+    ) {
+      throw new Error(
+        "useTabbedSlot must be used inside a Navigator with a tab router: <Navigator route={TabRouter} />"
+      );
+    }
   }
 
   return context;

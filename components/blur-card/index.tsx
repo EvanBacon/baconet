@@ -156,7 +156,7 @@ function CoolBackground({ image, hovered }) {
     { width: "100%", height: "100%" },
   ];
   // Disable to hide react-native-web style errors.
-  const isCool = Platform.OS !== "web";
+  const isCool = true; //Platform.OS !== "web";
 
   return (
     <>

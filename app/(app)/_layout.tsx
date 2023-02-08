@@ -36,7 +36,7 @@ function HeaderLogo() {
 
 function useWidth(size) {
   const { width } = useWindowDimensions();
-  return width >= size;
+  return width >= size && Platform.OS === "web";
 }
 
 function SideBar({ visible }) {
@@ -201,15 +201,22 @@ function TabBarItem({
   children,
   name,
   style,
+  hoverStyle,
 }: {
   children?: any;
   name: string;
   style?: ViewStyle;
+  hoverStyle?: ViewStyle;
 }) {
   const focused = useIsTabSelected(name);
 
   return (
-    <TabbedNavigator.Link name={name} asChild style={style}>
+    <TabbedNavigator.Link
+      hoverStyle={hoverStyle}
+      name={name}
+      asChild
+      style={style}
+    >
       <Pressable>{(props) => children({ ...props, focused })}</Pressable>
     </TabbedNavigator.Link>
   );
