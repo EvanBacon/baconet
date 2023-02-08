@@ -19,12 +19,12 @@
         "./config-plugins/withLinks",
         "https://baconet.netlify.app/"
       ],
-      "@bacons/head",
-      "./config-plugins/withVideoShare"
+      "@bacons/head"
     ],
     "ios": {
       "bundleIdentifier": "app.baconet",
-      "runtimeVersion": "1.0.0",
+      "runtimeVersion": "2.0.0",
+      "buildNumber": "3",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
         "NSUserActivityTypes": [

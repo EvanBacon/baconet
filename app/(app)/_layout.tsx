@@ -120,7 +120,7 @@ function TabBar({ visible }) {
   return (
     <div
       style={{
-        paddingBottom: 0,
+        paddingBottom: useSafeAreaInsets().bottom,
         display: visible ? "flex" : "none",
       }}
     >

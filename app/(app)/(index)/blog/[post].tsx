@@ -6,6 +6,13 @@ import React from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 import { useFont } from "../../../../components/useFont";
 
+export function getStaticPaths(): string[] {
+  return mdxctx
+    .keys()
+    .filter((i) => i.endsWith(".json"))
+    .map((key) => "/blog/" + mdxctx(key).slug);
+}
+
 const mdxctx = require.context(
   "../../../../assets/articles",
   true,
