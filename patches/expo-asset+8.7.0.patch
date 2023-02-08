@@ -1,0 +1,572 @@
+diff --git a/node_modules/expo-asset/.DS_Store b/node_modules/expo-asset/.DS_Store
+new file mode 100644
+index 0000000..b1ed6c7
+Binary files /dev/null and b/node_modules/expo-asset/.DS_Store differ
+diff --git a/node_modules/expo-asset/build/Asset.d.ts b/node_modules/expo-asset/build/Asset.d.ts
+index 9b4ead8..0d2098e 100644
+--- a/node_modules/expo-asset/build/Asset.d.ts
++++ b/node_modules/expo-asset/build/Asset.d.ts
+@@ -1,5 +1,5 @@
+ import { AssetMetadata } from './AssetSources';
+-export declare type AssetDescriptor = {
++export type AssetDescriptor = {
+     name: string;
+     type: string;
+     hash?: string | null;
+@@ -7,7 +7,7 @@ export declare type AssetDescriptor = {
+     width?: number | null;
+     height?: number | null;
+ };
+-declare type DownloadPromiseCallbacks = {
++type DownloadPromiseCallbacks = {
+     resolve: () => void;
+     reject: (error: Error) => void;
+ };
+diff --git a/node_modules/expo-asset/build/Asset.d.ts.map b/node_modules/expo-asset/build/Asset.d.ts.map
+index 184960f..dd14339 100644
+--- a/node_modules/expo-asset/build/Asset.d.ts.map
++++ b/node_modules/expo-asset/build/Asset.d.ts.map
+@@ -1 +1 @@
+-{"version":3,"file":"Asset.d.ts","sourceRoot":"","sources":["../src/Asset.ts"],"names":[],"mappings":"AAGA,OAAO,EAAE,aAAa,EAAqB,MAAM,gBAAgB,CAAC;AAQlE,oBAAY,eAAe,GAAG;IAC5B,IAAI,EAAE,MAAM,CAAC;IACb,IAAI,EAAE,MAAM,CAAC;IACb,IAAI,CAAC,EAAE,MAAM,GAAG,IAAI,CAAC;IACrB,GAAG,EAAE,MAAM,CAAC;IACZ,KAAK,CAAC,EAAE,MAAM,GAAG,IAAI,CAAC;IACtB,MAAM,CAAC,EAAE,MAAM,GAAG,IAAI,CAAC;CACxB,CAAC;AAEF,aAAK,wBAAwB,GAAG;IAC9B,OAAO,EAAE,MAAM,IAAI,CAAC;IACpB,MAAM,EAAE,CAAC,KAAK,EAAE,KAAK,KAAK,IAAI,CAAC;CAChC,CAAC;AAEF,OAAO,EAAE,aAAa,EAAE,CAAC;AAGzB;;;GAGG;AACH,qBAAa,KAAK;IAChB;;OAEG;IACH,MAAM,CAAC,MAAM,KAAM;IACnB;;OAEG;IACH,MAAM,CAAC,KAAK,KAAM;IAElB;;;OAGG;IACH,IAAI,EAAE,MAAM,CAAC;IACb;;OAEG;IACH,IAAI,EAAE,MAAM,CAAC;IACb;;OAEG;IACH,IAAI,EAAE,MAAM,GAAG,IAAI,CAAQ;IAC3B;;;;;OAKG;IACH,GAAG,EAAE,MAAM,CAAC;IACZ;;;OAGG;IACH,QAAQ,EAAE,MAAM,GAAG,IAAI,CAAQ;IAC/B;;;OAGG;IACH,KAAK,EAAE,MAAM,GAAG,IAAI,CAAQ;IAC5B;;OAEG;IACH,MAAM,EAAE,MAAM,GAAG,IAAI,CAAQ;IAE7B,WAAW,EAAE,OAAO,CAAS;IAE7B,UAAU,EAAE,OAAO,CAAS;IAE5B;;OAEG;IACH,kBAAkB,EAAE,wBAAwB,EAAE,CAAM;gBAExC,EAAE,IAAI,EAAE,IAAI,EAAE,IAAW,EAAE,GAAG,EAAE,KAAK,EAAE,MAAM,EAAE,EAAE,eAAe;IA+B5E;;;;;;;;;;OAUG;IACH,MAAM,CAAC,SAAS,CAAC,QAAQ,EAAE,MAAM,GAAG,MAAM,EAAE,GAAG,MAAM,GAAG,MAAM,EAAE,GAAG,OAAO,CAAC,KAAK,EAAE,CAAC;IAMnF;;;;;OAKG;IACH,MAAM,CAAC,UAAU,CAAC,kBAAkB,EAAE,MAAM,GAAG,MAAM,GAAG,KAAK;IAwC7D,MAAM,CAAC,YAAY,CAAC,IAAI,EAAE,aAAa,GAAG,KAAK;IAsB/C,MAAM,CAAC,OAAO,CAAC,GAAG,EAAE,MAAM,GAAG,KAAK;IA2BlC;;;;;;;OAOG;IACG,aAAa,IAAI,OAAO,CAAC,IAAI,CAAC;CAoCrC"}
+\ No newline at end of file
++{"version":3,"file":"Asset.d.ts","sourceRoot":"","sources":["../src/Asset.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,aAAa,EAAqB,MAAM,gBAAgB,CAAC;AASlE,MAAM,MAAM,eAAe,GAAG;IAC5B,IAAI,EAAE,MAAM,CAAC;IACb,IAAI,EAAE,MAAM,CAAC;IACb,IAAI,CAAC,EAAE,MAAM,GAAG,IAAI,CAAC;IACrB,GAAG,EAAE,MAAM,CAAC;IACZ,KAAK,CAAC,EAAE,MAAM,GAAG,IAAI,CAAC;IACtB,MAAM,CAAC,EAAE,MAAM,GAAG,IAAI,CAAC;CACxB,CAAC;AAEF,KAAK,wBAAwB,GAAG;IAC9B,OAAO,EAAE,MAAM,IAAI,CAAC;IACpB,MAAM,EAAE,CAAC,KAAK,EAAE,KAAK,KAAK,IAAI,CAAC;CAChC,CAAC;AAEF,OAAO,EAAE,aAAa,EAAE,CAAC;AAGzB;;;GAGG;AACH,qBAAa,KAAK;IAChB;;OAEG;IACH,MAAM,CAAC,MAAM,KAAM;IACnB;;OAEG;IACH,MAAM,CAAC,KAAK,KAAM;IAElB;;;OAGG;IACH,IAAI,EAAE,MAAM,CAAC;IACb;;OAEG;IACH,IAAI,EAAE,MAAM,CAAC;IACb;;OAEG;IACH,IAAI,EAAE,MAAM,GAAG,IAAI,CAAQ;IAC3B;;;;;OAKG;IACH,GAAG,EAAE,MAAM,CAAC;IACZ;;;OAGG;IACH,QAAQ,EAAE,MAAM,GAAG,IAAI,CAAQ;IAC/B;;;OAGG;IACH,KAAK,EAAE,MAAM,GAAG,IAAI,CAAQ;IAC5B;;OAEG;IACH,MAAM,EAAE,MAAM,GAAG,IAAI,CAAQ;IAE7B,WAAW,EAAE,OAAO,CAAS;IAE7B,UAAU,EAAE,OAAO,CAAS;IAE5B;;OAEG;IACH,kBAAkB,EAAE,wBAAwB,EAAE,CAAM;gBAExC,EAAE,IAAI,EAAE,IAAI,EAAE,IAAW,EAAE,GAAG,EAAE,KAAK,EAAE,MAAM,EAAE,EAAE,eAAe;IA+B5E;;;;;;;;;;OAUG;IACH,MAAM,CAAC,SAAS,CAAC,QAAQ,EAAE,MAAM,GAAG,MAAM,EAAE,GAAG,MAAM,GAAG,MAAM,EAAE,GAAG,OAAO,CAAC,KAAK,EAAE,CAAC;IAMnF;;;;;OAKG;IACH,MAAM,CAAC,UAAU,CAAC,kBAAkB,EAAE,MAAM,GAAG,MAAM,GAAG,KAAK;IAwC7D,MAAM,CAAC,YAAY,CAAC,IAAI,EAAE,aAAa,GAAG,KAAK;IAsB/C,MAAM,CAAC,OAAO,CAAC,GAAG,EAAE,MAAM,GAAG,KAAK;IA2BlC;;;;;;;OAOG;IACG,aAAa,IAAI,OAAO,CAAC,IAAI,CAAC;CAoCrC"}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/Asset.js b/node_modules/expo-asset/build/Asset.js
+index d56c50c..fb5cd27 100644
+--- a/node_modules/expo-asset/build/Asset.js
++++ b/node_modules/expo-asset/build/Asset.js
+@@ -1,10 +1,10 @@
+ import { Platform } from 'expo-modules-core';
+-import { getAssetByID } from './AssetRegistry';
+ import { selectAssetSource } from './AssetSources';
+ import * as AssetUris from './AssetUris';
+ import * as ImageAssets from './ImageAssets';
+ import { getLocalAssetUri } from './LocalAssets';
+ import { downloadAsync, IS_ENV_WITH_UPDATES_ENABLED } from './PlatformUtils';
++import { getAssetByID } from './ReactNativeCompatibleAssetsRegistry';
+ import resolveAssetSource from './resolveAssetSource';
+ // @needsAudit
+ /**
+diff --git a/node_modules/expo-asset/build/Asset.js.map b/node_modules/expo-asset/build/Asset.js.map
+index d89f610..4416dee 100644
+--- a/node_modules/expo-asset/build/Asset.js.map
++++ b/node_modules/expo-asset/build/Asset.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"Asset.js","sourceRoot":"","sources":["../src/Asset.ts"],"names":[],"mappings":"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","sourcesContent":["import { Platform } from 'expo-modules-core';\n\nimport { getAssetByID } from './AssetRegistry';\nimport { AssetMetadata, selectAssetSource } from './AssetSources';\nimport * as AssetUris from './AssetUris';\nimport * as ImageAssets from './ImageAssets';\nimport { getLocalAssetUri } from './LocalAssets';\nimport { downloadAsync, IS_ENV_WITH_UPDATES_ENABLED } from './PlatformUtils';\nimport resolveAssetSource from './resolveAssetSource';\n\n// @docsMissing\nexport type AssetDescriptor = {\n  name: string;\n  type: string;\n  hash?: string | null;\n  uri: string;\n  width?: number | null;\n  height?: number | null;\n};\n\ntype DownloadPromiseCallbacks = {\n  resolve: () => void;\n  reject: (error: Error) => void;\n};\n\nexport { AssetMetadata };\n\n// @needsAudit\n/**\n * The `Asset` class represents an asset in your app. It gives metadata about the asset (such as its\n * name and type) and provides facilities to load the asset data.\n */\nexport class Asset {\n  /**\n   * @private\n   */\n  static byHash = {};\n  /**\n   * @private\n   */\n  static byUri = {};\n\n  /**\n   * The name of the asset file without the extension. Also without the part from `@` onward in the\n   * filename (used to specify scale factor for images).\n   */\n  name: string;\n  /**\n   * The extension of the asset filename.\n   */\n  type: string;\n  /**\n   * The MD5 hash of the asset's data.\n   */\n  hash: string | null = null;\n  /**\n   * A URI that points to the asset's data on the remote server. When running the published version\n   * of your app, this refers to the location on Expo's asset server where Expo has stored your\n   * asset. When running the app from Expo CLI during development, this URI points to Expo CLI's\n   * server running on your computer and the asset is served directly from your computer.\n   */\n  uri: string;\n  /**\n   * If the asset has been downloaded (by calling [`downloadAsync()`](#downloadasync)), the\n   * `file://` URI pointing to the local file on the device that contains the asset data.\n   */\n  localUri: string | null = null;\n  /**\n   * If the asset is an image, the width of the image data divided by the scale factor. The scale\n   * factor is the number after `@` in the filename, or `1` if not present.\n   */\n  width: number | null = null;\n  /**\n   * If the asset is an image, the height of the image data divided by the scale factor. The scale factor is the number after `@` in the filename, or `1` if not present.\n   */\n  height: number | null = null;\n  // @docsMissing\n  downloading: boolean = false;\n  // @docsMissing\n  downloaded: boolean = false;\n\n  /**\n   * @private\n   */\n  _downloadCallbacks: DownloadPromiseCallbacks[] = [];\n\n  constructor({ name, type, hash = null, uri, width, height }: AssetDescriptor) {\n    this.name = name;\n    this.type = type;\n    this.hash = hash;\n    this.uri = uri;\n\n    if (typeof width === 'number') {\n      this.width = width;\n    }\n    if (typeof height === 'number') {\n      this.height = height;\n    }\n\n    if (hash) {\n      this.localUri = getLocalAssetUri(hash, type);\n      if (this.localUri) {\n        this.downloaded = true;\n      }\n    }\n\n    if (Platform.OS === 'web') {\n      if (!name) {\n        this.name = AssetUris.getFilename(uri);\n      }\n      if (!type) {\n        this.type = AssetUris.getFileExtension(uri);\n      }\n    }\n  }\n\n  // @needsAudit\n  /**\n   * A helper that wraps `Asset.fromModule(module).downloadAsync` for convenience.\n   * @param moduleId An array of `require('path/to/file')` or external network URLs. Can also be\n   * just one module or URL without an Array.\n   * @return Returns a Promise that fulfills with an array of `Asset`s when the asset(s) has been\n   * saved to disk.\n   * @example\n   * ```ts\n   * const [{ localUri }] = await Asset.loadAsync(require('./assets/snack-icon.png'));\n   * ```\n   */\n  static loadAsync(moduleId: number | number[] | string | string[]): Promise<Asset[]> {\n    const moduleIds = Array.isArray(moduleId) ? moduleId : [moduleId];\n    return Promise.all(moduleIds.map((moduleId) => Asset.fromModule(moduleId).downloadAsync()));\n  }\n\n  // @needsAudit\n  /**\n   * Returns the [`Asset`](#asset) instance representing an asset given its module or URL.\n   * @param virtualAssetModule The value of `require('path/to/file')` for the asset or external\n   * network URL\n   * @return The [`Asset`](#asset) instance for the asset.\n   */\n  static fromModule(virtualAssetModule: number | string): Asset {\n    if (typeof virtualAssetModule === 'string') {\n      return Asset.fromURI(virtualAssetModule);\n    }\n\n    const meta = getAssetByID(virtualAssetModule);\n    if (!meta) {\n      throw new Error(`Module \"${virtualAssetModule}\" is missing from the asset registry`);\n    }\n\n    // Outside of the managed env we need the moduleId to initialize the asset\n    // because resolveAssetSource depends on it\n    if (!IS_ENV_WITH_UPDATES_ENABLED) {\n      const { uri } = resolveAssetSource(virtualAssetModule);\n      const asset = new Asset({\n        name: meta.name,\n        type: meta.type,\n        hash: meta.hash,\n        uri,\n        width: meta.width,\n        height: meta.height,\n      });\n\n      // TODO: FileSystem should probably support 'downloading' from drawable\n      // resources But for now it doesn't (it only supports raw resources) and\n      // React Native's Image works fine with drawable resource names for\n      // images.\n      if (Platform.OS === 'android' && !uri.includes(':') && (meta.width || meta.height)) {\n        asset.localUri = asset.uri;\n        asset.downloaded = true;\n      }\n\n      Asset.byHash[meta.hash] = asset;\n      return asset;\n    }\n\n    return Asset.fromMetadata(meta);\n  }\n\n  // @docsMissing\n  static fromMetadata(meta: AssetMetadata): Asset {\n    // The hash of the whole asset, not to be confused with the hash of a specific file returned\n    // from `selectAssetSource`\n    const metaHash = meta.hash;\n    if (Asset.byHash[metaHash]) {\n      return Asset.byHash[metaHash];\n    }\n\n    const { uri, hash } = selectAssetSource(meta);\n    const asset = new Asset({\n      name: meta.name,\n      type: meta.type,\n      hash,\n      uri,\n      width: meta.width,\n      height: meta.height,\n    });\n    Asset.byHash[metaHash] = asset;\n    return asset;\n  }\n\n  // @docsMissing\n  static fromURI(uri: string): Asset {\n    if (Asset.byUri[uri]) {\n      return Asset.byUri[uri];\n    }\n\n    // Possibly a Base64-encoded URI\n    let type = '';\n    if (uri.indexOf(';base64') > -1) {\n      type = uri.split(';')[0].split('/')[1];\n    } else {\n      const extension = AssetUris.getFileExtension(uri);\n      type = extension.startsWith('.') ? extension.substring(1) : extension;\n    }\n\n    const asset = new Asset({\n      name: '',\n      type,\n      hash: null,\n      uri,\n    });\n\n    Asset.byUri[uri] = asset;\n\n    return asset;\n  }\n\n  // @needsAudit\n  /**\n   * Downloads the asset data to a local file in the device's cache directory. Once the returned\n   * promise is fulfilled without error, the [`localUri`](#assetlocaluri) field of this asset points\n   * to a local file containing the asset data. The asset is only downloaded if an up-to-date local\n   * file for the asset isn't already present due to an earlier download. The downloaded `Asset`\n   * will be returned when the promise is resolved.\n   * @return Returns a Promise which fulfills with an `Asset` instance.\n   */\n  async downloadAsync(): Promise<this> {\n    if (this.downloaded) {\n      return this;\n    }\n    if (this.downloading) {\n      await new Promise<void>((resolve, reject) => {\n        this._downloadCallbacks.push({ resolve, reject });\n      });\n      return this;\n    }\n    this.downloading = true;\n\n    try {\n      if (Platform.OS === 'web') {\n        if (ImageAssets.isImageType(this.type)) {\n          const { width, height, name } = await ImageAssets.getImageInfoAsync(this.uri);\n          this.width = width;\n          this.height = height;\n          this.name = name;\n        } else {\n          this.name = AssetUris.getFilename(this.uri);\n        }\n      }\n      this.localUri = await downloadAsync(this.uri, this.hash, this.type, this.name);\n\n      this.downloaded = true;\n      this._downloadCallbacks.forEach(({ resolve }) => resolve());\n    } catch (e) {\n      this._downloadCallbacks.forEach(({ reject }) => reject(e));\n      throw e;\n    } finally {\n      this.downloading = false;\n      this._downloadCallbacks = [];\n    }\n    return this;\n  }\n}\n"]}
+\ No newline at end of file
++{"version":3,"file":"Asset.js","sourceRoot":"","sources":["../src/Asset.ts"],"names":[],"mappings":"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","sourcesContent":["import { Platform } from 'expo-modules-core';\n\nimport { AssetMetadata, selectAssetSource } from './AssetSources';\nimport * as AssetUris from './AssetUris';\nimport * as ImageAssets from './ImageAssets';\nimport { getLocalAssetUri } from './LocalAssets';\nimport { downloadAsync, IS_ENV_WITH_UPDATES_ENABLED } from './PlatformUtils';\nimport { getAssetByID } from './ReactNativeCompatibleAssetsRegistry';\nimport resolveAssetSource from './resolveAssetSource';\n\n// @docsMissing\nexport type AssetDescriptor = {\n  name: string;\n  type: string;\n  hash?: string | null;\n  uri: string;\n  width?: number | null;\n  height?: number | null;\n};\n\ntype DownloadPromiseCallbacks = {\n  resolve: () => void;\n  reject: (error: Error) => void;\n};\n\nexport { AssetMetadata };\n\n// @needsAudit\n/**\n * The `Asset` class represents an asset in your app. It gives metadata about the asset (such as its\n * name and type) and provides facilities to load the asset data.\n */\nexport class Asset {\n  /**\n   * @private\n   */\n  static byHash = {};\n  /**\n   * @private\n   */\n  static byUri = {};\n\n  /**\n   * The name of the asset file without the extension. Also without the part from `@` onward in the\n   * filename (used to specify scale factor for images).\n   */\n  name: string;\n  /**\n   * The extension of the asset filename.\n   */\n  type: string;\n  /**\n   * The MD5 hash of the asset's data.\n   */\n  hash: string | null = null;\n  /**\n   * A URI that points to the asset's data on the remote server. When running the published version\n   * of your app, this refers to the location on Expo's asset server where Expo has stored your\n   * asset. When running the app from Expo CLI during development, this URI points to Expo CLI's\n   * server running on your computer and the asset is served directly from your computer.\n   */\n  uri: string;\n  /**\n   * If the asset has been downloaded (by calling [`downloadAsync()`](#downloadasync)), the\n   * `file://` URI pointing to the local file on the device that contains the asset data.\n   */\n  localUri: string | null = null;\n  /**\n   * If the asset is an image, the width of the image data divided by the scale factor. The scale\n   * factor is the number after `@` in the filename, or `1` if not present.\n   */\n  width: number | null = null;\n  /**\n   * If the asset is an image, the height of the image data divided by the scale factor. The scale factor is the number after `@` in the filename, or `1` if not present.\n   */\n  height: number | null = null;\n  // @docsMissing\n  downloading: boolean = false;\n  // @docsMissing\n  downloaded: boolean = false;\n\n  /**\n   * @private\n   */\n  _downloadCallbacks: DownloadPromiseCallbacks[] = [];\n\n  constructor({ name, type, hash = null, uri, width, height }: AssetDescriptor) {\n    this.name = name;\n    this.type = type;\n    this.hash = hash;\n    this.uri = uri;\n\n    if (typeof width === 'number') {\n      this.width = width;\n    }\n    if (typeof height === 'number') {\n      this.height = height;\n    }\n\n    if (hash) {\n      this.localUri = getLocalAssetUri(hash, type);\n      if (this.localUri) {\n        this.downloaded = true;\n      }\n    }\n\n    if (Platform.OS === 'web') {\n      if (!name) {\n        this.name = AssetUris.getFilename(uri);\n      }\n      if (!type) {\n        this.type = AssetUris.getFileExtension(uri);\n      }\n    }\n  }\n\n  // @needsAudit\n  /**\n   * A helper that wraps `Asset.fromModule(module).downloadAsync` for convenience.\n   * @param moduleId An array of `require('path/to/file')` or external network URLs. Can also be\n   * just one module or URL without an Array.\n   * @return Returns a Promise that fulfills with an array of `Asset`s when the asset(s) has been\n   * saved to disk.\n   * @example\n   * ```ts\n   * const [{ localUri }] = await Asset.loadAsync(require('./assets/snack-icon.png'));\n   * ```\n   */\n  static loadAsync(moduleId: number | number[] | string | string[]): Promise<Asset[]> {\n    const moduleIds = Array.isArray(moduleId) ? moduleId : [moduleId];\n    return Promise.all(moduleIds.map((moduleId) => Asset.fromModule(moduleId).downloadAsync()));\n  }\n\n  // @needsAudit\n  /**\n   * Returns the [`Asset`](#asset) instance representing an asset given its module or URL.\n   * @param virtualAssetModule The value of `require('path/to/file')` for the asset or external\n   * network URL\n   * @return The [`Asset`](#asset) instance for the asset.\n   */\n  static fromModule(virtualAssetModule: number | string): Asset {\n    if (typeof virtualAssetModule === 'string') {\n      return Asset.fromURI(virtualAssetModule);\n    }\n\n    const meta = getAssetByID(virtualAssetModule);\n    if (!meta) {\n      throw new Error(`Module \"${virtualAssetModule}\" is missing from the asset registry`);\n    }\n\n    // Outside of the managed env we need the moduleId to initialize the asset\n    // because resolveAssetSource depends on it\n    if (!IS_ENV_WITH_UPDATES_ENABLED) {\n      const { uri } = resolveAssetSource(virtualAssetModule);\n      const asset = new Asset({\n        name: meta.name,\n        type: meta.type,\n        hash: meta.hash,\n        uri,\n        width: meta.width,\n        height: meta.height,\n      });\n\n      // TODO: FileSystem should probably support 'downloading' from drawable\n      // resources But for now it doesn't (it only supports raw resources) and\n      // React Native's Image works fine with drawable resource names for\n      // images.\n      if (Platform.OS === 'android' && !uri.includes(':') && (meta.width || meta.height)) {\n        asset.localUri = asset.uri;\n        asset.downloaded = true;\n      }\n\n      Asset.byHash[meta.hash] = asset;\n      return asset;\n    }\n\n    return Asset.fromMetadata(meta);\n  }\n\n  // @docsMissing\n  static fromMetadata(meta: AssetMetadata): Asset {\n    // The hash of the whole asset, not to be confused with the hash of a specific file returned\n    // from `selectAssetSource`\n    const metaHash = meta.hash;\n    if (Asset.byHash[metaHash]) {\n      return Asset.byHash[metaHash];\n    }\n\n    const { uri, hash } = selectAssetSource(meta);\n    const asset = new Asset({\n      name: meta.name,\n      type: meta.type,\n      hash,\n      uri,\n      width: meta.width,\n      height: meta.height,\n    });\n    Asset.byHash[metaHash] = asset;\n    return asset;\n  }\n\n  // @docsMissing\n  static fromURI(uri: string): Asset {\n    if (Asset.byUri[uri]) {\n      return Asset.byUri[uri];\n    }\n\n    // Possibly a Base64-encoded URI\n    let type = '';\n    if (uri.indexOf(';base64') > -1) {\n      type = uri.split(';')[0].split('/')[1];\n    } else {\n      const extension = AssetUris.getFileExtension(uri);\n      type = extension.startsWith('.') ? extension.substring(1) : extension;\n    }\n\n    const asset = new Asset({\n      name: '',\n      type,\n      hash: null,\n      uri,\n    });\n\n    Asset.byUri[uri] = asset;\n\n    return asset;\n  }\n\n  // @needsAudit\n  /**\n   * Downloads the asset data to a local file in the device's cache directory. Once the returned\n   * promise is fulfilled without error, the [`localUri`](#assetlocaluri) field of this asset points\n   * to a local file containing the asset data. The asset is only downloaded if an up-to-date local\n   * file for the asset isn't already present due to an earlier download. The downloaded `Asset`\n   * will be returned when the promise is resolved.\n   * @return Returns a Promise which fulfills with an `Asset` instance.\n   */\n  async downloadAsync(): Promise<this> {\n    if (this.downloaded) {\n      return this;\n    }\n    if (this.downloading) {\n      await new Promise<void>((resolve, reject) => {\n        this._downloadCallbacks.push({ resolve, reject });\n      });\n      return this;\n    }\n    this.downloading = true;\n\n    try {\n      if (Platform.OS === 'web') {\n        if (ImageAssets.isImageType(this.type)) {\n          const { width, height, name } = await ImageAssets.getImageInfoAsync(this.uri);\n          this.width = width;\n          this.height = height;\n          this.name = name;\n        } else {\n          this.name = AssetUris.getFilename(this.uri);\n        }\n      }\n      this.localUri = await downloadAsync(this.uri, this.hash, this.type, this.name);\n\n      this.downloaded = true;\n      this._downloadCallbacks.forEach(({ resolve }) => resolve());\n    } catch (e) {\n      this._downloadCallbacks.forEach(({ reject }) => reject(e));\n      throw e;\n    } finally {\n      this.downloading = false;\n      this._downloadCallbacks = [];\n    }\n    return this;\n  }\n}\n"]}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetRegistry.d.ts b/node_modules/expo-asset/build/AssetRegistry.d.ts
+deleted file mode 100644
+index 8cb255c..0000000
+--- a/node_modules/expo-asset/build/AssetRegistry.d.ts
++++ /dev/null
+@@ -1,2 +0,0 @@
+-export * from 'react-native/Libraries/Image/AssetRegistry';
+-//# sourceMappingURL=AssetRegistry.d.ts.map
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetRegistry.d.ts.map b/node_modules/expo-asset/build/AssetRegistry.d.ts.map
+deleted file mode 100644
+index dd3811f..0000000
+--- a/node_modules/expo-asset/build/AssetRegistry.d.ts.map
++++ /dev/null
+@@ -1 +0,0 @@
+-{"version":3,"file":"AssetRegistry.d.ts","sourceRoot":"","sources":["../src/AssetRegistry.ts"],"names":[],"mappings":"AAAA,cAAc,4CAA4C,CAAC"}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetRegistry.js b/node_modules/expo-asset/build/AssetRegistry.js
+deleted file mode 100644
+index 7bed4c5..0000000
+--- a/node_modules/expo-asset/build/AssetRegistry.js
++++ /dev/null
+@@ -1,2 +0,0 @@
+-export * from 'react-native/Libraries/Image/AssetRegistry';
+-//# sourceMappingURL=AssetRegistry.js.map
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetRegistry.js.map b/node_modules/expo-asset/build/AssetRegistry.js.map
+deleted file mode 100644
+index 3bba715..0000000
+--- a/node_modules/expo-asset/build/AssetRegistry.js.map
++++ /dev/null
+@@ -1 +0,0 @@
+-{"version":3,"file":"AssetRegistry.js","sourceRoot":"","sources":["../src/AssetRegistry.ts"],"names":[],"mappings":"AAAA,cAAc,4CAA4C,CAAC","sourcesContent":["export * from 'react-native/Libraries/Image/AssetRegistry';\n"]}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetRegistry.web.d.ts b/node_modules/expo-asset/build/AssetRegistry.web.d.ts
+deleted file mode 100644
+index fcb49bf..0000000
+--- a/node_modules/expo-asset/build/AssetRegistry.web.d.ts
++++ /dev/null
+@@ -1,2 +0,0 @@
+-export * from 'react-native-web/dist/modules/AssetRegistry';
+-//# sourceMappingURL=AssetRegistry.web.d.ts.map
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetRegistry.web.d.ts.map b/node_modules/expo-asset/build/AssetRegistry.web.d.ts.map
+deleted file mode 100644
+index 5f833af..0000000
+--- a/node_modules/expo-asset/build/AssetRegistry.web.d.ts.map
++++ /dev/null
+@@ -1 +0,0 @@
+-{"version":3,"file":"AssetRegistry.web.d.ts","sourceRoot":"","sources":["../src/AssetRegistry.web.ts"],"names":[],"mappings":"AAAA,cAAc,6CAA6C,CAAC"}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetRegistry.web.js b/node_modules/expo-asset/build/AssetRegistry.web.js
+deleted file mode 100644
+index 26d167c..0000000
+--- a/node_modules/expo-asset/build/AssetRegistry.web.js
++++ /dev/null
+@@ -1,2 +0,0 @@
+-export * from 'react-native-web/dist/modules/AssetRegistry';
+-//# sourceMappingURL=AssetRegistry.web.js.map
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetRegistry.web.js.map b/node_modules/expo-asset/build/AssetRegistry.web.js.map
+deleted file mode 100644
+index 90fea65..0000000
+--- a/node_modules/expo-asset/build/AssetRegistry.web.js.map
++++ /dev/null
+@@ -1 +0,0 @@
+-{"version":3,"file":"AssetRegistry.web.js","sourceRoot":"","sources":["../src/AssetRegistry.web.ts"],"names":[],"mappings":"AAAA,cAAc,6CAA6C,CAAC","sourcesContent":["export * from 'react-native-web/dist/modules/AssetRegistry';\n"]}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetSourceResolver.web.d.ts b/node_modules/expo-asset/build/AssetSourceResolver.web.d.ts
+index 7803b29..c6aa055 100644
+--- a/node_modules/expo-asset/build/AssetSourceResolver.web.d.ts
++++ b/node_modules/expo-asset/build/AssetSourceResolver.web.d.ts
+@@ -1,15 +1,5 @@
+-declare type PackagerAsset = {
+-    __packager_asset: boolean;
+-    fileSystemLocation: string;
+-    httpServerLocation: string;
+-    width?: number;
+-    height?: number;
+-    scales: number[];
+-    hash: string;
+-    name: string;
+-    type: string;
+-};
+-export declare type ResolvedAssetSource = {
++import { PackagerAsset } from './ReactNativeCompatibleAssetsRegistry';
++export type ResolvedAssetSource = {
+     __packager_asset: boolean;
+     width?: number;
+     height?: number;
+@@ -17,20 +7,18 @@ export declare type ResolvedAssetSource = {
+     scale: number;
+ };
+ export default class AssetSourceResolver {
+-    serverUrl?: string | null;
++    serverUrl: string;
+     jsbundleUrl?: string | null;
+     asset: PackagerAsset;
+     constructor(serverUrl: string | undefined | null, jsbundleUrl: string | undefined | null, asset: PackagerAsset);
+     isLoadedFromServer(): boolean;
+     isLoadedFromFileSystem(): boolean;
+     defaultAsset(): ResolvedAssetSource;
++    /**
++     * @returns absolute remote URL for the hosted asset.
++     */
+     assetServerURL(): ResolvedAssetSource;
+-    scaledAssetPath(): ResolvedAssetSource;
+-    scaledAssetURLNearBundle(): ResolvedAssetSource;
+-    resourceIdentifierWithoutScale(): ResolvedAssetSource;
+-    drawableFolderInBundle(): ResolvedAssetSource;
+     fromSource(source: string): ResolvedAssetSource;
+     static pickScale(scales: number[], deviceScale: number): number;
+ }
+-export {};
+ //# sourceMappingURL=AssetSourceResolver.web.d.ts.map
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetSourceResolver.web.d.ts.map b/node_modules/expo-asset/build/AssetSourceResolver.web.d.ts.map
+index e3aa0cf..46ed13f 100644
+--- a/node_modules/expo-asset/build/AssetSourceResolver.web.d.ts.map
++++ b/node_modules/expo-asset/build/AssetSourceResolver.web.d.ts.map
+@@ -1 +1 @@
+-{"version":3,"file":"AssetSourceResolver.web.d.ts","sourceRoot":"","sources":["../src/AssetSourceResolver.web.ts"],"names":[],"mappings":"AAIA,aAAK,aAAa,GAAG;IACnB,gBAAgB,EAAE,OAAO,CAAC;IAC1B,kBAAkB,EAAE,MAAM,CAAC;IAC3B,kBAAkB,EAAE,MAAM,CAAC;IAC3B,KAAK,CAAC,EAAE,MAAM,CAAC;IACf,MAAM,CAAC,EAAE,MAAM,CAAC;IAChB,MAAM,EAAE,MAAM,EAAE,CAAC;IACjB,IAAI,EAAE,MAAM,CAAC;IACb,IAAI,EAAE,MAAM,CAAC;IACb,IAAI,EAAE,MAAM,CAAC;CACd,CAAC;AASF,oBAAY,mBAAmB,GAAG;IAChC,gBAAgB,EAAE,OAAO,CAAC;IAC1B,KAAK,CAAC,EAAE,MAAM,CAAC;IACf,MAAM,CAAC,EAAE,MAAM,CAAC;IAChB,GAAG,EAAE,MAAM,CAAC;IACZ,KAAK,EAAE,MAAM,CAAC;CACf,CAAC;AAaF,MAAM,CAAC,OAAO,OAAO,mBAAmB;IACtC,SAAS,CAAC,EAAE,MAAM,GAAG,IAAI,CAAC;IAE1B,WAAW,CAAC,EAAE,MAAM,GAAG,IAAI,CAAC;IAE5B,KAAK,EAAE,aAAa,CAAC;gBAGnB,SAAS,EAAE,MAAM,GAAG,SAAS,GAAG,IAAI,EACpC,WAAW,EAAE,MAAM,GAAG,SAAS,GAAG,IAAI,EACtC,KAAK,EAAE,aAAa;IAMtB,kBAAkB,IAAI,OAAO;IAG7B,sBAAsB,IAAI,OAAO;IAGjC,YAAY,IAAI,mBAAmB;IAOnC,cAAc,IAAI,mBAAmB;IAWrC,eAAe,IAAI,mBAAmB;IAGtC,wBAAwB,IAAI,mBAAmB;IAI/C,8BAA8B,IAAI,mBAAmB;IAGrD,sBAAsB,IAAI,mBAAmB;IAG7C,UAAU,CAAC,MAAM,EAAE,MAAM,GAAG,mBAAmB;IAU/C,MAAM,CAAC,SAAS,CAAC,MAAM,EAAE,MAAM,EAAE,EAAE,WAAW,EAAE,MAAM,GAAG,MAAM;CAQhE"}
+\ No newline at end of file
++{"version":3,"file":"AssetSourceResolver.web.d.ts","sourceRoot":"","sources":["../src/AssetSourceResolver.web.ts"],"names":[],"mappings":"AAGA,OAAO,EAAE,aAAa,EAAE,MAAM,uCAAuC,CAAC;AAEtE,MAAM,MAAM,mBAAmB,GAAG;IAChC,gBAAgB,EAAE,OAAO,CAAC;IAC1B,KAAK,CAAC,EAAE,MAAM,CAAC;IACf,MAAM,CAAC,EAAE,MAAM,CAAC;IAChB,GAAG,EAAE,MAAM,CAAC;IACZ,KAAK,EAAE,MAAM,CAAC;CACf,CAAC;AAUF,MAAM,CAAC,OAAO,OAAO,mBAAmB;IACtC,SAAS,EAAE,MAAM,CAAC;IAGlB,WAAW,CAAC,EAAE,MAAM,GAAG,IAAI,CAAC;IAE5B,KAAK,EAAE,aAAa,CAAC;gBAGnB,SAAS,EAAE,MAAM,GAAG,SAAS,GAAG,IAAI,EACpC,WAAW,EAAE,MAAM,GAAG,SAAS,GAAG,IAAI,EACtC,KAAK,EAAE,aAAa;IAYtB,kBAAkB,IAAI,OAAO;IAK7B,sBAAsB,IAAI,OAAO;IAIjC,YAAY,IAAI,mBAAmB;IAInC;;OAEG;IACH,cAAc,IAAI,mBAAmB;IAOrC,UAAU,CAAC,MAAM,EAAE,MAAM,GAAG,mBAAmB;IAU/C,MAAM,CAAC,SAAS,CAAC,MAAM,EAAE,MAAM,EAAE,EAAE,WAAW,EAAE,MAAM,GAAG,MAAM;CAQhE"}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetSourceResolver.web.js b/node_modules/expo-asset/build/AssetSourceResolver.web.js
+index 4cc53f2..ebe2fb2 100644
+--- a/node_modules/expo-asset/build/AssetSourceResolver.web.js
++++ b/node_modules/expo-asset/build/AssetSourceResolver.web.js
+@@ -1,73 +1,54 @@
+-import { Platform, UnavailabilityError } from 'expo-modules-core';
+-import invariant from 'invariant';
+-import { Dimensions } from 'react-native';
+-function getBasePath({ httpServerLocation }) {
+-    if (httpServerLocation[0] === '/') {
+-        return httpServerLocation.substr(1);
+-    }
+-    return httpServerLocation;
+-}
+-function getScale() {
+-    return Dimensions.get('window').scale;
+-}
++import { Platform } from 'expo-modules-core';
++import { PixelRatio } from 'react-native';
++// Returns the Metro dev server-specific asset location.
+ function getScaledAssetPath(asset) {
+-    const scale = AssetSourceResolver.pickScale(asset.scales, getScale());
++    const scale = AssetSourceResolver.pickScale(asset.scales, PixelRatio.get());
+     const scaleSuffix = scale === 1 ? '' : '@' + scale + 'x';
+-    const assetDir = getBasePath(asset);
+-    return assetDir + '/' + asset.name + scaleSuffix + (asset.type ? `.${asset.type}` : '');
++    const type = !asset.type ? '' : `.${asset.type}`;
++    return asset.httpServerLocation + '/' + asset.name + scaleSuffix + type;
+ }
+ export default class AssetSourceResolver {
+     serverUrl;
+     // where the jsbundle is being run from
++    // NOTE(EvanBacon): Never defined on web.
+     jsbundleUrl;
+     // the asset to resolve
+     asset;
+     constructor(serverUrl, jsbundleUrl, asset) {
++        if (!serverUrl) {
++            throw new Error('Web assets require a server URL');
++        }
+         this.serverUrl = serverUrl;
+-        this.jsbundleUrl = jsbundleUrl;
++        this.jsbundleUrl = null;
+         this.asset = asset;
+     }
++    // Always true for web runtimes
+     isLoadedFromServer() {
+-        return !!this.serverUrl;
++        return true;
+     }
++    // Always false for web runtimes
+     isLoadedFromFileSystem() {
+-        return !!(this.jsbundleUrl && this.jsbundleUrl.startsWith('file://'));
++        return false;
+     }
+     defaultAsset() {
+-        if (this.isLoadedFromServer()) {
+-            return this.assetServerURL();
+-        }
+-        return this.scaledAssetURLNearBundle();
++        return this.assetServerURL();
+     }
++    /**
++     * @returns absolute remote URL for the hosted asset.
++     */
+     assetServerURL() {
+-        invariant(!!this.serverUrl, 'need server to load from');
+-        return this.fromSource(this.serverUrl +
+-            getScaledAssetPath(this.asset) +
+-            '?platform=' +
+-            Platform.OS +
+-            '&hash=' +
+-            this.asset.hash);
+-    }
+-    scaledAssetPath() {
+-        return this.fromSource(getScaledAssetPath(this.asset));
+-    }
+-    scaledAssetURLNearBundle() {
+-        const path = this.jsbundleUrl || '';
+-        return this.fromSource(path + getScaledAssetPath(this.asset));
+-    }
+-    resourceIdentifierWithoutScale() {
+-        throw new UnavailabilityError('react-native', 'resourceIdentifierWithoutScale()');
+-    }
+-    drawableFolderInBundle() {
+-        throw new UnavailabilityError('react-native', 'drawableFolderInBundle()');
++        const fromUrl = new URL(getScaledAssetPath(this.asset), this.serverUrl);
++        fromUrl.searchParams.set('platform', Platform.OS);
++        fromUrl.searchParams.set('hash', this.asset.hash);
++        return this.fromSource(fromUrl.toString());
+     }
+     fromSource(source) {
+         return {
+             __packager_asset: true,
+-            width: this.asset.width,
+-            height: this.asset.height,
++            width: this.asset.width ?? undefined,
++            height: this.asset.height ?? undefined,
+             uri: source,
+-            scale: AssetSourceResolver.pickScale(this.asset.scales, getScale()),
++            scale: AssetSourceResolver.pickScale(this.asset.scales, PixelRatio.get()),
+         };
+     }
+     static pickScale(scales, deviceScale) {
+diff --git a/node_modules/expo-asset/build/AssetSourceResolver.web.js.map b/node_modules/expo-asset/build/AssetSourceResolver.web.js.map
+index 05b0e6f..b706f3f 100644
+--- a/node_modules/expo-asset/build/AssetSourceResolver.web.js.map
++++ b/node_modules/expo-asset/build/AssetSourceResolver.web.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"AssetSourceResolver.web.js","sourceRoot":"","sources":["../src/AssetSourceResolver.web.ts"],"names":[],"mappings":"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","sourcesContent":["import { Platform, UnavailabilityError } from 'expo-modules-core';\nimport invariant from 'invariant';\nimport { Dimensions } from 'react-native';\n\ntype PackagerAsset = {\n  __packager_asset: boolean;\n  fileSystemLocation: string;\n  httpServerLocation: string;\n  width?: number;\n  height?: number;\n  scales: number[];\n  hash: string;\n  name: string;\n  type: string;\n};\n\nfunction getBasePath({ httpServerLocation }: PackagerAsset): string {\n  if (httpServerLocation[0] === '/') {\n    return httpServerLocation.substr(1);\n  }\n  return httpServerLocation;\n}\n\nexport type ResolvedAssetSource = {\n  __packager_asset: boolean;\n  width?: number;\n  height?: number;\n  uri: string;\n  scale: number;\n};\n\nfunction getScale(): number {\n  return Dimensions.get('window').scale;\n}\n\nfunction getScaledAssetPath(asset): string {\n  const scale = AssetSourceResolver.pickScale(asset.scales, getScale());\n  const scaleSuffix = scale === 1 ? '' : '@' + scale + 'x';\n  const assetDir = getBasePath(asset);\n  return assetDir + '/' + asset.name + scaleSuffix + (asset.type ? `.${asset.type}` : '');\n}\n\nexport default class AssetSourceResolver {\n  serverUrl?: string | null;\n  // where the jsbundle is being run from\n  jsbundleUrl?: string | null;\n  // the asset to resolve\n  asset: PackagerAsset;\n\n  constructor(\n    serverUrl: string | undefined | null,\n    jsbundleUrl: string | undefined | null,\n    asset: PackagerAsset\n  ) {\n    this.serverUrl = serverUrl;\n    this.jsbundleUrl = jsbundleUrl;\n    this.asset = asset;\n  }\n  isLoadedFromServer(): boolean {\n    return !!this.serverUrl;\n  }\n  isLoadedFromFileSystem(): boolean {\n    return !!(this.jsbundleUrl && this.jsbundleUrl.startsWith('file://'));\n  }\n  defaultAsset(): ResolvedAssetSource {\n    if (this.isLoadedFromServer()) {\n      return this.assetServerURL();\n    }\n\n    return this.scaledAssetURLNearBundle();\n  }\n  assetServerURL(): ResolvedAssetSource {\n    invariant(!!this.serverUrl, 'need server to load from');\n    return this.fromSource(\n      this.serverUrl +\n        getScaledAssetPath(this.asset) +\n        '?platform=' +\n        Platform.OS +\n        '&hash=' +\n        this.asset.hash\n    );\n  }\n  scaledAssetPath(): ResolvedAssetSource {\n    return this.fromSource(getScaledAssetPath(this.asset));\n  }\n  scaledAssetURLNearBundle(): ResolvedAssetSource {\n    const path = this.jsbundleUrl || '';\n    return this.fromSource(path + getScaledAssetPath(this.asset));\n  }\n  resourceIdentifierWithoutScale(): ResolvedAssetSource {\n    throw new UnavailabilityError('react-native', 'resourceIdentifierWithoutScale()');\n  }\n  drawableFolderInBundle(): ResolvedAssetSource {\n    throw new UnavailabilityError('react-native', 'drawableFolderInBundle()');\n  }\n  fromSource(source: string): ResolvedAssetSource {\n    return {\n      __packager_asset: true,\n      width: this.asset.width,\n      height: this.asset.height,\n      uri: source,\n      scale: AssetSourceResolver.pickScale(this.asset.scales, getScale()),\n    };\n  }\n\n  static pickScale(scales: number[], deviceScale: number): number {\n    for (let i = 0; i < scales.length; i++) {\n      if (scales[i] >= deviceScale) {\n        return scales[i];\n      }\n    }\n    return scales[scales.length - 1] || 1;\n  }\n}\n"]}
+\ No newline at end of file
++{"version":3,"file":"AssetSourceResolver.web.js","sourceRoot":"","sources":["../src/AssetSourceResolver.web.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,mBAAmB,CAAC;AAC7C,OAAO,EAAE,UAAU,EAAE,MAAM,cAAc,CAAC;AAY1C,wDAAwD;AACxD,SAAS,kBAAkB,CAAC,KAAK;IAC/B,MAAM,KAAK,GAAG,mBAAmB,CAAC,SAAS,CAAC,KAAK,CAAC,MAAM,EAAE,UAAU,CAAC,GAAG,EAAE,CAAC,CAAC;IAC5E,MAAM,WAAW,GAAG,KAAK,KAAK,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,GAAG,GAAG,KAAK,GAAG,GAAG,CAAC;IACzD,MAAM,IAAI,GAAG,CAAC,KAAK,CAAC,IAAI,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,IAAI,KAAK,CAAC,IAAI,EAAE,CAAC;IACjD,OAAO,KAAK,CAAC,kBAAkB,GAAG,GAAG,GAAG,KAAK,CAAC,IAAI,GAAG,WAAW,GAAG,IAAI,CAAC;AAC1E,CAAC;AAED,MAAM,CAAC,OAAO,OAAO,mBAAmB;IACtC,SAAS,CAAS;IAClB,uCAAuC;IACvC,yCAAyC;IACzC,WAAW,CAAiB;IAC5B,uBAAuB;IACvB,KAAK,CAAgB;IAErB,YACE,SAAoC,EACpC,WAAsC,EACtC,KAAoB;QAEpB,IAAI,CAAC,SAAS,EAAE;YACd,MAAM,IAAI,KAAK,CAAC,iCAAiC,CAAC,CAAC;SACpD;QAED,IAAI,CAAC,SAAS,GAAG,SAAS,CAAC;QAC3B,IAAI,CAAC,WAAW,GAAG,IAAI,CAAC;QACxB,IAAI,CAAC,KAAK,GAAG,KAAK,CAAC;IACrB,CAAC;IAED,+BAA+B;IAC/B,kBAAkB;QAChB,OAAO,IAAI,CAAC;IACd,CAAC;IAED,gCAAgC;IAChC,sBAAsB;QACpB,OAAO,KAAK,CAAC;IACf,CAAC;IAED,YAAY;QACV,OAAO,IAAI,CAAC,cAAc,EAAE,CAAC;IAC/B,CAAC;IAED;;OAEG;IACH,cAAc;QACZ,MAAM,OAAO,GAAG,IAAI,GAAG,CAAC,kBAAkB,CAAC,IAAI,CAAC,KAAK,CAAC,EAAE,IAAI,CAAC,SAAS,CAAC,CAAC;QACxE,OAAO,CAAC,YAAY,CAAC,GAAG,CAAC,UAAU,EAAE,QAAQ,CAAC,EAAE,CAAC,CAAC;QAClD,OAAO,CAAC,YAAY,CAAC,GAAG,CAAC,MAAM,EAAE,IAAI,CAAC,KAAK,CAAC,IAAI,CAAC,CAAC;QAClD,OAAO,IAAI,CAAC,UAAU,CAAC,OAAO,CAAC,QAAQ,EAAE,CAAC,CAAC;IAC7C,CAAC;IAED,UAAU,CAAC,MAAc;QACvB,OAAO;YACL,gBAAgB,EAAE,IAAI;YACtB,KAAK,EAAE,IAAI,CAAC,KAAK,CAAC,KAAK,IAAI,SAAS;YACpC,MAAM,EAAE,IAAI,CAAC,KAAK,CAAC,MAAM,IAAI,SAAS;YACtC,GAAG,EAAE,MAAM;YACX,KAAK,EAAE,mBAAmB,CAAC,SAAS,CAAC,IAAI,CAAC,KAAK,CAAC,MAAM,EAAE,UAAU,CAAC,GAAG,EAAE,CAAC;SAC1E,CAAC;IACJ,CAAC;IAED,MAAM,CAAC,SAAS,CAAC,MAAgB,EAAE,WAAmB;QACpD,KAAK,IAAI,CAAC,GAAG,CAAC,EAAE,CAAC,GAAG,MAAM,CAAC,MAAM,EAAE,CAAC,EAAE,EAAE;YACtC,IAAI,MAAM,CAAC,CAAC,CAAC,IAAI,WAAW,EAAE;gBAC5B,OAAO,MAAM,CAAC,CAAC,CAAC,CAAC;aAClB;SACF;QACD,OAAO,MAAM,CAAC,MAAM,CAAC,MAAM,GAAG,CAAC,CAAC,IAAI,CAAC,CAAC;IACxC,CAAC;CACF","sourcesContent":["import { Platform } from 'expo-modules-core';\nimport { PixelRatio } from 'react-native';\n\nimport { PackagerAsset } from './ReactNativeCompatibleAssetsRegistry';\n\nexport type ResolvedAssetSource = {\n  __packager_asset: boolean;\n  width?: number;\n  height?: number;\n  uri: string;\n  scale: number;\n};\n\n// Returns the Metro dev server-specific asset location.\nfunction getScaledAssetPath(asset): string {\n  const scale = AssetSourceResolver.pickScale(asset.scales, PixelRatio.get());\n  const scaleSuffix = scale === 1 ? '' : '@' + scale + 'x';\n  const type = !asset.type ? '' : `.${asset.type}`;\n  return asset.httpServerLocation + '/' + asset.name + scaleSuffix + type;\n}\n\nexport default class AssetSourceResolver {\n  serverUrl: string;\n  // where the jsbundle is being run from\n  // NOTE(EvanBacon): Never defined on web.\n  jsbundleUrl?: string | null;\n  // the asset to resolve\n  asset: PackagerAsset;\n\n  constructor(\n    serverUrl: string | undefined | null,\n    jsbundleUrl: string | undefined | null,\n    asset: PackagerAsset\n  ) {\n    if (!serverUrl) {\n      throw new Error('Web assets require a server URL');\n    }\n\n    this.serverUrl = serverUrl;\n    this.jsbundleUrl = null;\n    this.asset = asset;\n  }\n\n  // Always true for web runtimes\n  isLoadedFromServer(): boolean {\n    return true;\n  }\n\n  // Always false for web runtimes\n  isLoadedFromFileSystem(): boolean {\n    return false;\n  }\n\n  defaultAsset(): ResolvedAssetSource {\n    return this.assetServerURL();\n  }\n\n  /**\n   * @returns absolute remote URL for the hosted asset.\n   */\n  assetServerURL(): ResolvedAssetSource {\n    const fromUrl = new URL(getScaledAssetPath(this.asset), this.serverUrl);\n    fromUrl.searchParams.set('platform', Platform.OS);\n    fromUrl.searchParams.set('hash', this.asset.hash);\n    return this.fromSource(fromUrl.toString());\n  }\n\n  fromSource(source: string): ResolvedAssetSource {\n    return {\n      __packager_asset: true,\n      width: this.asset.width ?? undefined,\n      height: this.asset.height ?? undefined,\n      uri: source,\n      scale: AssetSourceResolver.pickScale(this.asset.scales, PixelRatio.get()),\n    };\n  }\n\n  static pickScale(scales: number[], deviceScale: number): number {\n    for (let i = 0; i < scales.length; i++) {\n      if (scales[i] >= deviceScale) {\n        return scales[i];\n      }\n    }\n    return scales[scales.length - 1] || 1;\n  }\n}\n"]}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetSources.d.ts b/node_modules/expo-asset/build/AssetSources.d.ts
+index 19ee42c..f2da38d 100644
+--- a/node_modules/expo-asset/build/AssetSources.d.ts
++++ b/node_modules/expo-asset/build/AssetSources.d.ts
+@@ -1,16 +1,10 @@
+-export declare type AssetMetadata = {
+-    hash: string;
+-    name: string;
+-    type: string;
+-    width?: number;
+-    height?: number;
+-    scales: number[];
+-    httpServerLocation: string;
++import { PackagerAsset } from './ReactNativeCompatibleAssetsRegistry';
++export type AssetMetadata = Pick<PackagerAsset, 'httpServerLocation' | 'name' | 'hash' | 'type' | 'scales' | 'width' | 'height'> & {
+     uri?: string;
+     fileHashes?: string[];
+     fileUris?: string[];
+ };
+-export declare type AssetSource = {
++export type AssetSource = {
+     uri: string;
+     hash: string;
+ };
+diff --git a/node_modules/expo-asset/build/AssetSources.d.ts.map b/node_modules/expo-asset/build/AssetSources.d.ts.map
+index 25167c6..78cc1ba 100644
+--- a/node_modules/expo-asset/build/AssetSources.d.ts.map
++++ b/node_modules/expo-asset/build/AssetSources.d.ts.map
+@@ -1 +1 @@
+-{"version":3,"file":"AssetSources.d.ts","sourceRoot":"","sources":["../src/AssetSources.ts"],"names":[],"mappings":"AASA,oBAAY,aAAa,GAAG;IAC1B,IAAI,EAAE,MAAM,CAAC;IACb,IAAI,EAAE,MAAM,CAAC;IACb,IAAI,EAAE,MAAM,CAAC;IACb,KAAK,CAAC,EAAE,MAAM,CAAC;IACf,MAAM,CAAC,EAAE,MAAM,CAAC;IAChB,MAAM,EAAE,MAAM,EAAE,CAAC;IACjB,kBAAkB,EAAE,MAAM,CAAC;IAC3B,GAAG,CAAC,EAAE,MAAM,CAAC;IACb,UAAU,CAAC,EAAE,MAAM,EAAE,CAAC;IACtB,QAAQ,CAAC,EAAE,MAAM,EAAE,CAAC;CACrB,CAAC;AAEF,oBAAY,WAAW,GAAG;IACxB,GAAG,EAAE,MAAM,CAAC;IACZ,IAAI,EAAE,MAAM,CAAC;CACd,CAAC;AAKF;;;;;GAKG;AACH,wBAAgB,iBAAiB,CAAC,IAAI,EAAE,aAAa,GAAG,WAAW,CAiElE;AAED;;;;GAIG;AACH,wBAAgB,UAAU,CAAC,GAAG,EAAE,MAAM,GAAG,MAAM,CAc9C"}
+\ No newline at end of file
++{"version":3,"file":"AssetSources.d.ts","sourceRoot":"","sources":["../src/AssetSources.ts"],"names":[],"mappings":"AAOA,OAAO,EAAE,aAAa,EAAE,MAAM,uCAAuC,CAAC;AAGtE,MAAM,MAAM,aAAa,GAAG,IAAI,CAC9B,aAAa,EACb,oBAAoB,GAAG,MAAM,GAAG,MAAM,GAAG,MAAM,GAAG,QAAQ,GAAG,OAAO,GAAG,QAAQ,CAChF,GAAG;IACF,GAAG,CAAC,EAAE,MAAM,CAAC;IACb,UAAU,CAAC,EAAE,MAAM,EAAE,CAAC;IACtB,QAAQ,CAAC,EAAE,MAAM,EAAE,CAAC;CACrB,CAAC;AAEF,MAAM,MAAM,WAAW,GAAG;IACxB,GAAG,EAAE,MAAM,CAAC;IACZ,IAAI,EAAE,MAAM,CAAC;CACd,CAAC;AAKF;;;;;GAKG;AACH,wBAAgB,iBAAiB,CAAC,IAAI,EAAE,aAAa,GAAG,WAAW,CAiElE;AAED;;;;GAIG;AACH,wBAAgB,UAAU,CAAC,GAAG,EAAE,MAAM,GAAG,MAAM,CAc9C"}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/AssetSources.js b/node_modules/expo-asset/build/AssetSources.js
+index 4c39a6e..480a513 100644
+--- a/node_modules/expo-asset/build/AssetSources.js
++++ b/node_modules/expo-asset/build/AssetSources.js
+@@ -3,7 +3,7 @@ import path from 'path-browserify';
+ import { PixelRatio } from 'react-native';
+ import URL from 'url-parse';
+ import AssetSourceResolver from './AssetSourceResolver';
+-import { manifestBaseUrl, getManifest, getManifest2 } from './PlatformUtils';
++import { getManifest, getManifest2, manifestBaseUrl } from './PlatformUtils';
+ // Fast lookup check if asset map has any overrides in the manifest
+ const assetMapOverride = getManifest().assetMapOverride;
+ /**
+diff --git a/node_modules/expo-asset/build/AssetSources.js.map b/node_modules/expo-asset/build/AssetSources.js.map
+index 8227354..02ad18c 100644
+--- a/node_modules/expo-asset/build/AssetSources.js.map
++++ b/node_modules/expo-asset/build/AssetSources.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"AssetSources.js","sourceRoot":"","sources":["../src/AssetSources.ts"],"names":[],"mappings":"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","sourcesContent":["import { Platform } from 'expo-modules-core';\nimport path from 'path-browserify';\nimport { PixelRatio } from 'react-native';\nimport URL from 'url-parse';\n\nimport AssetSourceResolver from './AssetSourceResolver';\nimport { manifestBaseUrl, getManifest, getManifest2 } from './PlatformUtils';\n\n// @docsMissing\nexport type AssetMetadata = {\n  hash: string;\n  name: string;\n  type: string;\n  width?: number;\n  height?: number;\n  scales: number[];\n  httpServerLocation: string;\n  uri?: string;\n  fileHashes?: string[];\n  fileUris?: string[];\n};\n\nexport type AssetSource = {\n  uri: string;\n  hash: string;\n};\n\n// Fast lookup check if asset map has any overrides in the manifest\nconst assetMapOverride = getManifest().assetMapOverride;\n\n/**\n * Selects the best file for the given asset (ex: choosing the best scale for images) and returns\n * a { uri, hash } pair for the specific asset file.\n *\n * If the asset isn't an image with multiple scales, the first file is selected.\n */\nexport function selectAssetSource(meta: AssetMetadata): AssetSource {\n  // Override with the asset map in manifest if available\n  if (assetMapOverride && assetMapOverride.hasOwnProperty(meta.hash)) {\n    meta = { ...meta, ...assetMapOverride[meta.hash] };\n  }\n\n  // This logic is based on that of AssetSourceResolver, with additional support for file hashes and\n  // explicitly provided URIs\n  const scale = AssetSourceResolver.pickScale(meta.scales, PixelRatio.get());\n  const index = meta.scales.findIndex((s) => s === scale);\n  const hash = meta.fileHashes ? meta.fileHashes[index] || meta.fileHashes[0] : meta.hash;\n\n  // Allow asset processors to directly provide the URL to load\n  const uri = meta.fileUris ? meta.fileUris[index] || meta.fileUris[0] : meta.uri;\n  if (uri) {\n    return { uri: resolveUri(uri), hash };\n  }\n\n  // Check if the assetUrl was overridden in the manifest\n  const assetUrlOverride = getManifest().assetUrlOverride;\n  if (assetUrlOverride) {\n    const uri = path.join(assetUrlOverride, hash);\n    return { uri: resolveUri(uri), hash };\n  }\n\n  const fileScale = scale === 1 ? '' : `@${scale}x`;\n  const fileExtension = meta.type ? `.${encodeURIComponent(meta.type)}` : '';\n  const suffix = `/${encodeURIComponent(\n    meta.name\n  )}${fileScale}${fileExtension}?platform=${encodeURIComponent(\n    Platform.OS\n  )}&hash=${encodeURIComponent(meta.hash)}`;\n\n  // For assets with a specified absolute URL, we use the existing origin instead of prepending the\n  // development server or production CDN URL origin\n  if (/^https?:\\/\\//.test(meta.httpServerLocation)) {\n    const uri = meta.httpServerLocation + suffix;\n    return { uri, hash };\n  }\n\n  // For assets during development using manifest2, we use the development server's URL origin\n  const manifest2 = getManifest2();\n\n  if (manifest2?.extra?.expoGo?.developer) {\n    const baseUrl = new URL(`http://${manifest2.extra.expoGo.debuggerHost}`);\n    baseUrl.set('pathname', meta.httpServerLocation + suffix);\n\n    return {\n      uri: baseUrl.href,\n      hash,\n    };\n  }\n\n  // For assets during development, we use the development server's URL origin\n  if (getManifest().developer) {\n    const baseUrl = new URL(getManifest().bundleUrl);\n    baseUrl.set('pathname', meta.httpServerLocation + suffix);\n    return { uri: baseUrl.href, hash };\n  }\n\n  // Production CDN URIs are based on each asset file hash\n  return {\n    uri: `https://classic-assets.eascdn.net/~assets/${encodeURIComponent(hash)}`,\n    hash,\n  };\n}\n\n/**\n * Resolves the given URI to an absolute URI. If the given URI is already an absolute URI, it is\n * simply returned. Otherwise, if it is a relative URI, it is resolved relative to the manifest's\n * base URI.\n */\nexport function resolveUri(uri: string): string {\n  if (!manifestBaseUrl) {\n    return uri;\n  }\n\n  const { protocol } = new URL(uri);\n  if (protocol !== '') {\n    return uri;\n  }\n\n  const baseUrl = new URL(manifestBaseUrl);\n  const resolvedPath = uri.startsWith('/') ? uri : path.join(baseUrl.pathname, uri);\n  baseUrl.set('pathname', resolvedPath);\n  return baseUrl.href;\n}\n"]}
+\ No newline at end of file
++{"version":3,"file":"AssetSources.js","sourceRoot":"","sources":["../src/AssetSources.ts"],"names":[],"mappings":"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","sourcesContent":["import { Platform } from 'expo-modules-core';\nimport path from 'path-browserify';\nimport { PixelRatio } from 'react-native';\nimport URL from 'url-parse';\n\nimport AssetSourceResolver from './AssetSourceResolver';\nimport { getManifest, getManifest2, manifestBaseUrl } from './PlatformUtils';\nimport { PackagerAsset } from './ReactNativeCompatibleAssetsRegistry';\n\n// @docsMissing\nexport type AssetMetadata = Pick<\n  PackagerAsset,\n  'httpServerLocation' | 'name' | 'hash' | 'type' | 'scales' | 'width' | 'height'\n> & {\n  uri?: string;\n  fileHashes?: string[];\n  fileUris?: string[];\n};\n\nexport type AssetSource = {\n  uri: string;\n  hash: string;\n};\n\n// Fast lookup check if asset map has any overrides in the manifest\nconst assetMapOverride = getManifest().assetMapOverride;\n\n/**\n * Selects the best file for the given asset (ex: choosing the best scale for images) and returns\n * a { uri, hash } pair for the specific asset file.\n *\n * If the asset isn't an image with multiple scales, the first file is selected.\n */\nexport function selectAssetSource(meta: AssetMetadata): AssetSource {\n  // Override with the asset map in manifest if available\n  if (assetMapOverride && assetMapOverride.hasOwnProperty(meta.hash)) {\n    meta = { ...meta, ...assetMapOverride[meta.hash] };\n  }\n\n  // This logic is based on that of AssetSourceResolver, with additional support for file hashes and\n  // explicitly provided URIs\n  const scale = AssetSourceResolver.pickScale(meta.scales, PixelRatio.get());\n  const index = meta.scales.findIndex((s) => s === scale);\n  const hash = meta.fileHashes ? meta.fileHashes[index] || meta.fileHashes[0] : meta.hash;\n\n  // Allow asset processors to directly provide the URL to load\n  const uri = meta.fileUris ? meta.fileUris[index] || meta.fileUris[0] : meta.uri;\n  if (uri) {\n    return { uri: resolveUri(uri), hash };\n  }\n\n  // Check if the assetUrl was overridden in the manifest\n  const assetUrlOverride = getManifest().assetUrlOverride;\n  if (assetUrlOverride) {\n    const uri = path.join(assetUrlOverride, hash);\n    return { uri: resolveUri(uri), hash };\n  }\n\n  const fileScale = scale === 1 ? '' : `@${scale}x`;\n  const fileExtension = meta.type ? `.${encodeURIComponent(meta.type)}` : '';\n  const suffix = `/${encodeURIComponent(\n    meta.name\n  )}${fileScale}${fileExtension}?platform=${encodeURIComponent(\n    Platform.OS\n  )}&hash=${encodeURIComponent(meta.hash)}`;\n\n  // For assets with a specified absolute URL, we use the existing origin instead of prepending the\n  // development server or production CDN URL origin\n  if (/^https?:\\/\\//.test(meta.httpServerLocation)) {\n    const uri = meta.httpServerLocation + suffix;\n    return { uri, hash };\n  }\n\n  // For assets during development using manifest2, we use the development server's URL origin\n  const manifest2 = getManifest2();\n\n  if (manifest2?.extra?.expoGo?.developer) {\n    const baseUrl = new URL(`http://${manifest2.extra.expoGo.debuggerHost}`);\n    baseUrl.set('pathname', meta.httpServerLocation + suffix);\n\n    return {\n      uri: baseUrl.href,\n      hash,\n    };\n  }\n\n  // For assets during development, we use the development server's URL origin\n  if (getManifest().developer) {\n    const baseUrl = new URL(getManifest().bundleUrl);\n    baseUrl.set('pathname', meta.httpServerLocation + suffix);\n    return { uri: baseUrl.href, hash };\n  }\n\n  // Production CDN URIs are based on each asset file hash\n  return {\n    uri: `https://classic-assets.eascdn.net/~assets/${encodeURIComponent(hash)}`,\n    hash,\n  };\n}\n\n/**\n * Resolves the given URI to an absolute URI. If the given URI is already an absolute URI, it is\n * simply returned. Otherwise, if it is a relative URI, it is resolved relative to the manifest's\n * base URI.\n */\nexport function resolveUri(uri: string): string {\n  if (!manifestBaseUrl) {\n    return uri;\n  }\n\n  const { protocol } = new URL(uri);\n  if (protocol !== '') {\n    return uri;\n  }\n\n  const baseUrl = new URL(manifestBaseUrl);\n  const resolvedPath = uri.startsWith('/') ? uri : path.join(baseUrl.pathname, uri);\n  baseUrl.set('pathname', resolvedPath);\n  return baseUrl.href;\n}\n"]}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/ImageAssets.d.ts b/node_modules/expo-asset/build/ImageAssets.d.ts
+index e311add..76f1030 100644
+--- a/node_modules/expo-asset/build/ImageAssets.d.ts
++++ b/node_modules/expo-asset/build/ImageAssets.d.ts
+@@ -1,4 +1,4 @@
+-declare type ImageInfo = {
++type ImageInfo = {
+     name: string;
+     width: number;
+     height: number;
+diff --git a/node_modules/expo-asset/build/ImageAssets.d.ts.map b/node_modules/expo-asset/build/ImageAssets.d.ts.map
+index 47b4ada..935a2cb 100644
+--- a/node_modules/expo-asset/build/ImageAssets.d.ts.map
++++ b/node_modules/expo-asset/build/ImageAssets.d.ts.map
+@@ -1 +1 @@
+-{"version":3,"file":"ImageAssets.d.ts","sourceRoot":"","sources":["../src/ImageAssets.ts"],"names":[],"mappings":"AAGA,aAAK,SAAS,GAAG;IACf,IAAI,EAAE,MAAM,CAAC;IACb,KAAK,EAAE,MAAM,CAAC;IACd,MAAM,EAAE,MAAM,CAAC;CAChB,CAAC;AAEF,wBAAgB,WAAW,CAAC,IAAI,EAAE,MAAM,GAAG,OAAO,CAEjD;AAED,wBAAgB,iBAAiB,CAAC,GAAG,EAAE,MAAM,GAAG,OAAO,CAAC,SAAS,CAAC,CAajE"}
+\ No newline at end of file
++{"version":3,"file":"ImageAssets.d.ts","sourceRoot":"","sources":["../src/ImageAssets.ts"],"names":[],"mappings":"AAKA,KAAK,SAAS,GAAG;IACf,IAAI,EAAE,MAAM,CAAC;IACb,KAAK,EAAE,MAAM,CAAC;IACd,MAAM,EAAE,MAAM,CAAC;CAChB,CAAC;AAEF,wBAAgB,WAAW,CAAC,IAAI,EAAE,MAAM,GAAG,OAAO,CAEjD;AAED,wBAAgB,iBAAiB,CAAC,GAAG,EAAE,MAAM,GAAG,OAAO,CAAC,SAAS,CAAC,CAgBjE"}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/ImageAssets.js b/node_modules/expo-asset/build/ImageAssets.js
+index 463ecad..2d859fc 100644
+--- a/node_modules/expo-asset/build/ImageAssets.js
++++ b/node_modules/expo-asset/build/ImageAssets.js
+@@ -1,9 +1,13 @@
+ /* eslint-env browser */
++import { Platform } from 'expo-modules-core';
+ import { getFilename } from './AssetUris';
+ export function isImageType(type) {
+     return /^(jpeg|jpg|gif|png|bmp|webp|heic)$/i.test(type);
+ }
+ export function getImageInfoAsync(url) {
++    if (!Platform.isDOMAvailable) {
++        return Promise.resolve({ name: getFilename(url), width: 0, height: 0 });
++    }
+     return new Promise((resolve, reject) => {
+         const img = new Image();
+         img.onerror = reject;
+diff --git a/node_modules/expo-asset/build/ImageAssets.js.map b/node_modules/expo-asset/build/ImageAssets.js.map
+index f25144e..99396cb 100644
+--- a/node_modules/expo-asset/build/ImageAssets.js.map
++++ b/node_modules/expo-asset/build/ImageAssets.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"ImageAssets.js","sourceRoot":"","sources":["../src/ImageAssets.ts"],"names":[],"mappings":"AAAA,wBAAwB;AACxB,OAAO,EAAE,WAAW,EAAE,MAAM,aAAa,CAAC;AAQ1C,MAAM,UAAU,WAAW,CAAC,IAAY;IACtC,OAAO,qCAAqC,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;AAC1D,CAAC;AAED,MAAM,UAAU,iBAAiB,CAAC,GAAW;IAC3C,OAAO,IAAI,OAAO,CAAC,CAAC,OAAO,EAAE,MAAM,EAAE,EAAE;QACrC,MAAM,GAAG,GAAG,IAAI,KAAK,EAAE,CAAC;QACxB,GAAG,CAAC,OAAO,GAAG,MAAM,CAAC;QACrB,GAAG,CAAC,MAAM,GAAG,GAAG,EAAE;YAChB,OAAO,CAAC;gBACN,IAAI,EAAE,WAAW,CAAC,GAAG,CAAC;gBACtB,KAAK,EAAE,GAAG,CAAC,YAAY;gBACvB,MAAM,EAAE,GAAG,CAAC,aAAa;aAC1B,CAAC,CAAC;QACL,CAAC,CAAC;QACF,GAAG,CAAC,GAAG,GAAG,GAAG,CAAC;IAChB,CAAC,CAAC,CAAC;AACL,CAAC","sourcesContent":["/* eslint-env browser */\nimport { getFilename } from './AssetUris';\n\ntype ImageInfo = {\n  name: string;\n  width: number;\n  height: number;\n};\n\nexport function isImageType(type: string): boolean {\n  return /^(jpeg|jpg|gif|png|bmp|webp|heic)$/i.test(type);\n}\n\nexport function getImageInfoAsync(url: string): Promise<ImageInfo> {\n  return new Promise((resolve, reject) => {\n    const img = new Image();\n    img.onerror = reject;\n    img.onload = () => {\n      resolve({\n        name: getFilename(url),\n        width: img.naturalWidth,\n        height: img.naturalHeight,\n      });\n    };\n    img.src = url;\n  });\n}\n"]}
+\ No newline at end of file
++{"version":3,"file":"ImageAssets.js","sourceRoot":"","sources":["../src/ImageAssets.ts"],"names":[],"mappings":"AAAA,wBAAwB;AACxB,OAAO,EAAE,QAAQ,EAAE,MAAM,mBAAmB,CAAC;AAE7C,OAAO,EAAE,WAAW,EAAE,MAAM,aAAa,CAAC;AAQ1C,MAAM,UAAU,WAAW,CAAC,IAAY;IACtC,OAAO,qCAAqC,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;AAC1D,CAAC;AAED,MAAM,UAAU,iBAAiB,CAAC,GAAW;IAC3C,IAAI,CAAC,QAAQ,CAAC,cAAc,EAAE;QAC5B,OAAO,OAAO,CAAC,OAAO,CAAC,EAAE,IAAI,EAAE,WAAW,CAAC,GAAG,CAAC,EAAE,KAAK,EAAE,CAAC,EAAE,MAAM,EAAE,CAAC,EAAE,CAAC,CAAC;KACzE;IACD,OAAO,IAAI,OAAO,CAAC,CAAC,OAAO,EAAE,MAAM,EAAE,EAAE;QACrC,MAAM,GAAG,GAAG,IAAI,KAAK,EAAE,CAAC;QACxB,GAAG,CAAC,OAAO,GAAG,MAAM,CAAC;QACrB,GAAG,CAAC,MAAM,GAAG,GAAG,EAAE;YAChB,OAAO,CAAC;gBACN,IAAI,EAAE,WAAW,CAAC,GAAG,CAAC;gBACtB,KAAK,EAAE,GAAG,CAAC,YAAY;gBACvB,MAAM,EAAE,GAAG,CAAC,aAAa;aAC1B,CAAC,CAAC;QACL,CAAC,CAAC;QACF,GAAG,CAAC,GAAG,GAAG,GAAG,CAAC;IAChB,CAAC,CAAC,CAAC;AACL,CAAC","sourcesContent":["/* eslint-env browser */\nimport { Platform } from 'expo-modules-core';\n\nimport { getFilename } from './AssetUris';\n\ntype ImageInfo = {\n  name: string;\n  width: number;\n  height: number;\n};\n\nexport function isImageType(type: string): boolean {\n  return /^(jpeg|jpg|gif|png|bmp|webp|heic)$/i.test(type);\n}\n\nexport function getImageInfoAsync(url: string): Promise<ImageInfo> {\n  if (!Platform.isDOMAvailable) {\n    return Promise.resolve({ name: getFilename(url), width: 0, height: 0 });\n  }\n  return new Promise((resolve, reject) => {\n    const img = new Image();\n    img.onerror = reject;\n    img.onload = () => {\n      resolve({\n        name: getFilename(url),\n        width: img.naturalWidth,\n        height: img.naturalHeight,\n      });\n    };\n    img.src = url;\n  });\n}\n"]}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/PlatformUtils.js b/node_modules/expo-asset/build/PlatformUtils.js
+index 198d5d8..4ed4171 100644
+--- a/node_modules/expo-asset/build/PlatformUtils.js
++++ b/node_modules/expo-asset/build/PlatformUtils.js
+@@ -45,13 +45,13 @@ export async function downloadAsync(uri, hash, type, name) {
+ async function _downloadAsyncManagedEnv(uri, hash, type, name) {
+     const cacheFileId = hash || computeMd5(uri);
+     const localUri = `${FileSystem.cacheDirectory}ExponentAsset-${cacheFileId}.${type}`;
+-    let { exists, md5 } = await FileSystem.getInfoAsync(localUri, {
++    const fileInfo = await FileSystem.getInfoAsync(localUri, {
+         md5: true,
+     });
+-    if (!exists || (hash !== null && md5 !== hash)) {
+-        ({ md5 } = await FileSystem.downloadAsync(uri, localUri, {
++    if (!fileInfo.exists || (hash !== null && fileInfo.md5 !== hash)) {
++        const { md5 } = await FileSystem.downloadAsync(uri, localUri, {
+             md5: true,
+-        }));
++        });
+         if (hash !== null && md5 !== hash) {
+             throw new Error(`Downloaded file for asset '${name}.${type}' ` +
+                 `Located at ${uri} ` +
+@@ -75,7 +75,9 @@ async function _downloadAsyncUnmanagedEnv(uri, hash, type) {
+     const localUri = `${FileSystem.cacheDirectory}ExponentAsset-${cacheFileId}.${type}`;
+     // We don't check the FileSystem for an existing version of the asset and we
+     // also don't perform an integrity check!
+-    await FileSystem.downloadAsync(uri, localUri);
++    await FileSystem.downloadAsync(uri, localUri, {
++        sessionType: process.env.IS_APP_CLIP ? FileSystem.FileSystemSessionType.FOREGROUND : FileSystem.FileSystemSessionType.BACKGROUND,
++    });
+     return localUri;
+ }
+ //# sourceMappingURL=PlatformUtils.js.map
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/PlatformUtils.js.map b/node_modules/expo-asset/build/PlatformUtils.js.map
+index 779d049..155ffa2 100644
+--- a/node_modules/expo-asset/build/PlatformUtils.js.map
++++ b/node_modules/expo-asset/build/PlatformUtils.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"PlatformUtils.js","sourceRoot":"","sources":["../src/PlatformUtils.ts"],"names":[],"mappings":"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","sourcesContent":["import computeMd5 from 'blueimp-md5';\nimport Constants from 'expo-constants';\nimport { Manifest } from 'expo-constants/build/Constants.types';\nimport * as FileSystem from 'expo-file-system';\nimport { NativeModulesProxy } from 'expo-modules-core';\n\nimport { getManifestBaseUrl } from './AssetUris';\n\n// Constants.appOwnership is only available in managed apps (Expo client and standalone)\nexport const IS_MANAGED_ENV = !!Constants.appOwnership;\n\n// In the future (SDK38+) expo-updates is likely to be used in managed apps, so we decide\n// that you are in a bare app with updates if you're not in a managed app and you have\n// local assets available.\nexport const IS_BARE_ENV_WITH_UPDATES =\n  !IS_MANAGED_ENV &&\n  !!NativeModulesProxy.ExpoUpdates?.isEnabled &&\n  // if expo-updates is installed but we're running directly from the embedded bundle, we don't want\n  // to override the AssetSourceResolver\n  !NativeModulesProxy.ExpoUpdates?.isUsingEmbeddedAssets;\n\nexport const IS_ENV_WITH_UPDATES_ENABLED = IS_MANAGED_ENV || IS_BARE_ENV_WITH_UPDATES;\n\n// If it's not managed or bare w/ updates, then it must be bare w/o updates!\nexport const IS_BARE_ENV_WITHOUT_UPDATES = !IS_MANAGED_ENV && !IS_BARE_ENV_WITH_UPDATES;\n\n// Get the localAssets property from the ExpoUpdates native module so that we do\n// not need to include expo-updates as a dependency of expo-asset\nexport function getLocalAssets() {\n  return NativeModulesProxy.ExpoUpdates?.localAssets ?? {};\n}\n\nexport function getManifest(): { [key: string]: any } {\n  return Constants.__unsafeNoWarnManifest ?? {};\n}\n\nexport function getManifest2(): Manifest | undefined {\n  return Constants.__unsafeNoWarnManifest2;\n}\n\n// Compute manifest base URL if available\nexport const manifestBaseUrl = Constants.experienceUrl\n  ? getManifestBaseUrl(Constants.experienceUrl)\n  : null;\n\n// TODO: how should this behave in bare app with updates? re: hashAssetFiles\nexport async function downloadAsync(uri, hash, type, name): Promise<string> {\n  if (IS_MANAGED_ENV) {\n    return _downloadAsyncManagedEnv(uri, hash, type, name);\n  }\n\n  return _downloadAsyncUnmanagedEnv(uri, hash, type);\n}\n\n/**\n * Check if the file exists on disk already, perform integrity check if so.\n * Otherwise, download it.\n */\nasync function _downloadAsyncManagedEnv(uri, hash, type, name): Promise<string> {\n  const cacheFileId = hash || computeMd5(uri);\n  const localUri = `${FileSystem.cacheDirectory}ExponentAsset-${cacheFileId}.${type}`;\n  let { exists, md5 } = await FileSystem.getInfoAsync(localUri, {\n    md5: true,\n  });\n  if (!exists || (hash !== null && md5 !== hash)) {\n    ({ md5 } = await FileSystem.downloadAsync(uri, localUri, {\n      md5: true,\n    }));\n    if (hash !== null && md5 !== hash) {\n      throw new Error(\n        `Downloaded file for asset '${name}.${type}' ` +\n          `Located at ${uri} ` +\n          `failed MD5 integrity check`\n      );\n    }\n  }\n  return localUri;\n}\n\n/**\n * Just download the asset, don't perform integrity check because we don't have\n * the hash to compare it with (we don't have hashAssetFiles plugin). Hash is\n * only used for the file name.\n */\nasync function _downloadAsyncUnmanagedEnv(uri, hash, type): Promise<string> {\n  // TODO: does this make sense to bail out if it's already at a file URL\n  // because it's already available locally?\n  if (uri.startsWith('file://')) {\n    return uri;\n  }\n\n  const cacheFileId = hash || computeMd5(uri);\n  const localUri = `${FileSystem.cacheDirectory}ExponentAsset-${cacheFileId}.${type}`;\n\n  // We don't check the FileSystem for an existing version of the asset and we\n  // also don't perform an integrity check!\n  await FileSystem.downloadAsync(uri, localUri);\n  return localUri;\n}\n"]}
+\ No newline at end of file
++{"version":3,"file":"PlatformUtils.js","sourceRoot":"","sources":["../src/PlatformUtils.ts"],"names":[],"mappings":"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","sourcesContent":["import computeMd5 from 'blueimp-md5';\nimport Constants from 'expo-constants';\nimport { Manifest } from 'expo-constants/build/Constants.types';\nimport * as FileSystem from 'expo-file-system';\nimport { NativeModulesProxy } from 'expo-modules-core';\n\nimport { getManifestBaseUrl } from './AssetUris';\n\n// Constants.appOwnership is only available in managed apps (Expo client and standalone)\nexport const IS_MANAGED_ENV = !!Constants.appOwnership;\n\n// In the future (SDK38+) expo-updates is likely to be used in managed apps, so we decide\n// that you are in a bare app with updates if you're not in a managed app and you have\n// local assets available.\nexport const IS_BARE_ENV_WITH_UPDATES =\n  !IS_MANAGED_ENV &&\n  !!NativeModulesProxy.ExpoUpdates?.isEnabled &&\n  // if expo-updates is installed but we're running directly from the embedded bundle, we don't want\n  // to override the AssetSourceResolver\n  !NativeModulesProxy.ExpoUpdates?.isUsingEmbeddedAssets;\n\nexport const IS_ENV_WITH_UPDATES_ENABLED = IS_MANAGED_ENV || IS_BARE_ENV_WITH_UPDATES;\n\n// If it's not managed or bare w/ updates, then it must be bare w/o updates!\nexport const IS_BARE_ENV_WITHOUT_UPDATES = !IS_MANAGED_ENV && !IS_BARE_ENV_WITH_UPDATES;\n\n// Get the localAssets property from the ExpoUpdates native module so that we do\n// not need to include expo-updates as a dependency of expo-asset\nexport function getLocalAssets() {\n  return NativeModulesProxy.ExpoUpdates?.localAssets ?? {};\n}\n\nexport function getManifest(): { [key: string]: any } {\n  return Constants.__unsafeNoWarnManifest ?? {};\n}\n\nexport function getManifest2(): Manifest | undefined {\n  return Constants.__unsafeNoWarnManifest2;\n}\n\n// Compute manifest base URL if available\nexport const manifestBaseUrl = Constants.experienceUrl\n  ? getManifestBaseUrl(Constants.experienceUrl)\n  : null;\n\n// TODO: how should this behave in bare app with updates? re: hashAssetFiles\nexport async function downloadAsync(uri, hash, type, name): Promise<string> {\n  if (IS_MANAGED_ENV) {\n    return _downloadAsyncManagedEnv(uri, hash, type, name);\n  }\n\n  return _downloadAsyncUnmanagedEnv(uri, hash, type);\n}\n\n/**\n * Check if the file exists on disk already, perform integrity check if so.\n * Otherwise, download it.\n */\nasync function _downloadAsyncManagedEnv(uri, hash, type, name): Promise<string> {\n  const cacheFileId = hash || computeMd5(uri);\n  const localUri = `${FileSystem.cacheDirectory}ExponentAsset-${cacheFileId}.${type}`;\n  const fileInfo = await FileSystem.getInfoAsync(localUri, {\n    md5: true,\n  });\n  if (!fileInfo.exists || (hash !== null && fileInfo.md5 !== hash)) {\n    const { md5 } = await FileSystem.downloadAsync(uri, localUri, {\n      md5: true,\n    });\n    if (hash !== null && md5 !== hash) {\n      throw new Error(\n        `Downloaded file for asset '${name}.${type}' ` +\n          `Located at ${uri} ` +\n          `failed MD5 integrity check`\n      );\n    }\n  }\n  return localUri;\n}\n\n/**\n * Just download the asset, don't perform integrity check because we don't have\n * the hash to compare it with (we don't have hashAssetFiles plugin). Hash is\n * only used for the file name.\n */\nasync function _downloadAsyncUnmanagedEnv(uri, hash, type): Promise<string> {\n  // TODO: does this make sense to bail out if it's already at a file URL\n  // because it's already available locally?\n  if (uri.startsWith('file://')) {\n    return uri;\n  }\n\n  const cacheFileId = hash || computeMd5(uri);\n  const localUri = `${FileSystem.cacheDirectory}ExponentAsset-${cacheFileId}.${type}`;\n\n  // We don't check the FileSystem for an existing version of the asset and we\n  // also don't perform an integrity check!\n  await FileSystem.downloadAsync(uri, localUri);\n  return localUri;\n}\n"]}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/ReactNativeCompatibleAssetsRegistry.d.ts b/node_modules/expo-asset/build/ReactNativeCompatibleAssetsRegistry.d.ts
+new file mode 100644
+index 0000000..67bc69b
+--- /dev/null
++++ b/node_modules/expo-asset/build/ReactNativeCompatibleAssetsRegistry.d.ts
+@@ -0,0 +1,9 @@
++import type { registerAsset, getAssetByID } from '@react-native/assets/registry';
++export type { PackagerAsset } from '@react-native/assets/registry';
++declare let registry: any | null;
++declare const registerAssetImport: typeof registerAsset;
++declare const getAssetByIDImport: typeof getAssetByID;
++export { registerAssetImport as registerAsset };
++export { getAssetByIDImport as getAssetByID };
++export default registry;
++//# sourceMappingURL=ReactNativeCompatibleAssetsRegistry.d.ts.map
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/ReactNativeCompatibleAssetsRegistry.d.ts.map b/node_modules/expo-asset/build/ReactNativeCompatibleAssetsRegistry.d.ts.map
+new file mode 100644
+index 0000000..70dc751
+--- /dev/null
++++ b/node_modules/expo-asset/build/ReactNativeCompatibleAssetsRegistry.d.ts.map
+@@ -0,0 +1 @@
++{"version":3,"file":"ReactNativeCompatibleAssetsRegistry.d.ts","sourceRoot":"","sources":["../src/ReactNativeCompatibleAssetsRegistry.ts"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAE,aAAa,EAAE,YAAY,EAAE,MAAM,+BAA+B,CAAC;AACjF,YAAY,EAAE,aAAa,EAAE,MAAM,+BAA+B,CAAC;AAEnE,QAAA,IAAI,QAAQ,EAAE,GAAG,GAAG,IAAW,CAAC;AAehC,QAAA,MAAM,mBAAmB,sBAAiD,CAAC;AAC3E,QAAA,MAAM,kBAAkB,qBAA+C,CAAC;AACxE,OAAO,EAAE,mBAAmB,IAAI,aAAa,EAAE,CAAC;AAChD,OAAO,EAAE,kBAAkB,IAAI,YAAY,EAAE,CAAC;AAE9C,eAAe,QAAQ,CAAC"}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/ReactNativeCompatibleAssetsRegistry.js b/node_modules/expo-asset/build/ReactNativeCompatibleAssetsRegistry.js
+new file mode 100644
+index 0000000..83921ab
+--- /dev/null
++++ b/node_modules/expo-asset/build/ReactNativeCompatibleAssetsRegistry.js
+@@ -0,0 +1,20 @@
++let registry = null;
++try {
++    registry = require('@react-native/assets-registry/registry');
++}
++catch { }
++if (!registry) {
++    try {
++        registry = require('@react-native/assets/registry');
++    }
++    catch { }
++}
++if (!registry) {
++    throw new Error('Cannot import `@react-native/assets-registry` or `@react-native/assets` package');
++}
++const registerAssetImport = registry.registerAsset;
++const getAssetByIDImport = registry.getAssetByID;
++export { registerAssetImport as registerAsset };
++export { getAssetByIDImport as getAssetByID };
++export default registry;
++//# sourceMappingURL=ReactNativeCompatibleAssetsRegistry.js.map
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/ReactNativeCompatibleAssetsRegistry.js.map b/node_modules/expo-asset/build/ReactNativeCompatibleAssetsRegistry.js.map
+new file mode 100644
+index 0000000..c23200b
+--- /dev/null
++++ b/node_modules/expo-asset/build/ReactNativeCompatibleAssetsRegistry.js.map
+@@ -0,0 +1 @@
++{"version":3,"file":"ReactNativeCompatibleAssetsRegistry.js","sourceRoot":"","sources":["../src/ReactNativeCompatibleAssetsRegistry.ts"],"names":[],"mappings":"AAIA,IAAI,QAAQ,GAAe,IAAI,CAAC;AAChC,IAAI;IACF,QAAQ,GAAG,OAAO,CAAC,wCAAwC,CAAC,CAAC;CAC9D;AAAC,MAAM,GAAE;AACV,IAAI,CAAC,QAAQ,EAAE;IACb,IAAI;QACF,QAAQ,GAAG,OAAO,CAAC,+BAA+B,CAAC,CAAC;KACrD;IAAC,MAAM,GAAE;CACX;AACD,IAAI,CAAC,QAAQ,EAAE;IACb,MAAM,IAAI,KAAK,CACb,iFAAiF,CAClF,CAAC;CACH;AAED,MAAM,mBAAmB,GAAG,QAAQ,CAAC,aAAqC,CAAC;AAC3E,MAAM,kBAAkB,GAAG,QAAQ,CAAC,YAAmC,CAAC;AACxE,OAAO,EAAE,mBAAmB,IAAI,aAAa,EAAE,CAAC;AAChD,OAAO,EAAE,kBAAkB,IAAI,YAAY,EAAE,CAAC;AAE9C,eAAe,QAAQ,CAAC","sourcesContent":["// Remove this when we drop SDK 47\nimport type { registerAsset, getAssetByID } from '@react-native/assets/registry';\nexport type { PackagerAsset } from '@react-native/assets/registry';\n\nlet registry: any | null = null;\ntry {\n  registry = require('@react-native/assets-registry/registry');\n} catch {}\nif (!registry) {\n  try {\n    registry = require('@react-native/assets/registry');\n  } catch {}\n}\nif (!registry) {\n  throw new Error(\n    'Cannot import `@react-native/assets-registry` or `@react-native/assets` package'\n  );\n}\n\nconst registerAssetImport = registry.registerAsset as typeof registerAsset;\nconst getAssetByIDImport = registry.getAssetByID as typeof getAssetByID;\nexport { registerAssetImport as registerAsset };\nexport { getAssetByIDImport as getAssetByID };\n\nexport default registry;\n"]}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/resolveAssetSource.web.d.ts.map b/node_modules/expo-asset/build/resolveAssetSource.web.d.ts.map
+index 449e86f..19743fd 100644
+--- a/node_modules/expo-asset/build/resolveAssetSource.web.d.ts.map
++++ b/node_modules/expo-asset/build/resolveAssetSource.web.d.ts.map
+@@ -1 +1 @@
+-{"version":3,"file":"resolveAssetSource.web.d.ts","sourceRoot":"","sources":["../src/resolveAssetSource.web.ts"],"names":[],"mappings":"AAGA,OAAO,mBAAmB,EAAE,EAAE,mBAAmB,EAAE,MAAM,uBAAuB,CAAC;AAoCjF,wBAAgB,0BAA0B,CACxC,WAAW,EAAE,CAAC,QAAQ,EAAE,mBAAmB,KAAK,mBAAmB,GAClE,IAAI,CAEN;AAED;;;GAGG;AACH,MAAM,CAAC,OAAO,UAAU,kBAAkB,CAAC,MAAM,EAAE,GAAG,GAAG,mBAAmB,GAAG,SAAS,CAevF;AAQD,eAAO,MAAQ,SAAS,sCAAwB,CAAC"}
+\ No newline at end of file
++{"version":3,"file":"resolveAssetSource.web.d.ts","sourceRoot":"","sources":["../src/resolveAssetSource.web.ts"],"names":[],"mappings":"AAAA,OAAO,mBAAmB,EAAE,EAAE,mBAAmB,EAAE,MAAM,uBAAuB,CAAC;AAKjF,wBAAgB,0BAA0B,CACxC,WAAW,EAAE,CAAC,QAAQ,EAAE,mBAAmB,KAAK,mBAAmB,GAClE,IAAI,CAEN;AAED;;;GAGG;AACH,MAAM,CAAC,OAAO,UAAU,kBAAkB,CAAC,MAAM,EAAE,GAAG,GAAG,mBAAmB,GAAG,SAAS,CAevF;AAQD,eAAO,MAAQ,SAAS,sCAAwB,CAAC"}
+\ No newline at end of file
+diff --git a/node_modules/expo-asset/build/resolveAssetSource.web.js b/node_modules/expo-asset/build/resolveAssetSource.web.js
+index e91b78a..5621ac3 100644
+--- a/node_modules/expo-asset/build/resolveAssetSource.web.js
++++ b/node_modules/expo-asset/build/resolveAssetSource.web.js
+@@ -1,35 +1,6 @@
+-import { NativeModules } from 'react-native';
+-import { getAssetByID } from './AssetRegistry';
+ import AssetSourceResolver from './AssetSourceResolver';
++import ReactNativeAssetRegistry from './ReactNativeCompatibleAssetsRegistry';
+ let _customSourceTransformer;
+-let _serverURL;
+-let _sourceCodeScriptURL;
+-function getSourceCodeScriptURL() {
+-    if (_sourceCodeScriptURL) {
+-        return _sourceCodeScriptURL;
+-    }
+-    let sourceCode = typeof nativeExtensions !== 'undefined' ? nativeExtensions.SourceCode : null;
+-    if (!sourceCode) {
+-        sourceCode = NativeModules?.SourceCode;
+-    }
+-    _sourceCodeScriptURL = sourceCode?.scriptURL;
+-    return _sourceCodeScriptURL;
+-}
+-function getDevServerURL() {
+-    if (_serverURL === undefined) {
+-        const sourceCodeScriptURL = getSourceCodeScriptURL();
+-        const match = sourceCodeScriptURL && sourceCodeScriptURL.match(/^https?:\/\/.*?\//);
+-        if (match) {
+-            // jsBundle was loaded from network
+-            _serverURL = match[0];
+-        }
+-        else {
+-            // jsBundle was loaded from file
+-            _serverURL = null;
+-        }
+-    }
+-    return _serverURL;
+-}
+ export function setCustomSourceTransformer(transformer) {
+     _customSourceTransformer = transformer;
+ }
+@@ -41,11 +12,11 @@ export default function resolveAssetSource(source) {
+     if (typeof source === 'object') {
+         return source;
+     }
+-    const asset = getAssetByID(source);
++    const asset = ReactNativeAssetRegistry.getAssetByID(source);
+     if (!asset) {
+         return undefined;
+     }
+-    const resolver = new AssetSourceResolver(getDevServerURL(), null, asset);
++    const resolver = new AssetSourceResolver(location.origin, null, asset);
+     if (_customSourceTransformer) {
+         return _customSourceTransformer(resolver);
+     }
+diff --git a/node_modules/expo-asset/build/resolveAssetSource.web.js.map b/node_modules/expo-asset/build/resolveAssetSource.web.js.map
+index ac6c56d..9e52c42 100644
+--- a/node_modules/expo-asset/build/resolveAssetSource.web.js.map
++++ b/node_modules/expo-asset/build/resolveAssetSource.web.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"resolveAssetSource.web.js","sourceRoot":"","sources":["../src/resolveAssetSource.web.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,cAAc,CAAC;AAE7C,OAAO,EAAE,YAAY,EAAE,MAAM,iBAAiB,CAAC;AAC/C,OAAO,mBAA4C,MAAM,uBAAuB,CAAC;AAIjF,IAAI,wBAAwB,CAAC;AAC7B,IAAI,UAAqC,CAAC;AAC1C,IAAI,oBAA+C,CAAC;AAEpD,SAAS,sBAAsB;IAC7B,IAAI,oBAAoB,EAAE;QACxB,OAAO,oBAAoB,CAAC;KAC7B;IAED,IAAI,UAAU,GAAG,OAAO,gBAAgB,KAAK,WAAW,CAAC,CAAC,CAAC,gBAAgB,CAAC,UAAU,CAAC,CAAC,CAAC,IAAI,CAAC;IAC9F,IAAI,CAAC,UAAU,EAAE;QACf,UAAU,GAAG,aAAa,EAAE,UAAU,CAAC;KACxC;IACD,oBAAoB,GAAG,UAAU,EAAE,SAAS,CAAC;IAC7C,OAAO,oBAAoB,CAAC;AAC9B,CAAC;AAED,SAAS,eAAe;IACtB,IAAI,UAAU,KAAK,SAAS,EAAE;QAC5B,MAAM,mBAAmB,GAAG,sBAAsB,EAAE,CAAC;QACrD,MAAM,KAAK,GAAG,mBAAmB,IAAI,mBAAmB,CAAC,KAAK,CAAC,mBAAmB,CAAC,CAAC;QACpF,IAAI,KAAK,EAAE;YACT,mCAAmC;YACnC,UAAU,GAAG,KAAK,CAAC,CAAC,CAAC,CAAC;SACvB;aAAM;YACL,gCAAgC;YAChC,UAAU,GAAG,IAAI,CAAC;SACnB;KACF;IACD,OAAO,UAAU,CAAC;AACpB,CAAC;AAED,MAAM,UAAU,0BAA0B,CACxC,WAAmE;IAEnE,wBAAwB,GAAG,WAAW,CAAC;AACzC,CAAC;AAED;;;GAGG;AACH,MAAM,CAAC,OAAO,UAAU,kBAAkB,CAAC,MAAW;IACpD,IAAI,OAAO,MAAM,KAAK,QAAQ,EAAE;QAC9B,OAAO,MAAM,CAAC;KACf;IAED,MAAM,KAAK,GAAG,YAAY,CAAC,MAAM,CAAC,CAAC;IACnC,IAAI,CAAC,KAAK,EAAE;QACV,OAAO,SAAS,CAAC;KAClB;IAED,MAAM,QAAQ,GAAG,IAAI,mBAAmB,CAAC,eAAe,EAAE,EAAE,IAAI,EAAE,KAAK,CAAC,CAAC;IACzE,IAAI,wBAAwB,EAAE;QAC5B,OAAO,wBAAwB,CAAC,QAAQ,CAAC,CAAC;KAC3C;IACD,OAAO,QAAQ,CAAC,YAAY,EAAE,CAAC;AACjC,CAAC;AAED,MAAM,CAAC,cAAc,CAAC,kBAAkB,EAAE,4BAA4B,EAAE;IACtE,GAAG;QACD,OAAO,0BAA0B,CAAC;IACpC,CAAC;CACF,CAAC,CAAC;AAEH,MAAM,CAAC,MAAM,EAAE,SAAS,EAAE,GAAG,mBAAmB,CAAC","sourcesContent":["import { NativeModules } from 'react-native';\n\nimport { getAssetByID } from './AssetRegistry';\nimport AssetSourceResolver, { ResolvedAssetSource } from './AssetSourceResolver';\n\ndeclare let nativeExtensions: { SourceCode?: { scriptURL: string } } | undefined;\n\nlet _customSourceTransformer;\nlet _serverURL: string | undefined | null;\nlet _sourceCodeScriptURL: string | undefined | null;\n\nfunction getSourceCodeScriptURL(): string | undefined | null {\n  if (_sourceCodeScriptURL) {\n    return _sourceCodeScriptURL;\n  }\n\n  let sourceCode = typeof nativeExtensions !== 'undefined' ? nativeExtensions.SourceCode : null;\n  if (!sourceCode) {\n    sourceCode = NativeModules?.SourceCode;\n  }\n  _sourceCodeScriptURL = sourceCode?.scriptURL;\n  return _sourceCodeScriptURL;\n}\n\nfunction getDevServerURL(): string | null {\n  if (_serverURL === undefined) {\n    const sourceCodeScriptURL = getSourceCodeScriptURL();\n    const match = sourceCodeScriptURL && sourceCodeScriptURL.match(/^https?:\\/\\/.*?\\//);\n    if (match) {\n      // jsBundle was loaded from network\n      _serverURL = match[0];\n    } else {\n      // jsBundle was loaded from file\n      _serverURL = null;\n    }\n  }\n  return _serverURL;\n}\n\nexport function setCustomSourceTransformer(\n  transformer: (resolver: AssetSourceResolver) => ResolvedAssetSource\n): void {\n  _customSourceTransformer = transformer;\n}\n\n/**\n * `source` is either a number (opaque type returned by require('./foo.png'))\n * or an `ImageSource` like { uri: '<http location || file path>' }\n */\nexport default function resolveAssetSource(source: any): ResolvedAssetSource | undefined {\n  if (typeof source === 'object') {\n    return source;\n  }\n\n  const asset = getAssetByID(source);\n  if (!asset) {\n    return undefined;\n  }\n\n  const resolver = new AssetSourceResolver(getDevServerURL(), null, asset);\n  if (_customSourceTransformer) {\n    return _customSourceTransformer(resolver);\n  }\n  return resolver.defaultAsset();\n}\n\nObject.defineProperty(resolveAssetSource, 'setCustomSourceTransformer', {\n  get() {\n    return setCustomSourceTransformer;\n  },\n});\n\nexport const { pickScale } = AssetSourceResolver;\n"]}
+\ No newline at end of file
++{"version":3,"file":"resolveAssetSource.web.js","sourceRoot":"","sources":["../src/resolveAssetSource.web.ts"],"names":[],"mappings":"AAAA,OAAO,mBAA4C,MAAM,uBAAuB,CAAC;AACjF,OAAO,wBAAwB,MAAM,uCAAuC,CAAC;AAE7E,IAAI,wBAAwB,CAAC;AAE7B,MAAM,UAAU,0BAA0B,CACxC,WAAmE;IAEnE,wBAAwB,GAAG,WAAW,CAAC;AACzC,CAAC;AAED;;;GAGG;AACH,MAAM,CAAC,OAAO,UAAU,kBAAkB,CAAC,MAAW;IACpD,IAAI,OAAO,MAAM,KAAK,QAAQ,EAAE;QAC9B,OAAO,MAAM,CAAC;KACf;IAED,MAAM,KAAK,GAAG,wBAAwB,CAAC,YAAY,CAAC,MAAM,CAAC,CAAC;IAC5D,IAAI,CAAC,KAAK,EAAE;QACV,OAAO,SAAS,CAAC;KAClB;IAED,MAAM,QAAQ,GAAG,IAAI,mBAAmB,CAAC,QAAQ,CAAC,MAAM,EAAE,IAAI,EAAE,KAAK,CAAC,CAAC;IACvE,IAAI,wBAAwB,EAAE;QAC5B,OAAO,wBAAwB,CAAC,QAAQ,CAAC,CAAC;KAC3C;IACD,OAAO,QAAQ,CAAC,YAAY,EAAE,CAAC;AACjC,CAAC;AAED,MAAM,CAAC,cAAc,CAAC,kBAAkB,EAAE,4BAA4B,EAAE;IACtE,GAAG;QACD,OAAO,0BAA0B,CAAC;IACpC,CAAC;CACF,CAAC,CAAC;AAEH,MAAM,CAAC,MAAM,EAAE,SAAS,EAAE,GAAG,mBAAmB,CAAC","sourcesContent":["import AssetSourceResolver, { ResolvedAssetSource } from './AssetSourceResolver';\nimport ReactNativeAssetRegistry from './ReactNativeCompatibleAssetsRegistry';\n\nlet _customSourceTransformer;\n\nexport function setCustomSourceTransformer(\n  transformer: (resolver: AssetSourceResolver) => ResolvedAssetSource\n): void {\n  _customSourceTransformer = transformer;\n}\n\n/**\n * `source` is either a number (opaque type returned by require('./foo.png'))\n * or an `ImageSource` like { uri: '<http location || file path>' }\n */\nexport default function resolveAssetSource(source: any): ResolvedAssetSource | undefined {\n  if (typeof source === 'object') {\n    return source;\n  }\n\n  const asset = ReactNativeAssetRegistry.getAssetByID(source);\n  if (!asset) {\n    return undefined;\n  }\n\n  const resolver = new AssetSourceResolver(location.origin, null, asset);\n  if (_customSourceTransformer) {\n    return _customSourceTransformer(resolver);\n  }\n  return resolver.defaultAsset();\n}\n\nObject.defineProperty(resolveAssetSource, 'setCustomSourceTransformer', {\n  get() {\n    return setCustomSourceTransformer;\n  },\n});\n\nexport const { pickScale } = AssetSourceResolver;\n"]}
+\ No newline at end of file
