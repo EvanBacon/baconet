@@ -66,14 +66,7 @@ export function useLinkBuilder() {
         state,
         linking.options!.config
       );
-      if (name === "(index)")
-        console.log(
-          "buildLink:",
-          name,
-          JSON.parse(JSON.stringify(state)),
-          out,
-          JSON.parse(JSON.stringify(linking.options!.config))
-        );
+
       return out;
     },
     [linking, navigation]

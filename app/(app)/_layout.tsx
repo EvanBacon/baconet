@@ -232,10 +232,7 @@ function SideBarTabItem({
   name: string;
 }) {
   const isLarge = useWidth(1265);
-  // const buildLink = useLinkBuilder();
 
-  // return null;
-  // console.log("side bar:", buildLink("media"));
   return (
     <div style={{ paddingBottom: 35 }}>
       <TabBarItem
