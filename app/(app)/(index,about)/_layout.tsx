@@ -54,7 +54,7 @@ export default function StackLayout({ segment }) {
   return (
     <Stack
       screenOptions={{
-        headerLargeTitle: true,
+        headerLargeTitle: segment !== "(about)",
         headerTitleStyle: {
           fontFamily: useFont("Inter_700Bold"),
         },

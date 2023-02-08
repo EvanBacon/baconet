@@ -1,5 +1,7 @@
 import { Head } from "@bacons/head";
+import { Stack } from "expo-router";
 import { Image } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function About() {
   return (
@@ -16,9 +18,13 @@ export default function About() {
           content="evan bacon,expo,javascript,typescript,ios,android,native,react native,react,learn"
         />
       </Head>
-      <div style={{ flex: 1, padding: 16 }}>
+      <Stack.Screen options={{ title: "About" }} />
+      <ScrollView
+        style={{ flex: 1, padding: 16 }}
+        contentInsetAdjustmentBehavior="automatic"
+      >
         <Image
-          source={require("../../assets/brand/evanbacon-2022.jpg")}
+          source={require("../../../assets/brand/evanbacon-2022.jpg")}
           resizeMode="cover"
           style={{ width: 100, height: 100, borderRadius: 50 }}
         />
@@ -31,7 +37,7 @@ export default function About() {
           development, I was an award-winning Lego artist, specializing in
           life-sized sculptures.
         </p>
-      </div>
+      </ScrollView>
     </>
   );
 }

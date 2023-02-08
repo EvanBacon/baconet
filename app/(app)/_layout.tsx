@@ -105,7 +105,10 @@ function SideBar({ visible }) {
               Media
             </SideBarTabItem>
             <SideBarDivider />
-            <SideBarTabItem name="about" icon={makeIcon("information-circle")}>
+            <SideBarTabItem
+              name="(about)"
+              icon={makeIcon("information-circle")}
+            >
               About
             </SideBarTabItem>
           </nav>
@@ -138,7 +141,7 @@ function TabBar({ visible }) {
         {[
           { name: "(index)", icon: "home" },
           { name: "(media)", icon: "mic" },
-          { name: "about", icon: "information-circle" },
+          { name: "(about)", icon: "information-circle" },
         ].map((tab, i) => (
           <TabBarItem key={i} name={tab.name}>
             {({ focused, pressed, hovered }) => (
@@ -329,7 +332,7 @@ export default function App() {
         />
 
         <TabbedNavigator.Screen
-          name="about"
+          name="(about)"
           options={{
             title: "Evan Bacon",
             tabBarIcon: makeIcon("person"),
