@@ -98,10 +98,10 @@ export default function StackLayout({ segment }) {
                   // }
                   return <ShareButton />;
                 },
-                headerSearchBarOptions: {
-                  placeholder: "Search",
-                  autoFocus: true,
-                },
+                // headerSearchBarOptions: {
+                //   placeholder: "Search",
+                //   autoFocus: true,
+                // },
               })
             : undefined
         }

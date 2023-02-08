@@ -56,6 +56,7 @@ function loadFontAsync(sources: Record<string, Font.FontSource>) {
   return Promise.all(
     Object.entries(sources).map(([name, source]) => {
       Font.loadAsync(name, source).then(() => {
+        // alert("loaded: " + name);
         const listeners = fontLoadedListeners.get(name);
         if (listeners) {
           for (const listener of listeners) {

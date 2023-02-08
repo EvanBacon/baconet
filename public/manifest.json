@@ -8,7 +8,7 @@
   "icons": [
  
   ],
-  "theme_color": "#4630EB",
-  "background_color": "#4630EB",
+  "theme_color": "#161b22",
+  "background_color": "#fff",
   "display": "standalone"
 }
