@@ -1,11 +1,7 @@
 import { Head } from "@bacons/head";
 import { View } from "@bacons/react-views";
-import {
-  CommonActions,
-  NavigationHelpersContext,
-} from "@react-navigation/native";
-import { Link, Navigator, Tabs } from "expo-router";
-import { QualifiedSlot, Slot } from "expo-router/build/views/Layout";
+import { NavigationHelpersContext } from "@react-navigation/native";
+import { Link } from "expo-router";
 import React from "react";
 import {
   Platform,
@@ -16,23 +12,21 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import * as Icons from "../../components/medium";
-// import { Tabs } from "../../components/tab-bar/BottomTabs";
 import { makeIcon, TabBarIcon } from "../../components/TabBarIcon";
+import { TabbedNavigator } from "../../components/TabbedSlot";
 
 function HeaderLogo() {
   return (
     <Link style={{ paddingVertical: 40 }} href="/" replace>
       <h1
-        style={[
-          {
-            margin: 0,
-            display: "flex",
-            flex: 1,
-            alignItems: "center",
-            maxHeight: 23,
-            marginVertical: 2,
-          },
-        ]}
+        style={{
+          margin: 0,
+          display: "flex",
+          flex: 1,
+          alignItems: "center",
+          maxHeight: 23,
+          marginVertical: 2,
+        }}
       >
         <Icons.Logo fill={DARK} style={{ height: 30 }} />
       </h1>
@@ -115,24 +109,7 @@ function SideBar({ visible }) {
               About
             </SideBarTabItem>
           </nav>
-
-          <footer
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              marginVertical: 16,
-            }}
-          >
-            {false && (
-              <a
-                style={{ width: 32, marginVertical: 8, height: 32 }}
-                href="https://github.com/evanbacon/portfolio"
-                target="_blank"
-              >
-                <Icons.Code />
-              </a>
-            )}
-          </footer>
+          <div />
         </header>
       </div>
     </div>
@@ -306,9 +283,6 @@ function SideBarTabItem({
   );
 }
 
-import TabbedSlot, { TabbedNavigator } from "../../components/TabbedSlot";
-import { Text } from "../../components/useFont";
-
 export default function App() {
   const isRowLayout = useWidth(600);
 
@@ -333,7 +307,7 @@ export default function App() {
           <TabbedNavigator.Slot />
           <TabBar visible={!isRowLayout} />
         </View>
-        {/* 
+
         <TabbedNavigator.Screen
           name="(index)"
           options={{
@@ -356,7 +330,7 @@ export default function App() {
             title: "Evan Bacon",
             tabBarIcon: makeIcon("person"),
           }}
-        /> */}
+        />
       </TabbedNavigator>
     </>
   );

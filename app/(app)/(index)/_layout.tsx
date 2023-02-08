@@ -9,7 +9,6 @@ import { SourceCodePro_400Regular } from "@expo-google-fonts/source-code-pro";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 import { Stack, usePathname } from "expo-router";
-import { useContextKey } from "expo-router/build/Route";
 import {
   Platform,
   Share,
@@ -40,7 +39,6 @@ function ShareButton() {
 }
 
 export default function StackLayout({ segment }) {
-  return <Stack />;
   const initRouteName = segment.replace(/^\(/, "").replace(/\)$/, "");
 
   useLoadFonts({

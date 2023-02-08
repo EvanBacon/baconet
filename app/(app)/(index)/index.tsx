@@ -22,8 +22,6 @@ import { MetaShortcut } from "../../../components/shortcuts";
 const mdxctx = require.context("../../../assets/articles", true, /\.js$/);
 
 export default function Page() {
-  return <PostsList />;
-
   return (
     <>
       <Head>
@@ -64,7 +62,7 @@ function PostsList() {
           return new Date(b.date).getTime() - new Date(a.date).getTime();
         })
         // Limit to 5
-        .slice(0, 1),
+        .slice(0, 6),
     [mdxctx.keys()]
   );
 
@@ -123,28 +121,3 @@ export function CupertinoItemSeparatorComponent() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // alignItems: "stretch",
-    alignItems: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
-    // padding: 24,
-  },
-  main: {
-    flex: 1,
-    justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
-  },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
-  },
-});
