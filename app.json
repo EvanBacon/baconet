@@ -19,7 +19,8 @@
         "./config-plugins/withLinks",
         "https://baconet.netlify.app/"
       ],
-      "@bacons/head"
+      "@bacons/head",
+      "react-native-app-clip"
     ],
     "ios": {
       "bundleIdentifier": "app.baconet",
