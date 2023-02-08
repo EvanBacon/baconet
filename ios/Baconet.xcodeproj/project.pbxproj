@@ -11,27 +11,72 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		247FA2B20A944F2D85C3594D /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 600A3B61310F4182854A472F /* SplashScreen.storyboard */; };
+		265C014994FC4A66940880A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36108641751481CA07BE4EF /* Images.xcassets */; };
+		379C3DC3C95749EDAF3E04A6 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 34259F40DA3E41AAB9055B89 /* AppDelegate.mm */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		488D59F2A18449CE92383A1F /* Baconet Clip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 585547670B9A49DCBDDA4C54 /* Baconet Clip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5271D2DAD19C4B8EB1270B05 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = C50A86BB045F41FAABBA5471 /* Expo.plist */; };
+		94AFDDCACEA46397E9E4AD76 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A298A9E8AF8A7C0DD11AC1 /* ExpoModulesProvider.swift */; };
 		96905EF65AED1B983A6B3ABC /* libPods-Baconet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-Baconet.a */; };
+		A6482AF0A82CAB9A21B138D2 /* libPods-Baconet-BaconetClip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D46DAB489B41F1A866CD3528 /* libPods-Baconet-BaconetClip.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		EE5A9C19A98D4956B19D35C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5EE91BFC3D4414AD93AD80 /* main.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8A477467E2D8404281C51BBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 121CB6B842DD4F4596C88382;
+			remoteInfo = BaconetClip;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B8A994F6FCFF4EEB86DFAC8E /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				488D59F2A18449CE92383A1F /* Baconet Clip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		080B14947F4B4F0BB5CCFA0C /* Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Baconet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baconet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Baconet/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Baconet/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Baconet/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Baconet/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Baconet/main.m; sourceTree = "<group>"; };
+		34259F40DA3E41AAB9055B89 /* AppDelegate.mm */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = AppDelegate.mm; sourceTree = "<group>"; };
+		424E953A9D09101462F71EE3 /* Pods-Baconet-BaconetClip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Baconet-BaconetClip.release.xcconfig"; path = "Target Support Files/Pods-Baconet-BaconetClip/Pods-Baconet-BaconetClip.release.xcconfig"; sourceTree = "<group>"; };
+		585547670B9A49DCBDDA4C54 /* Baconet Clip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; fileEncoding = 9; includeInIndex = 0; path = "Baconet Clip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-Baconet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Baconet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		600A3B61310F4182854A472F /* SplashScreen.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = SplashScreen.storyboard; sourceTree = "<group>"; };
 		6C2E3173556A471DD304B334 /* Pods-Baconet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Baconet.debug.xcconfig"; path = "Target Support Files/Pods-Baconet/Pods-Baconet.debug.xcconfig"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-Baconet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Baconet.release.xcconfig"; path = "Target Support Files/Pods-Baconet/Pods-Baconet.release.xcconfig"; sourceTree = "<group>"; };
+		7BA855462C894446AFBD841F /* BaconetClip.entitlements */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = BaconetClip.entitlements; sourceTree = "<group>"; };
+		97A298A9E8AF8A7C0DD11AC1 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Baconet-BaconetClip/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		9EE81BF5D45E4AF293986838 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "Baconet/noop-file.swift"; sourceTree = "<group>"; };
+		A36108641751481CA07BE4EF /* Images.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A392F1842BF8D85F4F689788 /* Pods-Baconet-BaconetClip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Baconet-BaconetClip.debug.xcconfig"; path = "Target Support Files/Pods-Baconet-BaconetClip/Pods-Baconet-BaconetClip.debug.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = Baconet/SplashScreen.storyboard; sourceTree = "<group>"; };
+		BA05303AAF134E2BBAF74366 /* AppDelegate.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		C50A86BB045F41FAABBA5471 /* Expo.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = Expo.plist; path = Supporting/Expo.plist; sourceTree = "<group>"; };
+		D46DAB489B41F1A866CD3528 /* libPods-Baconet-BaconetClip.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Baconet-BaconetClip.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FA5EE91BFC3D4414AD93AD80 /* main.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Baconet/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -41,6 +86,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				96905EF65AED1B983A6B3ABC /* libPods-Baconet.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B15902E0F47F40928C89EB12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6482AF0A82CAB9A21B138D2 /* libPods-Baconet-BaconetClip.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,8 +121,32 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-Baconet.a */,
+				D46DAB489B41F1A866CD3528 /* libPods-Baconet-BaconetClip.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		46652B7B79E24084A60BF0DD /* BaconetClip */ = {
+			isa = PBXGroup;
+			children = (
+				BA05303AAF134E2BBAF74366 /* AppDelegate.h */,
+				34259F40DA3E41AAB9055B89 /* AppDelegate.mm */,
+				FA5EE91BFC3D4414AD93AD80 /* main.m */,
+				080B14947F4B4F0BB5CCFA0C /* Info.plist */,
+				A36108641751481CA07BE4EF /* Images.xcassets */,
+				600A3B61310F4182854A472F /* SplashScreen.storyboard */,
+				7BA855462C894446AFBD841F /* BaconetClip.entitlements */,
+				C50A86BB045F41FAABBA5471 /* Expo.plist */,
+			);
+			path = BaconetClip;
+			sourceTree = "<group>";
+		};
+		5104D8F5988683322B114F46 /* BaconetClip */ = {
+			isa = PBXGroup;
+			children = (
+				97A298A9E8AF8A7C0DD11AC1 /* ExpoModulesProvider.swift */,
+			);
+			name = BaconetClip;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -88,6 +165,8 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
 				D7E4C46ADA2E9064B798F356 /* ExpoModulesProviders */,
+				46652B7B79E24084A60BF0DD /* BaconetClip */,
+				CD4E251B2994429F0073128A /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -119,11 +198,21 @@
 			path = Baconet/Supporting;
 			sourceTree = "<group>";
 		};
+		CD4E251B2994429F0073128A /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				585547670B9A49DCBDDA4C54 /* Baconet Clip.app */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		D65327D7A22EEC0BE12398D9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				6C2E3173556A471DD304B334 /* Pods-Baconet.debug.xcconfig */,
 				7A4D352CD337FB3A3BF06240 /* Pods-Baconet.release.xcconfig */,
+				A392F1842BF8D85F4F689788 /* Pods-Baconet-BaconetClip.debug.xcconfig */,
+				424E953A9D09101462F71EE3 /* Pods-Baconet-BaconetClip.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -132,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				92DBD88DE9BF7D494EA9DA96 /* Baconet */,
+				5104D8F5988683322B114F46 /* BaconetClip */,
 			);
 			name = ExpoModulesProviders;
 			sourceTree = "<group>";
@@ -139,6 +229,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		121CB6B842DD4F4596C88382 /* BaconetClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55E0454D81584E2AA47CBFBC /* Build configuration list for PBXNativeTarget "BaconetClip" */;
+			buildPhases = (
+				CA63F8598545EDC436CB39FB /* [CP] Check Pods Manifest.lock */,
+				81460AC422304764B83721AF /* Start Packager */,
+				1CF11ABF373D4373BDC168C3 /* Sources */,
+				B15902E0F47F40928C89EB12 /* Frameworks */,
+				07BFC2164BCB4112A059B5A5 /* Resources */,
+				BE50D178BA6A4577BD1EC9A0 /* Bundle React Native code and images */,
+				EB9A3F0BAD3FFDB730C4127F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BaconetClip;
+			productName = BaconetClip;
+			productReference = 585547670B9A49DCBDDA4C54 /* Baconet Clip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
 		13B07F861A680F5B00A75B9A /* Baconet */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Baconet" */;
@@ -150,10 +261,12 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
+				B8A994F6FCFF4EEB86DFAC8E /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				16B01A671E9D436D9C4C1CA5 /* PBXTargetDependency */,
 			);
 			name = Baconet;
 			productName = Baconet;
@@ -168,6 +281,10 @@
 			attributes = {
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
+					121CB6B842DD4F4596C88382 = {
+						DevelopmentTeam = QQ57RJ5UTD;
+						LastSwiftMigration = 1250;
+					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = QQ57RJ5UTD;
 						LastSwiftMigration = 1250;
@@ -189,11 +306,22 @@
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* Baconet */,
+				121CB6B842DD4F4596C88382 /* BaconetClip */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		07BFC2164BCB4112A059B5A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				265C014994FC4A66940880A3 /* Images.xcassets in Resources */,
+				247FA2B20A944F2D85C3594D /* SplashScreen.storyboard in Resources */,
+				5271D2DAD19C4B8EB1270B05 /* Expo.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13B07F8E1A680F5B00A75B9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -265,6 +393,78 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Baconet/Pods-Baconet-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		81460AC422304764B83721AF /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -f \"$PODS_ROOT/../.xcode.env\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env\"\nfi\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\nexport RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > `$NODE_BINARY --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/.packager.env'\"`\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open `$NODE_BINARY --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/launchPackager.command'\"` || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+		};
+		BE50D178BA6A4577BD1EC9A0 /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ -f \"$PODS_ROOT/../.xcode.env\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env\"\nfi\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n# The project root by default is one level up from the ios directory\nexport PROJECT_ROOT=\"$PROJECT_DIR\"/..\n\nif [[ \"$CONFIGURATION\" = *Debug* ]]; then\n  export SKIP_BUNDLING=1\nfi\nif [[ -z \"$ENTRY_FILE\" ]]; then\n  # Set the entry JS file using the bundler's entry resolution.\n  export ENTRY_FILE=\"$(\"$NODE_BINARY\" -e \"require('expo/scripts/resolveAppEntry')\" $PROJECT_ROOT ios relative | tail -n 1)\"\nfi\n\n`\"$NODE_BINARY\" --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\"`\n\n";
+		};
+		CA63F8598545EDC436CB39FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Baconet-BaconetClip-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB9A3F0BAD3FFDB730C4127F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Baconet-BaconetClip/Pods-Baconet-BaconetClip-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXUpdates/EXUpdates.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXUpdates.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Baconet-BaconetClip/Pods-Baconet-BaconetClip-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,7 +498,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1CF11ABF373D4373BDC168C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				379C3DC3C95749EDAF3E04A6 /* AppDelegate.mm in Sources */,
+				EE5A9C19A98D4956B19D35C7 /* main.m in Sources */,
+				94AFDDCACEA46397E9E4AD76 /* ExpoModulesProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		16B01A671E9D436D9C4C1CA5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 121CB6B842DD4F4596C88382 /* BaconetClip */;
+			targetProxy = 8A477467E2D8404281C51BBC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
@@ -359,6 +577,26 @@
 				PRODUCT_NAME = Baconet;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		5B58843D2BC645ACBB6D10BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 424E953A9D09101462F71EE3 /* Pods-Baconet-BaconetClip.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BaconetClip/BaconetClip.entitlements;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = QQ57RJ5UTD;
+				INFOPLIST_FILE = BaconetClip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = app.baconet.Clip;
+				PRODUCT_NAME = "Baconet Clip";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -472,6 +710,26 @@
 			};
 			name = Release;
 		};
+		F81705B89F3747718C5C4692 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A392F1842BF8D85F4F689788 /* Pods-Baconet-BaconetClip.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BaconetClip/BaconetClip.entitlements;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = QQ57RJ5UTD;
+				INFOPLIST_FILE = BaconetClip/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = app.baconet.Clip;
+				PRODUCT_NAME = "Baconet Clip";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -480,6 +738,15 @@
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
 				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55E0454D81584E2AA47CBFBC /* Build configuration list for PBXNativeTarget "BaconetClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F81705B89F3747718C5C4692 /* Debug */,
+				5B58843D2BC645ACBB6D10BF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -30,6 +30,10 @@ target 'Baconet' do
     # :flipper_configuration => !ENV['CI'] ? FlipperConfiguration.enabled : FlipperConfiguration.disabled,
   )
 
+# @generated begin withAppClipPodfile - expo prebuild (DO NOT MODIFY) sync-017098f45fd79e5a294f8a671b5532056c5e8ffc
+  target 'BaconetClip' do
+  end
+# @generated end withAppClipPodfile
   post_install do |installer|
     react_native_post_install(
       installer,
