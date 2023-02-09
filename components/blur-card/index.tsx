@@ -36,7 +36,7 @@ export function BlurCard({
     >
       <Pressable>
         {({ hovered, pressed }) => (
-          <View
+          <article
             style={[
               {
                 shadowColor: "#000",
@@ -120,8 +120,9 @@ export function BlurCard({
                 >
                   {cta}
                 </Text>
-                <Text
+                <h2
                   style={{
+                    marginTop: 0,
                     marginBottom: 4,
                     color: "white",
                     fontSize: 20,
@@ -129,19 +130,20 @@ export function BlurCard({
                   }}
                 >
                   {title}
-                </Text>
-                <Text
+                </h2>
+                <h3
                   style={{
+                    marginTop: 0,
                     color: "white",
                     fontSize: 14,
                     fontFamily: "Inter_400Regular",
                   }}
                 >
                   {subtitle}
-                </Text>
+                </h3>
               </View>
             </View>
-          </View>
+          </article>
         )}
       </Pressable>
     </Link>
@@ -160,7 +162,6 @@ function CoolBackground({ image, hovered }) {
   const isCool = true; //Platform.OS !== "web";
   // const isCool = true; //Platform.OS !== "web";
 
-  console.log("image", image);
   return (
     <>
       <Image style={style} source={src} />

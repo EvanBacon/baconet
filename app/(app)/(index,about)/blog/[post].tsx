@@ -3,20 +3,21 @@ import { MDXComponents, MDXStyles } from "@bacons/mdx";
 import { Stack, usePathname, useSearchParams } from "expo-router";
 import * as Linking from "expo-linking";
 import React from "react";
-import { Image, ScrollView, Text, View } from "react-native";
+import { Image, Platform, ScrollView, Text, View } from "react-native";
 import { useFont } from "../../../../components/useFont";
+import { LD_EVAN_BACON } from "../../../../data/structured";
 
 export function getStaticPaths(): string[] {
   return mdxctx
     .keys()
-    .filter((i) => i.endsWith(".json"))
+    .filter((i) => i.match(/\.js$/))
     .map((key) => "/blog/" + mdxctx(key).slug);
 }
 
 const mdxctx = require.context(
   "../../../../assets/articles",
   true,
-  /\.(mdx|json)$/
+  /\.(mdx|js)$/
 );
 
 type PostInfo = {
@@ -24,6 +25,8 @@ type PostInfo = {
   date: string;
   title: string;
   subtitle: string;
+  slug: string;
+  featuredImage: number;
 };
 
 function useData(postId: string): null | {
@@ -36,7 +39,7 @@ function useData(postId: string): null | {
   );
 
   const mdinfo = React.useMemo(
-    () => mdxctx.keys().find((p) => p === "./" + postId + "/index.json"),
+    () => mdxctx.keys().find((p) => p === "./" + postId + "/index.js"),
     [postId]
   );
 
@@ -49,9 +52,12 @@ function useData(postId: string): null | {
   return { MarkdownComponent: MD, info: Info };
 }
 
+import { resolveAssetUri } from "../../../../utils/resolveMetroAsset";
+
 function BlogHead({ info }: { info: PostInfo }) {
   const pathname = usePathname();
   const url = React.useMemo(() => Linking.createURL(pathname), [pathname]);
+  const img = resolveAssetUri(info.featuredImage) ?? "/images/appjs-2022.jpg";
   return (
     <Head>
       <title>{info.title}</title>
@@ -59,7 +65,7 @@ function BlogHead({ info }: { info: PostInfo }) {
       {/* TODO: Dynamic */}
       <meta name="keywords" content={info.tags.join(",")} />
 
-      <meta property="og:image" content="/images/appjs-2022.jpg" />
+      <meta property="og:image" content={img} />
       <meta name="og:type" content="article" />
       <meta name="og:title" content={info.title} />
       <meta name="og:description" content={info.subtitle} />
@@ -69,6 +75,27 @@ function BlogHead({ info }: { info: PostInfo }) {
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={info.title} />
       <meta name="twitter:description" content={info.subtitle} />
+
+      <script id="ld+article" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          headline: info.title,
+          preview: info.subtitle,
+          slug: info.slug,
+          url: url,
+          status: "Published",
+          image: [
+            img,
+            // "https://example.com/photos/1x1/photo.jpg",
+            // "https://example.com/photos/4x3/photo.jpg",
+            // "https://example.com/photos/16x9/photo.jpg"
+          ],
+          datePublished: info.date,
+          dateModified: info.date,
+          author: [LD_EVAN_BACON],
+        })}
+      </script>
     </Head>
   );
 }

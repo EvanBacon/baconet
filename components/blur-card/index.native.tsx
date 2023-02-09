@@ -188,7 +188,6 @@ function CoolBackground({ image, hovered }) {
   const isCool = true; //Platform.OS !== "web";
   // const isCool = true; //Platform.OS !== "web";
 
-  console.log("image", image);
   return (
     <>
       <Image style={style} source={src} />

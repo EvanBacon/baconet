@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <>
       <Head>
-        <title>Evan Bacon's Blog</title>
+        <title>Blog | Evan Bacon</title>
         <meta name="description" content="Evan Bacon's blog" />
         <meta
           property="og:image"

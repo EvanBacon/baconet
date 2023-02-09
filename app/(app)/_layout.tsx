@@ -17,6 +17,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Icons from "../../components/medium";
 import { makeIcon, TabBarIcon } from "../../components/TabBarIcon";
 import { TabbedNavigator } from "../../components/TabbedSlot";
+import { LD_EVAN_BACON } from "../../data/structured";
 
 function HeaderLogo() {
   return (
@@ -408,14 +409,25 @@ function GlobalHead() {
         content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
       />
       {/* App Clip */}
-      <meta
-        name="apple-itunes-app"
-        content="app-id=6443850777, app-clip-bundle-id=app.baconet.Clip"
-      />
+      <meta name="apple-itunes-app" content="app-id=6443850777" />
       {/* <meta
         name="apple-itunes-app"
         content="app-id=6443850777, app-clip-bundle-id=app.baconet.Clip, app-clip-display=card"
       /> */}
+
+      <script id="ld+website" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Evan Bacon",
+          alternateName: "everywhere.run",
+          url: "https://everywhere.run",
+        })}
+      </script>
+
+      <script id="ld+person" type="application/ld+json">
+        {JSON.stringify(LD_EVAN_BACON)}
+      </script>
     </Head>
   );
 }
