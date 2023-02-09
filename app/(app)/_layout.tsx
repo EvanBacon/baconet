@@ -410,8 +410,12 @@ function GlobalHead() {
       {/* App Clip */}
       <meta
         name="apple-itunes-app"
-        content="app-id=6443850777, app-clip-bundle-id=app.baconet.Clip, app-clip-display=card"
+        content="app-id=6443850777, app-clip-bundle-id=app.baconet.Clip"
       />
+      {/* <meta
+        name="apple-itunes-app"
+        content="app-id=6443850777, app-clip-bundle-id=app.baconet.Clip, app-clip-display=card"
+      /> */}
     </Head>
   );
 }

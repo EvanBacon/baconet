@@ -66,3 +66,13 @@ async function _downloadAsyncUnmanagedEnv(uri, hash, type) {
 From a different guide
 
 - Added the metatag `<meta name="apple-itunes-app" content="app-id=6443850777, app-clip-bundle-id=app.baconet.Clip, app-clip-display=card">` to the Root Layout in Expo Router: [ref](https://developer.apple.com/documentation/app_clips/supporting_invocations_from_your_website_and_the_messages_app)
+
+### App Clip Test Setup
+
+On my physical iPhone: Settings -> Developer -> Local Experiences -> "Register Local Experience..."
+
+- URL Prefix: `https://everywhere.run`
+- Bundle ID: `app.baconet.Clip`
+- Title: `Read Natively (Instant)`
+- Subtitle: `Expo Everywhere`
+- Action: `Open`

@@ -26,7 +26,8 @@ import { useFont, useLoadFonts } from "../../../components/useFont";
 // };
 
 function ShareButton() {
-  const theme = useColorScheme() === "dark" ? DarkTheme : DefaultTheme;
+  const theme = DefaultTheme;
+  // const theme = useColorScheme() === "dark" ? DarkTheme : DefaultTheme;
   const href = usePathname();
   const link = new URL(href, "https://everywhere.run").toString();
   return (

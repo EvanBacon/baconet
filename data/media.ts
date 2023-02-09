@@ -55,6 +55,8 @@
 //   },
 // ];
 
+const origin = process.env.EXPO_ORIGIN ?? "";
+
 export const data = [
   {
     title: "Route Once with Expo Router",
@@ -62,7 +64,7 @@ export const data = [
     url: "https://twitter.com/Baconbrix/status/1593961233165811712?s=20&t=X5iV6XLEWGRWHQm9D3R67w",
     // slug: "router",
     subtitle: "Introducing the first File System-based router for native apps",
-    image: { uri: process.env.EXPO_ORIGIN + "/images/expo-router.png" },
+    image: { uri: origin + "/images/expo-router.png" },
     video: { uri: "/videos/expo_for_web.mp4" },
   },
   // {
@@ -70,7 +72,7 @@ export const data = [
   //   slug: "jest",
   //   themeColor: "#674B39",
   //   subtitle: "Smarter apps require smarter tests",
-  //   image: { uri: process.env.EXPO_ORIGIN + "/images/react-europe-1.jpg" },
+  //   image: { uri: origin + "/images/react-europe-1.jpg" },
   //   video: { uri: "/videos/expo_for_web.mp4" },
   // },
   // {
@@ -78,7 +80,7 @@ export const data = [
   //   themeColor: "#393229",
   //   slug: "expo-cli",
   //   subtitle: "Ground up rewrite of the Expo Dev Tools",
-  //   image: { uri: process.env.EXPO_ORIGIN + "/images/appjs-2022.jpg" },
+  //   image: { uri: origin + "/images/appjs-2022.jpg" },
   //   video: { uri: "/videos/expo_for_web.mp4" },
   // },
   {
@@ -88,7 +90,7 @@ export const data = [
     url: "https://www.youtube.com/watch?v=k1FdrhA2sCY",
     subtitle: "Instant access and searchability",
     image: {
-      uri: process.env.EXPO_ORIGIN + "/images/expo-for-web-reactive.jpg",
+      uri: origin + "/images/expo-for-web-reactive.jpg",
     },
 
     video: { uri: "/videos/expo_for_web.mp4" },
@@ -99,7 +101,7 @@ export const data = [
   //   slug: "write-once",
   //   subtitle: "Universal React apps as a reality",
   //   url: "https://www.youtube.com/watch?v=uyZslq7Jsno",
-  //   image: { uri: process.env.EXPO_ORIGIN + "/images/appjs-2022.jpg" },
+  //   image: { uri: origin + "/images/appjs-2022.jpg" },
   //   video: { uri: "/videos/expo_for_web.mp4" },
   // },
   {
@@ -107,9 +109,9 @@ export const data = [
     themeColor: "#17171E",
     url: "https://www.youtube.com/watch?v=oHBGhHlVOI0",
     subtitle: "Universal React apps as a reality",
-    image: { uri: process.env.EXPO_ORIGIN + "/images/react-europe-1.jpg" },
+    image: { uri: origin + "/images/react-europe-1.jpg" },
 
-    // image: { uri: process.env.EXPO_ORIGIN + "/images/debut-expo-web.jpg" },
+    // image: { uri: origin + "/images/debut-expo-web.jpg" },
     video: { uri: "/videos/expo_for_web.mp4" },
   },
 ];
