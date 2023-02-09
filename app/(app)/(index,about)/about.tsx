@@ -1,7 +1,6 @@
 import { Head } from "@bacons/head";
 import { Stack } from "expo-router";
-import { Image } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView, Image } from "react-native";
 
 export default function About() {
   return (

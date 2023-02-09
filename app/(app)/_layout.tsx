@@ -38,8 +38,14 @@ function HeaderLogo() {
 }
 
 function useWidth(size) {
+  if (typeof window === "undefined") {
+    return true;
+  }
   const { width } = useWindowDimensions();
-  return width >= size && Platform.OS === "web";
+  if (Platform.OS === "ios" || Platform.OS === "android") {
+    return false;
+  }
+  return width >= size;
 }
 
 function SideBar({ visible }) {

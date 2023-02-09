@@ -4,6 +4,12 @@ import { BlurView } from "expo-blur";
 import { Link } from "expo-router";
 import React from "react";
 import { Platform, useWindowDimensions } from "react-native";
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
 
 import MaskedView from "../mask";
 import { Text } from "../useFont";
@@ -26,7 +32,21 @@ export function BlurCard({
   blank?: boolean;
 }) {
   const { width } = useWindowDimensions();
-  const row = (width || 900) >= 600;
+  const row = width >= 600;
+  const scale = useSharedValue(1);
+
+  const style = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          scale: withTiming(scale.value, {
+            duration: 100,
+            easing: Easing.bezier(0.25, 0.1, 0.25, 1),
+          }),
+        },
+      ],
+    };
+  });
 
   return (
     <Link
@@ -34,9 +54,16 @@ export function BlurCard({
       hrefAttrs={{ target: blank ? "_blank" : undefined }}
       asChild
     >
-      <Pressable>
+      <Pressable
+        onPressIn={() => {
+          scale.value = 0.95;
+        }}
+        onPressOut={() => {
+          scale.value = 1;
+        }}
+      >
         {({ hovered, pressed }) => (
-          <View
+          <Animated.View
             style={[
               {
                 shadowColor: "#000",
@@ -62,6 +89,7 @@ export function BlurCard({
                 width: "90%",
                 aspectRatio: 1.3,
               },
+              style,
             ]}
           >
             <View
@@ -141,7 +169,7 @@ export function BlurCard({
                 </Text>
               </View>
             </View>
-          </View>
+          </Animated.View>
         )}
       </Pressable>
     </Link>

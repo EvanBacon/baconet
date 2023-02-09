@@ -83,8 +83,6 @@ export default function StackLayout({ segment }) {
       }}
     >
       <Stack.Screen name={initRouteName} />
-
-      <Stack.Screen name="watch/[video]" options={{ presentation: "modal" }} />
     </Stack>
   );
 }
