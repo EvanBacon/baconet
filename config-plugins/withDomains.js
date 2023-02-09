@@ -11,15 +11,20 @@ module.exports = function withDomains(exp, { domains, mode }) {
   const suffix = mode != null ? `?mode=${mode}` : "";
   const parsedDomains = domains
     .map((domain) => {
-      return [`applinks:`, `webcredentials:`, `activitycontinuation:`].map(
-        (value) =>
-          [
-            value,
-            sanitizeUrl(domain),
-            suffix,
-            // Dev mode does not appear to support `webcredentials`.
-            value !== "webcredentials:" ? suffix : "",
-          ].join("")
+      return [
+        `applinks:`,
+        `webcredentials:`,
+        `activitycontinuation:`,
+        // https://developer.apple.com/documentation/app_clips/associating_your_app_clip_with_your_website
+        "appclips:",
+      ].map((value) =>
+        [
+          value,
+          sanitizeUrl(domain),
+          suffix,
+          // Dev mode does not appear to support `webcredentials`.
+          value !== "webcredentials:" ? suffix : "",
+        ].join("")
       );
     })
     .flat();

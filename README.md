@@ -55,3 +55,14 @@ async function _downloadAsyncUnmanagedEnv(uri, hash, type) {
 ```
 
 - Maybe read if `NSAppClip` is in the Info.plist and use `FOREGROUND` if so?
+- Had to manually drop iPad support: `❌  error: The UIDeviceFamily of an App Clip ('[1, 2]') must be equal to the UIDeviceFamily of its containing parent app ('[1]').`
+
+### App Clip Web Setup
+
+- Updated AASA [ref](https://developer.apple.com/documentation/app_clips/associating_your_app_clip_with_your_website)
+  - Not required but AR support requires the parent bundle ID too: [ref](https://developer.apple.com/documentation/app_clips/interacting_with_app_clip_codes_in_ar)
+- Added associated domains: `applinks:everywhere.run`
+
+From a different guide
+
+- Added the metatag `<meta name="apple-itunes-app" content="app-id=6443850777, app-clip-bundle-id=app.baconet.Clip, app-clip-display=card">` to the Root Layout in Expo Router: [ref](https://developer.apple.com/documentation/app_clips/supporting_invocations_from_your_website_and_the_messages_app)

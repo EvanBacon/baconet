@@ -19,6 +19,10 @@
         "./config-plugins/withLinks",
         "https://baconet.netlify.app/"
       ],
+      [
+        "./config-plugins/withLinks",
+        "https://everywhere.run/"
+      ],
       "@bacons/head",
       "react-native-app-clip"
     ],
@@ -42,7 +46,12 @@
         "activitycontinuation:bacon-baconnet.ngrok.io?mode=developer",
         "applinks:baconet.netlify.app",
         "webcredentials:baconet.netlify.app",
-        "activitycontinuation:baconet.netlify.app"
+        "activitycontinuation:baconet.netlify.app",
+        "appclips:baconet.netlify.app",
+        "applinks:everywhere.run",
+        "webcredentials:everywhere.run",
+        "activitycontinuation:everywhere.run",
+        "appclips:everywhere.run"
       ]
     },
     "android": {

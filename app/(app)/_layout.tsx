@@ -401,6 +401,11 @@ function GlobalHead() {
         name="googlebot"
         content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
       />
+      {/* App Clip */}
+      <meta
+        name="apple-itunes-app"
+        content="app-id=6443850777, app-clip-bundle-id=app.baconet.Clip, app-clip-display=card"
+      />
     </Head>
   );
 }

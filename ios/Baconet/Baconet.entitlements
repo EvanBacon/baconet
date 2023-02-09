@@ -13,11 +13,16 @@
       <string>applinks:bacon-baconnet.ngrok.io?mode=developer</string>
       <string>webcredentials:bacon-baconnet.ngrok.io?mode=developer</string>
       <string>activitycontinuation:bacon-baconnet.ngrok.io?mode=developer</string>
+      <string>applinks:bacon-baconnet.ngrok.io?mode=developer?mode=developer</string>
+      <string>activitycontinuation:bacon-baconnet.ngrok.io?mode=developer?mode=developer</string>
       <string>applinks:baconet.netlify.app</string>
       <string>webcredentials:baconet.netlify.app</string>
       <string>activitycontinuation:baconet.netlify.app</string>
-      <string>applinks:bacon-baconnet.ngrok.io?mode=developer?mode=developer</string>
-      <string>activitycontinuation:bacon-baconnet.ngrok.io?mode=developer?mode=developer</string>
+      <string>appclips:baconet.netlify.app</string>
+      <string>applinks:everywhere.run</string>
+      <string>webcredentials:everywhere.run</string>
+      <string>activitycontinuation:everywhere.run</string>
+      <string>appclips:everywhere.run</string>
     </array>
   </dict>
 </plist>
