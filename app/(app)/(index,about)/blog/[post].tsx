@@ -66,11 +66,11 @@ function BlogHead({ info }: { info: PostInfo }) {
       <meta name="keywords" content={info.tags.join(",")} />
 
       <meta property="og:image" content={img} />
-      <meta name="og:type" content="article" />
-      <meta name="og:title" content={info.title} />
-      <meta name="og:description" content={info.subtitle} />
-      <meta name="og:url" content={url} />
-      <meta name="og:published_time" content={info.date} />
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content={info.title} />
+      <meta property="og:description" content={info.subtitle} />
+      <meta property="og:url" content={url} />
+      <meta property="og:published_time" content={info.date} />
 
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={info.title} />
@@ -85,12 +85,7 @@ function BlogHead({ info }: { info: PostInfo }) {
           slug: info.slug,
           url: url,
           status: "Published",
-          image: [
-            img,
-            // "https://example.com/photos/1x1/photo.jpg",
-            // "https://example.com/photos/4x3/photo.jpg",
-            // "https://example.com/photos/16x9/photo.jpg"
-          ],
+          image: [img],
           datePublished: info.date,
           dateModified: info.date,
           author: [LD_EVAN_BACON],

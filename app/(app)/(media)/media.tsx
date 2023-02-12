@@ -31,14 +31,12 @@ export default function Page() {
         ref={ref}
         style={{ flex: 1 }}
         contentInsetAdjustmentBehavior="automatic"
-        contentContainerStyle={[
-          {
-            alignItems: "stretch",
-            maxWidth: 800,
-            paddingHorizontal: 16,
-            justifyContent: "center",
-          },
-        ]}
+        contentContainerStyle={{
+          alignItems: "stretch",
+          maxWidth: 800,
+          paddingHorizontal: 16,
+          justifyContent: "center",
+        }}
       >
         <Stack.Screen
           options={{

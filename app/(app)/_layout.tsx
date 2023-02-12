@@ -391,17 +391,29 @@ export default function App() {
 function GlobalHead() {
   return (
     <Head>
-      {/* favicon */}
+      <meta property="og:image" content={"/bacon.jpg"} />
+
       <link
         rel="apple-touch-icon"
-        sizes="180x180"
+        sizes="144x144"
         href="/apple-touch-icon.png"
       />
-      <link rel="manifest" href="/manifest.json" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-      <link rel="shortcut icon" href="/favicon.ico" />
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4630eb" />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/favicon-16x16.png"
+      />
+      <link rel="manifest" href="/site.webmanifest" />
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+      <meta name="msapplication-TileColor" content="#000" />
+      <meta name="theme-color" content="#ffffff" />
 
       <meta name="robots" content="index, follow" />
       <meta

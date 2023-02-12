@@ -17,7 +17,7 @@ export function TabBarIcon(props: {
   return (
     <Ionicons
       size={30}
-      style={[{ marginBottom: -3 }, props.style]}
+      style={[{ width: 30, height: 35, marginBottom: -3 }, props.style]}
       {...props}
       name={resolvedName}
     />

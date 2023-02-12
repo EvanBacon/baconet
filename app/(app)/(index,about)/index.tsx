@@ -1,17 +1,9 @@
 import { Head } from "@bacons/head";
-import {
-  Image,
-  Pressable,
-  ImageProps,
-  StyleSheet,
-  Text,
-  View,
-} from "@bacons/react-views";
-import { Link, useNavigation, useRouter } from "expo-router";
-import React, { useMemo } from "react";
-import { FlatList } from "react-native-gesture-handler";
-import { BlurCard } from "../../../components/blur-card";
 import { useScrollToTop } from "@react-navigation/native";
+import React from "react";
+import { FlatList } from "react-native-gesture-handler";
+
+import { BlurCard } from "../../../components/blur-card";
 import { MetaShortcut } from "../../../components/shortcuts";
 
 const mdxctx = require.context("../../../assets/articles", true, /\.js$/);
@@ -21,16 +13,11 @@ export default function Page() {
     <>
       <Head>
         <title>Blog | Evan Bacon</title>
-        <meta name="description" content="Evan Bacon's blog" />
-        <meta
-          property="og:image"
-          content="https://icogen.vercel.app/api/icon?icon=1f195"
-        />
+        <meta name="description" content="Write Once, Run Everywhere" />
         <meta
           name="keywords"
           content="evan bacon,expo,javascript,typescript,ios,android,native,react native,react,learn"
         />
-        {/* <SearchIn /> */}
       </Head>
       <MetaShortcut
         title="Quick Search"

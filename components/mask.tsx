@@ -9,8 +9,8 @@ export default function Mask({ children, style, colors, locations }) {
       style={[
         style,
         {
-          "-webkit-mask-image": gradient,
-          "mask-image": gradient,
+          WebkitMaskImage: gradient,
+          maskImage: gradient,
         },
       ]}
     >

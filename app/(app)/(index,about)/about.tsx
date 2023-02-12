@@ -7,7 +7,10 @@ export default function About() {
     <>
       <Head>
         <title>About | Evan Bacon</title>
-        <meta name="description" content="About Evan Bacon" />
+        <meta
+          name="description"
+          content="Evan Bacon is a software developer and artist"
+        />
         <meta
           property="og:image"
           content="https://icogen.vercel.app/api/icon?icon=1f953"

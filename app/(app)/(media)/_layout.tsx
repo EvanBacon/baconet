@@ -7,18 +7,11 @@ import {
 import { SourceCodePro_400Regular } from "@expo-google-fonts/source-code-pro";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { DarkTheme, DefaultTheme } from "@react-navigation/native";
+import { DefaultTheme } from "@react-navigation/native";
 import { Stack, usePathname } from "expo-router";
 import { useContextKey } from "expo-router/build/Route";
-import {
-  Platform,
-  Share,
-  TouchableOpacity,
-  useColorScheme,
-} from "react-native";
+import { Platform, Share, TouchableOpacity } from "react-native";
 
-import { usePosts } from "../../../components/api";
-import { OutletContext } from "../../../components/OutletContext";
 import { useFont, useLoadFonts } from "../../../components/useFont";
 
 // export const unstable_settings = {

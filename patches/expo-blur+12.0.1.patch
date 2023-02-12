@@ -7,6 +7,7 @@ index b59a983..be51491 100644
      if (isBlurSupported()) {
          style.backdropFilter = `saturate(180%) blur(${intensity * 0.2}px)`;
 +        style['-webkit-backdrop-filter'] = `saturate(180%) blur(${intensity * 0.2}px)`;
++        style['WebkitBackdropFilter'] = `saturate(180%) blur(${intensity * 0.2}px)`;
      }
      return style;
  }
