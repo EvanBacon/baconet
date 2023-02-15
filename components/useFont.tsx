@@ -115,7 +115,7 @@ export const Text = React.forwardRef<
   const children = shouldBlock ? "" : props.children;
 
   return (
-    <UpstreamText
+    <span
       ref={ref}
       {...props}
       children={children}

@@ -1,11 +1,11 @@
-import { ActivityIndicator, TouchableOpacity, View } from "react-native";
 import React from "react";
-import { Text, Image } from "@bacons/react-views";
-import { Gist, GitHubRepo, GitHubProfile } from "./GitHub";
+import { ActivityIndicator } from "react-native";
+import WebView from "react-native-webview";
+
+import { Gist, GitHubProfile, GitHubRepo } from "./GitHub";
+import { NpmPackage } from "./Npm";
 import { Snack } from "./Snack";
 import { Tweet, TwitterProfile } from "./Twitter";
-import { YouTube } from "./YouTube";
-import * as WebBrowser from "expo-web-browser";
 
 function TweetEmbedWebView({ url }: { url: string }) {
   return (
@@ -17,7 +17,7 @@ function TweetEmbedWebView({ url }: { url: string }) {
       startInLoadingState={true}
       scrollEnabled={false}
       renderLoading={() => <ActivityIndicator />}
-      renderError={() => <Text>Error loading page</Text>}
+      renderError={() => <span>Error loading page</span>}
     />
   );
 }
@@ -51,7 +51,7 @@ export function Embed({ url }: { url: string }) {
   //     return <GitHubProfile url={url} />;
   //   }
   return (
-    <View
+    <div
       style={{
         marginTop: 32,
         paddingVertical: 16,
@@ -65,12 +65,6 @@ export function Embed({ url }: { url: string }) {
       <a target="_blank" href={url}>
         Embed not implemented: {url}
       </a>
-    </View>
+    </div>
   );
 }
-
-import { ProfileHeader } from "react-native-twitter-embed";
-import WebView from "react-native-webview";
-import { Link } from "expo-router";
-import { ExternalLink } from "../ExternalLink";
-import { NpmPackage } from "./Npm";

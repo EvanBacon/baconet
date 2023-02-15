@@ -1,5 +1,4 @@
 import { Head } from "@bacons/head";
-import { View } from "@bacons/react-views";
 import { NavigationHelpersContext } from "@react-navigation/native";
 import * as Device from "expo-device";
 import { Link } from "expo-router";
@@ -349,7 +348,7 @@ export default function App() {
           tabBarActiveTintColor: "black",
         }}
       >
-        <View
+        <div
           style={{
             flex: 1,
             flexDirection: isRowLayout ? "row" : "column",
@@ -358,7 +357,7 @@ export default function App() {
           <SideBar visible={isRowLayout} />
           <TabbedNavigator.Slot />
           <TabBar visible={!isRowLayout} />
-        </View>
+        </div>
 
         <TabbedNavigator.Screen
           name="(index)"

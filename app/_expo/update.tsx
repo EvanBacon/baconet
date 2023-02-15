@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "@bacons/react-views";
+import { StyleSheet } from "@bacons/react-views";
 import { getDevServer } from "expo-router/build/getDevServer";
 import * as Updates from "expo-updates";
 import React, { useEffect } from "react";
@@ -96,13 +96,13 @@ export default function Page() {
         />
       }
     >
-      <View style={styles.main}>
+      <div style={styles.main}>
         {error && <ErrorView error={error} retry={checkForUpdates} />}
 
         {/* @ts-expect-error */}
         <RefreshButton update={update} />
 
-        <View
+        <div
           style={{
             borderWidth: 0.5,
             borderColor: "white",
@@ -133,20 +133,20 @@ export default function Page() {
         />
         {Updates.isUsingEmbeddedAssets && (
           <>
-            <View
+            <div
               style={{
                 borderWidth: 0.5,
                 borderColor: "white",
                 marginVertical: 12,
               }}
             />
-            <Text style={[styles.subtitle]}>Assets</Text>
+            <span style={styles.subtitle}>Assets</span>
             {Object.entries(Updates.localAssets).map(([k, v]) => (
               <KVPair k={k} value={v} />
             ))}
           </>
         )}
-      </View>
+      </div>
     </ScrollView>
   );
 }
@@ -191,7 +191,7 @@ function ErrorView({
   style?: any;
 }) {
   return (
-    <View
+    <div
       style={[
         {
           padding: 16,
@@ -201,24 +201,24 @@ function ErrorView({
         style,
       ]}
     >
-      <Text
+      <span
         style={{
           color: "white",
         }}
       >
         {">"} Error: {error.message}
-      </Text>
+      </span>
       <Pressable onPress={retry}>
-        <Text
+        <span
           style={{
             color: "white",
             marginTop: 8,
           }}
         >
           Retry
-        </Text>
+        </span>
       </Pressable>
-    </View>
+    </div>
   );
 }
 
@@ -315,7 +315,7 @@ function RefreshButton({}) {
         {({ pressed }) => {
           const _style = pressed ? selectedStyle : style;
           return (
-            <View
+            <div
               style={{
                 borderColor: _style.borderColor,
                 borderWidth: 1,
@@ -325,7 +325,7 @@ function RefreshButton({}) {
                 backgroundColor: _style.backgroundColor,
               }}
             >
-              <Text style={[styles.subtitle, { color: _style.color }]}>
+              <span style={[styles.subtitle, { color: _style.color }]}>
                 {loading
                   ? "Downloading..."
                   : isLaunchNew
@@ -333,8 +333,8 @@ function RefreshButton({}) {
                   : update?.isAvailable
                   ? "Update"
                   : "Reload"}
-              </Text>
-            </View>
+              </span>
+            </div>
           );
         }}
       </Pressable>
@@ -361,17 +361,17 @@ function dateToString(date: Date) {
 
 function KVPair({ k, value }) {
   return (
-    <Text style={styles.subtitle}>
+    <span style={styles.subtitle}>
       {k}
-      <Text
+      <span
         style={{
           color: "#EE82C3",
         }}
       >
         :
-      </Text>{" "}
-      <Text style={{ color: "#E6EB93" }}>{String(value ?? "undefined")}</Text>
-    </Text>
+      </span>{" "}
+      <span style={{ color: "#E6EB93" }}>{String(value ?? "undefined")}</span>
+    </span>
   );
 }
 

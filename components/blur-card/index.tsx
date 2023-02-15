@@ -1,4 +1,4 @@
-import { Image, Pressable, StyleSheet, View } from "@bacons/react-views";
+import { Image, Pressable, StyleSheet } from "@bacons/react-views";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { BlurView } from "expo-blur";
 import { Link } from "expo-router";
@@ -64,7 +64,7 @@ export function BlurCard({
               },
             ]}
           >
-            <View
+            <div
               style={{
                 borderRadius: 10,
                 overflow: "hidden",
@@ -73,12 +73,12 @@ export function BlurCard({
                 justifyContent: "space-between",
               }}
             >
-              <View style={[StyleSheet.absoluteFill]}>
+              <div style={StyleSheet.absoluteFill}>
                 <CoolBackground hovered={hovered} image={image} />
-              </View>
+              </div>
 
-              <View style={{ alignItems: "flex-end" }}>
-                <View
+              <div style={{ alignItems: "flex-end" }}>
+                <div
                   style={{
                     aspectRatio: 1,
                     width: 48,
@@ -94,9 +94,9 @@ export function BlurCard({
                     size={30}
                     color="black"
                   />
-                </View>
-              </View>
-              <View>
+                </div>
+              </div>
+              <div>
                 <Text
                   style={[
                     {
@@ -141,8 +141,8 @@ export function BlurCard({
                 >
                   {subtitle}
                 </h3>
-              </View>
-            </View>
+              </div>
+            </div>
           </article>
         )}
       </Pressable>

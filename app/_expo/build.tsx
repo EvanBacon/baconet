@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "@bacons/react-views";
+import { StyleSheet } from "@bacons/react-views";
 import Constants from "expo-constants";
 import { createURL } from "expo-linking";
 import * as Updates from "expo-updates";
@@ -40,28 +40,28 @@ export default function Page() {
         alignItems: "stretch",
       }}
     >
-      <View style={styles.main}>
+      <div style={styles.main}>
         <KVPair k="App Version" value={Constants.nativeAppVersion} />
         <KVPair k="Build Version" value={Constants.nativeBuildVersion} />
         <KVPair k="URI" value={createURL("")} />
-      </View>
+      </div>
     </ScrollView>
   );
 }
 
 function KVPair({ k, value }) {
   return (
-    <Text style={styles.subtitle}>
+    <span style={styles.subtitle}>
       {k}
-      <Text
+      <span
         style={{
           color: "#EE82C3",
         }}
       >
         :
-      </Text>{" "}
-      <Text style={{ color: "#E6EB93" }}>{String(value ?? "undefined")}</Text>
-    </Text>
+      </span>{" "}
+      <span style={{ color: "#E6EB93" }}>{String(value ?? "undefined")}</span>
+    </span>
   );
 }
 

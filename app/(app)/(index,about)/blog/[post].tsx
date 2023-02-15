@@ -3,7 +3,7 @@ import { MDXComponents, MDXStyles } from "@bacons/mdx";
 import { Stack, usePathname, useSearchParams } from "expo-router";
 import * as Linking from "expo-linking";
 import React from "react";
-import { Image, Platform, ScrollView, Text, View } from "react-native";
+import { Image, Platform, ScrollView } from "react-native";
 import { useFont } from "../../../../components/useFont";
 import { LD_EVAN_BACON } from "../../../../data/structured";
 
@@ -53,6 +53,7 @@ function useData(postId: string): null | {
 }
 
 import { resolveAssetUri } from "../../../../utils/resolveMetroAsset";
+import { MarkdownTheme } from "../../../../components/MarkdownTheme";
 
 function BlogHead({ info }: { info: PostInfo }) {
   const pathname = usePathname();
@@ -102,7 +103,7 @@ export default function Page() {
   const Inter_900Black = useFont("Inter_900Black");
 
   if (!data) {
-    return <Text>Not Found: {postId}</Text>;
+    return <span>Not Found: {postId}</span>;
   }
 
   const { MarkdownComponent, info } = data;
@@ -132,122 +133,13 @@ export default function Page() {
           marginHorizontal: "auto",
         }}
       >
-        <View style={{ flex: 1, paddingHorizontal: 12 }}>
+        <div style={{ flex: 1, paddingHorizontal: 12 }}>
           <MarkdownTheme>
             <MarkdownComponent />
           </MarkdownTheme>
-        </View>
+        </div>
       </ScrollView>
     </>
-  );
-}
-
-function MarkdownTheme({ children }: { children: React.ReactNode }) {
-  return (
-    <MDXStyles
-      h1={{
-        fontFamily: useFont("Inter_900Black"),
-        fontSize: 32,
-      }}
-      h2={{
-        fontFamily: useFont("Inter_900Black"),
-        marginTop: 16,
-        fontSize: 22,
-        marginBottom: 0,
-      }}
-      code={{
-        fontFamily: "SourceCodePro_400Regular",
-        borderRadius: 2,
-        backgroundColor: "#f2f2f2",
-        padding: 20,
-        fontSize: 16,
-      }}
-      inlineCode={{
-        fontFamily: "SourceCodePro_400Regular",
-        borderRadius: 2,
-        fontSize: 15,
-        backgroundColor: "#f2f2f2",
-        paddingVertical: 2,
-        paddingHorizontal: 4,
-      }}
-      p={{
-        fontFamily: useFont("Inter_400Regular"),
-        lineHeight: 30,
-        fontSize: 20,
-        marginBottom: 8,
-      }}
-      blockquote={{
-        fontFamily: useFont("Inter_400Regular"),
-        borderLeftWidth: 3,
-        fontSize: 21,
-        borderLeftColor: "#292929",
-        paddingLeft: 23,
-      }}
-      img={{
-        width: "100%",
-        resizeMode: "contain",
-        minWidth: "100%",
-        maxWidth: "100%",
-        minHeight: 180,
-        maxHeight: 360,
-      }}
-      a={{
-        fontFamily: useFont("Inter_400Regular"),
-        textDecorationLine: "underline",
-      }}
-      li={{
-        fontFamily: useFont("Inter_400Regular"),
-        fontSize: 16,
-        lineHeight: 30,
-      }}
-      hr={{
-        paddingBottom: 10,
-        marginBottom: 14,
-        marginTop: 32,
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        paddingTop: 24,
-      }}
-    >
-      <MDXComponents
-        li={({ style, ...props }) => (
-          <View style={{ flexDirection: "row", alignItems: "flex-start" }}>
-            <View
-              style={{
-                marginTop: 12,
-                marginRight: 8,
-                width: 6,
-                height: 6,
-                borderRadius: 3,
-                backgroundColor: "black",
-              }}
-            />
-            <View style={{ flex: 1 }}>
-              <Text {...props} style={style} />
-            </View>
-          </View>
-        )}
-        hr={({ style }) => (
-          <View style={style}>
-            {["", "", ""].map((v, i) => (
-              <View
-                key={String(i)}
-                style={{
-                  marginRight: i !== 2 ? 20 : 0,
-                  width: 3,
-                  height: 3,
-                  borderRadius: 1.5,
-                  backgroundColor: "black",
-                }}
-              />
-            ))}
-          </View>
-        )}
-      >
-        {children}
-      </MDXComponents>
-    </MDXStyles>
   );
 }
 

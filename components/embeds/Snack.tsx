@@ -1,4 +1,3 @@
-import { Text } from "@bacons/react-views";
 import React from "react";
 import { ActivityIndicator } from "react-native";
 import WebView from "react-native-webview";
@@ -13,7 +12,7 @@ export function Snack({ url }: { url: string }) {
       startInLoadingState={true}
       scrollEnabled={false}
       renderLoading={() => <ActivityIndicator />}
-      renderError={() => <Text>Error loading page</Text>}
+      renderError={() => <span>Error loading page</span>}
     />
   );
 }

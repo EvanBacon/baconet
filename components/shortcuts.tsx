@@ -1,7 +1,7 @@
 import { requireNativeModule } from "expo-modules-core";
 import { usePathname } from "expo-router";
 import { useEffect } from "react";
-import { View, Text, StyleSheet, Platform } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 
 export type Shortcut = {
   id?: string;
@@ -91,14 +91,14 @@ export function ShortcutBanner() {
     return null;
   }
   return (
-    <View style={{ padding: 8, marginVertical: 8, borderWidth: 1 }}>
-      <Text style={styles.subtitle}>Shortcut:</Text>
-      <Text>Title: {decodeURIComponent(query.title)}</Text>
-      <Text>ID: {query.id}</Text>
+    <div style={{ padding: 8, marginVertical: 8, borderWidth: 1 }}>
+      <span style={styles.subtitle}>Shortcut:</span>
+      <span>Title: {decodeURIComponent(query.title)}</span>
+      <span>ID: {query.id}</span>
       {query.subtitle && (
-        <Text>Subtitle: {decodeURIComponent(query.subtitle)}</Text>
+        <span>Subtitle: {decodeURIComponent(query.subtitle)}</span>
       )}
-    </View>
+    </div>
   );
 }
 

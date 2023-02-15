@@ -1,4 +1,3 @@
-import { Text } from "@bacons/react-views";
 import React from "react";
 
 import { ProfileCard } from "./Profile";
@@ -12,7 +11,7 @@ export function Gist({ url }: { url: string }) {
   return <ReactEmbedGist gist={gist} />;
 }
 export function GitHubRepo({ url }: { url: string }) {
-  return <Text>GitHub repo Embed not implemented: {url}</Text>;
+  return <span>GitHub repo Embed not implemented: {url}</span>;
 }
 
 const BIOS = {

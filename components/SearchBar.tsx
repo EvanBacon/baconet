@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Platform,
-  StyleSheet,
-  TextInput,
-  TouchableNativeFeedback,
-  useColorScheme,
-  View,
-} from "react-native";
+import { Platform, StyleSheet, TextInput, useColorScheme } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -38,7 +31,7 @@ class SearchBar extends React.PureComponent {
     }
 
     return (
-      <View style={styles.container}>
+      <div style={styles.container}>
         <TextInput
           ref={(view) => {
             this._textInput = view;
@@ -54,7 +47,7 @@ class SearchBar extends React.PureComponent {
           onChangeText={this._handleChangeText}
           style={[styles.searchInput, searchInputStyle]}
         />
-        <View
+        <div
           style={{ width: 50, alignItems: "center", justifyContent: "center" }}
         >
           {this.state.text ? (
@@ -70,8 +63,8 @@ class SearchBar extends React.PureComponent {
               />
             </TouchableOpacity>
           ) : null}
-        </View>
-      </View>
+        </div>
+      </div>
     );
   }
 

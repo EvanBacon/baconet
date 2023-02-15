@@ -1,8 +1,7 @@
-import { Text } from "@bacons/react-views";
 import { ProfileCard } from "./Profile";
 
 export function Tweet({ url }: { url: string }) {
-  return <Text>Tweet Embed not implemented: {url}</Text>;
+  return <span>Tweet Embed not implemented: {url}</span>;
 }
 
 const PICTURES = {

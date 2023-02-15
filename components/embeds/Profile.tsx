@@ -1,4 +1,4 @@
-import { Image, Pressable, Text, View } from "@bacons/react-views";
+import { Image, Pressable } from "@bacons/react-views";
 import { Link } from "expo-router";
 import React from "react";
 import { ExternalLink } from "../ExternalLink";
@@ -18,7 +18,7 @@ export function ProfileCard({
 }) {
   return (
     <ExternalCard url={url}>
-      <View
+      <div
         style={{
           flex: 1,
           justifyContent: "space-around",
@@ -27,15 +27,15 @@ export function ProfileCard({
           padding: 12,
         }}
       >
-        <Text
+        <span
           style={{
             fontSize: 16,
             fontWeight: "bold",
           }}
         >
           {title} – Overview
-        </Text>
-        <Text
+        </span>
+        <span
           style={{
             fontSize: 16,
 
@@ -44,16 +44,16 @@ export function ProfileCard({
           }}
         >
           {subtitle ?? "No bio available"}
-        </Text>
-        <Text
+        </span>
+        <span
           style={{
             fontSize: 14,
             color: "#6a737d",
           }}
         >
           Follow on {website}
-        </Text>
-      </View>
+        </span>
+      </div>
 
       <Image
         source={{ uri: image }}
@@ -79,7 +79,7 @@ export function ExternalCard({
     <ExternalLink asChild href={url} style={{ flex: 1 }}>
       <Pressable>
         {({ hovered }) => (
-          <View
+          <div
             style={{
               marginTop: 8,
               borderColor: "#e6e6e6",
@@ -92,7 +92,7 @@ export function ExternalCard({
             }}
           >
             {children}
-          </View>
+          </div>
         )}
       </Pressable>
     </ExternalLink>

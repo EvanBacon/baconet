@@ -1,7 +1,7 @@
 import React from "react";
 import { Animated } from "react-native";
 import { Link } from "expo-router";
-import { Pressable, View, Text } from "@bacons/react-views";
+import { Pressable } from "@bacons/react-views";
 import { ExternalLink } from "../ExternalLink";
 import { ExternalCard } from "./Profile";
 import { useFont } from "../useFont";
@@ -38,7 +38,7 @@ export function NpmPackage({ url }: { url: string }) {
         <ExternalLink asChild href={url}>
           <Pressable>
             {({ hovered }) => (
-              <View
+              <div
                 style={[
                   {
                     padding: 8,
@@ -61,7 +61,7 @@ export function NpmPackage({ url }: { url: string }) {
                 >
                   View on NPM
                 </span>
-              </View>
+              </div>
             )}
           </Pressable>
         </ExternalLink>
