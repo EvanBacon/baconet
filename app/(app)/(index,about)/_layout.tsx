@@ -6,7 +6,6 @@ import {
 } from "@expo-google-fonts/inter";
 import { SourceCodePro_400Regular } from "@expo-google-fonts/source-code-pro";
 
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 import { Stack, usePathname } from "expo-router";
 import {
@@ -15,6 +14,7 @@ import {
   TouchableOpacity,
   useColorScheme,
 } from "react-native";
+import { Icon } from "../../../components/icon";
 import { useFont, useLoadFonts } from "../../../components/useFont";
 
 function ShareButton() {
@@ -33,7 +33,12 @@ function ShareButton() {
         });
       }}
     >
-      <Ionicons size={24} color={theme.colors.text} name={"share-outline"} />
+      <Icon
+        width={24}
+        height={24}
+        fill={theme.colors.text}
+        name={"share-outline"}
+      />
     </TouchableOpacity>
   );
 }

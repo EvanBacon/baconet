@@ -1,9 +1,10 @@
 import { Head } from "@bacons/head";
 import { Stack } from "expo-router";
-import { ScrollView, Image } from "react-native";
+import { ScrollView } from "react-native";
 
 import AboutContent from "../../../components/about";
 import { MarkdownTheme } from "../../../components/MarkdownTheme";
+
 export default function About() {
   return (
     <>
@@ -22,9 +23,12 @@ export default function About() {
           content="evan bacon,expo,javascript,typescript,ios,android,native,react native,react,learn"
         />
       </Head>
+
       <Stack.Screen options={{ title: "About" }} />
+
       <ScrollView
-        style={{ flex: 1, padding: 16 }}
+        style={{ flex: 1 }}
+        contentContainerStyle={{ padding: 16 }}
         contentInsetAdjustmentBehavior="automatic"
       >
         <MarkdownTheme>

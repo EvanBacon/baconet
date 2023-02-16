@@ -1,8 +1,8 @@
 import React from "react";
 import { Platform, StyleSheet, TextInput, useColorScheme } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Icon } from "./icon";
 
 class SearchBar extends React.PureComponent {
   componentDidMount() {
@@ -56,10 +56,11 @@ class SearchBar extends React.PureComponent {
               hitSlop={{ top: 15, left: 10, right: 15, bottom: 15 }}
               style={{ padding: 5 }}
             >
-              <Ionicons
-                name="md-close"
-                size={25}
-                color={searchInputStyle.color}
+              <Icon
+                name="close"
+                width={25}
+                height={25}
+                fill={searchInputStyle.color}
               />
             </TouchableOpacity>
           ) : null}

@@ -1,38 +1,45 @@
 import { Head } from "@bacons/head";
 import { NavigationHelpersContext } from "@react-navigation/native";
-import * as Device from "expo-device";
 import { Link } from "expo-router";
 import React from "react";
-import {
-  DevSettings,
-  Platform,
-  Pressable,
-  TouchableOpacity,
-  useWindowDimensions,
-  ViewStyle,
-} from "react-native";
+import { Platform, useWindowDimensions, ViewStyle } from "react-native";
+import { Pressable } from "@bacons/react-views";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import * as Icons from "../../components/medium";
+import { Icon } from "../../components/icon";
+import { ReloadButton } from "../../components/reload-button";
 import { makeIcon, TabBarIcon } from "../../components/TabBarIcon";
 import { TabbedNavigator } from "../../components/TabbedSlot";
 import { LD_EVAN_BACON } from "../../data/structured";
 
+const DARK = "rgba(41, 41, 41, 1)";
+
 function HeaderLogo() {
   return (
-    <Link style={{ paddingVertical: 40 }} href="/" replace>
-      <h1
-        style={{
-          margin: 0,
-          display: "flex",
-          flex: 1,
-          alignItems: "center",
-          maxHeight: 23,
-          marginVertical: 2,
-        }}
-      >
-        <Icons.Logo fill={DARK} style={{ height: 30 }} />
-      </h1>
+    <Link
+      style={{ paddingVertical: 20, alignItems: "flex-start" }}
+      href="/"
+      asChild
+    >
+      <Pressable>
+        {({ hovered }) => (
+          <h1
+            style={{
+              margin: 0,
+              display: "flex",
+              flex: 1,
+              alignItems: "center",
+              padding: 8,
+              borderRadius: 4,
+              transitionProperty: ["background-color", "box-shadow"],
+              transitionDuration: "200ms",
+              backgroundColor: hovered ? "rgba(0, 0, 0, 0.1)" : "transparent",
+            }}
+          >
+            <Icon name="logo" fill={DARK} height={30} width={30} />
+          </h1>
+        )}
+      </Pressable>
     </Link>
   );
 }
@@ -113,7 +120,18 @@ function SideBar({ visible }) {
             <SideBarTabItem name="(media)" icon={makeIcon("mic")}>
               Media
             </SideBarTabItem>
-            <SideBarDivider />
+            {/* Divider */}
+            <div
+              style={{
+                marginHorizontal: isLarge ? 0 : "auto",
+                width: isLarge ? "80%" : "33%",
+                backgroundColor: "rgba(230, 230, 230, 1)",
+                maxHeight: 1,
+                height: 1,
+                marginBottom: 35,
+              }}
+            />
+
             <SideBarTabItem
               name="(about)"
               icon={makeIcon("information-circle")}
@@ -182,24 +200,6 @@ function TabBar({ visible }) {
   );
 }
 
-function SideBarDivider() {
-  const isLarge = useWidth(1265);
-
-  return (
-    <div style={{ paddingBottom: 35 }}>
-      <div
-        style={{
-          marginHorizontal: isLarge ? 0 : "auto",
-          width: isLarge ? "80%" : "33%",
-          backgroundColor: "rgba(230, 230, 230, 1)",
-          maxHeight: 1,
-          height: 1,
-        }}
-      />
-    </div>
-  );
-}
-
 function useIsTabSelected(name: string): boolean {
   const navigation = React.useContext(NavigationHelpersContext)!;
 
@@ -213,22 +213,15 @@ function TabBarItem({
   children,
   name,
   style,
-  hoverStyle,
 }: {
   children?: any;
   name: string;
   style?: ViewStyle;
-  hoverStyle?: ViewStyle;
 }) {
   const focused = useIsTabSelected(name);
 
   return (
-    <TabbedNavigator.Link
-      hoverStyle={hoverStyle}
-      name={name}
-      asChild
-      style={style}
-    >
+    <TabbedNavigator.Link name={name} asChild style={style}>
       <Pressable>{(props) => children({ ...props, focused })}</Pressable>
     </TabbedNavigator.Link>
   );
@@ -252,85 +245,49 @@ function SideBarTabItem({
         accessibilityHasPopup="menu"
         style={{
           paddingVertical: 4,
-          display: "flex",
           width: "100%",
-          borderRadius: 999,
-          transitionProperty: ["background-color", "box-shadow"],
-          transitionDuration: "200ms",
-        }}
-        hoverStyle={{
-          backgroundColor: "rgba(0, 0, 0, 0.1)",
-          //   backgroundColor: "rgba(231, 233, 234, 0.1)",
         }}
       >
-        {({ focused }) => (
+        {({ focused, hovered }) => (
           <div
-            style={{
-              padding: 12,
-              flexDirection: "row",
-              alignItems: "center",
-            }}
+            style={[
+              {
+                padding: 12,
+                flexDirection: "row",
+                alignItems: "center",
+                borderRadius: 999,
+                transitionProperty: ["background-color", "box-shadow"],
+                transitionDuration: "200ms",
+              },
+              hovered && {
+                backgroundColor: "rgba(0, 0, 0, 0.1)",
+              },
+            ]}
           >
             {icon({ focused, color: "#000" })}
 
-            {isLarge && (
-              <span
-                style={[
-                  {
-                    color: "#000",
-                    // color: "#e7e9ea",
-                    fontSize: 20,
-                    marginLeft: 20,
-                    marginRight: 16,
-                    lineHeight: 24,
-                  },
-                  focused && {
-                    fontWeight: "bold",
-                  },
-                ]}
-              >
-                {children}
-              </span>
-            )}
+            <span
+              style={[
+                {
+                  display: isLarge ? "flex" : "none",
+                  color: "#000",
+                  fontSize: 20,
+                  marginLeft: 20,
+                  marginRight: 16,
+                  lineHeight: 24,
+                },
+                focused && {
+                  fontWeight: "bold",
+                },
+              ]}
+            >
+              {children}
+            </span>
           </div>
         )}
       </TabBarItem>
     </div>
   );
-}
-
-function ReloadButton() {
-  if (
-    process.env.NODE_ENV === "development" &&
-    process.env.IS_APP_CLIP &&
-    Platform.OS === "ios" &&
-    Device.isDevice
-  ) {
-    return (
-      // FAB for reloading manually
-
-      <TouchableOpacity
-        style={{
-          zIndex: 999,
-          position: "absolute",
-          bottom: 68,
-          right: 8,
-          backgroundColor: "red",
-          width: 50,
-          height: 50,
-          borderRadius: 25,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        onPress={() => {
-          DevSettings.reload();
-        }}
-      >
-        <p style={{ color: "white" }}>Reload</p>
-      </TouchableOpacity>
-    );
-  }
-  return null;
 }
 
 export default function App() {
@@ -358,30 +315,6 @@ export default function App() {
           <TabbedNavigator.Slot />
           <TabBar visible={!isRowLayout} />
         </div>
-
-        <TabbedNavigator.Screen
-          name="(index)"
-          options={{
-            title: "Feed",
-            tabBarIcon: makeIcon("home"),
-          }}
-        />
-
-        <TabbedNavigator.Screen
-          name="(media)"
-          options={{
-            title: "Media",
-            tabBarIcon: makeIcon("mic"),
-          }}
-        />
-
-        <TabbedNavigator.Screen
-          name="(about)"
-          options={{
-            title: "Evan Bacon",
-            tabBarIcon: makeIcon("person"),
-          }}
-        />
       </TabbedNavigator>
     </>
   );
@@ -442,5 +375,3 @@ function GlobalHead() {
     </Head>
   );
 }
-
-const DARK = "rgba(41, 41, 41, 1)";

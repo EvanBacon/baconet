@@ -1,30 +1,35 @@
-import Ionicons from "@expo/vector-icons/Ionicons";
 import React from "react";
+import { Icon, IconName } from "./icon";
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-export function TabBarIcon(props: {
-  name: React.ComponentProps<typeof Ionicons>["name"];
+export function TabBarIcon({
+  focused,
+  ...props
+}: {
+  name: IconName;
   focused?: boolean;
   color: string;
-  style?: React.ComponentProps<typeof Ionicons>["style"];
+  style?: any;
 }) {
   let resolvedName: any = props.name;
-  if (!props.focused) {
+  if (!focused) {
     resolvedName = props.name + "-outline";
   }
 
   return (
-    <Ionicons
-      size={30}
+    <Icon
       style={[{ width: 30, height: 35, marginBottom: -3 }, props.style]}
       {...props}
       name={resolvedName}
+      width={30}
+      height={35}
+      fill={props.color}
     />
   );
 }
 
-export function makeIcon(name: React.ComponentProps<typeof Ionicons>["name"]) {
+export function makeIcon(name: IconName) {
   return (props: { focused?: boolean; color: string }) => (
     <TabBarIcon name={name} {...props} />
   );

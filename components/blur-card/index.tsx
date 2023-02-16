@@ -1,9 +1,9 @@
 import { Image, Pressable, StyleSheet } from "@bacons/react-views";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { BlurView } from "expo-blur";
 import { Link } from "expo-router";
 import React from "react";
 import { Platform, useWindowDimensions } from "react-native";
+import { Icon } from "../icon";
 
 import MaskedView from "../mask";
 import { Text } from "../useFont";
@@ -13,7 +13,7 @@ export function BlurCard({
   href,
   title,
   subtitle,
-  icon = "play",
+  icon = "play-outline",
   cta = "Watch Now",
   blank,
 }: {
@@ -88,11 +88,12 @@ export function BlurCard({
                     alignItems: "center",
                   }}
                 >
-                  <Ionicons
+                  <Icon
                     style={{ marginRight: -4 }}
                     name={icon}
-                    size={30}
-                    color="black"
+                    width={30}
+                    height={30}
+                    fill="black"
                   />
                 </div>
               </div>

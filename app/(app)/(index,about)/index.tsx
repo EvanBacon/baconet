@@ -53,29 +53,31 @@ function PostsList() {
   );
 
   return (
-    <FlatList
-      style={{
-        flex: 1,
-      }}
-      ref={ref}
-      contentContainerStyle={{
-        alignItems: "stretch",
-        maxWidth: 800,
-        paddingHorizontal: 16,
-        justifyContent: "center",
-      }}
-      contentInsetAdjustmentBehavior="automatic"
-      data={posts}
-      renderItem={({ item }) => (
-        <BlurCard
-          href={"/blog/" + item.slug}
-          image={item.featuredImage}
-          subtitle={item.subtitle}
-          title={item.title}
-          cta={new Date(item.date).toDateString()}
-          icon="book-outline"
-        />
-      )}
-    />
+    <div style={{ flex: 1 }}>
+      <FlatList
+        style={{
+          flex: 1,
+        }}
+        ref={ref}
+        contentContainerStyle={{
+          alignItems: "stretch",
+          maxWidth: 800,
+          paddingHorizontal: 16,
+          justifyContent: "center",
+        }}
+        contentInsetAdjustmentBehavior="automatic"
+        data={posts}
+        renderItem={({ item }) => (
+          <BlurCard
+            href={"/blog/" + item.slug}
+            image={item.featuredImage}
+            subtitle={item.subtitle}
+            title={item.title}
+            cta={new Date(item.date).toDateString()}
+            icon="book-outline"
+          />
+        )}
+      />
+    </div>
   );
 }
